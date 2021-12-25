@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace RonCoffee.Enum
+namespace Charlotte.Enum
 {
     public enum EnumResult
     {
