@@ -144,3 +144,4 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\scopedcss\bundle\Charlotte.styles.css
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.csproj.CopyComplete
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.genruntimeconfig.cache
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

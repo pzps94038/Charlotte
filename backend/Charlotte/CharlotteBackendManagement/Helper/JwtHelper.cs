@@ -20,7 +20,7 @@ namespace CharlotteBackendManagement.Helper
                     issuer: GetAppSettingsHelper.GetAppSettingsValue("JWT", "Issuer"),
                     audience: GetAppSettingsHelper.GetAppSettingsValue("JWT", "Audience"),
                     expires: DateTime.Now.AddDays(1),
-                    signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.Sha256)
+                    signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256)
                 );
             var token = new JwtSecurityTokenHandler().WriteToken(jwt);
             return token;

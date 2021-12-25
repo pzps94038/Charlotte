@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Charlotte.Model;
-
+using Charlotte.Helper;
 
 namespace Charlotte.DbContextModel
 {
@@ -14,11 +14,7 @@ namespace Charlotte.DbContextModel
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder) 
         {
-            var builder = new ConfigurationBuilder()
-                  .SetBasePath(Directory.GetCurrentDirectory())
-                  .AddJsonFile("appsettings.json");
-            var config = builder.Build();
-            var connectionString = config.GetConnectionString("Charlotte");
+            var connectionString = GetAppSettingsHelper.GetConnectionString("Charlotte");
             optionBuilder.UseSqlServer(connectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
