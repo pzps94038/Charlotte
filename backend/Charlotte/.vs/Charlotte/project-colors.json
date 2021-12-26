@@ -10,7 +10,12 @@
       "ProjectGuid": "df749548-7dcf-41cb-bcce-f226daba2898",
       "DisplayName": "Charlotte",
       "ColorIndex": 0
+    },
+    "2ba41cfa-89f0-4789-afa3-684552b1e209": {
+      "ProjectGuid": "2ba41cfa-89f0-4789-afa3-684552b1e209",
+      "DisplayName": "CharlotteBackendManagement",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
