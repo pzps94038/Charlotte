@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Charlotte</string>
+    <string name="PleaseEnterYourAccount">請輸入帳號</string>
+    <string name="PleaseEnterYourPassword">請輸入密碼</string>
+    <string name="login">登入</string>
+    <string name="AccountOrPasswordCannotBeEmpty">帳號或密碼不得為空</string>
+</resources>
