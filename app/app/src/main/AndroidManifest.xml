@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Charlotte">
         <activity
-            android:name=".Login_Activity"
+            android:name=".LoginActivity"
 
             android:exported="true">
             <intent-filter>
