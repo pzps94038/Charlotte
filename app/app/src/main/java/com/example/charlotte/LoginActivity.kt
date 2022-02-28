@@ -8,10 +8,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.charlotte.appSharedPreferences.UserPreferences
 import com.example.charlotte.databinding.ActivityLoginBinding
-import com.example.charlotte.retrofitService.Manager
-import com.example.charlotte.retrofitService.ResultData
-import com.example.charlotte.retrofitService.Service
-import com.example.charlotte.retrofitService.Token
+import com.example.charlotte.retrofitService.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,19 +35,17 @@ class LoginActivity : AppCompatActivity() {
         val account: String = binding.account.text.toString()
         val password: String = binding.password.text.toString()
         Log.d("帳號",account)
-        if(account == "" || password == ""){
+        if(account == "" || password == "")
             Toast.makeText(this@LoginActivity,R.string.AccountOrPasswordCannotBeEmpty,Toast.LENGTH_SHORT).show()
-        }else{
-//            loginPost(account, password)
-            startActivity(Intent(this@LoginActivity,MainActivity::class.java))
-        }
+        else loginPost(account, password)
+
     }
     //endregion
     //region 登入(Post)
     private fun loginPost(account: String, password: String){
         CoroutineScope(Dispatchers.IO).launch {
             val service: Service = Manager().retrofit.create(Service::class.java)
-            service.login(account, password).enqueue(object: Callback<ResultData<Token>>{
+            service.login(ApiUrl.LoginUrl, account, password).enqueue(object: Callback<ResultData<Token>>{
                 override fun onResponse(
                     call: Call<ResultData<Token>>,
                     response: Response<ResultData<Token>>
@@ -65,7 +60,6 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                 }
-
                 override fun onFailure(call: Call<ResultData<Token>>, t: Throwable) {
                     // TODO("Not yet implemented")
                 }

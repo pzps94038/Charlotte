@@ -71,4 +71,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:$retrofit2Version")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofit2Version")
     //endregion
+    //region CarouselView
+    implementation 'com.synnapps:carouselview:0.1.5'
+    //endregion
 }

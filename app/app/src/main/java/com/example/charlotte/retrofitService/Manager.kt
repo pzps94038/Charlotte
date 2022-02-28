@@ -7,12 +7,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class Manager() {
-    val retrofit: Retrofit
-    private val baseUrl: String = "http://10.0.2.2:7777/"
-    init{
-        retrofit = Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-    }
+    val retrofit: Retrofit = Retrofit.Builder()
+                .baseUrl(ApiUrl.BaseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
 }

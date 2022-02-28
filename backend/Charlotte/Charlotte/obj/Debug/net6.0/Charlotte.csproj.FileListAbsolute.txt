@@ -71,13 +71,10 @@ C:\Users\pzps9\Desktop\git\Project\backend\Charlotte\Charlotte\obj\Debug\net6.0\
 C:\Users\pzps9\Desktop\git\Project\backend\Charlotte\Charlotte\obj\Debug\net6.0\ref\Charlotte.dll
 C:\Users\pzps9\Desktop\git\Project\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.pdb
 C:\Users\pzps9\Desktop\git\Project\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.genruntimeconfig.cache
-C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.csproj.AssemblyReference.cache
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.AssemblyInfoInputs.cache
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.AssemblyInfo.cs
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.csproj.CoreCompileInputs.cache
-C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\ref\Charlotte.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.pdb
@@ -88,7 +85,6 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Charlotte.deps.json
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Charlotte.runtimeconfig.json
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Charlotte.dll
-C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\ref\Charlotte.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Charlotte.pdb
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Dapper.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Humanizer.dll
@@ -143,3 +139,7 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.csproj.CopyComplete
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.genruntimeconfig.cache
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\Charlotte.csproj.AssemblyReference.cache
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Debug\net6.0\refint\Charlotte.dll

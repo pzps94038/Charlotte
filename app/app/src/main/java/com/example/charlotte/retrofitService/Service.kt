@@ -7,5 +7,5 @@ interface Service {
     // 登入
     @POST("")
     @Headers("Content-Type: application/json")
-    fun login(@Body account: String, @Body password: String): Call<ResultData<Token>>
+    fun login(@Url url: String, @Body account: String, @Body password: String): Call<ResultData<Token>>
 }

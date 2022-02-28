@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\pzps9\Desktop\git\Charlotte\IIS\backend</_PublishTargetUrl>
+    <History>True|2022-02-28T15:37:15.7283927Z;False|2022-02-28T23:36:46.2474855+08:00;True|2022-02-28T21:57:41.6802404+08:00;True|2022-02-28T21:57:26.8468101+08:00;True|2022-02-28T21:51:27.6856608+08:00;True|2022-02-28T21:50:55.1947829+08:00;True|2022-02-28T21:44:47.5513974+08:00;</History>
+  </PropertyGroup>
+</Project>

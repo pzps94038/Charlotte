@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 abstract class ShoppingCartDataBase : RoomDatabase(){
     abstract fun shoppingCartDao(): IShoppingCartDao
     companion object{
-        private val dbName: String = "shoppingCart.db"
+        private const val dbName: String = "shoppingCart.db"
         private var database: ShoppingCartDataBase? = null
         fun getDataBase(context: Context): ShoppingCartDataBase?{
             if(database == null){
