@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     var lifecycle_version = "2.4.0"
     var roomVersion = "2.4.0"
     var retrofit2Version = "2.9.0"
@@ -47,6 +48,9 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    //region googleMaterial
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    //endregion
     //region ViewModel & LiveData
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")

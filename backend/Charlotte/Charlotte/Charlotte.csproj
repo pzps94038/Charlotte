@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="C:\Users\pzps9\.nuget\packages\nlog.config\4.7.13\contentFiles\any\any\NLog.config" />
+    <None Remove="C:\Users\pzps9\.nuget\packages\nlog.config\4.7.14\contentFiles\any\any\NLog.config" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,9 +21,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="NLog" Version="5.0.0-rc1" />
-    <PackageReference Include="NLog.Config" Version="4.7.13" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="5.0.0-rc1" />
+    <PackageReference Include="NLog" Version="4.7.14" />
+    <PackageReference Include="NLog.Config" Version="4.7.14" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.0" />
@@ -31,6 +31,10 @@
 
   <ItemGroup>
     <Folder Include="FileUpload\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
 </Project>

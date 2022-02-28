@@ -109,8 +109,6 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\NLog.dll
-C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\NLog.Extensions.Logging.dll
-C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\NLog.Web.AspNetCore.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll

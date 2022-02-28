@@ -4,4 +4,8 @@
     <string name="PleaseEnterYourPassword">請輸入密碼</string>
     <string name="login">登入</string>
     <string name="AccountOrPasswordCannotBeEmpty">帳號或密碼不得為空</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="shoppingCart">購物車</string>
+    <string name="delete">刪除</string>
 </resources>

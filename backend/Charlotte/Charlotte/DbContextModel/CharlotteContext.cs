@@ -1,16 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Charlotte.Model;
 using Charlotte.Helper;
+using Charlotte.Model.DataBase;
 
 namespace Charlotte.DbContextModel
 {
     public class CharlotteContext : DbContext
     {
-        DbSet<UserMain> UserMain { get; set; }
-        DbSet<ProductType> ProductType { get; set; }
-        DbSet<ProductDetail> ProductDetails { get; set; }
-        DbSet<RefreshTokenStatus> RefreshTokenStatus { get; set; }
-        DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<UserMain> UserMain { get; set; }
+        public DbSet<ProductType> ProductType { get; set; }
+        public DbSet<ProductDetail> ProductDetails { get; set; }
+        public DbSet<RefreshTokenLog> RefreshTokenLog { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<LoginLog> LoginLog { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder) 
         {
@@ -21,7 +23,7 @@ namespace Charlotte.DbContextModel
         {
             modelBuilder.Entity<OrderDetail>()
                 .HasKey(a => new { a.ProductId, a.UserId });
-            modelBuilder.Entity<RefreshTokenStatus>()
+            modelBuilder.Entity<RefreshTokenLog>()
                 .HasKey(a => new { a.RefreshToken, a.UserId });
         }
     }

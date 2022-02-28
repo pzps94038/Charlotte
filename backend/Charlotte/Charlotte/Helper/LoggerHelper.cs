@@ -6,17 +6,17 @@ namespace Charlotte.Helper
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-        public static void LogerInfo(string infoMessage)
+        public static void Info(string infoMessage)
         {
             Logger.Info(infoMessage);
         }
 
-        public static void LogerDeBug(string debugMessage)
+        public static void DeBug(string debugMessage)
         {
             Logger.Debug(debugMessage);
         }
 
-        public static void LogerError(Exception ex) 
+        public static void Error(Exception ex) 
         {
             Logger.Error(ex);
         }

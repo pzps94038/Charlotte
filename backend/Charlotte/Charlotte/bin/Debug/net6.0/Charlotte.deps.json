@@ -14,9 +14,8 @@
           "Microsoft.EntityFrameworkCore": "6.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.1",
-          "NLog": "5.0.0-rc1",
-          "NLog.Config": "4.7.13",
-          "NLog.Web.AspNetCore": "5.0.0-rc1",
+          "NLog": "4.7.14",
+          "NLog.Config": "4.7.14",
           "Swashbuckle.AspNetCore": "6.2.3",
           "System.Data.SqlClient": "4.8.3",
           "System.IdentityModel.Tokens.Jwt": "6.15.0",
@@ -347,45 +346,21 @@
           }
         }
       },
-      "NLog/5.0.0-rc1": {
+      "NLog/4.7.14": {
         "runtime": {
           "lib/netstandard2.0/NLog.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.0.539"
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.7.14.740"
           }
         }
       },
-      "NLog.Config/4.7.13": {
+      "NLog.Config/4.7.14": {
         "dependencies": {
-          "NLog": "5.0.0-rc1",
-          "NLog.Schema": "4.7.13"
+          "NLog": "4.7.14",
+          "NLog.Schema": "4.7.14"
         }
       },
-      "NLog.Extensions.Logging/5.0.0-rc1": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
-          "Microsoft.Extensions.Logging": "6.0.0",
-          "NLog": "5.0.0-rc1"
-        },
-        "runtime": {
-          "lib/net5.0/NLog.Extensions.Logging.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.0.97"
-          }
-        }
-      },
-      "NLog.Schema/4.7.13": {},
-      "NLog.Web.AspNetCore/5.0.0-rc1": {
-        "dependencies": {
-          "NLog.Extensions.Logging": "5.0.0-rc1"
-        },
-        "runtime": {
-          "lib/net6.0/NLog.Web.AspNetCore.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.119.0"
-          }
-        }
-      },
+      "NLog.Schema/4.7.14": {},
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
@@ -1119,40 +1094,26 @@
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
     },
-    "NLog/5.0.0-rc1": {
+    "NLog/4.7.14": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-+ce3zuXplax1HLxFieqA7BwxLjdmZacYblz6AcfrqxfFWytMz9SHBwUas45aamVrQhTKUA4m5la464/RxnCZPg==",
-      "path": "nlog/5.0.0-rc1",
-      "hashPath": "nlog.5.0.0-rc1.nupkg.sha512"
+      "sha512": "sha512-R1Nn+Zi2mSiKf82zII+8ZhGTr66CmCDLlpDq/0N0Y22TDrioYeP6t3XWzJVTi3OXaHJ/jiXId/okXQu8e0g3uw==",
+      "path": "nlog/4.7.14",
+      "hashPath": "nlog.4.7.14.nupkg.sha512"
     },
-    "NLog.Config/4.7.13": {
+    "NLog.Config/4.7.14": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-A7i8bS0SLd7A1y9BkyOBpIdfC91aqzJfOfHXi9xXs12s6rb9f2xYRQde2Pcpso+YrcybCR2lqczNdb/pKSqoEg==",
-      "path": "nlog.config/4.7.13",
-      "hashPath": "nlog.config.4.7.13.nupkg.sha512"
+      "sha512": "sha512-hnaxwbx/Ajgv/F25oZvSFSNih4Jv8aXU0H4pxFp8kasF8A0KKtP/gLQVjJKMempj2lhE+tp8IzWLU/kGcUWICw==",
+      "path": "nlog.config/4.7.14",
+      "hashPath": "nlog.config.4.7.14.nupkg.sha512"
     },
-    "NLog.Extensions.Logging/5.0.0-rc1": {
+    "NLog.Schema/4.7.14": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6s+q7GbECcvpngY4Tjxsyf5xO1XAyDHbafhoIE789KbJnqGzuyXlDimDnqNvtLqZZYEnTDA4seaWJd0DDR91Uw==",
-      "path": "nlog.extensions.logging/5.0.0-rc1",
-      "hashPath": "nlog.extensions.logging.5.0.0-rc1.nupkg.sha512"
-    },
-    "NLog.Schema/4.7.13": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-IlbHsTRzA1YeAbrJTVETZRWkYXqo5YnaF/ppJBdE6kKD4/IjuA0CUaZMSQKbOLzwxGARMx3An1V38zjGEjRekA==",
-      "path": "nlog.schema/4.7.13",
-      "hashPath": "nlog.schema.4.7.13.nupkg.sha512"
-    },
-    "NLog.Web.AspNetCore/5.0.0-rc1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Q5yIdjzbudbjsqZFrwACgdh2JZWHqVak/wkNiSmtPQbOZUaUTGkFBRrn5A/IMscMCXkvcKOsghPisu8Agu94ew==",
-      "path": "nlog.web.aspnetcore/5.0.0-rc1",
-      "hashPath": "nlog.web.aspnetcore.5.0.0-rc1.nupkg.sha512"
+      "sha512": "sha512-ExtaAbkpoF7RgiVj6FcNPU1+VrCUt60S/5NLEcnusrmMTWlmQ4HCCUTXFOMPUGcK3q9bJtxwzgdiake0Ttifyw==",
+      "path": "nlog.schema/4.7.14",
+      "hashPath": "nlog.schema.4.7.14.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
       "type": "package",

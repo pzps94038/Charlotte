@@ -31,7 +31,7 @@
         android:inputType="textPassword"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/account" />
@@ -63,4 +63,5 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/white_cat"
         app:srcCompat="@drawable/white_cat" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

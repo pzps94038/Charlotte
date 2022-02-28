@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DX0CECcz1TVL2yREm6SOPg3LK8sSZGuAc8YylrBu6b6jzi660tAQqZ/1C087Ok8HkWyeygF/+sz3WbCCi9FltQ==",
+  "dgSpecHash": "lLQXGM6QldssmTFTWGXebIjbdub8AohAscy2bBUDMOa+LvpnVawIXC9ww64WX8sw4qJ5yp/JEu/HZ0eG3VFDsw==",
   "success": true,
   "projectFilePath": "C:\\Users\\pzps9\\Desktop\\git\\Charlotte\\backend\\Charlotte\\Charlotte\\Charlotte.csproj",
   "expectedPackageFiles": [
@@ -40,11 +40,9 @@
     "C:\\Users\\pzps9\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\pzps9\\.nuget\\packages\\nlog\\5.0.0-rc1\\nlog.5.0.0-rc1.nupkg.sha512",
-    "C:\\Users\\pzps9\\.nuget\\packages\\nlog.config\\4.7.13\\nlog.config.4.7.13.nupkg.sha512",
-    "C:\\Users\\pzps9\\.nuget\\packages\\nlog.extensions.logging\\5.0.0-rc1\\nlog.extensions.logging.5.0.0-rc1.nupkg.sha512",
-    "C:\\Users\\pzps9\\.nuget\\packages\\nlog.schema\\4.7.13\\nlog.schema.4.7.13.nupkg.sha512",
-    "C:\\Users\\pzps9\\.nuget\\packages\\nlog.web.aspnetcore\\5.0.0-rc1\\nlog.web.aspnetcore.5.0.0-rc1.nupkg.sha512",
+    "C:\\Users\\pzps9\\.nuget\\packages\\nlog\\4.7.14\\nlog.4.7.14.nupkg.sha512",
+    "C:\\Users\\pzps9\\.nuget\\packages\\nlog.config\\4.7.14\\nlog.config.4.7.14.nupkg.sha512",
+    "C:\\Users\\pzps9\\.nuget\\packages\\nlog.schema\\4.7.14\\nlog.schema.4.7.14.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

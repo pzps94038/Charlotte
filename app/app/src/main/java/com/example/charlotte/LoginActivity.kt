@@ -39,10 +39,10 @@ class LoginActivity : AppCompatActivity() {
         val password: String = binding.password.text.toString()
         Log.d("帳號",account)
         if(account == "" || password == ""){
-            Toast.makeText(this@LoginActivity,R.string.AccountOrPasswordCannotBeEmpty,Toast.LENGTH_SHORT)
-                 .show()
+            Toast.makeText(this@LoginActivity,R.string.AccountOrPasswordCannotBeEmpty,Toast.LENGTH_SHORT).show()
         }else{
-            loginPost(account, password)
+//            loginPost(account, password)
+            startActivity(Intent(this@LoginActivity,MainActivity::class.java))
         }
     }
     //endregion
@@ -56,12 +56,14 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<ResultData<Token>>
                 ) {
                     response.body()?.apply {
-                        val accountToken = this.data.accessToken
-                        val refreshToken = this.data.refreshToken
-                        UserPreferences.setUserToken(this@LoginActivity, accountToken, refreshToken)
+                        if(this.code == 200){
+                            val accountToken = this.data.accessToken
+                            val refreshToken = this.data.refreshToken
+                            UserPreferences.setUserToken(this@LoginActivity, accountToken, refreshToken)
+                            startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+                        }
                     }
-                    // 換頁
-                    startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+
                 }
 
                 override fun onFailure(call: Call<ResultData<Token>>, t: Throwable) {
