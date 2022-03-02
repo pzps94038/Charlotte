@@ -14,9 +14,9 @@ namespace Charlotte.Controllers
     public class LoginController : ControllerBase
     {
         [HttpPost]
-        public ResultModel Login(LoginModel req) 
+        public ResultModel<Token> Login(LoginModel req) 
         {
-            ResultModel result = new ResultModel();
+            ResultModel<Token> result = new ResultModel<Token>();
             try
             {
                 (string message , Token token) =  LoginHelper.Login(req);
@@ -24,6 +24,7 @@ namespace Charlotte.Controllers
                 {
                     result.code = HttpStatusCode.OK;
                     result.message = EnumHelper.GetDescription(EnumResult.Success);
+                    result.data = token;
                 }
                 else 
                 {

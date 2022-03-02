@@ -58,9 +58,7 @@ namespace Charlotte.Helper.Login
         private static UserMain GetUserMain(SqlConnection con, SqlTransaction transaction, string account) 
         {
             string sqlStr = @"Select * From UserMain Where Account = @account ";
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("account", account);
-            return con.QueryFirstOrDefault<UserMain>(sqlStr, parameters, transaction);
+            return con.QueryFirstOrDefault<UserMain>(sqlStr, new { account = account}, transaction);
         }
 
         /// <summary>
@@ -78,11 +76,7 @@ namespace Charlotte.Helper.Login
             string sqlStr = @"INSERT INTO LoginLog
                             (UserId, LoginTime, Flag)
                             VALUES(@UserId, @LoginTime, @Flag)";
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("UserID", userMain.UserId);
-            parameters.Add("LoginTime", DateTime.Now);
-            parameters.Add("Flag", flag ? "Y" : "N");
-            con.Execute(sqlStr, parameters, transaction);
+            con.Execute(sqlStr, new { UserID = userMain.UserId, LoginTime = DateTime.Now, Flag = flag ? "Y" : "N" }, transaction);
             return flag;
         }
 

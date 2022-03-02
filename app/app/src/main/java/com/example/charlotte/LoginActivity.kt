@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.example.charlotte.Model.Token
 import com.example.charlotte.appSharedPreferences.UserPreferences
 import com.example.charlotte.databinding.ActivityLoginBinding
 import com.example.charlotte.retrofitService.*
@@ -44,25 +45,24 @@ class LoginActivity : AppCompatActivity() {
     //region 登入(Post)
     private fun loginPost(account: String, password: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val service: Service = Manager().retrofit.create(Service::class.java)
-            service.login(ApiUrl.LoginUrl, account, password).enqueue(object: Callback<ResultData<Token>>{
+            val service: Service = Manager(this@LoginActivity).retrofit.create(Service::class.java)
+            val user = User(account, password)
+            service.login( user).enqueue(object: Callback<ResultData<Token>>{
                 override fun onResponse(
                     call: Call<ResultData<Token>>,
                     response: Response<ResultData<Token>>
                 ) {
                     response.body()?.apply {
                         if(this.code == 200){
-                            val accountToken = this.data.accessToken
+                            val accessToken = this.data.accessToken
                             val refreshToken = this.data.refreshToken
-                            UserPreferences.setUserToken(this@LoginActivity, accountToken, refreshToken)
+                            UserPreferences.setUserToken(this@LoginActivity, accessToken, refreshToken)
                             startActivity(Intent(this@LoginActivity,MainActivity::class.java))
-                        }
+                        }else Toast.makeText(this@LoginActivity, this.message, Toast.LENGTH_SHORT).show()
                     }
 
                 }
-                override fun onFailure(call: Call<ResultData<Token>>, t: Throwable) {
-                    // TODO("Not yet implemented")
-                }
+                override fun onFailure(call: Call<ResultData<Token>>, t: Throwable) {}
             })
         }
     }

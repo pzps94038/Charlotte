@@ -10,8 +10,3 @@ data class ResultData<T>(
     val code: Int,
     val data: T
 )
-// Token
-data class Token(
-    val accessToken: String,
-    val refreshToken: String
-)

@@ -21,8 +21,7 @@ namespace Charlotte.Helper.Register
                     db.UserMain.Add(data);
                     db.SaveChanges();
                 }
-                else
-                    message = "帳號已存在";
+                else message = "帳號已存在";
             }
             return message;
         }

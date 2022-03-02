@@ -1,11 +1,18 @@
 package com.example.charlotte.retrofitService
 
+import com.example.charlotte.Model.Token
 import retrofit2.Call
 import retrofit2.http.*
 
 interface Service {
     // 登入
-    @POST("")
-    @Headers("Content-Type: application/json")
-    fun login(@Url url: String, @Body account: String, @Body password: String): Call<ResultData<Token>>
+    @POST(ApiUrl.LoginUrl)
+    fun login(@Body user: User): Call<ResultData<Token>>
+    //刷新Token
+    @POST(ApiUrl.RefreshTokenUrl)
+    fun getNewToken(@Body refreshToken: String?): Call<ResultData<Token>>
+}
+class User(account: String, password: String){
+    private val account: String = account
+    private val password: String = password
 }

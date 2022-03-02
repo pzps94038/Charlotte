@@ -2,18 +2,18 @@ package com.example.charlotte.appSharedPreferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.charlotte.Model.Token
 
 class UserPreferences {
     companion object{
         private const val TokenStr: String = "Token"
         private const val accessTokenStr: String = "accessToken"
         private const val refreshTokenStr: String = "refreshToken"
-
         // 取Token
-        fun getUserToken(context: Context): Token{
+         fun getUserToken(context: Context): Token {
             val tokenPre :SharedPreferences = context.getSharedPreferences(TokenStr, Context.MODE_PRIVATE)
-            val accessToken: String? = tokenPre.getString(accessTokenStr,"")
-            val refreshToken: String? = tokenPre.getString(refreshTokenStr, "")
+            val accessToken: String = tokenPre.getString(accessTokenStr,"").toString()
+            val refreshToken: String = tokenPre.getString(refreshTokenStr, "").toString()
             return Token(accessToken, refreshToken)
         }
 
