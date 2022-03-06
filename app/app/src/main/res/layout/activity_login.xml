@@ -6,7 +6,24 @@
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
     tools:context=".LoginActivity">
-
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress"
+        android:indeterminate="false"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:indicatorColor="@color/blue"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="165dp"
+        android:layout_height="161dp"
+        app:layout_constraintBottom_toTopOf="@+id/account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/white_cat" />
     <EditText
         android:id="@+id/account"
         android:layout_width="wrap_content"
@@ -53,15 +70,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="165dp"
-        android:layout_height="161dp"
-        app:layout_constraintBottom_toTopOf="@+id/account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/white_cat"
-        app:srcCompat="@drawable/white_cat" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@ package com.example.charlotte.appSharedPreferences
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.charlotte.Model.Token
+import com.example.charlotte.model.Token
 
 class UserPreferences {
     companion object{

@@ -1,50 +1,60 @@
 package com.example.charlotte
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.charlotte.Model.Token
+import androidx.appcompat.app.AppCompatActivity
 import com.example.charlotte.appSharedPreferences.UserPreferences
 import com.example.charlotte.databinding.ActivityLoginBinding
-import com.example.charlotte.retrofitService.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.charlotte.model.Token
+import com.example.charlotte.retrofitService.Manager
+import com.example.charlotte.retrofitService.ResultData
+import com.example.charlotte.retrofitService.Service
+import com.example.charlotte.retrofitService.User
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.coroutines.CoroutineContext
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(){
     private lateinit var binding: ActivityLoginBinding
+    private var scope = object :CoroutineScope{
+        override val coroutineContext: CoroutineContext
+            get() = Job()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
     }
-    //region 初始化
+    /**
+     * 初始化事件綁定
+     */
     private fun init(){
         binding.loginBtn.setOnClickListener(loginListener)
     }
-    //endregion
-    //region 登入按鈕監聽
+    /**
+     * 登入按鈕監聽事件
+     */
     private val loginListener: View.OnClickListener = View.OnClickListener(){
         val account: String = binding.account.text.toString()
         val password: String = binding.password.text.toString()
-        Log.d("帳號",account)
-        if(account == "" || password == "")
-            Toast.makeText(this@LoginActivity,R.string.AccountOrPasswordCannotBeEmpty,Toast.LENGTH_SHORT).show()
+        if(account == "" || password == "") Toast.makeText(this@LoginActivity,R.string.AccountOrPasswordCannotBeEmpty,Toast.LENGTH_SHORT).show()
         else loginPost(account, password)
-
     }
-    //endregion
-    //region 登入(Post)
+    /**
+     * 登入功能
+     * @param account = 帳號
+     * @param password = 密碼
+     */
     private fun loginPost(account: String, password: String){
-        CoroutineScope(Dispatchers.IO).launch {
+        binding.progress.isIndeterminate = true
+        scope.launch(Dispatchers.IO){
             val service: Service = Manager(this@LoginActivity).retrofit.create(Service::class.java)
             val user = User(account, password)
             service.login( user).enqueue(object: Callback<ResultData<Token>>{
@@ -59,12 +69,17 @@ class LoginActivity : AppCompatActivity() {
                             UserPreferences.setUserToken(this@LoginActivity, accessToken, refreshToken)
                             startActivity(Intent(this@LoginActivity,MainActivity::class.java))
                         }else Toast.makeText(this@LoginActivity, this.message, Toast.LENGTH_SHORT).show()
+                        binding.progress.isIndeterminate = false
                     }
-
                 }
-                override fun onFailure(call: Call<ResultData<Token>>, t: Throwable) {}
+                override fun onFailure(call: Call<ResultData<Token>>, t: Throwable) {
+                    binding.progress.isIndeterminate = false
+                }
             })
         }
     }
-    //endregion
+    override fun onDestroy() {
+        super.onDestroy()
+        scope.cancel()
+    }
 }

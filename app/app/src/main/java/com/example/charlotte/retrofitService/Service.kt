@@ -1,6 +1,6 @@
 package com.example.charlotte.retrofitService
 
-import com.example.charlotte.Model.Token
+import com.example.charlotte.model.Token
 import retrofit2.Call
 import retrofit2.http.*
 

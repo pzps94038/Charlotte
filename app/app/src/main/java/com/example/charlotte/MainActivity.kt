@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity() {
         // 綁定切換Fragment事件
         binding.bottomNavigation.setOnItemSelectedListener(selectedListener)
     }
-    // 切換Fragment
+
+    /**
+     * bottomNavigation事件監聽
+     */
     private val selectedListener: NavigationBarView.OnItemSelectedListener = NavigationBarView.OnItemSelectedListener(){
         when(it.itemId){
             R.id.siteMap_btn -> {
