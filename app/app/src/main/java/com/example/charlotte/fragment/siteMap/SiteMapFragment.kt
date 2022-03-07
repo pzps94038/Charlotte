@@ -34,7 +34,9 @@ class SiteMapFragment : Fragment() {
         setCarouselView()
     }
     private fun setCarouselView(){
-        imageArr.add(R.drawable.coffee_noun_002_07436)
+        imageArr.add(R.drawable.banner_1)
+        imageArr.add(R.drawable.banner_2)
+        imageArr.add(R.drawable.banner_3)
         binding.carouselView.pageCount = imageArr.size
         binding.carouselView.setImageListener(imageLister)
     }

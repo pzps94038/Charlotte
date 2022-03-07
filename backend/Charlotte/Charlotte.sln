@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charlotte.Database", "Charlotte.Database\Charlotte.Database.csproj", "{1ADF1E8E-63FD-4DBC-A9C6-3DB048E05F84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charlotte.Services", "Charlotte.Services\Charlotte.Services.csproj", "{3A404290-5C77-4642-8840-F2E59BF84AC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{DF749548-7DCF-41CB-BCCE-F226DABA2898}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF749548-7DCF-41CB-BCCE-F226DABA2898}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF749548-7DCF-41CB-BCCE-F226DABA2898}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ADF1E8E-63FD-4DBC-A9C6-3DB048E05F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ADF1E8E-63FD-4DBC-A9C6-3DB048E05F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ADF1E8E-63FD-4DBC-A9C6-3DB048E05F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ADF1E8E-63FD-4DBC-A9C6-3DB048E05F84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A404290-5C77-4642-8840-F2E59BF84AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A404290-5C77-4642-8840-F2E59BF84AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A404290-5C77-4642-8840-F2E59BF84AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A404290-5C77-4642-8840-F2E59BF84AC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
-﻿using Charlotte.Model;
-using Charlotte.Model.DataBase;
+﻿using Charlotte.DataBase.Model;
+using Charlotte.Model;
 using Charlotte.Model.Login;
+using Charlotte.Services;
 using Dapper;
 using Microsoft.Data.SqlClient;
 
@@ -41,6 +42,7 @@ namespace Charlotte.Helper.Login
                     catch (Exception ex) 
                     {
                         transaction.Rollback();
+                        LoggerHelper.Error(ex);
                         throw;
                     }
                 }
