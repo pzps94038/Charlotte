@@ -70,3 +70,7 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\Charlotte.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\Charlotte.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\refint\Charlotte.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Charlotte.Database.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Charlotte.Services.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Charlotte.Database.pdb
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Charlotte.Services.pdb

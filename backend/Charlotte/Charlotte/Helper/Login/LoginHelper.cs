@@ -9,9 +9,10 @@ namespace Charlotte.Helper.Login
 {
     public static class LoginHelper
     {
-        private static string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+        
         public static (string , Token) Login(LoginModel req) 
-        {   
+        {
+            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             string message = "";
             Token token = new Token();
             using (SqlConnection con = new SqlConnection(sqlConStr))
@@ -39,10 +40,9 @@ namespace Charlotte.Helper.Login
                         }
                         transaction.Commit();
                     }
-                    catch (Exception ex) 
+                    catch
                     {
                         transaction.Rollback();
-                        LoggerHelper.Error(ex);
                         throw;
                     }
                 }
