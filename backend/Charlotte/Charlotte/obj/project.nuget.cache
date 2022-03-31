@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nBz7PE0iZYAjabHhodbVTy4+u9yGP2BBnTg46nYsB9ncx7EhHGjIbZvp+xl1VddTWexbYdkEo+uLsT+JS2Gzjg==",
+  "dgSpecHash": "zVFtZa18gHlnUZiyMMqUvyenLpmxYcSrQHdOni5O+JL8/oCWRZy8G2CdAGjXW9WjlTMfRNaWieSO677jZCBBwg==",
   "success": true,
   "projectFilePath": "C:\\Users\\pzps9\\Desktop\\git\\Charlotte\\backend\\Charlotte\\Charlotte\\Charlotte.csproj",
   "expectedPackageFiles": [
@@ -44,6 +44,7 @@
     "C:\\Users\\pzps9\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\pzps9\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\pzps9\\.nuget\\packages\\nlog\\4.7.14\\nlog.4.7.14.nupkg.sha512",

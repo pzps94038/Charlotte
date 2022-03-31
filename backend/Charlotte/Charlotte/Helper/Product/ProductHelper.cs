@@ -12,17 +12,17 @@ namespace Charlotte.Helper.Product
         /// </summary>
         /// <param name="productId">產品ID</param>
         /// <returns>符合該產品ID的產品</returns>
-        public static ProductVModel GetProruct(int productId) 
+        public static async Task<ProductVModel> GetProruct(int productId) 
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr)) 
             {
-                con.Open();
+                await con.OpenAsync();
                 string sqlStr = @"select product.ProductId, product.ProductName, type.Type, product.Inventory, product.SellPrice
                                 from ProductDetails as product 
                                 left join ProductType as type on product.ProductTypeId = type.ProductTypeId
                                 Where ProductId = @productId";
-                return con.QueryFirstOrDefault<ProductVModel>(sqlStr, new { productId = productId });
+                return await con.QueryFirstOrDefaultAsync<ProductVModel>(sqlStr, new { productId = productId });
             }
         }
 
@@ -31,12 +31,12 @@ namespace Charlotte.Helper.Product
         /// </summary>
         /// <param name="typeId">產品類型ID</param>
         /// <returns>該產品類型的所有產品</returns>
-        public static List<ProductVModel> GetProducts(int? typeId) 
+        public static async Task<List<ProductVModel>> GetProducts(int? typeId) 
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr)) 
             {
-                con.Open();
+                await con.OpenAsync();
                 string sqlStr = @"select product.ProductId, product.ProductName, type.Type, product.Inventory, product.SellPrice
                             from ProductDetails as product 
                             left join ProductType as type on product.ProductTypeId = type.ProductTypeId";
@@ -46,7 +46,8 @@ namespace Charlotte.Helper.Product
                     sqlStr += "Where type.ProductTypeId = @typeId";
                     parameters.Add("typeId", typeId);
                 }
-                return con.Query<ProductVModel>(sqlStr, parameters).ToList();
+                var result = await con.QueryAsync<ProductVModel>(sqlStr, parameters);
+                return result.ToList();
             }
         }
     }

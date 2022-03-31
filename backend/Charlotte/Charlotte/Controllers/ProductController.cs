@@ -17,15 +17,15 @@ namespace Charlotte.Controllers
         /// 取得單個產品資料
         /// </summary>
         /// <param name="productId">產品ID</param>
-        /// <returns>該ID產品資料</returns>
+        /// <returns></returns>
         [HttpGet("{productId}")]
         
-        public ResultModel<ProductVModel> GetProduct(int productId) 
+        public async Task<ResultModel<ProductVModel>> GetProduct(int productId) 
         {
             ResultModel<ProductVModel> result = new ResultModel<ProductVModel>();            
             try
             {
-                var data = ProductHelper.GetProruct(productId);
+                var data = await ProductHelper.GetProruct(productId);
                 if (data == null)
                 {
                     result.message = EnumHelper.GetDescription(EnumResult.NotFound);
@@ -52,14 +52,14 @@ namespace Charlotte.Controllers
         /// 產品類型ID
         /// </summary>
         /// <param name="typeId">產品類型ID</param>
-        /// <returns>符合該產品類型的產品，或是全部產品</returns>
+        /// <returns></returns>
         [HttpGet]
-        public ResultModel<List<ProductVModel>> GetProducts(int? typeId)
+        public async Task<ResultModel<List<ProductVModel>>> GetProducts(int? typeId)
         {
             ResultModel<List<ProductVModel>> result = new ResultModel<List<ProductVModel>>();
             try
             {
-                result.data = ProductHelper.GetProducts(typeId);
+                result.data = await ProductHelper.GetProducts(typeId);
                 result.message = EnumHelper.GetDescription(EnumResult.Success);
                 result.code= HttpStatusCode.OK;
             }

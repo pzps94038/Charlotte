@@ -7,13 +7,16 @@ namespace Charlotte.DataBase.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int LoginLogID { get; set; }
         [Required]
         public int UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual UserMain UserMain { get; set; }
+        [Required]
         public DateTime LoginTime { get; set; }
         [StringLength(1)]
+        [Required]
+        [Column(TypeName = "nchar(1)")]
         public string Flag { get; set; }
 
     }

@@ -1,0 +1,20 @@
+$default-font-size : 1.1rem;
+.default-font{
+  font-size: $default-font-size;
+  color: black;
+}
+.sideNav{
+  width: 200px;
+}
+.sideNavContainer{
+  height: 92vh;
+}
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}
+.icon{
+  margin-left: 1.5rem;
+}
+mat-icon {
+  vertical-align:text-bottom;
+}

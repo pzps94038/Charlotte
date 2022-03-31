@@ -12,13 +12,18 @@ namespace Charlotte.Controllers
     [Route("api/[controller]")]
     public class LoginController : ControllerBase
     {
+        /// <summary>
+        /// 購物平台登入
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ResultModel<Token> Login(LoginModel req) 
+        public async Task<ResultModel<Token>> Login(LoginModel req) 
         {
             ResultModel<Token> result = new ResultModel<Token>();
             try
             {
-                (string message , Token token) =  LoginHelper.Login(req);
+                (string message , Token token) =  await LoginHelper.Login(req);
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;

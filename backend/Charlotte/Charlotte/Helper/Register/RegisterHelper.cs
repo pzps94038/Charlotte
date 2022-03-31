@@ -2,24 +2,26 @@
 using Charlotte.DataBase.Model;
 using Charlotte.Model.Register;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace Charlotte.Helper.Register
 {
     public static class RegisterHelper
     {
-        public static string Register(RegisterModel req) 
+        public static async Task<string> Register(RegisterModel req) 
         {
             string message = "";
             using (CharlotteContext db = new CharlotteContext()) 
             {
-                var userMain = db.UserMain.FirstOrDefault(a => a.Account == req.Account);
+                var userMain = await db.UserMain.FirstOrDefaultAsync(a => a.Account == req.Account);
                 if (userMain == null)
                 {
                     UserMain data = req.Adapt<UserMain>();
                     data.Password = SHA256Helper.SHA256Encrypt(req.Password);
+                    data.Flag = "Y";
                     data.CreatedDate = DateTime.Now;
-                    db.UserMain.Add(data);
-                    db.SaveChanges();
+                    await db.UserMain.AddAsync(data);
+                    await db.SaveChangesAsync();
                 }
                 else message = "帳號已存在";
             }
