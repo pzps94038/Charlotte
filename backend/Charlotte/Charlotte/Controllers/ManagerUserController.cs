@@ -14,29 +14,6 @@ namespace Charlotte.Controllers
     [ApiController]
     public class ManagerUserController : ControllerBase
     {
-        /// <summary>
-        /// 創建管理平台使用者
-        /// </summary>
-        /// <param name="req"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<ResultModel> CreateManagerUser(CreateManagerUserModel req)
-        {
-            var result = new ResultModel();
-            try
-            {
-                await ManagerUserHelper.CreateManagerUser(req);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.CreateSuccess);
-            }
-            catch (Exception ex)
-            {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.CreateFail);
-                LoggerHelper.Error(ex);
-            }
-            return result;
-        }
 
         /// <summary>
         /// 取該使用者資訊
@@ -61,6 +38,31 @@ namespace Charlotte.Controllers
             }
             return result;
         }
+        /// <summary>
+        /// 創建管理平台使用者
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ResultModel> CreateManagerUser(CreateManagerUserModel req)
+        {
+            var result = new ResultModel();
+            try
+            {
+                await ManagerUserHelper.CreateManagerUser(req);
+                result.code = HttpStatusCode.OK;
+                result.message = EnumHelper.GetDescription(EnumResult.CreateSuccess);
+            }
+            catch (Exception ex)
+            {
+                result.code = HttpStatusCode.BadRequest;
+                result.message = EnumHelper.GetDescription(EnumResult.CreateFail);
+                LoggerHelper.Error(ex);
+            }
+            return result;
+        }
+
+
 
         /// <summary>
         /// 修改該使用者資料

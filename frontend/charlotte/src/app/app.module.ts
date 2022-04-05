@@ -11,13 +11,14 @@ import { Interceptor } from './shared/api/interceptor';
 import { HeaderComponent } from './sitemap/header/header.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { SideNavComponent } from './sitemap/side-nav/side-nav.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SitemapComponent,
     HeaderComponent,
-    SideNavComponent
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,

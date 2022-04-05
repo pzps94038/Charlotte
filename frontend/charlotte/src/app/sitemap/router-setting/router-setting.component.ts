@@ -1,64 +1,242 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { map, Observable } from 'rxjs';
+import { GetRouterRes } from 'src/app/shared/api/router/router.interface';
+
+import { RouterService } from 'src/app/shared/api/router/router.service';
+import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
+import { SwalService } from 'src/app/shared/service/swal/swal.service';
+
 @Component({
   selector: 'app-router-setting',
   templateUrl: './router-setting.component.html',
   styleUrls: ['./router-setting.component.scss']
 })
-export class RouterSettingComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol']
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA)
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-  constructor() { }
-
-  ngOnInit(): void {
-    let x : PeriodicElement = {
-      name: '',
-      position: 0,
-      weight: 0,
-      symbol: ''
-    }
-    for(let key of Object.keys(x)){
-      console.log(key)
-    }
+export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTableFunction {
+  columns : {key: string, value: string | number}[]= []
+  dataList$ : Observable<GetRouterRes[]>
+  constructor
+  (
+    private routerService: RouterService,
+    private dialog: MatDialog,
+    private swalService: SwalService
+  )
+  {
+    this.dataList$ = this.getRouters()
+    this.columns = this.createColumns()
   }
 
+  /** 刷新路由 */
+  refresh(): void {
+    this.dataList$ = this.getRouters()
+  }
 
-}
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  /** 創建路由 */
+  create(): void {
+    const dialog = this.dialog.open(FormDialogComponent,{
+      data: {
+        title: '新建路由',
+        dataList:[
+          {
+            controlName: 'link',
+            labelText: '連結',
+            type: 'text',
+            icon: 'link',
+            maxLength: 250,
+            valids: [Validators.required, Validators.maxLength(250)]
+          },
+          {
+            controlName: 'routerName',
+            labelText: '路由名稱',
+            type: 'text',
+            icon: 'badge',
+            maxLength: 250,
+            valids: [Validators.required, Validators.maxLength(250)]
+          },
+          {
+            controlName: 'icon',
+            labelText: 'Icon',
+            type: 'text',
+            icon: 'insert_emoticon',
+            maxLength: 250,
+            valids: [Validators.maxLength(250)]
+          },
+          {
+            controlName: 'groupId',
+            labelText: 'GroupId',
+            type: 'number',
+            icon: 'groups',
+            valids: [Validators.required]
+          },
+          {
+            controlName: 'flag',
+            labelText: 'Flag',
+            type: 'toggle',
+            value: true,
+          }
+        ]
+      }
+
+    })
+    dialog.afterClosed().subscribe((data)=>{
+      if(data){
+        this.routerService.createRouter(data).subscribe(res=>{
+          this.swalService.alert({
+            text: res.message,
+            icon: res.code === 200 ? 'success' : 'error',
+            confirmButtonText: '確認'
+          })
+          this.refresh()
+        })
+      }
+    })
+
+  }
+
+  /** 修改路由 */
+  modify(row : GetRouterRes): void {
+    const dialog = this.dialog.open(FormDialogComponent,{
+      data: {
+        title: '修改路由',
+        dataList:[
+          {
+            controlName: 'routerId',
+            labelText: '路由Id',
+            disabled: true,
+            type: 'number',
+            value: row.routerId
+          },
+          {
+            controlName: 'routerName',
+            labelText: '路由名稱',
+            type: 'text',
+            maxLength: 250,
+            icon: 'badge',
+            value: row.routerName,
+            valids: [Validators.required, Validators.maxLength(250)]
+          },
+          {
+            controlName: 'link',
+            labelText: '連結',
+            type: 'text',
+            icon: 'link',
+            value: row.link,
+            maxLength: 250,
+            valids: [Validators.required, Validators.maxLength(250)]
+          },
+          {
+            controlName: 'icon',
+            labelText: 'Icon',
+            type: 'text',
+            icon: 'insert_emoticon',
+            maxLength: 250,
+            value: row.icon,
+            valids: [Validators.maxLength(250)]
+          },
+          {
+            controlName: 'groupId',
+            labelText: 'GroupId',
+            type: 'number',
+            icon: 'groups',
+            value: row.groupId,
+            valids: [Validators.required]
+          },
+          {
+            controlName: 'flag',
+            labelText: 'Flag',
+            type: 'toggle',
+            value: row.flag === "Y",
+          }
+        ]
+      }
+    })
+    dialog.afterClosed().subscribe(data=>{
+      if(data){
+        this.routerService.modifyRouter(row.routerId, data).subscribe(res=>{
+          this.swalService.alert({
+            text: res.message,
+            icon: res.code === 200 ? 'success' : 'error',
+            confirmButtonText: '確認'
+          })
+          this.refresh()
+        })
+      }
+    })
+  }
+
+  /** 刪除路由 */
+  delete(row :GetRouterRes): void {
+    this.swalService.alert({
+      text: '確定要刪除這筆資料嗎?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '確認',
+      cancelButtonText: '取消'
+    }).subscribe(data=>{
+      if(data.isConfirmed){
+        this.routerService.deleteRouter(row.routerId).subscribe(res=>{
+          this.swalService.alert({
+            text: res.message,
+            icon: res.code === 200 ? 'success' : 'error',
+            confirmButtonText: '確認'
+          })
+          this.refresh()
+        })
+      }
+    })
+  }
+
+  /** 批次刪除路由 */
+  multipleDelete(rows: GetRouterRes[]): void {
+    this.swalService.alert({
+      text: `確定要刪除這${rows.length}筆資料嗎?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '確認',
+      cancelButtonText: '取消'
+    }).subscribe(data=>{
+      if(data.isConfirmed){
+        let deleteArr : number[] = []
+        for(let item of rows)deleteArr.push(item.routerId)
+        this.routerService.batchDeleteRouter(deleteArr).subscribe(res=>{
+          this.swalService.alert({
+            text: res.message,
+            icon: res.code === 200 ? 'success' : 'error',
+            confirmButtonText: '確認'
+          })
+          this.refresh()
+        })
+      }
+    })
+  }
+
+  /** 創建表頭 */
+  createColumns(): { key: string; value: string | number; }[]
+  {
+    const columns =
+    [
+      {
+        key: 'routerName',
+        value: '路由名稱'
+      },
+      {
+        key: 'link',
+        value: '連結'
+      },
+      {
+        key: 'flag',
+        value: 'Flag'
+      }
+    ]
+    return columns
+  }
+
+  /** 取得路由表 */
+  getRouters(): Observable<GetRouterRes[]>{
+    return this.routerService.getRouters().pipe(map(res=> res.data))
+  }
+  ngOnInit(): void{}
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
-];

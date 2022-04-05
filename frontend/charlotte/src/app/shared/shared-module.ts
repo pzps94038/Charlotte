@@ -20,12 +20,38 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { CommonModule } from '@angular/common';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DataTableComponent } from './component/data-table/data-table.component';
+import { FormDialogComponent } from './dialog/form-dialog/form-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
+  declarations:[
+    DataTableComponent,
+    FormDialogComponent
+  ],
+  imports: [
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatSlideToggleModule
+  ],
   providers:[SwalService],
   exports: [
-    MatCardModule,
-    MatButtonModule,
+    MatDialogModule,
+    CommonModule,
+    FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
@@ -37,14 +63,15 @@ import { MatSortModule } from '@angular/material/sort';
     MatListModule,
     MatSidenavModule,
     MatExpansionModule,
+    MatCardModule,
     MatRippleModule,
     ChartModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
-    MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    DataTableComponent,
+    FormDialogComponent
   ]
 })
 export class SharedModule { }

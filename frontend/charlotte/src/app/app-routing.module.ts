@@ -15,11 +15,10 @@ const routes: Routes = [
     path: 'siteMap',
     component: SitemapComponent,
     loadChildren: () => import('./sitemap/sitemap.module').then(m => m.SitemapModule),
-    // canActivate: [TokenAuthGuard],
-    // canActivateChild: [TokenAuthGuard],
+    canActivate: [TokenAuthGuard],
+    canActivateChild: [TokenAuthGuard],
     data:{ title: '首頁' }
-  }
-  ,
+  },
   {
     path: '**', redirectTo:'/login', pathMatch: 'full'
   }

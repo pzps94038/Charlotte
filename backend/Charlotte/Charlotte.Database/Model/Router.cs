@@ -16,6 +16,9 @@ namespace Charlotte.Database.Model
 
         [Required]
         [StringLength(250)]
+        public string RouterName { get; set; }
+        [Required]
+        [StringLength(250)]
         public string Link { get; set; }
 
         [StringLength(250)]

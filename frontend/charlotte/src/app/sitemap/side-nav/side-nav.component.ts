@@ -27,9 +27,7 @@ export class SideNavComponent implements OnInit {
   ngOnInit(): void {
     this.initSideNav()
   }
-  /**
-   * 設定SideNav響應
-   */
+  /** 設定SideNav響應 */
   initSideNav(){
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {

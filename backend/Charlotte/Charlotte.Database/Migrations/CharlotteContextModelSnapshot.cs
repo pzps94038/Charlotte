@@ -442,6 +442,11 @@ namespace Charlotte.Database.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("RouterName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.HasKey("RouterId");
 
                     b.ToTable("Router");

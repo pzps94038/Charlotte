@@ -4,4 +4,5 @@ export class ApiUrl{
   static login : string = this.apiUrl + 'ManagerLogin'
   static role: string = this.apiUrl + 'ManagerRole'
   static user: string = this.apiUrl + 'ManagerUser'
+  static router: string = this.apiUrl + 'ManagerRouter'
 }

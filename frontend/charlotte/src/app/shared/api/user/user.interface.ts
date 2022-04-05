@@ -8,11 +8,20 @@ export interface LoginRes{
   token: Token,
   managerUserId: number
 }
-export interface UserReq{
+export interface ModifyUserReq{
   userName: string,
   email: string,
   address: string | null,
   birthday: Date
+}
+export interface CreateUserReq{
+  userName: string
+  account: string
+  password: string
+  email: string
+  address?: string
+  birthday: Date
+  roleId: number
 }
 export interface UserRes{
   userName: string,

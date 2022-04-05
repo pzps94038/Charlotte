@@ -6,6 +6,5 @@
         public string email { get; set; }
         public string? address { get; set; }
         public DateTime birthday { get; set; }
-
     }
 }
