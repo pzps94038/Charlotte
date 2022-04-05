@@ -14,7 +14,7 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
   templateUrl: './router-setting.component.html',
   styleUrls: ['./router-setting.component.scss']
 })
-export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTableFunction {
+export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTableFunction<GetRouterRes> {
   columns : {key: string, value: string | number}[]= []
   dataList$ : Observable<GetRouterRes[]>
   constructor

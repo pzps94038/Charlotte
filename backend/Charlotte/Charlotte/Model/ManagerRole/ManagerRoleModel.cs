@@ -1,7 +1,8 @@
 ﻿namespace Charlotte.Model.ManagerRole
 {
-    public class ManagerRoleModel
+    public class ManagerRoleModel 
     {
-        public string RoleName { get; set; }
+        public string roleName { get; set; }
     }
+
 }

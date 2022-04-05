@@ -22,10 +22,23 @@ export interface CreateUserReq{
   address?: string
   birthday: Date
   roleId: number
+  flag: boolean
 }
-export interface UserRes{
+export interface GetUserRes{
   userName: string,
   email: string,
   address: string | null,
   birthday: Date
+}
+export interface GetUsersRes{
+  managerUserId: number
+  userName: string
+  account: string
+  password: string
+  email: string
+  address?: string
+  birthday: Date
+  flag: string
+  roleId: number
+  roleName: string
 }

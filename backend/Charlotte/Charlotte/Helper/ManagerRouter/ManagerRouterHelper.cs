@@ -5,9 +5,8 @@ using Charlotte.Services;
 using Charlotte.VModel.ManagerRouter;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
-using System.Data.Entity.Core;
 using System.Data.SqlClient;
+using static Charlotte.CustomizeException.CustomizeException;
 
 namespace Charlotte.Helper.ManagerRouter
 {
@@ -41,7 +40,7 @@ namespace Charlotte.Helper.ManagerRouter
             {
                 var data = new Router();
                 data.Flag = rq.flag ? "Y" : "N";
-                data.Icon = rq.icon;
+                data.Icon = rq.icon == null ? null : rq.icon;
                 data.Link = rq.link;
                 data.RouterName = rq.routerName;
                 data.GroupId = rq.groupId;
@@ -61,12 +60,12 @@ namespace Charlotte.Helper.ManagerRouter
             using (var db = new CharlotteContext())
             {
                 var data = await db.Router.FirstOrDefaultAsync(a=> a.RouterId == routerId);
-                if (data == null) throw new ObjectNotFoundException();
+                if (data == null) throw new NotFoundException();
                 else 
                 {
                     data.RouterName = rq.routerName;
                     data.Flag = rq.flag ? "Y" : "N";
-                    data.Icon = rq.icon;
+                    data.Icon = rq.icon == null ? null : rq.icon;
                     data.Link = rq.link;
                     data.GroupId = rq.groupId;
                     await db.SaveChangesAsync();
@@ -85,7 +84,7 @@ namespace Charlotte.Helper.ManagerRouter
             using (var db = new CharlotteContext())
             {
                 var data = await db.Router.FirstOrDefaultAsync(a => a.RouterId == routerId);
-                if (data == null) throw new ObjectNotFoundException();
+                if (data == null) throw new NotFoundException();
                 else
                 {
                     db.Router.Remove(data);
@@ -107,7 +106,7 @@ namespace Charlotte.Helper.ManagerRouter
                 foreach (var routerId in rq) 
                 {
                     var data = await db.Router.FirstOrDefaultAsync(a => a.RouterId == routerId);
-                    if (data == null) throw new ObjectNotFoundException();
+                    if (data == null) throw new NotFoundException();
                     else
                         db.Router.Remove(data);
                 }

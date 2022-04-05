@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Charlotte.DataBase.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,8 +14,12 @@ namespace Charlotte.Database.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderId { get; set; }
+        [Required]
         public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual UserMain UserMain { get; set; }
+        [Required]
         public DateTime CreatedDate { get; set; }
-        public DateTime ModifyDate { get; set; }
+        public DateTime? ModifyDate { get; set; }
     }
 }

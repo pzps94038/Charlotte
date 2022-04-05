@@ -1,4 +1,4 @@
-package com.example.charlotte.model
+package com.example.charlotte.Model
 
 // Token
 data class Token(

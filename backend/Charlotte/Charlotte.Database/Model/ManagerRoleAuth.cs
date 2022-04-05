@@ -43,8 +43,7 @@ namespace Charlotte.Database.Model
         [Required]
         [Column(TypeName = "nchar(1)")]
         public DateTime CreateDate { get; set; }
-        [Required]
-
-        public DateTime ModifyDate { get; set; }
+        
+        public DateTime? ModifyDate { get; set; }
     }
 }

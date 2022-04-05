@@ -15,6 +15,25 @@ namespace Charlotte.Controllers
     public class ManagerUserController : ControllerBase
     {
 
+        [HttpGet]
+        public async Task<ResultModel<List<ManagerUsersVModel>>> GetManagerUsers()
+        {
+            var result = new ResultModel<List<ManagerUsersVModel>>();
+            try
+            {
+                result.data = await ManagerUserHelper.GetManagerUsers();
+                result.code = HttpStatusCode.OK;
+                result.message = EnumHelper.GetDescription(EnumResult.Success);
+            }
+            catch (Exception ex)
+            {
+                result.code = HttpStatusCode.BadRequest;
+                result.message = EnumHelper.GetDescription(EnumResult.Fail);
+                LoggerHelper.Error(ex);
+            }
+            return result;
+        }
+
         /// <summary>
         /// 取該使用者資訊
         /// </summary>
@@ -62,8 +81,6 @@ namespace Charlotte.Controllers
             return result;
         }
 
-
-
         /// <summary>
         /// 修改該使用者資料
         /// </summary>
@@ -84,6 +101,44 @@ namespace Charlotte.Controllers
             {
                 result.code = HttpStatusCode.BadRequest;
                 result.message = EnumHelper.GetDescription(EnumResult.ModifyFail);
+                LoggerHelper.Error(ex);
+            }
+            return result;
+        }
+
+        [HttpDelete("{managerUserId}")]
+        public async Task<ResultModel> DeleteManagerUser(int managerUserId)
+        {
+            var result = new ResultModel();
+            try
+            {
+                await ManagerUserHelper.DeleteManagerUser(managerUserId);
+                result.code = HttpStatusCode.OK;
+                result.message = EnumHelper.GetDescription(EnumResult.DeleteSuccess);
+            }
+            catch (Exception ex)
+            {
+                result.code = HttpStatusCode.BadRequest;
+                result.message = EnumHelper.GetDescription(EnumResult.DeleteFail);
+                LoggerHelper.Error(ex);
+            }
+            return result;
+        }
+
+        [HttpDelete]
+        public async Task<ResultModel> BatchDeleteManagerUser(List<int> req)
+        {
+            var result = new ResultModel();
+            try
+            {
+                await ManagerUserHelper.BatchDeleteManagerUser(req);
+                result.code = HttpStatusCode.OK;
+                result.message = EnumHelper.GetDescription(EnumResult.DeleteSuccess);
+            }
+            catch (Exception ex)
+            {
+                result.code = HttpStatusCode.BadRequest;
+                result.message = EnumHelper.GetDescription(EnumResult.DeleteFail);
                 LoggerHelper.Error(ex);
             }
             return result;

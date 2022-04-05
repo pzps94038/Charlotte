@@ -24,7 +24,7 @@ namespace Charlotte.DataBase.Model
         [Required]
         public string Email { get; set; }
         [StringLength(250)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
         [Required]
         [Column(TypeName = "Date")]
         public DateTime Birthday { get; set; }

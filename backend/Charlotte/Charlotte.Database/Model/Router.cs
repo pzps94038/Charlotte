@@ -22,7 +22,7 @@ namespace Charlotte.Database.Model
         public string Link { get; set; }
 
         [StringLength(250)]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         [Required]
         public int GroupId { get; set; }

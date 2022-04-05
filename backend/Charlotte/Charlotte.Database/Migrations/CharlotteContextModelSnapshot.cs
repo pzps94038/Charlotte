@@ -111,7 +111,6 @@ namespace Charlotte.Database.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -234,7 +233,7 @@ namespace Charlotte.Database.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nchar(1)");
 
-                    b.Property<DateTime>("ModifyDate")
+                    b.Property<DateTime?>("ModifyDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ViewAuth")
@@ -260,13 +259,15 @@ namespace Charlotte.Database.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ModifyDate")
+                    b.Property<DateTime?>("ModifyDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("OrderId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Order");
                 });
@@ -433,7 +434,6 @@ namespace Charlotte.Database.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Icon")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -466,7 +466,6 @@ namespace Charlotte.Database.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -577,6 +576,17 @@ namespace Charlotte.Database.Migrations
                     b.Navigation("ManagerRole");
 
                     b.Navigation("Router");
+                });
+
+            modelBuilder.Entity("Charlotte.Database.Model.Order", b =>
+                {
+                    b.HasOne("Charlotte.DataBase.Model.UserMain", "UserMain")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserMain");
                 });
 
             modelBuilder.Entity("Charlotte.DataBase.Model.OrderDetail", b =>

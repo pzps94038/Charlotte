@@ -26,6 +26,7 @@ import { DataTableComponent } from './component/data-table/data-table.component'
 import { FormDialogComponent } from './dialog/form-dialog/form-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations:[
     DataTableComponent,
@@ -43,7 +44,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatInputModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatDatepickerModule
   ],
   providers:[SwalService],
   exports: [

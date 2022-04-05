@@ -30,61 +30,61 @@ export const siteMapRouter : Routes = [
     path: 'routerSetting',
     component: RouterSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '路由設定', animation: 'routerSetting' }
+    data:{ title: '路由維護', animation: 'routerSetting' }
   },
   {
     path: 'roleSetting',
     component: RoleSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '角色設定', animation: 'roleSetting' }
+    data:{ title: '角色維護', animation: 'roleSetting' }
   },
   {
     path: 'consumerSetting',
     component: ConsumerSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '消費者設定', animation: 'consumerSetting' }
+    data:{ title: '消費者維護', animation: 'consumerSetting' }
   },
   {
     path: 'roleAuthSetting',
     component: RoleAuthSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '角色權限設定', animation: 'roleAuthSetting' }
+    data:{ title: '角色權限維護', animation: 'roleAuthSetting' }
   },
   {
     path: 'productTypeSetting',
     component: ProductTypeSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '產品類別設定', animation: 'productTypeSetting' }
+    data:{ title: '產品類別維護', animation: 'productTypeSetting' }
   },
   {
     path: 'productInformationSetting',
     component: ProductInformationSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '產品資訊設定', animation: 'productInformationSetting' }
+    data:{ title: '產品資訊維護', animation: 'productInformationSetting' }
   },
   {
     path: 'orderSetting',
     component: OrderSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '訂單設定', animation: 'orderSetting' }
+    data:{ title: '訂單維護', animation: 'orderSetting' }
   },
   {
     path: 'factorySetting',
     component: FactorySettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '廠商設定', animation: 'factorySetting' }
+    data:{ title: '廠商維護', animation: 'factorySetting' }
   },
   {
     path: 'basicDataSetting',
     component: BasicDataSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '基本資料設定', animation: 'basicDataSetting' }
+    data:{ title: '基本資料維護', animation: 'basicDataSetting' }
   },
   {
     path: 'managerUserSetting',
     component: ManagerUserSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '使用者管理', animation: 'managerUserSetting' }
+    data:{ title: '使用者維護', animation: 'managerUserSetting' }
   },
   {
     path: '**', redirectTo:'/siteMap/home', pathMatch: 'full'

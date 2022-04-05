@@ -13,6 +13,7 @@ export interface BaseInput{
   value?: any
   minLength?: number
   maxLength?: number
-  disabled: boolean
+  disabled: boolean,
+  options?: {text:string, value: any}[]
   valids: ValidatorFn[]
 }
