@@ -1,34 +1,46 @@
-import { map, observable, Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { SharedService } from './../../shared/service/shared.service';
+import { ApiService } from './../../shared/api/api.service';
+import { SideNavService } from 'src/app/shared/service/sideNav/side-nav.service';
+import { map, observable, Observable, Subject, takeUntil, filter, concatMap, tap } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
 import { RoleService } from 'src/app/shared/api/role/role.service';
-import { GetRoleRes } from 'src/app/shared/api/role/role.interface';
+import { GetRoleResult } from 'src/app/shared/api/role/role.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { Validators } from '@angular/forms';
+import { CheckBoxDialogComponent } from 'src/app/shared/dialog/check-box-dialog/check-box-dialog.component';
 
 @Component({
   selector: 'app-role-setting',
   templateUrl: './role-setting.component.html',
   styleUrls: ['./role-setting.component.scss']
 })
-export class RoleSettingComponent implements OnInit, InitDataTable, InitDataTableFunction<GetRoleRes> {
-  dataList$: Observable<GetRoleRes[]>
+export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, InitDataTableFunction<GetRoleResult> {
+  dataList$: Observable<GetRoleResult[]>
+  destroy$ = new Subject()
   columns: { key: string; value: string | number; }[] = []
   constructor(
     private roleService: RoleService,
     private dialog: MatDialog,
-    private swalService: SwalService
+    private swalService: SwalService<null>,
+    private apiService: ApiService,
+    private sharedService: SharedService
   )
   {
     this.dataList$ = this.getRoles()
     this.columns = this.createColumns()
   }
-  getRoles(): Observable<GetRoleRes[]>{
-    return this.roleService.getRoles().pipe(map(
-      res=> res.data
-    ))
+
+  ngOnInit(): void {}
+  ngOnDestroy(): void {
+    this.destroy$.next(null);
+    this.destroy$.complete();
+  }
+  getRoles(): Observable<GetRoleResult[]>{
+    return this.roleService.getRoles().pipe(
+      map(res=> res.data))
   }
   createColumns(): { key: string; value: string | number; }[] {
     const columns =
@@ -71,20 +83,17 @@ export class RoleSettingComponent implements OnInit, InitDataTable, InitDataTabl
         ]
       }
     })
-    dialog.afterClosed().subscribe((data)=>{
-      if(data){
-        this.roleService.createRole(data).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
+    dialog.afterClosed().pipe(
+      filter(data=> !this.sharedService.isNullorEmpty(data)),
+      concatMap(data=> this.roleService.createRole(data)),
+      filter(res=> this.apiService.judgeSuccess(res, true)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.refresh()
     })
   }
-  modify(row: GetRoleRes): void {
+
+  modify(row: GetRoleResult): void {
     const dialog = this.dialog.open(FormDialogComponent,{
       data: {
         title: '修改角色',
@@ -108,62 +117,105 @@ export class RoleSettingComponent implements OnInit, InitDataTable, InitDataTabl
         ]
       }
     })
-    dialog.afterClosed().subscribe(data=>{
-      if(data){
-        this.roleService.modifyRole(row.roleId, data).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
+    dialog.afterClosed().pipe(
+      filter(data=> !this.sharedService.isNullorEmpty(data)),
+      concatMap(data=> this.roleService.modifyRole(row.roleId, data)),
+      filter(res=> this.apiService.judgeSuccess(res, true)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.refresh()
     })
   }
-  delete(row: GetRoleRes): void {
+
+  delete(row: GetRoleResult): void {
     this.swalService.alert({
       text: '確定要刪除這筆資料嗎?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: '確認',
       cancelButtonText: '取消'
-    }).subscribe(data=>{
-      if(data.isConfirmed){
-        this.roleService.deleteRole(row.roleId).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
-    })
+    }).pipe(
+        filter(data=> data.isConfirmed),
+        concatMap(()=> this.roleService.deleteRole(row.roleId)),
+        filter(res=> this.apiService.judgeSuccess(res, true)),
+        takeUntil(this.destroy$)
+      ).subscribe(()=>{
+        this.refresh()
+      })
   }
-  multipleDelete(rows: GetRoleRes[]): void {
+
+  multipleDelete(rows: GetRoleResult[]): void {
     this.swalService.alert({
       text: `確定要刪除這${rows.length}筆資料嗎?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: '確認',
       cancelButtonText: '取消'
-    }).subscribe(data=>{
-      if(data.isConfirmed){
-        let deleteArr : number[] = []
-        for(let item of rows)deleteArr.push(item.roleId)
-        this.roleService.batchDeleteRole(deleteArr).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
+    }).pipe(
+        filter(data=> data.isConfirmed),
+        map(()=>{
+          let deleteArr : number[] = []
+          for(let item of rows)deleteArr.push(item.roleId)
+          return deleteArr
+        }),
+        concatMap((deleteArr)=>this.roleService.batchDeleteRole(deleteArr)),
+        filter(res=> this.apiService.judgeSuccess(res)),
+        takeUntil(this.destroy$)
+      ).subscribe(()=>{
           this.refresh()
         })
-      }
-    })
   }
 
-  ngOnInit(): void {}
-
+  openAuthDialog(row: GetRoleResult){
+    this.roleService.getRoleAuth(row.roleId).pipe(
+      map(res=> res.data),
+      concatMap(rowData=> {
+        const dialog =  this.dialog.open(CheckBoxDialogComponent,{
+          data:{
+            title: '修改權限',
+            rowData,
+            columns:[
+              {
+                key: 'routerName',
+                value: '路由名稱',
+                type: 'string'
+              },
+              {
+                key: 'viewAuth',
+                value: '瀏覽權限',
+                type: 'checkBox'
+              },
+              {
+                key: 'createAuth',
+                value: '新增權限',
+                type: 'checkBox'
+              },
+              {
+                key: 'modifyAuth',
+                value: '修改權限',
+                type: 'checkBox'
+              },
+              {
+                key: 'deleteAuth',
+                value: '刪除權限',
+                type: 'checkBox'
+              },
+              {
+                key: 'exportAuth',
+                value: '匯出權限',
+                type: 'checkBox'
+              }
+            ]
+          }
+        })
+        return dialog.afterClosed()
+      }),
+      filter(data=> !this.sharedService.isNullorEmpty(data)),
+      concatMap(data=> this.roleService.modifyRoleAuth(row.roleId, data)),
+      filter(res=> this.apiService.judgeSuccess(res, true)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.refresh()
+    })
+  }
 }

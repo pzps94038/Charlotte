@@ -1,8 +1,10 @@
+import { SharedService } from './../../shared/service/shared.service';
+import { ApiService } from './../../shared/api/api.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { map, Observable } from 'rxjs';
-import { GetRouterRes } from 'src/app/shared/api/router/router.interface';
+import { map, Observable, filter, concatMap, Subject, takeUntil } from 'rxjs';
+import { GetRouterResult } from 'src/app/shared/api/router/router.interface';
 
 import { RouterService } from 'src/app/shared/api/router/router.service';
 import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
@@ -14,14 +16,17 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
   templateUrl: './router-setting.component.html',
   styleUrls: ['./router-setting.component.scss']
 })
-export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTableFunction<GetRouterRes> {
+export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTableFunction<GetRouterResult> {
   columns : {key: string, value: string | number}[]= []
-  dataList$ : Observable<GetRouterRes[]>
+  dataList$ : Observable<GetRouterResult[]>
+  destroy$ = new Subject()
   constructor
   (
     private routerService: RouterService,
     private dialog: MatDialog,
-    private swalService: SwalService
+    private swalService: SwalService<null>,
+    private apiService: ApiService,
+    private sharedService: SharedService
   )
   {
     this.dataList$ = this.getRouters()
@@ -80,23 +85,18 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
       }
 
     })
-    dialog.afterClosed().subscribe((data)=>{
-      if(data){
-        this.routerService.createRouter(data).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
+    dialog.afterClosed().pipe(
+      filter(data=> !this.sharedService.isNullorEmpty(data)),
+      concatMap(data=> this.routerService.createRouter(data)),
+      filter(res=> this.apiService.judgeSuccess(res, true)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.refresh()
     })
-
   }
 
   /** 修改路由 */
-  modify(row : GetRouterRes): void {
+  modify(row : GetRouterResult): void {
     const dialog = this.dialog.open(FormDialogComponent,{
       data: {
         title: '修改路由',
@@ -152,63 +152,54 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
         ]
       }
     })
-    dialog.afterClosed().subscribe(data=>{
-      if(data){
-        this.routerService.modifyRouter(row.routerId, data).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
+    dialog.afterClosed().pipe(
+      filter(data=> !this.sharedService.isNullorEmpty(data)),
+      concatMap(data=> this.routerService.modifyRouter(row.routerId, data)),
+      filter(res=> this.apiService.judgeSuccess(res, true)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.refresh()
     })
   }
 
   /** 刪除路由 */
-  delete(row :GetRouterRes): void {
+  delete(row :GetRouterResult): void {
     this.swalService.alert({
       text: '確定要刪除這筆資料嗎?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: '確認',
       cancelButtonText: '取消'
-    }).subscribe(data=>{
-      if(data.isConfirmed){
-        this.routerService.deleteRouter(row.routerId).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
+    }).pipe(
+        filter(data=> data.isConfirmed),
+        concatMap(()=> this.routerService.deleteRouter(row.routerId)),
+        filter(res=> this.apiService.judgeSuccess(res, true)),
+        takeUntil(this.destroy$)
+      ).subscribe(()=>{
+      this.refresh()
     })
   }
 
   /** 批次刪除路由 */
-  multipleDelete(rows: GetRouterRes[]): void {
+  multipleDelete(rows: GetRouterResult[]): void {
     this.swalService.alert({
       text: `確定要刪除這${rows.length}筆資料嗎?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: '確認',
       cancelButtonText: '取消'
-    }).subscribe(data=>{
-      if(data.isConfirmed){
+    }).pipe(
+      filter(data=> data.isConfirmed),
+      map(()=>{
         let deleteArr : number[] = []
         for(let item of rows)deleteArr.push(item.routerId)
-        this.routerService.batchDeleteRouter(deleteArr).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
+        return deleteArr
+      }),
+      concatMap((deleteArr)=>this.routerService.batchDeleteRouter(deleteArr)),
+      filter(res=> this.apiService.judgeSuccess(res, true)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.refresh()
     })
   }
 
@@ -234,9 +225,10 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
   }
 
   /** 取得路由表 */
-  getRouters(): Observable<GetRouterRes[]>{
+  getRouters(): Observable<GetRouterResult[]>{
     return this.routerService.getRouters().pipe(map(res=> res.data))
   }
+
   ngOnInit(): void{}
 }
 

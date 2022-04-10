@@ -1,6 +1,7 @@
+import { ApiService } from './../../shared/api/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs';
+import { map, filter } from 'rxjs';
 import { UserService } from 'src/app/shared/api/user/user.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { UserInfoService } from 'src/app/shared/service/userInfo/userInfo.service';
@@ -21,7 +22,8 @@ export class BasicDataSettingComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private userInfoService: UserInfoService,
-    private swalService: SwalService
+    private swalService: SwalService<null>,
+    private apiService: ApiService
     ) {  }
 
   ngOnInit(): void { this.init() }
@@ -29,8 +31,9 @@ export class BasicDataSettingComponent implements OnInit {
   /* 初始化 */
   init(){
     const userId =  this.userInfoService.getUserInfo().managerUserId
-    let s = this.userService.getUser(userId).pipe(
-      map(res=> res.data)).subscribe((data)=>{
+    this.userService.getUser(userId).pipe(
+        map(res=> res.data))
+      .subscribe((data)=>{
         this.setFormValue(data.userName, data.email, data.address,data.birthday)
       })
   }
@@ -54,14 +57,11 @@ export class BasicDataSettingComponent implements OnInit {
     const valid = this.form.valid
     if(valid){
       const userId =  this.userInfoService.getUserInfo().managerUserId
-      this.userService.modifyUser(userId, this.form.value).subscribe((res)=>{
-        this.swalService.alert({
-          text: res.message,
-          icon: res.code === 200 ? 'success' : 'error',
-          confirmButtonText: '確認'
-        }).subscribe(()=>{
-          this.init()
-        })
+      this.userService.modifyUser(userId, this.form.value)
+      .pipe(
+        filter(res=> this.apiService.judgeSuccess(res, true)
+      )).subscribe(()=>{
+        this.init()
       })
     }
   }
@@ -70,5 +70,4 @@ export class BasicDataSettingComponent implements OnInit {
   reset(){
     this.init()
   }
-
 }

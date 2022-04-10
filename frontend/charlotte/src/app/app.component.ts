@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent, RouterOutlet } from '@angular/router';
-import { filter, map, mergeMap } from 'rxjs';
+import { filter, map, mergeMap, Subject, takeUntil } from 'rxjs';
 
 
 
@@ -10,7 +10,8 @@ import { filter, map, mergeMap } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy{
+  destroy$ = new Subject()
   loading : boolean = false
   constructor(
     private titleService: Title,
@@ -21,8 +22,18 @@ export class AppComponent {
       this.setTitle()
       this.setProgressBar()
   }
+  ngOnInit(): void {
+
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(null)
+    this.destroy$.complete()
+  }
+
   setTitle(){
     this.router.events.pipe(
+      takeUntil(this.destroy$),
       filter(event=> event instanceof NavigationEnd),
       map(()=>this.activeRoute),
       map((route)=>{
@@ -36,6 +47,7 @@ export class AppComponent {
   }
   setProgressBar(){
     this.router.events.pipe(
+      takeUntil(this.destroy$),
       filter(event=>
       event instanceof NavigationStart ||
       event instanceof NavigationEnd ||

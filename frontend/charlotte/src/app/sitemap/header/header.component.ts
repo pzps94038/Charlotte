@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { filter, Subject, takeUntil } from 'rxjs';
+import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { SideNavService } from 'src/app/shared/service/sideNav/side-nav.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
@@ -8,12 +9,18 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent{
+export class HeaderComponent implements OnDestroy{
+  destroy$ = new Subject()
   constructor(
-    private swalService: SwalService,
+    private swalService: SwalService<null>,
     private router: Router,
     private sideNavService: SideNavService
   ) { }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(null)
+    this.destroy$.complete()
+  }
 
   /**
    * 登出
@@ -25,8 +32,10 @@ export class HeaderComponent{
       icon: 'question',
       cancelButtonText: "取消",
       confirmButtonText: "確定",
-    }).subscribe(res=>{
-      if(res.isConfirmed){
+    }).pipe(
+        filter(res=> res.isConfirmed),
+        takeUntil(this.destroy$)
+      ).subscribe(()=>{
         this.swalService.alert({
           text: '登出成功',
           icon: 'success',
@@ -34,7 +43,6 @@ export class HeaderComponent{
         })
         localStorage.clear()
         this.router.navigate(['/login'])
-      }
     })
   }
   /**

@@ -1,4 +1,4 @@
-export interface GetRouterRes{
+export interface GetRouterResult{
   routerId: number
   routerName: string
   link: string
@@ -6,14 +6,14 @@ export interface GetRouterRes{
   groupId: number
   flag: string
 }
-export interface CreateRouterReq{
+export interface CreateRouterRequest{
   link: string
   routerName: string
   icon: string
   groupId: string
   flag: string
 }
-export interface ModifyRouterReq{
+export interface ModifyRouterRequest{
   routerId: number
   routerName: string
   link: string

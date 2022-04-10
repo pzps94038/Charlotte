@@ -1,20 +1,20 @@
 import { Token } from "../../service/token/toke.interface"
 
-export interface LoginReq{
+export interface LoginRequest{
   account: string, //帳號
   password: string // 密碼
 }
-export interface LoginRes{
+export interface LoginResult{
   token: Token,
   managerUserId: number
 }
-export interface ModifyUserReq{
+export interface ModifyUserRequest{
   userName: string,
   email: string,
   address: string | null,
   birthday: Date
 }
-export interface CreateUserReq{
+export interface CreateUserRequest{
   userName: string
   account: string
   password: string
@@ -24,13 +24,13 @@ export interface CreateUserReq{
   roleId: number
   flag: boolean
 }
-export interface GetUserRes{
+export interface GetUserResult{
   userName: string,
   email: string,
   address: string | null,
   birthday: Date
 }
-export interface GetUsersRes{
+export interface GetUsersResult{
   managerUserId: number
   userName: string
   account: string

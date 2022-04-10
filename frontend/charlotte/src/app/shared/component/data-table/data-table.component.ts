@@ -17,6 +17,7 @@ export class DataTableComponent implements OnInit {
   @Input() columns: {key:string, value: any}[] = [] // 表頭名稱
   @Input() dataList: any[] = [] // 資料來源
   @Input() functionShow: boolean = true // 要不要開起多選刪除跟搜尋功能
+  @Input() deteailBtnShow: boolean = false // 明細按鈕
   dataSource = new MatTableDataSource<any>() // Table的資料來源設定
   displayedColumns: string[] = []
   userAuth: UserAuth
@@ -25,13 +26,14 @@ export class DataTableComponent implements OnInit {
   @Output() createAction: EventEmitter<any> = new EventEmitter<any>()
   @Output() deleteAction: EventEmitter<any> = new EventEmitter<any>()
   @Output() modifyAction: EventEmitter<any> = new EventEmitter<any>()
+  @Output() detailAction: EventEmitter<any> = new EventEmitter<any>()
   @Output() checkBox: EventEmitter<any> = new EventEmitter<any>()
   @Output() multipleDeleteAction: EventEmitter<any> = new EventEmitter<any>()
   @Output() refreshAction: EventEmitter<any> = new EventEmitter<any>()
   selection = new SelectionModel<any>(true, []);
 
   constructor(
-    private swalService: SwalService,
+    private swalService: SwalService<null>,
     private userInfoService: UserInfoService){
     this.userAuth = this.userInfoService.UserAuth$.value
   }
@@ -92,6 +94,9 @@ export class DataTableComponent implements OnInit {
   deleteClick(row: any){
     this.deleteAction.emit(row)
   }
+  detailClick(row: any){
+    this.detailAction.emit(row)
+  }
 
   /** 點擊多選刪除按鈕 */
   multipleDeleteClick(){
@@ -132,6 +137,3 @@ export class DataTableComponent implements OnInit {
     this.paginator._intl.lastPageLabel = '最後一頁'
   }
 }
-
-
-

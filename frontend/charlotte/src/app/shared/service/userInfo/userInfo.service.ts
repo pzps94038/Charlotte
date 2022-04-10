@@ -7,9 +7,11 @@ import { UserAuth, UserInfo } from './userInfo.interface';
 })
 export class UserInfoService {
   UserAuth$: BehaviorSubject<UserAuth> = new BehaviorSubject<UserAuth>({
-    create: false,
-    modify: false,
-    delete: false,
+    viewAuth: false,
+    createAuth: false,
+    modifyAuth: false,
+    deleteAuth: false,
+    exportAuth: false
   });
   constructor() { }
   saveUserInfo(userInfo: UserInfo): void {

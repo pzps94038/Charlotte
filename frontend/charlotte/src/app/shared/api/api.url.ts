@@ -3,6 +3,7 @@ export class ApiUrl{
   static apiUrl : string = this.baseUrl + '/api/'
   static login : string = this.apiUrl + 'ManagerLogin'
   static role: string = this.apiUrl + 'ManagerRole'
+  static roleAuth: string = this.apiUrl + 'ManagerRoleAuth'
   static user: string = this.apiUrl + 'ManagerUser'
   static router: string = this.apiUrl + 'ManagerRouter'
 }

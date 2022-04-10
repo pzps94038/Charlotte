@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RoleAuthSettingComponent } from './role-auth-setting.component';
+import { CheckBoxDialogComponent } from './check-box-dialog.component';
 
-describe('RoleAuthSettingComponent', () => {
-  let component: RoleAuthSettingComponent;
-  let fixture: ComponentFixture<RoleAuthSettingComponent>;
+describe('CheckBoxDialogComponent', () => {
+  let component: CheckBoxDialogComponent;
+  let fixture: ComponentFixture<CheckBoxDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoleAuthSettingComponent ]
+      declarations: [ CheckBoxDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoleAuthSettingComponent);
+    fixture = TestBed.createComponent(CheckBoxDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

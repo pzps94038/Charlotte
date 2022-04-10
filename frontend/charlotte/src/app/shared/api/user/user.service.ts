@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
-import { CreateUserReq, LoginReq, LoginRes, ModifyUserReq, GetUserRes, GetUsersRes } from './user.interface';
+import { CreateUserRequest, LoginRequest, LoginResult, ModifyUserRequest, GetUserResult, GetUsersResult } from './user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,21 +12,21 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   /* 登入 */
-  login(data: LoginReq): Observable<ResultModel<LoginRes>> {
-    return this.http.post<ResultModel<LoginRes>>(ApiUrl.login, data)
+  login(data: LoginRequest): Observable<ResultModel<LoginResult>> {
+    return this.http.post<ResultModel<LoginResult>>(ApiUrl.login, data)
   }
 
   /* 取得使用者資訊 */
-  getUser(userId: number): Observable<ResultModel<GetUserRes>>{
-    return this.http.get<ResultModel<GetUserRes>>(`${ApiUrl.user}\\${userId}`,{params: {managerUserId: userId}});
+  getUser(userId: number): Observable<ResultModel<GetUserResult>>{
+    return this.http.get<ResultModel<GetUserResult>>(`${ApiUrl.user}\\${userId}`,{params: {managerUserId: userId}});
   }
 
   /**
    * 取得多個使用者資訊
    * @returns 多個使用者資訊
    */
-  getUsers(): Observable<ResultModel<GetUsersRes[]>>{
-    return this.http.get<ResultModel<GetUsersRes[]>>(ApiUrl.user)
+  getUsers(): Observable<ResultModel<GetUsersResult[]>>{
+    return this.http.get<ResultModel<GetUsersResult[]>>(ApiUrl.user)
   }
 
   /**
@@ -34,12 +34,12 @@ export class UserService {
    * @param req 使用者資訊
    * @returns 成功與否訊息
    */
-  createUser(req: CreateUserReq): Observable<ResultMessage>{
+  createUser(req: CreateUserRequest): Observable<ResultMessage>{
     return this.http.post<ResultMessage>(ApiUrl.user, req)
   }
 
   /* 更新部分使用者資訊 */
-  modifyUser(userId: number, userData: ModifyUserReq): Observable<ResultMessage>{
+  modifyUser(userId: number, userData: ModifyUserRequest): Observable<ResultMessage>{
     return this.http.patch<ResultMessage>(`${ApiUrl.user}\\${userId}`, userData)
   }
 

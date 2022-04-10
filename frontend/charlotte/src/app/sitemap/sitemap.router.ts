@@ -4,7 +4,6 @@ import { UserSettingComponent } from "./user-setting/user-setting.component";
 import { RouterSettingComponent } from './router-setting/router-setting.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { RoleSettingComponent } from './role-setting/role-setting.component';
-import { RoleAuthSettingComponent } from './role-auth-setting/role-auth-setting.component';
 import { ProductTypeSettingComponent } from './product-type-setting/product-type-setting.component';
 import { ProductInformationSettingComponent } from './product-information-setting/product-information-setting.component';
 import { OrderSettingComponent } from './order-setting/order-setting.component';
@@ -36,19 +35,13 @@ export const siteMapRouter : Routes = [
     path: 'roleSetting',
     component: RoleSettingComponent,
     canActivate:[AuthGuard],
-    data:{ title: '角色維護', animation: 'roleSetting' }
+    data:{ title: '角色與權限維護', animation: 'roleSetting' }
   },
   {
     path: 'consumerSetting',
     component: ConsumerSettingComponent,
     canActivate:[AuthGuard],
     data:{ title: '消費者維護', animation: 'consumerSetting' }
-  },
-  {
-    path: 'roleAuthSetting',
-    component: RoleAuthSettingComponent,
-    canActivate:[AuthGuard],
-    data:{ title: '角色權限維護', animation: 'roleAuthSetting' }
   },
   {
     path: 'productTypeSetting',

@@ -213,10 +213,8 @@ namespace Charlotte.Database.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nchar(1)");
 
-                    b.Property<string>("CreateDate")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nchar(1)");
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteAuth")
                         .IsRequired()

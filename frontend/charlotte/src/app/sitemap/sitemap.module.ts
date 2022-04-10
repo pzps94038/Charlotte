@@ -6,7 +6,6 @@ import { UserSettingComponent } from './user-setting/user-setting.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterSettingComponent } from './router-setting/router-setting.component';
 import { RoleSettingComponent } from './role-setting/role-setting.component';
-import { RoleAuthSettingComponent } from './role-auth-setting/role-auth-setting.component';
 import { ProductTypeSettingComponent } from './product-type-setting/product-type-setting.component';
 import { ProductInformationSettingComponent } from './product-information-setting/product-information-setting.component';
 import { OrderSettingComponent } from './order-setting/order-setting.component';
@@ -21,7 +20,6 @@ import { ManagerUserSettingComponent } from './manager-user-setting/manager-user
     DashboardComponent,
     RouterSettingComponent,
     RoleSettingComponent,
-    RoleAuthSettingComponent,
     ProductTypeSettingComponent,
     ProductInformationSettingComponent,
     OrderSettingComponent,

@@ -27,10 +27,12 @@ import { FormDialogComponent } from './dialog/form-dialog/form-dialog.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { CheckBoxDialogComponent } from './dialog/check-box-dialog/check-box-dialog.component';
 @NgModule({
   declarations:[
     DataTableComponent,
-    FormDialogComponent
+    FormDialogComponent,
+    CheckBoxDialogComponent,
   ],
   imports: [
     MatIconModule,

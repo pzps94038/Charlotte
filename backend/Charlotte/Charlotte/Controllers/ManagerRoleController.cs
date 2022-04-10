@@ -15,7 +15,7 @@ namespace Charlotte.Controllers
     public class ManagerRoleController : ControllerBase
     {
         /// <summary>
-        /// 取得權限角色清單
+        /// 取得角色清單
         /// </summary>
         /// <returns>權限角色清單</returns>
         [HttpGet]
@@ -38,7 +38,7 @@ namespace Charlotte.Controllers
         }
 
         /// <summary>
-        /// 創建權限角色
+        /// 創建角色
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
@@ -62,10 +62,10 @@ namespace Charlotte.Controllers
         }
 
         /// <summary>
-        /// 修改權限角色
+        /// 修改角色
         /// </summary>
-        /// <param name="roleId">權限角色Id</param>
-        /// <param name="req">權限角色資料</param>
+        /// <param name="roleId">角色Id</param>
+        /// <param name="req">角色資料</param>
         /// <returns></returns>
         [HttpPatch("{roleId}")]
         public async Task<ResultModel> ModifyManagerRole(int roleId, ManagerRoleModel req)
@@ -87,9 +87,9 @@ namespace Charlotte.Controllers
         }
 
         /// <summary>
-        /// 刪除權限角色
+        /// 權限角色
         /// </summary>
-        /// <param name="roleId">權限角色Id</param>
+        /// <param name="roleId">角色Id</param>
         /// <returns></returns>
 
         [HttpDelete("{roleId}")]
@@ -112,7 +112,7 @@ namespace Charlotte.Controllers
         }
 
         /// <summary>
-        /// 批次刪除權限角色
+        /// 批次刪除角色
         /// </summary>
         /// <param name="req">權限角色Id集合</param>
         /// <returns></returns>

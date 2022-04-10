@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class SideNavService {
 
-  show$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true)
+  private show$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true)
 
   hide(){
     this.show$.next(false)
@@ -16,9 +16,12 @@ export class SideNavService {
   {
     this.show$.next(true)
   }
-  
+
   toggle(){
-    const nextState = this.show$.value
-    this.show$.next(!nextState)
+    this.show$.next(!this.show$.value)
+  }
+
+  getSideState(): Observable<boolean>{
+    return this.show$.asObservable();
   }
 }

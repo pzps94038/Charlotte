@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
+import { finalize, from, Observable, take } from 'rxjs';
 import Swal, { SweetAlertResult } from 'sweetalert2';
 import { SwalModel } from './swal.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SwalService {
+export class SwalService<T> {
 
-  alert(options: SwalModel): Observable<SweetAlertResult<any>>{
+  alert(options: SwalModel): Observable<SweetAlertResult<T>>{
     const config = {
       title : options.title,
       text: options.text,
@@ -18,6 +18,6 @@ export class SwalService {
       cancelButtonText: options.cancelButtonText,
       heightAuto: false
     }
-    return from(Swal.fire(config)) ;
+    return from(Swal.fire(config))
   }
 }

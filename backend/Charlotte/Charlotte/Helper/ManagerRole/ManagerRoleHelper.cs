@@ -30,7 +30,7 @@ namespace Charlotte.Helper.ManagerRole
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();
-                string sqlStr = @"SELECT RoleId as roleId, RoleName as roleName, CreateDate as createDate, ModifyDate as modifyDate
+                string sqlStr = @"SELECT RoleId as roleId, RoleName as roleName,  convert(varchar, CreateDate, 23) as createDate, convert(varchar, ModifyDate, 23) as modifyDate
                                 FROM ManagerRole";
                 var result = await con.QueryAsync<ManagerRoleVModel>(sqlStr);
                 return result.ToList();

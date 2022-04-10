@@ -39,9 +39,7 @@ namespace Charlotte.Database.Model
         [Required]
         [Column(TypeName = "nchar(1)")]
         public string ExportAuth { get; set; }
-        [StringLength(1)]
         [Required]
-        [Column(TypeName = "nchar(1)")]
         public DateTime CreateDate { get; set; }
         
         public DateTime? ModifyDate { get; set; }

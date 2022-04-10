@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
-import { CreateRouterReq, GetRouterRes, ModifyRouterReq } from './router.interface';
+import { CreateRouterRequest, GetRouterResult, ModifyRouterRequest } from './router.interface';
 
 
 @Injectable({
@@ -17,8 +17,8 @@ export class RouterService {
    * 取得路由清單
    * @returns 路由清單
    */
-  getRouters(): Observable<ResultModel<GetRouterRes[]>>{
-    return this.http.get<ResultModel<GetRouterRes[]>>(ApiUrl.router)
+  getRouters(): Observable<ResultModel<GetRouterResult[]>>{
+    return this.http.get<ResultModel<GetRouterResult[]>>(ApiUrl.router)
   }
 
   /**
@@ -26,7 +26,7 @@ export class RouterService {
    * @param req 路由資料
    * @returns 成功失敗訊息
    */
-  createRouter(req: CreateRouterReq): Observable<ResultMessage>{
+  createRouter(req: CreateRouterRequest): Observable<ResultMessage>{
     return this.http.post<ResultMessage>(ApiUrl.router, req)
   }
   /**
@@ -35,7 +35,7 @@ export class RouterService {
    * @param req 路由資料
    * @returns 成功失敗訊息
    */
-  modifyRouter(routerId: number, req: ModifyRouterReq): Observable<ResultMessage>{
+  modifyRouter(routerId: number, req: ModifyRouterRequest): Observable<ResultMessage>{
     return this.http.patch<ResultMessage>(`${ApiUrl.router}\\${routerId}`, req)
   }
 

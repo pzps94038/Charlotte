@@ -1,33 +1,44 @@
+import { SharedService } from './../../shared/service/shared.service';
 import { RoleService } from 'src/app/shared/api/role/role.service';
 import { UserService } from 'src/app/shared/api/user/user.service';
-import { map, Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { map, Observable, filter, takeUntil, Subject, concatMap, tap } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
-import { GetUsersRes } from 'src/app/shared/api/user/user.interface';
+import { GetUsersResult } from 'src/app/shared/api/user/user.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { Validators } from '@angular/forms';
+import { ApiService } from 'src/app/shared/api/api.service';
 
 @Component({
   selector: 'app-manager-user-setting',
   templateUrl: './manager-user-setting.component.html',
   styleUrls: ['./manager-user-setting.component.scss']
 })
-export class ManagerUserSettingComponent implements OnInit, InitDataTable, InitDataTableFunction<GetUsersRes> {
-  dataList$: Observable<GetUsersRes[]>
+export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTable, InitDataTableFunction<GetUsersResult> {
+  dataList$: Observable<GetUsersResult[]>
+  destroy$ = new Subject()
   columns: {key: string, value: string | number}[]= []
   constructor
   (
     private userService: UserService,
     private roleService: RoleService,
     private dialog: MatDialog,
-    private swalService: SwalService
+    private swalService: SwalService<null>,
+    private apiService: ApiService,
+    private sharedService: SharedService
   )
   {
     this.columns = this.createColumns()
     this.dataList$ = this.getUsers()
   }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(null)
+    this.destroy$.complete()
+  }
+
   ngOnInit(): void {}
   createColumns(): { key: string; value: string | number; }[] {
     const columns =
@@ -51,9 +62,11 @@ export class ManagerUserSettingComponent implements OnInit, InitDataTable, InitD
     ]
     return columns
   }
+
   refresh(): void {
     this.dataList$ = this.getUsers()
   }
+
   create(): void {
     const options = this.createRoleOptions()
     const dialog = this.dialog.open(FormDialogComponent,{
@@ -117,20 +130,17 @@ export class ManagerUserSettingComponent implements OnInit, InitDataTable, InitD
         ]
       }
     })
-    dialog.afterClosed().subscribe(data=>{
-      if(data){
-        this.userService.createUser(data).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
-    })
+    dialog.afterClosed().pipe(
+      filter(data=> !this.sharedService.isNullorEmpty(data)),
+      concatMap(data=> this.userService.createUser(data)),
+      filter(res=> this.apiService.judgeSuccess(res, true)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+        this.refresh()
+      })
   }
-  modify(row: GetUsersRes): void {
+
+  modify(row: GetUsersResult): void {
     const options = this.createRoleOptions()
     const dialog = this.dialog.open(FormDialogComponent,{
       data: {
@@ -199,80 +209,78 @@ export class ManagerUserSettingComponent implements OnInit, InitDataTable, InitD
         ]
       }
     })
-    dialog.afterClosed().subscribe(data=>{
-      if(data){
-        this.userService.modifyUser(row.managerUserId, data).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
+    dialog.afterClosed().pipe(
+        filter(data=> !this.sharedService.isNullorEmpty(data)),
+        concatMap(data=> this.userService.modifyUser(row.managerUserId, data)),
+        filter(res=> this.apiService.judgeSuccess(res)),
+        takeUntil(this.destroy$)
+      ).subscribe(()=>{
+        this.refresh()
     })
   }
-  delete(row: GetUsersRes): void {
+
+  delete(row: GetUsersResult): void {
     this.swalService.alert({
       text: '確定要刪除這個使用者嗎?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: '確認',
       cancelButtonText: '取消'
-    }).subscribe(data=>{
-      if(data.isConfirmed){
-        this.userService.deleteUser(row.managerUserId).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
-    })
+    }).pipe(
+        filter(data=> data.isConfirmed),
+        concatMap(()=> this.userService.deleteUser(row.managerUserId)),
+        filter((res)=> this.apiService.judgeSuccess(res, true)),
+        takeUntil(this.destroy$)
+      ).subscribe(()=>{
+        this.refresh()
+      })
   }
-  multipleDelete(rows: GetUsersRes[]): void {
+
+  multipleDelete(rows: GetUsersResult[]): void {
     this.swalService.alert({
       text: `確定要刪除這${rows.length}筆使用者資料嗎?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: '確認',
       cancelButtonText: '取消'
-    }).subscribe(data=>{
-      if(data.isConfirmed){
+    }).pipe(
+      filter(data=> data.isConfirmed),
+      map(()=> {
         let deleteArr : number[] = []
         for(let item of rows)deleteArr.push(item.managerUserId)
-        this.userService.batchDeleteUsers(deleteArr).subscribe(res=>{
-          this.swalService.alert({
-            text: res.message,
-            icon: res.code === 200 ? 'success' : 'error',
-            confirmButtonText: '確認'
-          })
-          this.refresh()
-        })
-      }
+        return deleteArr
+      }),
+      concatMap(deleteArr=> this.userService.batchDeleteUsers(deleteArr)),
+      filter(res=> this.apiService.judgeSuccess(res, true)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+        this.refresh()
     })
   }
 
-  getUsers(): Observable<GetUsersRes[]>{
+  getUsers(): Observable<GetUsersResult[]>{
     return this.userService.getUsers().pipe(map(
       res=> res.data
     ))
   }
+
   createRoleOptions(): { text: string; value: number; }[]{
-    let roleOptions: { text: string; value: number; }[] = []
-    this.roleService.getRoles().pipe(map(
-      res => res.data
-    )).subscribe((datas)=>{
-      for(let data of datas){
-        roleOptions.push({
-          text: data.roleName,
-          value: data.roleId
-        })
-      }
-    })
-    return roleOptions
+    let options: { text: string; value: number; }[] = []
+    this.roleService.getRoles()
+    .pipe(
+      map(res => {
+        const datas = res.data
+        for(let data of datas){
+          options.push({
+            text: data.roleName,
+            value: data.roleId
+          })
+        }
+        return options
+      }),
+      takeUntil(this.destroy$)
+    ).subscribe()
+    return options
   }
 
 

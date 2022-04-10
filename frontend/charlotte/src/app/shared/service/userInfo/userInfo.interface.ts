@@ -2,7 +2,9 @@ export interface UserInfo{
   managerUserId: number
 }
 export interface UserAuth{
-  create: boolean
-  modify: boolean
-  delete: boolean
+  viewAuth: boolean
+  createAuth: boolean
+  modifyAuth: boolean
+  deleteAuth: boolean
+  exportAuth: boolean
 }

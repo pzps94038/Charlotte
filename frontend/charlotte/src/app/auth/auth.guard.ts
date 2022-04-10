@@ -1,22 +1,28 @@
+import { RoleService } from 'src/app/shared/api/role/role.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { UserInfoService } from '../shared/service/userInfo/userInfo.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(private userInfoService: UserInfoService){}
+  constructor(
+    private userInfoService: UserInfoService,
+    private roleService: RoleService
+    ){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      this.userInfoService.changeUserAuth({
-        create: true,
-        modify: true,
-        delete: true,
+      const userId = this.userInfoService.getUserInfo().managerUserId
+      const path = state.url
+      this.roleService.checkRoleAuth(userId,path).pipe(
+        map(res=> res.data)
+      ).subscribe(data=>{
+        console.log(data)
+        this.userInfoService.changeUserAuth(data)
       })
-      console.log(state.url);
     return true;
   }
   canActivateChild(
