@@ -1,0 +1,28 @@
+<div class="d-flex flex-wrap justify-content-around">
+  <mat-card class="col-md-10 col-lg-5 mt-3">
+    <mat-card-header>
+      <mat-card-title class="card-title">本週銷售</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p-chart type="line" [data]="data"></p-chart>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="col-md-10 col-lg-5 mt-3">
+    <mat-card-header>
+      <mat-card-title class="card-title">本週進貨</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p-chart type="line" [data]="data"></p-chart>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="col-md-10 col-lg-11 mt-3">
+    <mat-card-header>
+      <mat-card-title class="card-title">本月銷售狀況</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p-chart type="bar" [data]="data" height="300"></p-chart>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

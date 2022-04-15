@@ -14,13 +14,18 @@ namespace Charlotte.Controllers
     [ApiController]
     public class RegisterController : ControllerBase
     {
+        /// <summary>
+        /// 購物平台註冊
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ResultModel Register(RegisterModel req) 
+        public async Task<ResultModel> Register(RegisterModel req) 
         {
             ResultModel result = new ResultModel();
             try
             {
-                string message =  RegisterHelper.Register(req);
+                string message =  await RegisterHelper.Register(req);
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;

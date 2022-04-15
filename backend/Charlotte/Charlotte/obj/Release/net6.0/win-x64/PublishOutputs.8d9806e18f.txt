@@ -36,4 +36,8 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\PubTmp\Out\System.Windows.Extensions.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\PubTmp\Out\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\PubTmp\Out\sni.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\PubTmp\Out\Charlotte.Database.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\PubTmp\Out\Charlotte.Services.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\PubTmp\Out\Charlotte.Database.pdb
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\PubTmp\Out\Charlotte.Services.pdb
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\PubTmp\Out\Charlotte.deps.json

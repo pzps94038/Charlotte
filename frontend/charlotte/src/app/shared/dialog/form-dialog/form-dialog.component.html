@@ -1,0 +1,69 @@
+
+<h2 mat-dialog-title style="font-weight: bold">{{formData.title}}</h2>
+<div style="min-width: 50vw">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <ng-container *ngFor="let data of formData.dataList">
+      <ng-container [ngSwitch]="data.type">
+        <ng-container *ngSwitchCase="'select'">
+          <mat-form-field appearance="outline" class="col-12">
+            <mat-label>
+              <mat-icon matSuffix>{{data.icon}}</mat-icon>
+              {{data.labelText}}
+            </mat-label>
+            <mat-select [formControlName]="data.controlName">
+                <mat-option disabled="disabled" value="">請選擇</mat-option>
+                <mat-option *ngFor="let option of data.options" [value]="option.value">
+                  {{option.text}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls[data.controlName].hasError('required')">
+              此欄位必填
+            </mat-error>
+          </mat-form-field>
+        </ng-container>
+        <ng-container *ngSwitchCase="'date'">
+          <mat-form-field appearance="outline" class="col-12">
+            <mat-label>生日</mat-label>
+            <input matInput [matDatepicker]="picker" [formControlName]="data.controlName" [placeholder]="data.placeholder">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="form.controls[data.controlName].hasError('required')">
+              此欄位必填
+            </mat-error>
+          </mat-form-field>
+        </ng-container>
+        <ng-container *ngSwitchCase="'toggle'">
+          <mat-slide-toggle [formControlName]="data.controlName">{{data.labelText}}</mat-slide-toggle>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <mat-form-field appearance="outline" class="col-12">
+            <mat-label>
+              <mat-icon matSuffix>{{data.icon}}</mat-icon>
+              {{data.labelText}}
+            </mat-label>
+            <input [type]="data.type" matInput [placeholder]="data.placeholder" [formControlName]="data.controlName">
+            <mat-error *ngIf="form.controls[data.controlName].hasError('required')">
+              此欄位必填
+            </mat-error>
+            <mat-error *ngIf="form.controls[data.controlName].hasError('minlength')">
+              長度至少為{{data.minLength}}
+            </mat-error>
+            <mat-error *ngIf="form.controls[data.controlName].hasError('maxlength')">
+              長度最長為{{data.maxLength}}
+            </mat-error>
+            <mat-error *ngIf="form.controls[data.controlName].hasError('email')">
+              Email格式錯誤
+            </mat-error>
+          </mat-form-field>
+        </ng-container>
+      </ng-container>
+
+
+    </ng-container>
+    <div mat-dialog-actions class="d-flex justify-content-end">
+      <button type="button" mat-raised-button mat-dialog-close>取消</button>
+      <button type="submit" mat-raised-button cdkFocusInitial color="primary">保存</button>
+    </div>
+  </form>
+</div>
+

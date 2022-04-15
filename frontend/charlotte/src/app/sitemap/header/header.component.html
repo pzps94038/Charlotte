@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="d-flex justify-content-between">
+    <div>
+      <button mat-icon-button (click)="toggleSideNav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Charlotte</span>
+    </div>
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/siteMap/basicDataSetting">
+          <mat-icon>manage_accounts</mat-icon>
+          <span>個人資料設定</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>vpn_key</mat-icon>
+          <span>變更密碼</span>
+        </button>
+      </mat-menu>
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

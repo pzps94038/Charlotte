@@ -1,0 +1,35 @@
+<mat-sidenav-container>
+  <mat-sidenav [opened]="show$ | async" [mode]="mode" class="sideNav">
+    <mat-accordion displayMode="flat">
+      <a href="javascript:void(0)" class="d-block text-decoration-none default-font" matRipple matRippleColor="#6C6C6C50" routerLink="/siteMap/home">
+        <div class="icon py-3">
+          <mat-icon>house</mat-icon>
+          <span class="default-font">首頁</span>
+        </div>
+      </a>
+      <a href="javascript:void(0)" class="d-block text-decoration-none default-font" matRipple matRippleColor="#6C6C6C50" routerLink="/siteMap/routerSetting">
+        <div class="icon py-3">
+          <mat-icon>settings_applications</mat-icon>
+          <span class="default-font">路由設定</span>
+        </div>
+      </a>
+      <a href="javascript:void(0)" class="d-block text-decoration-none default-font" matRipple      matRippleColor="#6C6C6C50" routerLink="/siteMap/managerUserSetting">
+        <div class="icon py-3">
+          <mat-icon>settings_applications</mat-icon>
+          <span class="default-font">使用者管理</span>
+        </div>
+      </a>
+      <a href="javascript:void(0)" class="d-block text-decoration-none default-font" matRipple      matRippleColor="#6C6C6C50" routerLink="/siteMap/roleSetting">
+        <div class="icon py-3">
+          <mat-icon>settings_applications</mat-icon>
+          <span class="default-font">角色管理</span>
+        </div>
+      </a>
+    </mat-accordion>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="sideNavContainer" [@routeAnimations]="getRouteAnimationData()" style="position: relative">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

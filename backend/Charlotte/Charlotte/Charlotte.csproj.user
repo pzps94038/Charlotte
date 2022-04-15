@@ -3,6 +3,10 @@
   <PropertyGroup>
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/Api</Controller_SelectedScaffolderCategoryPath>
-    <NameOfLastUsedPublishProfile>C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Properties\PublishProfiles\registry.hub.docker.com_pzps94038.pubxml</NameOfLastUsedPublishProfile>
+    <ActiveDebugProfile>Charlotte</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

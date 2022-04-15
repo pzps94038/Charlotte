@@ -51,4 +51,8 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\PubTmp\Out\Charlotte.Database.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\PubTmp\Out\Charlotte.Services.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\PubTmp\Out\Charlotte.Database.pdb
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\PubTmp\Out\Charlotte.Services.pdb
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\PubTmp\Out\Charlotte.deps.json

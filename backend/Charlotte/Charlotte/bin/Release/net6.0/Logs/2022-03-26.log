@@ -1,0 +1,176 @@
+ ====================================================================================================
+ Time：2022-03-26 18:48:50.8399
+ Message：Object reference not set to an instance of an object. 
+ StackTrace：   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 36
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 48
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 23
+ Detail Text：System.NullReferenceException: Object reference not set to an instance of an object.
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 36
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 48
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 23 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-03-26 18:48:50.8399
+ Message：Object reference not set to an instance of an object. 
+ StackTrace：   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 36
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 48
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 23
+ Detail Text：System.NullReferenceException: Object reference not set to an instance of an object.
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 36
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 48
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 23 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-03-26 21:09:17.5918
+ Message：無效的資料行名稱 'ManagerUserId'。
+無效的資料行名稱 'UserName'。
+無效的資料行名稱 'Email'。
+無效的資料行名稱 'Address'。
+無效的資料行名稱 'Birthday'。 
+ StackTrace：   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 473
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.GetManagerUser(Int32 managerUserId) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 34
+   at Charlotte.Controllers.ManagerUserController.GetManagerUser(Int32 managerUserId) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 41
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): 無效的資料行名稱 'ManagerUserId'。
+無效的資料行名稱 'UserName'。
+無效的資料行名稱 'Email'。
+無效的資料行名稱 'Address'。
+無效的資料行名稱 'Birthday'。
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 473
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.GetManagerUser(Int32 managerUserId) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 34
+   at Charlotte.Controllers.ManagerUserController.GetManagerUser(Int32 managerUserId) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 41
+ClientConnectionId:fb832516-b2ec-446b-8a40-8a940edcccaf
+Error Number:207,State:1,Class:16 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-03-26 21:09:17.5918
+ Message：無效的資料行名稱 'ManagerUserId'。
+無效的資料行名稱 'UserName'。
+無效的資料行名稱 'Email'。
+無效的資料行名稱 'Address'。
+無效的資料行名稱 'Birthday'。 
+ StackTrace：   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 473
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.GetManagerUser(Int32 managerUserId) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 34
+   at Charlotte.Controllers.ManagerUserController.GetManagerUser(Int32 managerUserId) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 41
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): 無效的資料行名稱 'ManagerUserId'。
+無效的資料行名稱 'UserName'。
+無效的資料行名稱 'Email'。
+無效的資料行名稱 'Address'。
+無效的資料行名稱 'Birthday'。
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 473
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.GetManagerUser(Int32 managerUserId) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 34
+   at Charlotte.Controllers.ManagerUserController.GetManagerUser(Int32 managerUserId) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 41
+ClientConnectionId:fb832516-b2ec-446b-8a40-8a940edcccaf
+Error Number:207,State:1,Class:16 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-03-26 23:34:00.4001
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.ModifyManagerUser(Int32 managerUserId, ModifyManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 56
+   at Charlotte.Controllers.ManagerUserController.ModifyManagerUser(Int32 managerUserId, ModifyManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 59
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): 資料表 'Charlotte.dbo.ManagerMain'，資料行 'UserName' 中的字串或二進位資料將會截斷。截斷的值: 'Ronfds14564545454564'。
+陳述式已經結束。
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:da549bae-1049-49f2-8c77-f891d65564bb
+Error Number:2628,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.ModifyManagerUser(Int32 managerUserId, ModifyManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 56
+   at Charlotte.Controllers.ManagerUserController.ModifyManagerUser(Int32 managerUserId, ModifyManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 59 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-03-26 23:34:00.4001
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.ModifyManagerUser(Int32 managerUserId, ModifyManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 56
+   at Charlotte.Controllers.ManagerUserController.ModifyManagerUser(Int32 managerUserId, ModifyManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 59
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): 資料表 'Charlotte.dbo.ManagerMain'，資料行 'UserName' 中的字串或二進位資料將會截斷。截斷的值: 'Ronfds14564545454564'。
+陳述式已經結束。
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:da549bae-1049-49f2-8c77-f891d65564bb
+Error Number:2628,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.ModifyManagerUser(Int32 managerUserId, ModifyManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 56
+   at Charlotte.Controllers.ManagerUserController.ModifyManagerUser(Int32 managerUserId, ModifyManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 59 
+ ====================================================================================================

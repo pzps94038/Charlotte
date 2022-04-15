@@ -1,0 +1,334 @@
+ ====================================================================================================
+ Time：2022-04-10 02:39:53.4737
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 67
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated in table 'Charlotte.dbo.ManagerRoleAuth', column 'CreateDate'. Truncated value: '0'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:8728aaea-6368-48a6-9876-320eee5cb3e5
+Error Number:2628,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 67
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-10 02:39:53.4737
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 67
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated in table 'Charlotte.dbo.ManagerRoleAuth', column 'CreateDate'. Truncated value: '0'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:8728aaea-6368-48a6-9876-320eee5cb3e5
+Error Number:2628,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 67
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-10 02:39:59.8156
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 67
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated in table 'Charlotte.dbo.ManagerRoleAuth', column 'CreateDate'. Truncated value: '0'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:8728aaea-6368-48a6-9876-320eee5cb3e5
+Error Number:2628,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 67
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-10 02:39:59.8156
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 67
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated in table 'Charlotte.dbo.ManagerRoleAuth', column 'CreateDate'. Truncated value: '0'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:8728aaea-6368-48a6-9876-320eee5cb3e5
+Error Number:2628,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 67
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-10 02:52:37.6012
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 69
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_ManagerRoleAuth'. Cannot insert duplicate key in object 'dbo.ManagerRoleAuth'. The duplicate key value is (1003, 1).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:f8123b92-ce41-454f-bbd2-e0d7ed005632
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 69
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-10 02:52:37.6012
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 69
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_ManagerRoleAuth'. Cannot insert duplicate key in object 'dbo.ManagerRoleAuth'. The duplicate key value is (1003, 1).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:f8123b92-ce41-454f-bbd2-e0d7ed005632
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 69
+   at Charlotte.Controllers.ManagerRoleAuthController.ModifyRoleAuth(Int32 roleId, List`1 req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 43 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-10 18:07:13.7800
+ Message：Error parsing column 1 (viewAuth=N - String) 
+ StackTrace：   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3706
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 90
+   at Charlotte.Controllers.ManagerRoleAuthController.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 64
+ Detail Text：System.Data.DataException: Error parsing column 1 (viewAuth=N - String)
+ ---> System.FormatException: String 'N' was not recognized as a valid Boolean.
+   at System.Boolean.Parse(ReadOnlySpan`1 value)
+   at System.Boolean.Parse(String value)
+   at System.String.System.IConvertible.ToBoolean(IFormatProvider provider)
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3706
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 90
+   at Charlotte.Controllers.ManagerRoleAuthController.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 64 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-10 18:07:13.7800
+ Message：Error parsing column 1 (viewAuth=N - String) 
+ StackTrace：   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3706
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 90
+   at Charlotte.Controllers.ManagerRoleAuthController.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 64
+ Detail Text：System.Data.DataException: Error parsing column 1 (viewAuth=N - String)
+ ---> System.FormatException: String 'N' was not recognized as a valid Boolean.
+   at System.Boolean.Parse(ReadOnlySpan`1 value)
+   at System.Boolean.Parse(String value)
+   at System.String.System.IConvertible.ToBoolean(IFormatProvider provider)
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3706
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 90
+   at Charlotte.Controllers.ManagerRoleAuthController.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 64 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-10 18:07:36.0921
+ Message：Error parsing column 1 (viewAuth=N - String) 
+ StackTrace：   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3706
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 90
+   at Charlotte.Controllers.ManagerRoleAuthController.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 64
+ Detail Text：System.Data.DataException: Error parsing column 1 (viewAuth=N - String)
+ ---> System.FormatException: String 'N' was not recognized as a valid Boolean.
+   at System.Boolean.Parse(ReadOnlySpan`1 value)
+   at System.Boolean.Parse(String value)
+   at System.String.System.IConvertible.ToBoolean(IFormatProvider provider)
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3706
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 90
+   at Charlotte.Controllers.ManagerRoleAuthController.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 64 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-10 18:07:36.0921
+ Message：Error parsing column 1 (viewAuth=N - String) 
+ StackTrace：   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3706
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 90
+   at Charlotte.Controllers.ManagerRoleAuthController.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 64
+ Detail Text：System.Data.DataException: Error parsing column 1 (viewAuth=N - String)
+ ---> System.FormatException: String 'N' was not recognized as a valid Boolean.
+   at System.Boolean.Parse(ReadOnlySpan`1 value)
+   at System.Boolean.Parse(String value)
+   at System.String.System.IConvertible.ToBoolean(IFormatProvider provider)
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3706
+   at Deserialize89b8a714-ec0b-4a7f-b082-bb831b9a3619(IDataReader )
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command)
+   at Charlotte.Helper.ManagerRoleAuth.ManagerRoleAuthHeper.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRoleAuth\ManagerRoleAuthHeper.cs:line 90
+   at Charlotte.Controllers.ManagerRoleAuthController.CheckRoleAuth(Int32 roleId, String routerPath) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleAuthController.cs:line 64 
+ ====================================================================================================

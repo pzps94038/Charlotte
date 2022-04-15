@@ -1,0 +1,55 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ResultMessage, ResultModel } from '../api.interface';
+import { ApiUrl } from '../api.url';
+import { CreateUserRequest, LoginRequest, LoginResult, ModifyUserRequest, GetUserResult, GetUsersResult } from './user.interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  constructor(private http: HttpClient) { }
+
+  /* 登入 */
+  login(data: LoginRequest): Observable<ResultModel<LoginResult>> {
+    return this.http.post<ResultModel<LoginResult>>(ApiUrl.login, data)
+  }
+
+  /* 取得使用者資訊 */
+  getUser(userId: number): Observable<ResultModel<GetUserResult>>{
+    return this.http.get<ResultModel<GetUserResult>>(`${ApiUrl.user}\\${userId}`,{params: {managerUserId: userId}});
+  }
+
+  /**
+   * 取得多個使用者資訊
+   * @returns 多個使用者資訊
+   */
+  getUsers(): Observable<ResultModel<GetUsersResult[]>>{
+    return this.http.get<ResultModel<GetUsersResult[]>>(ApiUrl.user)
+  }
+
+  /**
+   * 創建使用者
+   * @param req 使用者資訊
+   * @returns 成功與否訊息
+   */
+  createUser(req: CreateUserRequest): Observable<ResultMessage>{
+    return this.http.post<ResultMessage>(ApiUrl.user, req)
+  }
+
+  /* 更新部分使用者資訊 */
+  modifyUser(userId: number, userData: ModifyUserRequest): Observable<ResultMessage>{
+    return this.http.patch<ResultMessage>(`${ApiUrl.user}\\${userId}`, userData)
+  }
+
+  deleteUser(userId: number): Observable<ResultMessage>{
+    return this.http.delete<ResultMessage>(`${ApiUrl.user}\\${userId}`)
+  }
+
+  batchDeleteUsers(req: number[]): Observable<ResultMessage>{
+    return this.http.delete<ResultMessage>(`${ApiUrl.user}`,{
+      body: req
+    })
+  }
+}

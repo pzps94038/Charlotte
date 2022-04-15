@@ -53,3 +53,7 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\Charlotte.pdb
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\Charlotte.genruntimeconfig.cache
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\win-x64\ref\Charlotte.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\win-x64\Charlotte.Database.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\win-x64\Charlotte.Services.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\win-x64\Charlotte.Database.pdb
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\win-x64\Charlotte.Services.pdb

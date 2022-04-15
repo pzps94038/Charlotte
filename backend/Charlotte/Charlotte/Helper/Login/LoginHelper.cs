@@ -4,24 +4,26 @@ using Charlotte.Model.Login;
 using Charlotte.Services;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using System.Data.Common;
 
 namespace Charlotte.Helper.Login
 {
     public static class LoginHelper
     {
-        private static string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
-        public static (string , Token) Login(LoginModel req) 
-        {   
+        
+        public static async Task<(string , Token)> Login(LoginModel req) 
+        {
+            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             string message = "";
             Token token = new Token();
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
-                con.Open();
-                using (SqlTransaction transaction = con.BeginTransaction())
+                await con.OpenAsync();
+                using (var transaction = await con.BeginTransactionAsync())
                 {
                     try
                     {
-                        UserMain userMain = GetUserMain(con, transaction, req.account);
+                        UserMain userMain = await GetUserMain(con, transaction, req.account);
                         if (userMain == null) message = "帳號或密碼錯誤";
                         else
                         {
@@ -29,20 +31,19 @@ namespace Charlotte.Helper.Login
                             if (flag)
                             {
                                 string refreshToken = JwtHelper.CreateRefreshToken();
-                                CreateRefreshTokenLog(con, transaction, userMain, refreshToken);
                                 var claims = JwtHelper.CreateClaims(userMain.Email, userMain.UserId.ToString());
                                 string accountToken = JwtHelper.GenerateToken(claims);
-                                token.AccessToken = accountToken;
-                                token.RefreshToken = refreshToken;
+                                token.accessToken = accountToken;
+                                token.refreshToken = refreshToken;
+                                CreateRefreshTokenLog(con, transaction, userMain, refreshToken);
                             }
                             else message = "帳號或密碼錯誤";
                         }
-                        transaction.Commit();
+                        await transaction.CommitAsync();
                     }
-                    catch (Exception ex) 
+                    catch
                     {
-                        transaction.Rollback();
-                        LoggerHelper.Error(ex);
+                        await transaction.RollbackAsync();
                         throw;
                     }
                 }
@@ -57,10 +58,10 @@ namespace Charlotte.Helper.Login
         /// <param name="transaction">交易範圍</param>
         /// <param name="account">帳號</param>
         /// <returns>使用者資訊</returns>
-        private static UserMain GetUserMain(SqlConnection con, SqlTransaction transaction, string account) 
+        private static async Task<UserMain> GetUserMain(SqlConnection con, DbTransaction transaction, string account) 
         {
             string sqlStr = @"Select * From UserMain Where Account = @account ";
-            return con.QueryFirstOrDefault<UserMain>(sqlStr, new { account = account}, transaction);
+            return await con.QueryFirstOrDefaultAsync<UserMain>(sqlStr, new { account = account}, transaction);
         }
 
         /// <summary>
@@ -71,7 +72,7 @@ namespace Charlotte.Helper.Login
         /// <param name="userMain">使用者資訊</param>
         /// <param name="password">密碼</param>
         /// <returns>是否成功登入</returns>
-        private static bool CreateLoginLog(SqlConnection con, SqlTransaction transaction, UserMain userMain, string password) 
+        private static bool CreateLoginLog(SqlConnection con, DbTransaction transaction, UserMain userMain, string password) 
         {
             string shaPwd = SHA256Helper.SHA256Encrypt(password);
             bool flag = userMain.Password == shaPwd;
@@ -89,7 +90,7 @@ namespace Charlotte.Helper.Login
         /// <param name="transaction">交易範圍</param>
         /// <param name="userMain">使用者資訊</param>
         /// <param name="refreshToken">refreshToken</param>
-        private static void CreateRefreshTokenLog(SqlConnection con, SqlTransaction transaction, UserMain userMain, string refreshToken) 
+        private static void CreateRefreshTokenLog(SqlConnection con, DbTransaction transaction, UserMain userMain, string refreshToken) 
         {
             string refreshToenExp = GetAppSettingsHelper.GetAppSettingsValue("JWT", "RefreshToenExpirationDate");
             string sqlStr = @"INSERT INTO RefreshTokenLog

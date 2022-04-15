@@ -10,4 +10,8 @@
     <string name="delete">刪除</string>
     <string name="NetworkError">網路發生異常</string>
     <string name="AuthenticationExpired">身分驗證過期</string>
+    <string name="bread">麵包</string>
+    <string name="dessert">甜點</string>
+    <string name="cake">蛋糕</string>
+    <string name="coffee">咖啡</string>
 </resources>

@@ -5,19 +5,18 @@ namespace Charlotte.DataBase.Model
 {
     public class OrderDetail
     {
-        [Key, Column(Order = 0)]
+        [Key]
+        public int OrderId { get; set; }
+        [Key]
         [Required]
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
-        public virtual ProductDetail ProductDetail { get; set; }
-        [Key, Column(Order = 1)]
+        public virtual ProductInformation ProductInformation { get; set; }
         [Required]
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public virtual UserMain UserMain { get; set; }
+        public int ProductAmount { get; set; }
         [Required]
-        public int Amount { get; set; }
-        public int Total { get; set; }
+        public int ProductPrice { get; set; }
+        
         [Required]
         public DateTime CreateDate { get; set; }
         public DateTime? ModifyDate { get; set; }

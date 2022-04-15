@@ -1,0 +1,270 @@
+ ====================================================================================================
+ Time：2022-04-05 19:22:26.0554
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRouter.ManagerRouterHelper.CreateRouter(ManagerRouterModel rq) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRouter\ManagerRouterHelper.cs:line 49
+   at Charlotte.Controllers.ManagerRouterController.CreateRouter(ManagerRouterModel rq) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRouterController.cs:line 51
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Icon', table 'Charlotte.dbo.Router'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:00a251d3-7a2f-4165-9a11-fab5cdc06cac
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRouter.ManagerRouterHelper.CreateRouter(ManagerRouterModel rq) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRouter\ManagerRouterHelper.cs:line 49
+   at Charlotte.Controllers.ManagerRouterController.CreateRouter(ManagerRouterModel rq) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRouterController.cs:line 51 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 19:22:26.0554
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRouter.ManagerRouterHelper.CreateRouter(ManagerRouterModel rq) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRouter\ManagerRouterHelper.cs:line 49
+   at Charlotte.Controllers.ManagerRouterController.CreateRouter(ManagerRouterModel rq) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRouterController.cs:line 51
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Icon', table 'Charlotte.dbo.Router'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:00a251d3-7a2f-4165-9a11-fab5cdc06cac
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerRouter.ManagerRouterHelper.CreateRouter(ManagerRouterModel rq) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRouter\ManagerRouterHelper.cs:line 49
+   at Charlotte.Controllers.ManagerRouterController.CreateRouter(ManagerRouterModel rq) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRouterController.cs:line 51 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 21:14:00.4891
+ Message：The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068. 
+ StackTrace：   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76
+ Detail Text：System.InvalidOperationException: The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068.
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 21:14:00.4891
+ Message：The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068. 
+ StackTrace：   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76
+ Detail Text：System.InvalidOperationException: The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068.
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 21:14:41.5829
+ Message：The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068. 
+ StackTrace：   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76
+ Detail Text：System.InvalidOperationException: The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068.
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 21:14:41.5829
+ Message：The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068. 
+ StackTrace：   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76
+ Detail Text：System.InvalidOperationException: The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068.
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 21:16:52.1783
+ Message：The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068. 
+ StackTrace：   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76
+ Detail Text：System.InvalidOperationException: The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068.
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 21:16:52.1783
+ Message：The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068. 
+ StackTrace：   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76
+ Detail Text：System.InvalidOperationException: The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068.
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 21:19:46.7583
+ Message：The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068. 
+ StackTrace：   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76
+ Detail Text：System.InvalidOperationException: The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068.
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 21:19:46.7583
+ Message：The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068. 
+ StackTrace：   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76
+ Detail Text：System.InvalidOperationException: The provider for the source IQueryable doesn't implement IDbAsyncQueryProvider. Only providers that implement IDbAsyncQueryProvider can be used for Entity Framework asynchronous operations. For more details see http://go.microsoft.com/fwlink/?LinkId=287068.
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at System.Data.Entity.QueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Charlotte.Helper.ManagerRole.ManagerRoleHelper.ModifyRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerRole\ManagerRoleHelper.cs:line 44
+   at Charlotte.Controllers.ManagerRoleController.ModifyManagerRole(Int32 roleId, ManagerRoleModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerRoleController.cs:line 76 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 23:06:58.4189
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.CreateManagerUser(CreateManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 28
+   at Charlotte.Controllers.ManagerUserController.CreateManagerUser(CreateManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 71
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'UserName', table 'Charlotte.dbo.ManagerMain'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:42a19671-de6d-4052-b817-f2414374e8cf
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.CreateManagerUser(CreateManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 28
+   at Charlotte.Controllers.ManagerUserController.CreateManagerUser(CreateManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 71 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-05 23:06:58.4189
+ Message：An error occurred while saving the entity changes. See the inner exception for details. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.CreateManagerUser(CreateManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 28
+   at Charlotte.Controllers.ManagerUserController.CreateManagerUser(CreateManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 71
+ Detail Text：Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'UserName', table 'Charlotte.dbo.ManagerMain'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:42a19671-de6d-4052-b817-f2414374e8cf
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerUser.ManagerUserHelper.CreateManagerUser(CreateManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerUser\ManagerUserHelper.cs:line 28
+   at Charlotte.Controllers.ManagerUserController.CreateManagerUser(CreateManagerUserModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerUserController.cs:line 71 
+ ====================================================================================================
