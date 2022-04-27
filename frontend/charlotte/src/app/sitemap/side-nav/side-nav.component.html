@@ -7,22 +7,10 @@
           <span class="default-font">首頁</span>
         </div>
       </a>
-      <a href="javascript:void(0)" class="d-block text-decoration-none default-font" matRipple matRippleColor="#6C6C6C50" routerLink="/siteMap/routerSetting">
+      <a href="javascript:void(0)" *ngFor="let item of menu$ | async" class="d-block text-decoration-none default-font" matRipple  matRippleColor="#6C6C6C50" [routerLink]="item.link" >
         <div class="icon py-3">
-          <mat-icon>settings_applications</mat-icon>
-          <span class="default-font">路由設定</span>
-        </div>
-      </a>
-      <a href="javascript:void(0)" class="d-block text-decoration-none default-font" matRipple      matRippleColor="#6C6C6C50" routerLink="/siteMap/managerUserSetting">
-        <div class="icon py-3">
-          <mat-icon>settings_applications</mat-icon>
-          <span class="default-font">使用者管理</span>
-        </div>
-      </a>
-      <a href="javascript:void(0)" class="d-block text-decoration-none default-font" matRipple      matRippleColor="#6C6C6C50" routerLink="/siteMap/roleSetting">
-        <div class="icon py-3">
-          <mat-icon>settings_applications</mat-icon>
-          <span class="default-font">角色管理</span>
+          <mat-icon>{{item.icon}}</mat-icon>
+          <span class="default-font">{{item.routerName}}</span>
         </div>
       </a>
     </mat-accordion>

@@ -215,7 +215,7 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, In
       filter(res=> this.apiService.judgeSuccess(res, true)),
       takeUntil(this.destroy$)
     ).subscribe(()=>{
-      this.refresh()
+      window.location.reload();
     })
   }
 }

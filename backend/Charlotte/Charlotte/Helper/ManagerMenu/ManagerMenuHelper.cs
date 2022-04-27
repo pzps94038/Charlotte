@@ -1,0 +1,27 @@
+﻿using Charlotte.Services;
+using Charlotte.VModel.ManagerMenu;
+using Dapper;
+using System.Data.SqlClient;
+
+namespace Charlotte.Helper.ManagerMenu
+{
+    public static class ManagerMenuHelper
+    {
+        public async static Task<List<ManagerMenuVModel>> GetMenu(int userId) 
+        {
+            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            using (SqlConnection con = new SqlConnection(sqlConStr))
+            {
+                await con.OpenAsync();
+                string sqlStr = @"select router.Link as link, router.RouterName as routerName, router.GroupId as groupId, router.Icon as icon
+                                from ManagerMain as main
+                                left join ManagerRole as role on role.RoleId = main.RoleId
+                                left join ManagerRoleAuth as auth on auth.RoleId = role.RoleId
+                                left join Router as router on auth.RouterId = router.RouterId
+                                where main.ManagerUserId = @userId and router.Flag = 'Y' and auth.ViewAuth = 'Y'";
+                var result = await con.QueryAsync<ManagerMenuVModel>(sqlStr, new { userId = userId });
+                return result.ToList();
+            }
+        }
+    }
+}

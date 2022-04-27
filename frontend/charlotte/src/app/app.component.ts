@@ -12,7 +12,7 @@ import { filter, map, mergeMap, Subject, takeUntil } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy{
   destroy$ = new Subject()
-  loading : boolean = false
+
   constructor(
     private titleService: Title,
     private router: Router,
@@ -20,7 +20,6 @@ export class AppComponent implements OnInit, OnDestroy{
     )
   {
       this.setTitle()
-      this.setProgressBar()
   }
   ngOnInit(): void {
 
@@ -45,17 +44,6 @@ export class AppComponent implements OnInit, OnDestroy{
       this.titleService.setTitle(data['title'])
     })
   }
-  setProgressBar(){
-    this.router.events.pipe(
-      takeUntil(this.destroy$),
-      filter(event=>
-      event instanceof NavigationStart ||
-      event instanceof NavigationEnd ||
-      event instanceof NavigationCancel ||
-      event instanceof NavigationError
-    )).subscribe(event=>{
-      if(event instanceof NavigationStart)this.loading = true
-      else this.loading = false
-    })
-  }
+
+
 }

@@ -1,10 +1,10 @@
 import { SharedService } from './../../shared/service/shared.service';
 import { ApiService } from './../../shared/api/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, filter, concatMap, Subject, takeUntil } from 'rxjs';
-import { GetRouterResult } from 'src/app/shared/api/router/router.interface';
+import { GetRouterResult as Router } from 'src/app/shared/api/router/router.interface';
 
 import { RouterService } from 'src/app/shared/api/router/router.service';
 import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
@@ -16,9 +16,9 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
   templateUrl: './router-setting.component.html',
   styleUrls: ['./router-setting.component.scss']
 })
-export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTableFunction<GetRouterResult> {
+export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTableFunction<Router>, OnDestroy {
   columns : {key: string, value: string | number}[]= []
-  dataList$ : Observable<GetRouterResult[]>
+  dataList$ : Observable<Router[]>
   destroy$ = new Subject()
   constructor
   (
@@ -32,7 +32,10 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
     this.dataList$ = this.getRouters()
     this.columns = this.createColumns()
   }
-
+  ngOnDestroy(): void {
+    this.destroy$.next(null)
+    this.destroy$.complete()
+  }
   /** 刷新路由 */
   refresh(): void {
     this.dataList$ = this.getRouters()
@@ -91,12 +94,12 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
       filter(res=> this.apiService.judgeSuccess(res, true)),
       takeUntil(this.destroy$)
     ).subscribe(()=>{
-      this.refresh()
+      window.location.reload();
     })
   }
 
   /** 修改路由 */
-  modify(row : GetRouterResult): void {
+  modify(row : Router): void {
     const dialog = this.dialog.open(FormDialogComponent,{
       data: {
         title: '修改路由',
@@ -158,12 +161,12 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
       filter(res=> this.apiService.judgeSuccess(res, true)),
       takeUntil(this.destroy$)
     ).subscribe(()=>{
-      this.refresh()
+      window.location.reload();
     })
   }
 
   /** 刪除路由 */
-  delete(row :GetRouterResult): void {
+  delete(row :Router): void {
     this.swalService.alert({
       text: '確定要刪除這筆資料嗎?',
       icon: 'warning',
@@ -176,12 +179,12 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
         filter(res=> this.apiService.judgeSuccess(res, true)),
         takeUntil(this.destroy$)
       ).subscribe(()=>{
-      this.refresh()
+        window.location.reload();
     })
   }
 
   /** 批次刪除路由 */
-  multipleDelete(rows: GetRouterResult[]): void {
+  multipleDelete(rows: Router[]): void {
     this.swalService.alert({
       text: `確定要刪除這${rows.length}筆資料嗎?`,
       icon: 'warning',
@@ -199,7 +202,7 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
       filter(res=> this.apiService.judgeSuccess(res, true)),
       takeUntil(this.destroy$)
     ).subscribe(()=>{
-      this.refresh()
+      window.location.reload();
     })
   }
 
@@ -225,7 +228,7 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
   }
 
   /** 取得路由表 */
-  getRouters(): Observable<GetRouterResult[]>{
+  getRouters(): Observable<Router[]>{
     return this.routerService.getRouters().pipe(map(res=> res.data))
   }
 

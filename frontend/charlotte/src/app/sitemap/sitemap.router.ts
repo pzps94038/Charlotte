@@ -70,7 +70,6 @@ export const siteMapRouter : Routes = [
   {
     path: 'basicDataSetting',
     component: BasicDataSettingComponent,
-    canActivate:[AuthGuard],
     data:{ title: '基本資料維護', animation: 'basicDataSetting' }
   },
   {

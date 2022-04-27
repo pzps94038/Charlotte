@@ -6,4 +6,5 @@ export class ApiUrl{
   static roleAuth: string = this.apiUrl + 'ManagerRoleAuth'
   static user: string = this.apiUrl + 'ManagerUser'
   static router: string = this.apiUrl + 'ManagerRouter'
+  static menu: string = this.apiUrl + 'ManagerMenu'
 }

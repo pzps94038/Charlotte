@@ -28,11 +28,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { CheckBoxDialogComponent } from './dialog/check-box-dialog/check-box-dialog.component';
+import { ProgressBarComponent } from './component/progress-bar/progress-bar.component';
 @NgModule({
   declarations:[
     DataTableComponent,
     FormDialogComponent,
     CheckBoxDialogComponent,
+    ProgressBarComponent
   ],
   imports: [
     MatIconModule,
@@ -48,7 +50,8 @@ import { CheckBoxDialogComponent } from './dialog/check-box-dialog/check-box-dia
     MatDialogModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatProgressBarModule,
   ],
   providers:[SwalService],
   exports: [
@@ -62,7 +65,6 @@ import { CheckBoxDialogComponent } from './dialog/check-box-dialog/check-box-dia
     FormsModule,
     NgbModule,
     MatIconModule,
-    MatProgressBarModule,
     NgxSpinnerModule,
     MatToolbarModule,
     MatListModule,
@@ -76,7 +78,8 @@ import { CheckBoxDialogComponent } from './dialog/check-box-dialog/check-box-dia
     MatMenuModule,
     MatPaginatorModule,
     DataTableComponent,
-    FormDialogComponent
+    FormDialogComponent,
+    ProgressBarComponent
   ]
 })
 export class SharedModule { }

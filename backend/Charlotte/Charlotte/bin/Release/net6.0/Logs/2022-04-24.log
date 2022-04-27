@@ -1,0 +1,392 @@
+ ====================================================================================================
+ Time：2022-04-24 14:57:44.0956
+ Message：A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - 無法連線，因為目標電腦拒絕連線。) 
+ StackTrace：   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - 無法連線，因為目標電腦拒絕連線。)
+ ---> System.ComponentModel.Win32Exception (10061): 無法連線，因為目標電腦拒絕連線。
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:10061,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:57:44.0956
+ Message：A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - 無法連線，因為目標電腦拒絕連線。) 
+ StackTrace：   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - 無法連線，因為目標電腦拒絕連線。)
+ ---> System.ComponentModel.Win32Exception (10061): 無法連線，因為目標電腦拒絕連線。
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:10061,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:33.4068
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:33.4068
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:35.0985
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:35.0985
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:36.2619
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:36.2619
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:37.3690
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:37.3690
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:38.4394
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:38.4394
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:39.5344
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-04-24 14:59:39.5344
+ Message：A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。) 
+ StackTrace：   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ Detail Text：System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - 遠端主機已強制關閉一個現存的連線。)
+ ---> System.ComponentModel.Win32Exception (10054): 遠端主機已強制關閉一個現存的連線。
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 21
+   at Charlotte.Controllers.ManagerLoginController.Login(ManagerLoginModel req) in C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 29
+ClientConnectionId:3db81377-ca99-4a1f-a4f2-a3a467362236
+Error Number:10054,State:0,Class:20 
+ ====================================================================================================

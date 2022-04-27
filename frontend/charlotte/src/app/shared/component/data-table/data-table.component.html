@@ -24,6 +24,13 @@
   </div>
 </div>
 <mat-table [dataSource]="dataSource" class="mx-auto data-table" matSort>
+  <table class="mx-auto data-table bg-white" *matNoDataRow>
+    <tr>
+      <td class="text-center" [attr.colspan]="displayedColumns.length">
+        <h1 class="text-danger py-5">沒有任何資料</h1>
+      </td>
+    </tr>
+  </table>
   <!-- table dynamic columns -->
   <ng-container *ngFor="let column of displayedColumns;index as idx" >
     <ng-container [ngSwitch]="column">
@@ -59,6 +66,7 @@
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
+<!-- 回來資料為空 -->
 <table class="mx-auto data-table bg-white">
   <tr *ngIf="!dataSource.data.length">
     <td class="text-center" [attr.colspan]="displayedColumns.length">
