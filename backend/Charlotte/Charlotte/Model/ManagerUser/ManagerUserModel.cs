@@ -22,4 +22,9 @@
         public int? roleId { get; set; }
         public bool? flag { get; set; }
     }
+    public class ModifyManagerUserPassWordModel 
+    {
+        public string password { get; set; }
+        public string newPassword { get; set; }
+    }
 }

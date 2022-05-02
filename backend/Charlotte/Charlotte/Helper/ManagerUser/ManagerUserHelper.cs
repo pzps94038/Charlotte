@@ -107,5 +107,25 @@ namespace Charlotte.Helper.ManagerUser
                 await db.SaveChangesAsync();
             }
         }
+
+        public static async Task<string> ModifyManagerUserPassword(int managerUserId, ModifyManagerUserPassWordModel req) 
+        {
+            string result = "";
+            using (var db = new CharlotteContext())
+            {
+                var userData = await db.ManagerMain.FirstOrDefaultAsync(a => a.ManagerUserId == managerUserId);
+                if (userData == null)
+                    return result = "沒有該使用者";
+                else if (userData.Password != SHA256Helper.SHA256Encrypt(req.password))
+                    return result = "原密碼輸入錯誤";
+                else 
+                {
+                    userData.Password = SHA256Helper.SHA256Encrypt(req.newPassword);
+                    userData.ModifyDate = DateTime.Now;
+                    await db.SaveChangesAsync();
+                }
+            }
+            return result;
+        }
     }
 }

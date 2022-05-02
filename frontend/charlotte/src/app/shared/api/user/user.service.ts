@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
-import { CreateUserRequest, LoginRequest, LoginResult, ModifyUserRequest, GetUserResult, GetUsersResult } from './user.interface';
+import { CreateUserRequest, LoginRequest, LoginResult, ModifyUserRequest, GetUserResult, GetUsersResult, ModfiyUserPasswordRequest } from './user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -43,13 +43,20 @@ export class UserService {
     return this.http.patch<ResultMessage>(`${ApiUrl.user}\\${userId}`, userData)
   }
 
+  /** 刪除使用者 */
   deleteUser(userId: number): Observable<ResultMessage>{
     return this.http.delete<ResultMessage>(`${ApiUrl.user}\\${userId}`)
   }
 
+  /** 刪除多個使用者 */
   batchDeleteUsers(req: number[]): Observable<ResultMessage>{
     return this.http.delete<ResultMessage>(`${ApiUrl.user}`,{
       body: req
     })
   }
+
+  modifyPassword(userId:number, req: ModfiyUserPasswordRequest): Observable<ResultMessage>{
+    return this.http.put<ResultMessage>(`${ApiUrl.user}\\${userId}`,req)
+  }
+
 }

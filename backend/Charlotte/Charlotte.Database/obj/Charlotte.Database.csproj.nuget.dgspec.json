@@ -14,8 +14,7 @@
         "outputPath": "C:\\Users\\pzps9\\Desktop\\git\\Charlotte\\backend\\Charlotte\\Charlotte.Database\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\pzps9\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -93,8 +92,7 @@
         "outputPath": "C:\\Users\\pzps9\\Desktop\\git\\Charlotte\\backend\\Charlotte\\Charlotte.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\pzps9\\AppData\\Roaming\\NuGet\\NuGet.Config",

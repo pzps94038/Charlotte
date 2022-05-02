@@ -42,3 +42,8 @@ export interface GetUsersResult{
   roleId: number
   roleName: string
 }
+
+export interface ModfiyUserPasswordRequest{
+  password: string
+  newPassword: string
+}

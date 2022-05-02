@@ -1,8 +1,12 @@
-import { filter, Subject, takeUntil } from 'rxjs';
-import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
+import { filter, from, map, Subject, takeUntil } from 'rxjs';
+import { Component, EventEmitter, OnInit, Output, OnDestroy, ɵɵsetComponentScope } from '@angular/core';
 import { Router } from '@angular/router';
 import { SideNavService } from 'src/app/shared/service/sideNav/side-nav.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
+import Swal from 'sweetalert2';
+import { UserService } from 'src/app/shared/api/user/user.service';
+import { UserInfoService } from 'src/app/shared/service/userInfo/userInfo.service';
+import { ApiService } from 'src/app/shared/api/api.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +18,10 @@ export class HeaderComponent implements OnDestroy{
   constructor(
     private swalService: SwalService<null>,
     private router: Router,
-    private sideNavService: SideNavService
+    private sideNavService: SideNavService,
+    private userService: UserService,
+    private userInfoService: UserInfoService,
+    private apiService: ApiService
   ) { }
 
   ngOnDestroy(): void {
@@ -40,15 +47,67 @@ export class HeaderComponent implements OnDestroy{
           text: '登出成功',
           icon: 'success',
           confirmButtonText: "確定",
-        })
+        }).pipe(
+          takeUntil(this.destroy$)
+        )
         localStorage.clear()
         this.router.navigate(['/login'])
     })
   }
-  /**
-   * 切換SideNav
-   */
+
+  /** 切換SideNav */
   toggleSideNav(){
     this.sideNavService.toggle()
+  }
+
+  /** 變更密碼 */
+  changePassword(){
+    from(
+      Swal.fire({
+      title: '變更密碼',
+      html:
+      `<input id="password" class="swal2-input" name="password" type="password" placeholder="請輸入現在使用的密碼">
+       <input id="newPassword" class="swal2-input" name="newPassword" type="password" placeholder="請輸入新密碼">
+       <input id="newPassword_confirm" class="swal2-input" name="newPassword_confirm" type="password" placeholder="請再輸入一次新密碼">`,
+       confirmButtonText: '確定',
+       preConfirm: () => {
+         const password = document.getElementById('password') as HTMLInputElement
+         const newPassword = document.getElementById('newPassword') as HTMLInputElement
+         const newPassword_confirm = document.getElementById('newPassword_confirm') as HTMLInputElement
+        if(password.value && newPassword.value && newPassword_confirm.value){
+          if(newPassword.value !== newPassword_confirm.value){
+            Swal.showValidationMessage('新密碼與確認密碼不相同')
+            return undefined
+          }else{
+            const userId = this.userInfoService.getUserInfo().managerUserId
+            return this.userService.modifyPassword(userId, {
+              password: password.value,
+              newPassword: newPassword.value
+            }).pipe(
+              filter(res=> {
+                if(res.code !== 200){
+                  Swal.showValidationMessage(res.message)
+                  return false
+                }else
+                  this.swalService.alert({
+                    icon: 'success',
+                    text: res.message,
+                    confirmButtonText: '確認'
+                  })
+                  return true
+              })
+            )
+          }
+        }
+        else{
+          Swal.showValidationMessage('欄位必填')
+          return undefined
+        }
+      }
+    })).pipe(
+      map((res)=> res.value),
+      filter(res=> res !== undefined),
+      takeUntil(this.destroy$)
+    ).subscribe()
   }
 }

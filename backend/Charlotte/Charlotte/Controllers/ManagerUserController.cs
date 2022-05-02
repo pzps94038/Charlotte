@@ -106,6 +106,39 @@ namespace Charlotte.Controllers
             return result;
         }
 
+        /// <summary>
+        /// 使用者修改密碼
+        /// </summary>
+        /// <param name="managerUserId">使用者Id</param>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        [HttpPut("{managerUserId}")]
+        public async Task<ResultModel> ModifyManagerUserPassword(int managerUserId, ModifyManagerUserPassWordModel req)
+        {
+            var result = new ResultModel();
+            try
+            {
+                string errMsg = await ManagerUserHelper.ModifyManagerUserPassword(managerUserId, req);
+                if (string.IsNullOrEmpty(errMsg))
+                {
+                    result.code = HttpStatusCode.OK;
+                    result.message = "修改密碼成功";
+                }
+                else 
+                {
+                    result.code = HttpStatusCode.BadRequest;
+                    result.message = errMsg;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.code = HttpStatusCode.BadRequest;
+                result.message = EnumHelper.GetDescription(EnumResult.ModifyFail);
+                LoggerHelper.Error(ex);
+            }
+            return result;
+        }
+
         [HttpDelete("{managerUserId}")]
         public async Task<ResultModel> DeleteManagerUser(int managerUserId)
         {
