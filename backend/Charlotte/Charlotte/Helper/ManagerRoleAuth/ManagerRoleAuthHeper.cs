@@ -91,7 +91,7 @@ namespace Charlotte.Helper.ManagerRoleAuth
                                   left join ManagerMain as main on main.RoleId = auth.RoleId
                                   where router.Link = @routerPath and main.ManagerUserId = @userId";
                 // 檢查路由權限表，如果有資料就拿，沒有就給預設值為false
-                var data = await con.QueryFirstOrDefaultAsync<CheckManagerRoleAuthVModel<string>>(sqlStr, new { userId = userId, routerPath = routerPath });
+                var data = await con.QueryFirstOrDefaultAsync<CheckManagerRoleAuthVModel<string>>(sqlStr, new { userId, routerPath });
                 if (data == null)
                 {
                     result.viewAuth = false;

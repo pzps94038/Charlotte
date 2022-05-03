@@ -96,20 +96,18 @@ namespace Charlotte.Helper.ManagerRouter
         /// <summary>
         /// 批次刪除路由
         /// </summary>
-        /// <param name="rq">要刪除的路由ID集合</param>
+        /// <param name="rq"></param>
         /// <returns></returns>
-        /// <exception cref="ObjectNotFoundException">找不到路由</exception>
+        /// <exception cref="NotFoundException">沒有任何路由</exception>
         public async static Task BatchDeleteRouter(List<int> rq)
         {
             using (var db = new CharlotteContext())
             {
-                foreach (var routerId in rq) 
-                {
-                    var data = await db.Router.FirstOrDefaultAsync(a => a.RouterId == routerId);
-                    if (data == null) throw new NotFoundException();
-                    else
-                        db.Router.Remove(data);
-                }
+                var datas = await db.Router.Where(a => rq.Contains(a.RouterId)).ToListAsync();
+                if (datas.Count == 0)
+                    throw new NotFoundException();
+                else
+                    db.Router.RemoveRange(datas);
                 await db.SaveChangesAsync();
             }
         }
