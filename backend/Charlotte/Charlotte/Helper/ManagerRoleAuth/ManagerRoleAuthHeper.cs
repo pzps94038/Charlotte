@@ -17,21 +17,17 @@ namespace Charlotte.Helper.ManagerRoleAuth
             var result = new List<ManagerRoleAuthVModel>();
             using (var db = new CharlotteContext()) 
             {
-                var roleData = await db.ManagerRole.FirstOrDefaultAsync(a=> a.RoleId == roleId);
-                if (roleData == null) throw new NotFoundException();
-                else 
+                var roleData = await db.ManagerRole.SingleAsync(a=> a.RoleId == roleId);
+                var routers = await db.Router.ToListAsync();
+                var roleAuthList = await db.ManagerRoleAuth.Where(a => a.RoleId == roleId).ToListAsync();
+                foreach (var router in routers)
                 {
-                    var routers = await db.Router.ToListAsync();
-                    var roleAuthList = await db.ManagerRoleAuth.Where(a => a.RoleId == roleId).ToListAsync();
-                    foreach (var router in routers) 
-                    {
-                        var authData = roleAuthList.FirstOrDefault(a => a.RouterId == router.RouterId);
-                        // 檢查權限表有沒有資料沒有資料預設給false
-                        if (authData == null) 
-                            result.Add(new ManagerRoleAuthVModel(roleId, router.RouterId, router.RouterName));
-                        else 
-                            result.Add(new ManagerRoleAuthVModel(authData, router.RouterName));
-                    }
+                    var authData = roleAuthList.SingleOrDefault(a => a.RouterId == router.RouterId);
+                    // 檢查權限表有沒有資料沒有資料預設給false
+                    if (authData == null)
+                        result.Add(new ManagerRoleAuthVModel(roleId, router.RouterId, router.RouterName));
+                    else
+                        result.Add(new ManagerRoleAuthVModel(authData, router.RouterName));
                 }
             }
             return result;

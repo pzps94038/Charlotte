@@ -54,22 +54,17 @@ namespace Charlotte.Helper.ManagerRouter
         /// <param name="routerId">路由ID</param>
         /// <param name="rq">路由參數</param>
         /// <returns></returns>
-        /// <exception cref="ObjectNotFoundException">找不到路由</exception>
         public async static Task ModifyRouter(int routerId, ManagerRouterModel rq)
         {
             using (var db = new CharlotteContext())
             {
-                var data = await db.Router.FirstOrDefaultAsync(a=> a.RouterId == routerId);
-                if (data == null) throw new NotFoundException();
-                else 
-                {
-                    data.RouterName = rq.routerName;
-                    data.Flag = rq.flag ? "Y" : "N";
-                    data.Icon = rq.icon == null ? null : rq.icon;
-                    data.Link = rq.link;
-                    data.GroupId = rq.groupId;
-                    await db.SaveChangesAsync();
-                }
+                var data = await db.Router.SingleAsync(a=> a.RouterId == routerId);
+                data.RouterName = rq.routerName;
+                data.Flag = rq.flag ? "Y" : "N";
+                data.Icon = rq.icon == null ? null : rq.icon;
+                data.Link = rq.link;
+                data.GroupId = rq.groupId;
+                await db.SaveChangesAsync();
             }
         }
         /// <summary>
@@ -77,19 +72,14 @@ namespace Charlotte.Helper.ManagerRouter
         /// </summary>
         /// <param name="routerId">要刪除的路由ID</param>
         /// <returns></returns>
-        /// <exception cref="ObjectNotFoundException">找不到路由</exception>
 
         public async static Task DeleteRouter(int routerId) 
         {
             using (var db = new CharlotteContext())
             {
-                var data = await db.Router.FirstOrDefaultAsync(a => a.RouterId == routerId);
-                if (data == null) throw new NotFoundException();
-                else
-                {
-                    db.Router.Remove(data);
-                    await db.SaveChangesAsync();
-                }
+                var data = await db.Router.SingleAsync(a => a.RouterId == routerId);
+                db.Router.Remove(data);
+                await db.SaveChangesAsync();
             }
         }
 
@@ -98,16 +88,12 @@ namespace Charlotte.Helper.ManagerRouter
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
-        /// <exception cref="NotFoundException">沒有任何路由</exception>
         public async static Task BatchDeleteRouter(List<int> rq)
         {
             using (var db = new CharlotteContext())
             {
                 var datas = await db.Router.Where(a => rq.Contains(a.RouterId)).ToListAsync();
-                if (datas.Count == 0)
-                    throw new NotFoundException();
-                else
-                    db.Router.RemoveRange(datas);
+                db.Router.RemoveRange(datas);
                 await db.SaveChangesAsync();
             }
         }

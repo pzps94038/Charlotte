@@ -61,20 +61,16 @@ namespace Charlotte.Helper.ManagerUser
         {
             using (var db = new CharlotteContext())
             {
-                var data = db.ManagerMain.FirstOrDefault(a => a.ManagerUserId == managerUserId);
-                if (data == null) throw new NotFoundException();
-                else 
-                {
-                    if(req.userName != null) data.UserName = req.userName;
-                    if(req.account != null) data.Account = req.account;
-                    if(req.password != null) data.Password = SHA256Helper.SHA256Encrypt(req.password);
-                    if(req.email != null) data.Email = req.email;
-                    if(req.address != null) data.Address = req.address;
-                    if(req.birthday != null) data.Birthday = (DateTime)req.birthday;
-                    if(req.roleId != null) data.RoleId = (int)req.roleId;
-                    if(req.flag != null) data.Flag = (bool)req.flag ? "Y" : "N";
-                    data.ModifyDate = DateTime.Now;
-                }
+                var data = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == managerUserId);
+                if (req.userName != null) data.UserName = req.userName;
+                if (req.account != null) data.Account = req.account;
+                if (req.password != null) data.Password = SHA256Helper.SHA256Encrypt(req.password);
+                if (req.email != null) data.Email = req.email;
+                if (req.address != null) data.Address = req.address;
+                if (req.birthday != null) data.Birthday = (DateTime)req.birthday;
+                if (req.roleId != null) data.RoleId = (int)req.roleId;
+                if (req.flag != null) data.Flag = (bool)req.flag ? "Y" : "N";
+                data.ModifyDate = DateTime.Now;
                 await db.SaveChangesAsync();
             }
         }
@@ -83,13 +79,9 @@ namespace Charlotte.Helper.ManagerUser
         {
             using (var db = new CharlotteContext())
             {
-                var data = await db.ManagerMain.FirstOrDefaultAsync(a=> a.ManagerUserId == managerUserId);
-                if (data == null) throw new NotFoundException();
-                else 
-                {
-                    db.ManagerMain.Remove(data);
-                    await db.SaveChangesAsync();
-                }
+                var data = await db.ManagerMain.SingleAsync(a=> a.ManagerUserId == managerUserId);
+                db.ManagerMain.Remove(data);
+                await db.SaveChangesAsync();
             }
         }
 
@@ -97,13 +89,8 @@ namespace Charlotte.Helper.ManagerUser
         {
             using (var db = new CharlotteContext())
             {
-                foreach (var managerUserId in req) 
-                {
-                    var data = await db.ManagerMain.FirstOrDefaultAsync(a => a.ManagerUserId == managerUserId);
-                    if (data == null) throw new NotFoundException();
-                    else
-                        db.ManagerMain.Remove(data);
-                }
+                var datas = await db.ManagerMain.Where(a=> req.Contains(a.ManagerUserId)).ToListAsync();
+                db.ManagerMain.RemoveRange(datas);
                 await db.SaveChangesAsync();
             }
         }
@@ -113,10 +100,8 @@ namespace Charlotte.Helper.ManagerUser
             string result = "";
             using (var db = new CharlotteContext())
             {
-                var userData = await db.ManagerMain.FirstOrDefaultAsync(a => a.ManagerUserId == managerUserId);
-                if (userData == null)
-                    return result = "沒有該使用者";
-                else if (userData.Password != SHA256Helper.SHA256Encrypt(req.password))
+                var userData = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == managerUserId);
+                if (userData.Password != SHA256Helper.SHA256Encrypt(req.password))
                     return result = "原密碼輸入錯誤";
                 else 
                 {

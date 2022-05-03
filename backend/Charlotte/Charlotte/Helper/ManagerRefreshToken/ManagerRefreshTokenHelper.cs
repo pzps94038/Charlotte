@@ -14,25 +14,18 @@ namespace Charlotte.Helper.ManagerRefreshToken
         {
             using (var db = new CharlotteContext())
             {
-                var log = await db.ManagerRefreshTokenLog.FirstOrDefaultAsync(a=> a.RefreshToken == req.refreshToken && a.ManagerUserId == req.userId);
-                if (log == null)
-                    throw new NotFoundException();
-                else if (log.ExpirationDate < DateTime.Now)
+                var log = await db.ManagerRefreshTokenLog.SingleAsync(a=> a.RefreshToken == req.refreshToken && a.ManagerUserId == req.userId);
+                if (log.ExpirationDate < DateTime.Now)
                     throw new TokenExpiredException();
                 else 
                 {
-                    var userMain = await db.ManagerMain.FirstOrDefaultAsync(a => a.ManagerUserId == req.userId);
-                    if (userMain == null)
-                        throw new NotFoundException();
-                    else 
-                    {
-                        string refreshToken = JwtHelper.CreateRefreshToken();
-                        var claims = JwtHelper.CreateClaims(userMain.Email, userMain.ManagerUserId.ToString());
-                        string accountToken = JwtHelper.GenerateToken(claims);
-                        CreateRefreshTokenLog(db, req.userId, refreshToken);
-                        await db.SaveChangesAsync();
-                        return new Token(accountToken, refreshToken);
-                    }
+                    var userMain = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == req.userId);
+                    string refreshToken = JwtHelper.CreateRefreshToken();
+                    var claims = JwtHelper.CreateClaims(userMain.Email, userMain.ManagerUserId.ToString());
+                    string accountToken = JwtHelper.GenerateToken(claims);
+                    CreateRefreshTokenLog(db, req.userId, refreshToken);
+                    await db.SaveChangesAsync();
+                    return new Token(accountToken, refreshToken);
                 }
             }
         }

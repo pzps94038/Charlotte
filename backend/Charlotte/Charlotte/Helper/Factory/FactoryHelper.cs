@@ -77,15 +77,10 @@ namespace Charlotte.Helper.Factory
         {
             using (var db = new CharlotteContext())
             {
-                var data = await db.Factory.FirstOrDefaultAsync(a => a.FactoryId == factoryId);
-                if (data == null)
-                    throw new NotFoundException();
-                else 
-                {
-                    data.FactoryName = factoryName;
-                    data.ModifyDate = DateTime.Now;
-                    await db.SaveChangesAsync();
-                }
+                var data = await db.Factory.SingleAsync(a => a.FactoryId == factoryId);
+                data.FactoryName = factoryName;
+                data.ModifyDate = DateTime.Now;
+                await db.SaveChangesAsync();
             }
         }
 
@@ -94,17 +89,13 @@ namespace Charlotte.Helper.Factory
         /// </summary>
         /// <param name="factoryId">廠商Id</param>
         /// <returns></returns>
-        /// <exception cref="NotFoundException">找不到該資料</exception>
 
         public static async Task DeleteFactory(int factoryId) 
         {
             using (var db = new CharlotteContext())
             {
-                var data = await db.Factory.FirstOrDefaultAsync(a=> a.FactoryId == factoryId);
-                if (data == null)
-                    throw new NotFoundException();
-                else 
-                    db.Factory.Remove(data);
+                var data = await db.Factory.SingleAsync(a=> a.FactoryId == factoryId);
+                db.Factory.Remove(data);
                 await db.SaveChangesAsync();
             }
         }
@@ -114,16 +105,12 @@ namespace Charlotte.Helper.Factory
         /// </summary>
         /// <param name="factorysId">多個廠商Id</param>
         /// <returns></returns>
-        /// <exception cref="NotFoundException">找不到任何廠商ID符合</exception>
         public static async Task BatchDeleteFactory(List<int> factorysId)
         {
             using (var db = new CharlotteContext())
             {
                 var datas = await db.Factory.Where(a=> factorysId.Contains(a.FactoryId)).ToListAsync();
-                if (datas.Count == 0)
-                    throw new NotFoundException();
-                else
-                    db.Factory.RemoveRange(datas);
+                db.Factory.RemoveRange(datas);
                 await db.SaveChangesAsync();
             }
         }

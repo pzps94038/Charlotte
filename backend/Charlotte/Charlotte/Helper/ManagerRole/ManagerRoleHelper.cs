@@ -41,13 +41,9 @@ namespace Charlotte.Helper.ManagerRole
         {
             using (var db = new CharlotteContext())
             {
-                var data = await db.ManagerRole.FirstOrDefaultAsync(a => a.RoleId == roleId);
-                if (data == null) throw new NotFoundException();
-                else 
-                {
-                    data.ModifyDate = DateTime.Now;
-                    data.RoleName = req.roleName;
-                }
+                var data = await db.ManagerRole.SingleAsync(a => a.RoleId == roleId);
+                data.ModifyDate = DateTime.Now;
+                data.RoleName = req.roleName;
                 await db.SaveChangesAsync();
             }
         }
@@ -56,24 +52,23 @@ namespace Charlotte.Helper.ManagerRole
         {
             using (var db = new CharlotteContext())
             {
-                var data = await db.ManagerRole.FirstOrDefaultAsync(a => a.RoleId == roleId);
-                if (data == null) throw new NotFoundException();
-                else
-                    db.ManagerRole.Remove(data);
+                var data = await db.ManagerRole.SingleAsync(a => a.RoleId == roleId);
+                db.ManagerRole.Remove(data);
                 await db.SaveChangesAsync();
             }
         }
+
+        /// <summary>
+        /// 批次刪除角色
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         public static async Task BatchDeleteManagerRole(List<int> req)
         {
             using (var db = new CharlotteContext())
             {
-                foreach (var roleId in req) 
-                {
-                    var data = await db.ManagerRole.FirstOrDefaultAsync(a => a.RoleId == roleId);
-                    if (data == null) throw new NotFoundException();
-                    else
-                        db.ManagerRole.Remove(data);
-                }
+                var datas = await db.ManagerRole.Where(a => req.Contains(a.RoleId)).ToListAsync();
+                db.ManagerRole.RemoveRange(datas);
                 await db.SaveChangesAsync();
             }
         }
