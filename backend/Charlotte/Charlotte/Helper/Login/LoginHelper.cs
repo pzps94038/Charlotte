@@ -8,10 +8,10 @@ using System.Data.Common;
 
 namespace Charlotte.Helper.Login
 {
-    public static class LoginHelper
+    public class LoginHelper: ILoginHelper
     {
         
-        public static async Task<(string , Token)> Login(LoginModel req) 
+        public async Task<(string , Token)> Login(LoginModel req) 
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             string message = "";
@@ -58,7 +58,7 @@ namespace Charlotte.Helper.Login
         /// <param name="transaction">交易範圍</param>
         /// <param name="account">帳號</param>
         /// <returns>使用者資訊</returns>
-        private static async Task<UserMain> GetUserMain(SqlConnection con, DbTransaction transaction, string account) 
+        private async Task<UserMain> GetUserMain(SqlConnection con, DbTransaction transaction, string account) 
         {
             string sqlStr = @"Select * From UserMain Where Account = @account ";
             return await con.QueryFirstOrDefaultAsync<UserMain>(sqlStr, new { account = account}, transaction);
@@ -72,7 +72,7 @@ namespace Charlotte.Helper.Login
         /// <param name="userMain">使用者資訊</param>
         /// <param name="password">密碼</param>
         /// <returns>是否成功登入</returns>
-        private static bool CreateLoginLog(SqlConnection con, DbTransaction transaction, UserMain userMain, string password) 
+        private bool CreateLoginLog(SqlConnection con, DbTransaction transaction, UserMain userMain, string password) 
         {
             string shaPwd = SHA256Helper.SHA256Encrypt(password);
             bool flag = userMain.Password == shaPwd;
@@ -90,7 +90,7 @@ namespace Charlotte.Helper.Login
         /// <param name="transaction">交易範圍</param>
         /// <param name="userMain">使用者資訊</param>
         /// <param name="refreshToken">refreshToken</param>
-        private static void CreateRefreshTokenLog(SqlConnection con, DbTransaction transaction, UserMain userMain, string refreshToken) 
+        private void CreateRefreshTokenLog(SqlConnection con, DbTransaction transaction, UserMain userMain, string refreshToken) 
         {
             string refreshToenExp = GetAppSettingsHelper.GetAppSettingsValue("JWT", "RefreshToenExpirationDate");
             string sqlStr = @"INSERT INTO RefreshTokenLog

@@ -14,6 +14,12 @@ namespace Charlotte.Controllers
     [ApiController]
     public class RegisterController : ControllerBase
     {
+        private readonly IRegisterHelper _registerHelper;
+        public RegisterController(IRegisterHelper helper)
+        {
+            _registerHelper = helper;
+        }
+
         /// <summary>
         /// 購物平台註冊
         /// </summary>
@@ -25,7 +31,7 @@ namespace Charlotte.Controllers
             ResultModel result = new ResultModel();
             try
             {
-                string message =  await RegisterHelper.Register(req);
+                string message =  await _registerHelper.Register(req);
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;

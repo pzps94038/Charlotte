@@ -13,13 +13,19 @@ namespace Charlotte.Controllers
     [ApiController]
     public class ManagerRefreshTokenController : ControllerBase
     {
+        private readonly IManagerRefreshTokenHelper _managerRefreshTokenHelper;
+        public ManagerRefreshTokenController(IManagerRefreshTokenHelper helper)
+        {
+            _managerRefreshTokenHelper = helper;
+        }
+
         [HttpPost]
         public async Task<ResultModel<Token>> RefreshToken(RefreshToken req)
         {
             var result = new ResultModel<Token>();
             try
             {
-                result.data = await ManagerRefreshTokenHelper.RefreshToken(req);
+                result.data = await _managerRefreshTokenHelper.RefreshToken(req);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.CreateSuccess);
 

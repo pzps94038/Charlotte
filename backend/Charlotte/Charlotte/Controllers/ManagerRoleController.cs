@@ -16,6 +16,11 @@ namespace Charlotte.Controllers
     [Authorize]
     public class ManagerRoleController : ControllerBase
     {
+        private readonly IManagerRoleHelper _managerRoleHelper;
+        public ManagerRoleController(IManagerRoleHelper helper)
+        {
+            _managerRoleHelper = helper;
+        }
         /// <summary>
         /// 取得角色清單
         /// </summary>
@@ -26,7 +31,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<List<ManagerRoleVModel>> ();
             try
             {
-                result.data = await ManagerRoleHelper.GetRoles();
+                result.data = await _managerRoleHelper.GetRoles();
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.Success);
             }
@@ -50,7 +55,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await ManagerRoleHelper.CreateManagerRole(req);
+                await _managerRoleHelper.CreateManagerRole(req);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.CreateSuccess);
             }
@@ -75,7 +80,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await ManagerRoleHelper.ModifyRole(roleId, req);
+                await _managerRoleHelper.ModifyRole(roleId, req);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.ModifySuccess);
             }
@@ -100,7 +105,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await ManagerRoleHelper.DeleteRole(roleId);
+                await _managerRoleHelper.DeleteRole(roleId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.DeleteSuccess);
             }
@@ -124,7 +129,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await ManagerRoleHelper.BatchDeleteManagerRole(req);
+                await _managerRoleHelper.BatchDeleteManagerRole(req);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.DeleteSuccess);
             }

@@ -16,13 +16,18 @@ namespace Charlotte.Controllers
     [Authorize]
     public class ManagerRoleAuthController : ControllerBase
     {
+        private readonly IManagerRoleAuthHelper _managerAuthRoleHelper;
+        public ManagerRoleAuthController(IManagerRoleAuthHelper helper)
+        {
+            _managerAuthRoleHelper = helper;
+        }
         [HttpGet("{roleId}")]
         public async Task<ResultModel<List<ManagerRoleAuthVModel>>> GetRoleRouters(int roleId) 
         {
             var result = new ResultModel<List<ManagerRoleAuthVModel>>();
             try
             {
-                result.data = await ManagerRoleAuthHeper.GetManagerRoleRouters(roleId);
+                result.data = await _managerAuthRoleHelper.GetManagerRoleRouters(roleId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.Success);
 
@@ -42,7 +47,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await ManagerRoleAuthHeper.CreateOrUpdateRoleAuth(roleId, req);
+                await _managerAuthRoleHelper.CreateOrUpdateRoleAuth(roleId, req);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.ModifySuccess);
 
@@ -63,7 +68,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<CheckManagerRoleAuthVModel<bool>>();
             try
             {
-                result.data = await ManagerRoleAuthHeper.CheckRoleAuth(userId, routerPath);
+                result.data = await _managerAuthRoleHelper.CheckRoleAuth(userId, routerPath);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.Success);
 

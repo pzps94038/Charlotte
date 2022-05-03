@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 
 namespace Charlotte.Helper.ManagerMenu
 {
-    public static class ManagerMenuHelper
+    public class ManagerMenuHelper: IManagerMenuHelper
     {
-        public async static Task<List<ManagerMenuVModel>> GetMenu(int userId) 
+        public async Task<List<ManagerMenuVModel>> GetMenu(int userId) 
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr))
@@ -19,7 +19,7 @@ namespace Charlotte.Helper.ManagerMenu
                                 left join ManagerRoleAuth as auth on auth.RoleId = role.RoleId
                                 left join Router as router on auth.RouterId = router.RouterId
                                 where main.ManagerUserId = @userId and router.Flag = 'Y' and auth.ViewAuth = 'Y'";
-                var result = await con.QueryAsync<ManagerMenuVModel>(sqlStr, new { userId = userId });
+                var result = await con.QueryAsync<ManagerMenuVModel>(sqlStr, new { userId });
                 return result.ToList();
             }
         }

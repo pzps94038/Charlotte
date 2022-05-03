@@ -10,9 +10,14 @@ using static Charlotte.CustomizeException.CustomizeException;
 
 namespace Charlotte.Helper.ManagerRole
 {
-    public static class ManagerRoleHelper
+    public class ManagerRoleHelper: IManagerRoleHelper
     {
-        public static async Task CreateManagerRole(ManagerRoleModel req) 
+        /// <summary>
+        /// 創建角色
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task CreateManagerRole(ManagerRoleModel req) 
         {
             using (var db = new CharlotteContext()) 
             {
@@ -24,7 +29,11 @@ namespace Charlotte.Helper.ManagerRole
             }
         }
 
-        public static async Task<List<ManagerRoleVModel>> GetRoles()
+        /// <summary>
+        /// 取得所有角色
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<ManagerRoleVModel>> GetRoles()
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr))
@@ -37,7 +46,13 @@ namespace Charlotte.Helper.ManagerRole
             }
         }
 
-        public static async Task ModifyRole(int roleId, ManagerRoleModel req) 
+        /// <summary>
+        /// 修改角色
+        /// </summary>
+        /// <param name="roleId">角色Id</param>
+        /// <param name="req">角色資訊</param>
+        /// <returns></returns>
+        public async Task ModifyRole(int roleId, ManagerRoleModel req) 
         {
             using (var db = new CharlotteContext())
             {
@@ -48,7 +63,12 @@ namespace Charlotte.Helper.ManagerRole
             }
         }
 
-        public static async Task DeleteRole(int roleId)
+        /// <summary>
+        /// 刪除角色
+        /// </summary>
+        /// <param name="roleId">角色Id</param>
+        /// <returns></returns>
+        public async Task DeleteRole(int roleId)
         {
             using (var db = new CharlotteContext())
             {
@@ -63,7 +83,7 @@ namespace Charlotte.Helper.ManagerRole
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-        public static async Task BatchDeleteManagerRole(List<int> req)
+        public async Task BatchDeleteManagerRole(List<int> req)
         {
             using (var db = new CharlotteContext())
             {

@@ -9,9 +9,9 @@ using System.Data.SqlClient;
 
 namespace Charlotte.Helper.ManagerLogin
 {
-    public static class ManagerLoginHelper
+    public class ManagerLoginHelper: IManagerLoginHelper
     {
-        public async static Task<(string, ManagerLoginVModel)> Login(ManagerLoginModel req) 
+        public async Task<(string, ManagerLoginVModel)> Login(ManagerLoginModel req) 
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             string message = "";
@@ -59,7 +59,7 @@ namespace Charlotte.Helper.ManagerLogin
         /// <param name="transaction">交易範圍</param>
         /// <param name="account">帳號</param>
         /// <returns>使用者資訊</returns>
-        private static async Task<ManagerMain> GetManagerMain(SqlConnection con, DbTransaction transaction, string account)
+        private async Task<ManagerMain> GetManagerMain(SqlConnection con, DbTransaction transaction, string account)
         {
             string sqlStr = @"Select * From ManagerMain Where Account = @account ";
             return await con.QueryFirstOrDefaultAsync<ManagerMain>(sqlStr, new { account = account }, transaction);
@@ -73,7 +73,7 @@ namespace Charlotte.Helper.ManagerLogin
         /// <param name="userMain">使用者資訊</param>
         /// <param name="password">密碼</param>
         /// <returns>是否成功登入</returns>
-        private static bool CreateLoginLog(SqlConnection con, DbTransaction transaction, ManagerMain managerMain, string password)
+        private bool CreateLoginLog(SqlConnection con, DbTransaction transaction, ManagerMain managerMain, string password)
         {
             string shaPwd = SHA256Helper.SHA256Encrypt(password);
             bool flag = managerMain.Password == shaPwd;
@@ -91,7 +91,7 @@ namespace Charlotte.Helper.ManagerLogin
         /// <param name="transaction">交易範圍</param>
         /// <param name="userMain">使用者資訊</param>
         /// <param name="refreshToken">refreshToken</param>
-        private static void CreateRefreshTokenLog(SqlConnection con, DbTransaction transaction, ManagerMain managerMain, string refreshToken)
+        private void CreateRefreshTokenLog(SqlConnection con, DbTransaction transaction, ManagerMain managerMain, string refreshToken)
         {
             string refreshToenExp = GetAppSettingsHelper.GetAppSettingsValue("JWT", "RefreshToenExpirationDate");
             string sqlStr = @"INSERT INTO ManagerRefreshTokenLog

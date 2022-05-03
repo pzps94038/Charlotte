@@ -15,13 +15,20 @@ namespace Charlotte.Controllers
     [Authorize]
     public class ManagerMenuController : ControllerBase
     {
+
+        private readonly IManagerMenuHelper _menuHelper;
+        public ManagerMenuController(IManagerMenuHelper helper)
+        {
+            _menuHelper = helper;
+        }
+
         [HttpGet("{userId}")]
         public async Task<ResultModel<List<ManagerMenuVModel>>> GetMenu(int userId)
         {
             ResultModel<List<ManagerMenuVModel>> result = new ResultModel<List<ManagerMenuVModel>>();
             try
             {
-                result.data = await ManagerMenuHelper.GetMenu(userId);
+                result.data = await _menuHelper.GetMenu(userId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.Success);
 

@@ -10,13 +10,13 @@ using static Charlotte.CustomizeException.CustomizeException;
 
 namespace Charlotte.Helper.ManagerRouter
 {
-    public static class ManagerRouterHelper
+    public class ManagerRouterHelper: IManagerRouterHelper
     {
         /// <summary>
         /// 取得所有路由表
         /// </summary>
         /// <returns>所有路由表</returns>
-        public async static Task<List<ManagerRouterVModel>> GetRouters()
+        public async Task<List<ManagerRouterVModel>> GetRouters()
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr))
@@ -34,7 +34,7 @@ namespace Charlotte.Helper.ManagerRouter
         /// </summary>
         /// <param name="rq">路由參數</param>
         /// <returns></returns>
-        public async static Task CreateRouter(ManagerRouterModel rq) 
+        public async Task CreateRouter(ManagerRouterModel rq) 
         {
             using (var db = new CharlotteContext()) 
             {
@@ -54,7 +54,7 @@ namespace Charlotte.Helper.ManagerRouter
         /// <param name="routerId">路由ID</param>
         /// <param name="rq">路由參數</param>
         /// <returns></returns>
-        public async static Task ModifyRouter(int routerId, ManagerRouterModel rq)
+        public async Task ModifyRouter(int routerId, ManagerRouterModel rq)
         {
             using (var db = new CharlotteContext())
             {
@@ -73,7 +73,7 @@ namespace Charlotte.Helper.ManagerRouter
         /// <param name="routerId">要刪除的路由ID</param>
         /// <returns></returns>
 
-        public async static Task DeleteRouter(int routerId) 
+        public async Task DeleteRouter(int routerId) 
         {
             using (var db = new CharlotteContext())
             {
@@ -88,7 +88,7 @@ namespace Charlotte.Helper.ManagerRouter
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
-        public async static Task BatchDeleteRouter(List<int> rq)
+        public async Task BatchDeleteRouter(List<int> rq)
         {
             using (var db = new CharlotteContext())
             {

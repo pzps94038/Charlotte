@@ -9,10 +9,10 @@ using static Charlotte.CustomizeException.CustomizeException;
 
 namespace Charlotte.Helper.ManagerRoleAuth
 {
-    public static class ManagerRoleAuthHeper
+    public class ManagerRoleAuthHelper: IManagerRoleAuthHelper
     {
 
-        public static async Task<List<ManagerRoleAuthVModel>> GetManagerRoleRouters(int roleId) 
+        public async Task<List<ManagerRoleAuthVModel>> GetManagerRoleRouters(int roleId) 
         {
             var result = new List<ManagerRoleAuthVModel>();
             using (var db = new CharlotteContext()) 
@@ -33,7 +33,7 @@ namespace Charlotte.Helper.ManagerRoleAuth
             return result;
         }
 
-        public static async Task CreateOrUpdateRoleAuth(int roleId, List<ManagerRoleAuthModel> req)
+        public async Task CreateOrUpdateRoleAuth(int roleId, List<ManagerRoleAuthModel> req)
         {
             using (var db = new CharlotteContext())
             {
@@ -69,7 +69,7 @@ namespace Charlotte.Helper.ManagerRoleAuth
             }
         }
 
-        public static async Task<CheckManagerRoleAuthVModel<bool>> CheckRoleAuth(int userId, string routerPath)
+        public async Task<CheckManagerRoleAuthVModel<bool>> CheckRoleAuth(int userId, string routerPath)
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             CheckManagerRoleAuthVModel<bool> result = new CheckManagerRoleAuthVModel<bool>();

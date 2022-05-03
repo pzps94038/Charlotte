@@ -15,6 +15,11 @@ namespace Charlotte.Controllers
     [Authorize]
     public class ProductController : ControllerBase
     {
+        private readonly IProductHelper _productHelper;
+        public ProductController(IProductHelper helper)
+        {
+            _productHelper = helper;
+        }
         /// <summary>
         /// 取得單個產品資料
         /// </summary>
@@ -27,7 +32,7 @@ namespace Charlotte.Controllers
             ResultModel<ProductVModel> result = new ResultModel<ProductVModel>();            
             try
             {
-                var data = await ProductHelper.GetProruct(productId);
+                var data = await _productHelper.GetProruct(productId);
                 if (data == null)
                 {
                     result.message = EnumHelper.GetDescription(EnumResult.NotFound);
@@ -61,7 +66,7 @@ namespace Charlotte.Controllers
             ResultModel<List<ProductVModel>> result = new ResultModel<List<ProductVModel>>();
             try
             {
-                result.data = await ProductHelper.GetProducts(typeId);
+                result.data = await _productHelper.GetProducts(typeId);
                 result.message = EnumHelper.GetDescription(EnumResult.Success);
                 result.code= HttpStatusCode.OK;
             }
@@ -73,6 +78,6 @@ namespace Charlotte.Controllers
             }
             return result;
         }
-
+        
     }
 }

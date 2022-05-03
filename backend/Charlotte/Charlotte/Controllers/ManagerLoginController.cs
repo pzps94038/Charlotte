@@ -14,6 +14,12 @@ namespace Charlotte.Controllers
     [ApiController]
     public class ManagerLoginController : ControllerBase
     {
+        private readonly IManagerLoginHelper _loginHelper;
+        public ManagerLoginController(IManagerLoginHelper helper)
+        {
+            _loginHelper = helper;
+        }
+
         /// <summary>
         /// 管理平台登入
         /// </summary>
@@ -26,7 +32,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<ManagerLoginVModel>();
             try
             {
-                (string message, ManagerLoginVModel data) = await ManagerLoginHelper.Login(req);
+                (string message, ManagerLoginVModel data) = await _loginHelper.Login(req);
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;

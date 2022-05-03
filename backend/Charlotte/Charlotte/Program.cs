@@ -1,4 +1,15 @@
 using Charlotte.Helper;
+using Charlotte.Helper.Factory;
+using Charlotte.Helper.Login;
+using Charlotte.Helper.ManagerLogin;
+using Charlotte.Helper.ManagerMenu;
+using Charlotte.Helper.ManagerRefreshToken;
+using Charlotte.Helper.ManagerRole;
+using Charlotte.Helper.ManagerRoleAuth;
+using Charlotte.Helper.ManagerRouter;
+using Charlotte.Helper.ManagerUser;
+using Charlotte.Helper.Product;
+using Charlotte.Helper.Register;
 using Charlotte.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -16,6 +27,19 @@ builder.Services.AddCors(options => {
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// service ª`¤J
+builder.Services.AddTransient<IFactoryHelper, FactoryHelper>();
+builder.Services.AddTransient<ILoginHelper, LoginHelper>();
+builder.Services.AddTransient<IManagerLoginHelper, ManagerLoginHelper>();
+builder.Services.AddTransient<IManagerMenuHelper, ManagerMenuHelper>();
+builder.Services.AddTransient<IManagerRefreshTokenHelper, ManagerRefreshTokenHelper>();
+builder.Services.AddTransient<IManagerRoleHelper, ManagerRoleHelper>();
+builder.Services.AddTransient<IManagerRoleAuthHelper, ManagerRoleAuthHelper>();
+builder.Services.AddTransient<IManagerRouterHelper, ManagerRouterHelper>();
+builder.Services.AddTransient<IManagerUserHelper, ManagerUserHelper>();
+builder.Services.AddTransient<IProductHelper, ProductHelper>();
+builder.Services.AddTransient<IRegisterHelper, RegisterHelper>();
 // ÅçÃÒJWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

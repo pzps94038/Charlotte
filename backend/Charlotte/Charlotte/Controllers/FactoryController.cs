@@ -16,6 +16,12 @@ namespace Charlotte.Controllers
     [Authorize]
     public class FactoryController : ControllerBase
     {
+        private readonly IFactoryHelper _factoryHelper;
+        public FactoryController(IFactoryHelper helper) 
+        {
+            _factoryHelper = helper;
+        }
+
         /// <summary>
         /// 取得多個廠商資料
         /// </summary>
@@ -26,7 +32,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<List<FactoryVModel>>();
             try
             {
-                result.data = await FactoryHelper.GetFactorys();
+                result.data = await _factoryHelper.GetFactorys();
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.Success);
 
@@ -51,7 +57,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<FactoryVModel>();
             try
             {
-                result.data = await FactoryHelper.GetFactory(factoryId);
+                result.data = await _factoryHelper.GetFactory(factoryId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.Success);
 
@@ -76,7 +82,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await FactoryHelper.CreateFactory(req.factoryName);
+                await _factoryHelper.CreateFactory(req.factoryName);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.CreateSuccess);
 
@@ -102,7 +108,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await FactoryHelper.ModifyFactory(factoryId, req.factoryName);
+                await _factoryHelper.ModifyFactory(factoryId, req.factoryName);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.ModifySuccess);
 
@@ -127,7 +133,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await FactoryHelper.DeleteFactory(factoryId);
+                await _factoryHelper.DeleteFactory(factoryId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.DeleteSuccess);
 
@@ -152,7 +158,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await FactoryHelper.BatchDeleteFactory(rq);
+                await _factoryHelper.BatchDeleteFactory(rq);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumHelper.GetDescription(EnumResult.DeleteSuccess);
 

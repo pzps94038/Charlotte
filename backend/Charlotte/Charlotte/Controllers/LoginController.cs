@@ -12,6 +12,12 @@ namespace Charlotte.Controllers
     [Route("api/[controller]")]
     public class LoginController : ControllerBase
     {
+        private readonly ILoginHelper _loginHelper;
+        public LoginController(ILoginHelper helper)
+        {
+            _loginHelper = helper;
+        }
+
         /// <summary>
         /// 購物平台登入
         /// </summary>
@@ -23,7 +29,7 @@ namespace Charlotte.Controllers
             ResultModel<Token> result = new ResultModel<Token>();
             try
             {
-                (string message , Token token) =  await LoginHelper.Login(req);
+                (string message , Token token) =  await _loginHelper.Login(req);
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;

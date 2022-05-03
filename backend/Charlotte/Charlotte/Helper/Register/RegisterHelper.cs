@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Charlotte.Helper.Register
 {
-    public static class RegisterHelper
+    public class RegisterHelper: IRegisterHelper
     {
-        public static async Task<string> Register(RegisterModel req) 
+        public async Task<string> Register(RegisterModel req) 
         {
             string message = "";
             using (CharlotteContext db = new CharlotteContext()) 

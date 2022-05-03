@@ -8,9 +8,9 @@ using static Charlotte.CustomizeException.CustomizeException;
 
 namespace Charlotte.Helper.ManagerRefreshToken
 {
-    public static class ManagerRefreshTokenHelper
+    public class ManagerRefreshTokenHelper: IManagerRefreshTokenHelper
     {
-        public static async Task<Token> RefreshToken(RefreshToken req) 
+        public async Task<Token> RefreshToken(RefreshToken req) 
         {
             using (var db = new CharlotteContext())
             {
@@ -37,7 +37,7 @@ namespace Charlotte.Helper.ManagerRefreshToken
         /// <param name="transaction">交易範圍</param>
         /// <param name="userMain">使用者資訊</param>
         /// <param name="refreshToken">refreshToken</param>
-        private static void CreateRefreshTokenLog(CharlotteContext db, int userId, string refreshToken)
+        private void CreateRefreshTokenLog(CharlotteContext db, int userId, string refreshToken)
         {
             string refreshToenExp = GetAppSettingsHelper.GetAppSettingsValue("JWT", "RefreshToenExpirationDate");
             var data = new ManagerRefreshTokenLog();

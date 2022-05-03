@@ -8,13 +8,13 @@ using static Charlotte.CustomizeException.CustomizeException;
 
 namespace Charlotte.Helper.Factory
 {
-    public static class FactoryHelper
+    public class FactoryHelper: IFactoryHelper
     {
         /// <summary>
         /// 取得所有廠商資料
         /// </summary>
         /// <returns></returns>
-        public static async Task<List<FactoryVModel>> GetFactorys() 
+        public async Task<List<FactoryVModel>> GetFactorys() 
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr))
@@ -34,7 +34,7 @@ namespace Charlotte.Helper.Factory
         /// 取得單個廠商資料
         /// </summary>
         /// <returns></returns>
-        public static async Task<FactoryVModel> GetFactory(int factoryId)
+        public async Task<FactoryVModel> GetFactory(int factoryId)
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr))
@@ -56,7 +56,7 @@ namespace Charlotte.Helper.Factory
         /// </summary>
         /// <param name="factoryId"></param>
         /// <returns></returns>
-        public static async Task CreateFactory(string factoryName)
+        public async Task CreateFactory(string factoryName)
         {
             using (var db = new CharlotteContext()) 
             {
@@ -73,7 +73,7 @@ namespace Charlotte.Helper.Factory
         /// </summary>
         /// <param name="factoryId"></param>
         /// <returns></returns>
-        public static async Task ModifyFactory(int factoryId, string factoryName)
+        public async Task ModifyFactory(int factoryId, string factoryName)
         {
             using (var db = new CharlotteContext())
             {
@@ -90,7 +90,7 @@ namespace Charlotte.Helper.Factory
         /// <param name="factoryId">廠商Id</param>
         /// <returns></returns>
 
-        public static async Task DeleteFactory(int factoryId) 
+        public async Task DeleteFactory(int factoryId) 
         {
             using (var db = new CharlotteContext())
             {
@@ -105,7 +105,7 @@ namespace Charlotte.Helper.Factory
         /// </summary>
         /// <param name="factorysId">多個廠商Id</param>
         /// <returns></returns>
-        public static async Task BatchDeleteFactory(List<int> factorysId)
+        public async Task BatchDeleteFactory(List<int> factorysId)
         {
             using (var db = new CharlotteContext())
             {

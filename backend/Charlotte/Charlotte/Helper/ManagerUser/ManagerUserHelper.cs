@@ -11,9 +11,9 @@ using static Charlotte.CustomizeException.CustomizeException;
 
 namespace Charlotte.Helper.ManagerUser
 {
-    public static class ManagerUserHelper
+    public class ManagerUserHelper: IManagerUserHelper
     {
-        public static async Task CreateManagerUser(CreateManagerUserModel req) 
+        public async Task CreateManagerUser(CreateManagerUserModel req) 
         {
             using (var db = new CharlotteContext()) 
             {
@@ -31,7 +31,7 @@ namespace Charlotte.Helper.ManagerUser
                 await db.SaveChangesAsync();
             }
         }
-        public static async Task<ManagerUserVModel> GetManagerUser(int managerUserId) 
+        public async Task<ManagerUserVModel> GetManagerUser(int managerUserId) 
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr)) 
@@ -43,7 +43,7 @@ namespace Charlotte.Helper.ManagerUser
                 return await con.QueryFirstAsync<ManagerUserVModel>(sqlStr, new { ManagerUserId = managerUserId });
             }
         }
-        public static async Task<List<ManagerUsersVModel>> GetManagerUsers()
+        public async Task<List<ManagerUsersVModel>> GetManagerUsers()
         {
             string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr))
@@ -57,7 +57,7 @@ namespace Charlotte.Helper.ManagerUser
                 return data.ToList();
             }
         }
-        public static async Task ModifyManagerUser(int managerUserId, ModifyManagerUserModel req) 
+        public async Task ModifyManagerUser(int managerUserId, ModifyManagerUserModel req) 
         {
             using (var db = new CharlotteContext())
             {
@@ -75,7 +75,7 @@ namespace Charlotte.Helper.ManagerUser
             }
         }
 
-        public static async Task DeleteManagerUser(int managerUserId)
+        public async Task DeleteManagerUser(int managerUserId)
         {
             using (var db = new CharlotteContext())
             {
@@ -85,7 +85,7 @@ namespace Charlotte.Helper.ManagerUser
             }
         }
 
-        public static async Task BatchDeleteManagerUser(List<int> req)
+        public async Task BatchDeleteManagerUser(List<int> req)
         {
             using (var db = new CharlotteContext())
             {
@@ -95,7 +95,7 @@ namespace Charlotte.Helper.ManagerUser
             }
         }
 
-        public static async Task<string> ModifyManagerUserPassword(int managerUserId, ModifyManagerUserPassWordModel req) 
+        public async Task<string> ModifyManagerUserPassword(int managerUserId, ModifyManagerUserPassWordModel req) 
         {
             string result = "";
             using (var db = new CharlotteContext())
