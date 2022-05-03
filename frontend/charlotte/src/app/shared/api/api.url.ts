@@ -7,4 +7,5 @@ export class ApiUrl{
   static user: string = this.apiUrl + 'ManagerUser'
   static router: string = this.apiUrl + 'ManagerRouter'
   static menu: string = this.apiUrl + 'ManagerMenu'
+  static refreshToken: string = this.apiUrl + 'ManagerRefreshToken'
 }

@@ -18,7 +18,6 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\obj\Re
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\bin\Release\net6.0\Charlotte.Database.deps.json
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\bin\Release\net6.0\Charlotte.Database.runtimeconfig.json
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\bin\Release\net6.0\Charlotte.Database.dll
-C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\bin\Release\net6.0\ref\Charlotte.Database.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\bin\Release\net6.0\Charlotte.Database.pdb
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\bin\Release\net6.0\Charlotte.Services.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\bin\Release\net6.0\Charlotte.Services.pdb
@@ -32,3 +31,4 @@ C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\obj\Rel
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\obj\Release\net6.0\ref\Charlotte.Database.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\obj\Release\net6.0\Charlotte.Database.pdb
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\obj\Release\net6.0\Charlotte.Database.genruntimeconfig.cache
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Database\obj\Release\net6.0\refint\Charlotte.Database.dll

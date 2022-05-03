@@ -29,6 +29,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { CheckBoxDialogComponent } from './dialog/check-box-dialog/check-box-dialog.component';
 import { ProgressBarComponent } from './component/progress-bar/progress-bar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations:[
     DataTableComponent,
@@ -79,7 +80,8 @@ import { ProgressBarComponent } from './component/progress-bar/progress-bar.comp
     MatPaginatorModule,
     DataTableComponent,
     FormDialogComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    MatSnackBarModule
   ]
 })
 export class SharedModule { }

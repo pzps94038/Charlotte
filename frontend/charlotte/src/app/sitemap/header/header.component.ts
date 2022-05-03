@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { UserService } from 'src/app/shared/api/user/user.service';
 import { UserInfoService } from 'src/app/shared/service/userInfo/userInfo.service';
 import { ApiService } from 'src/app/shared/api/api.service';
+import { LogoutService } from 'src/app/shared/service/logout/logout.service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnDestroy{
     private sideNavService: SideNavService,
     private userService: UserService,
     private userInfoService: UserInfoService,
-    private apiService: ApiService
+    private logoutService: LogoutService
   ) { }
 
   ngOnDestroy(): void {
@@ -50,8 +51,7 @@ export class HeaderComponent implements OnDestroy{
         }).pipe(
           takeUntil(this.destroy$)
         )
-        localStorage.clear()
-        this.router.navigate(['/login'])
+        this.logoutService.logout()
     })
   }
 

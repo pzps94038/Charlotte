@@ -4,6 +4,7 @@ using Charlotte.Model;
 using Charlotte.Model.ManagerRole;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerRole;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -12,6 +13,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ManagerRoleController : ControllerBase
     {
         /// <summary>

@@ -81,7 +81,6 @@ C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Charlotte.deps.json
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Charlotte.runtimeconfig.json
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Charlotte.dll
-C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\ref\Charlotte.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Charlotte.pdb
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Dapper.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Humanizer.dll
@@ -150,6 +149,4 @@ C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\ref\Charlotte.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\Charlotte.pdb
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\Charlotte.genruntimeconfig.cache
-C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\EntityFramework.SqlServer.dll
-C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\EntityFramework.dll
-C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\System.CodeDom.dll
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\refint\Charlotte.dll

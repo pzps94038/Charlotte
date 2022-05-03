@@ -8,5 +8,10 @@ namespace Charlotte.CustomizeException
         {
             public NotFoundException() :base("找不到資料"){}
         }
+
+        public class TokenExpiredException : Exception
+        {
+            public TokenExpiredException() : base("Token過期") { }
+        }
     }
 }

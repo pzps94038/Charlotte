@@ -12,6 +12,7 @@ import { HeaderComponent } from './sitemap/header/header.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { SideNavComponent } from './sitemap/side-nav/side-nav.component';
 import { ProgressBarComponent } from './shared/component/progress-bar/progress-bar.component';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -30,7 +31,11 @@ import { ProgressBarComponent } from './shared/component/progress-bar/progress-b
     LayoutModule,
     SharedModule,
   ],
-  providers: [Title, { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
+  providers: [
+    Title,
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500} }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

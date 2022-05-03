@@ -12,7 +12,6 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\obj\Re
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\obj\Release\net6.0\ref\Charlotte.Services.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\bin\Release\net6.0\Charlotte.Services.deps.json
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\bin\Release\net6.0\Charlotte.Services.dll
-C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\bin\Release\net6.0\ref\Charlotte.Services.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\bin\Release\net6.0\Charlotte.Services.pdb
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\obj\Release\net6.0\Charlotte.Services.csproj.AssemblyReference.cache
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\obj\Release\net6.0\Charlotte.Services.GeneratedMSBuildEditorConfig.editorconfig
@@ -22,3 +21,4 @@ C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\obj\Rel
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\obj\Release\net6.0\Charlotte.Services.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\obj\Release\net6.0\ref\Charlotte.Services.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\obj\Release\net6.0\Charlotte.Services.pdb
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\obj\Release\net6.0\refint\Charlotte.Services.dll
