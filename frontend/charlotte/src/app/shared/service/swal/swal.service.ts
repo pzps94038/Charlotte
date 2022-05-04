@@ -6,7 +6,7 @@ import { SwalModel } from './swal.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class SwalService<T> {
+export class SwalService<T = null> {
 
   alert(options: SwalModel): Observable<SweetAlertResult<T>>{
     const config = {

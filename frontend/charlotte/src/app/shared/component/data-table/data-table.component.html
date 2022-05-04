@@ -66,14 +66,6 @@
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
-<!-- 回來資料為空 -->
-<table class="mx-auto data-table bg-white">
-  <tr *ngIf="!dataSource.data.length">
-    <td class="text-center" [attr.colspan]="displayedColumns.length">
-      <h1 class="text-danger py-5">沒有任何資料</h1>
-    </td>
-  </tr>
-</table>
   <!-- table pagination -->
 <mat-paginator #paginator color="primary" [pageSizeOptions]="[10, 15, 20]"  class="mx-auto paginator" showFirstLastButtons></mat-paginator>
 
