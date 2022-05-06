@@ -1,3 +1,11 @@
-:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  background-color: #ffffef;
+:host ::ng-deep mat-form-field .mat-form-field-outline-start {
+  background-color: #ffffef !important;
+}
+
+:host ::ng-deep mat-form-field .mat-form-field-outline-gap {
+  background-color: #ffffef !important;
+}
+
+:host ::ng-deep mat-form-field .mat-form-field-outline-end {
+  background-color: #ffffef !important;
 }

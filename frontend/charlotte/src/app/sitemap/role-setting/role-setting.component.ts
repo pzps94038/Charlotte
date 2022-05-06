@@ -128,42 +128,24 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, In
   }
 
   delete(row: GetRoleResult): void {
-    this.swalService.alert({
-      text: '確定要刪除這筆資料嗎?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '確認',
-      cancelButtonText: '取消'
-    }).pipe(
-        filter(data=> data.isConfirmed),
-        concatMap(()=> this.roleService.deleteRole(row.roleId)),
-        filter(res=> this.apiService.judgeSuccess(res, true)),
-        takeUntil(this.destroy$)
-      ).subscribe(()=>{
-        this.refresh()
-      })
+    this.swalService.delete().pipe(
+      concatMap(()=> this.roleService.deleteRole(row.roleId)),
+      filter(res=> this.apiService.judgeSuccess(res, true)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.refresh()
+    })
   }
 
   multipleDelete(rows: GetRoleResult[]): void {
-    this.swalService.alert({
-      text: `確定要刪除這${rows.length}筆資料嗎?`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '確認',
-      cancelButtonText: '取消'
-    }).pipe(
-        filter(data=> data.isConfirmed),
-        map(()=>{
-          let deleteArr : number[] = []
-          for(let item of rows)deleteArr.push(item.roleId)
-          return deleteArr
-        }),
-        concatMap((deleteArr)=>this.roleService.batchDeleteRole(deleteArr)),
-        filter(res=> this.apiService.judgeSuccess(res)),
-        takeUntil(this.destroy$)
-      ).subscribe(()=>{
-          this.refresh()
-        })
+    this.swalService.multipleDelete(rows).pipe(
+      map(()=> rows.map(a=> a.roleId)),
+      concatMap((deleteArr)=>this.roleService.batchDeleteRole(deleteArr)),
+      filter(res=> this.apiService.judgeSuccess(res)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.refresh()
+    })
   }
 
   openAuthDialog(row: GetRoleResult){

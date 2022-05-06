@@ -8,6 +8,7 @@ import { FactoryService } from 'src/app/shared/api/factory/factory.service';
 import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { SharedService } from 'src/app/shared/service/shared.service';
+import { SwalService } from 'src/app/shared/service/swal/swal.service';
 
 @Component({
   selector: 'app-factory-setting',
@@ -24,7 +25,8 @@ export class FactorySettingComponent implements OnInit, OnDestroy, InitDataTable
     private factoryService : FactoryService,
     private dialog: MatDialog,
     private sharedService : SharedService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private swalService: SwalService
   )
   {
     this.dataList$ = this.getFactorys()
@@ -123,12 +125,19 @@ export class FactorySettingComponent implements OnInit, OnDestroy, InitDataTable
       takeUntil(this.destroy$)
     ).subscribe(()=> this.refresh())
   }
+
   delete(row: Factory): void {
-    this.factoryService.deleteFactory(row.factoryId).pipe(
-      filter(res=> this.apiService.judgeSuccess(res, true)),
+    this.swalService.delete().pipe(
+      concatMap(()=> this.factoryService.deleteFactory(row.factoryId)),
+      filter(res=> this.apiService.judgeSuccess(res, true))
     ).subscribe(()=> this.refresh())
   }
+
   multipleDelete(rows: Factory[]): void {
-    throw new Error('Method not implemented.');
+    this.swalService.multipleDelete(rows).pipe(
+      map(()=> rows.map(a=> a.factoryId)),
+      concatMap((factoryIds)=> this.factoryService.batchDeleteFactory(factoryIds)),
+      filter(res=> this.apiService.judgeSuccess(res, true))
+    )
   }
 }

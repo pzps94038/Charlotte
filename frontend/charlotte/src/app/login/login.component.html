@@ -2,8 +2,8 @@
   <div class="d-flex justify-content-center flex-wrap mt-5 mx-auto " style="max-width:300px">
     <img src="../../assets/logo.png" alt="logo" class="img-fluid" style="max-width: 100px">
     <h1 class="fs-1 mt-5">Charlotte</h1>
-    <form [formGroup]="form" (ngSubmit)="login()"  class="bg-light border d-flex flex-wrap justify-content-center" style="border-radius:25px;">
-      <h2 class="mt-3 font-weight-bold" style="font-weight: bold">後台登入</h2>
+    <form [formGroup]="form" (ngSubmit)="login()"  class="border d-flex flex-wrap justify-content-center" style="border-radius:25px; background: #5D4037">
+      <h2 class="mt-3 font-weight-bold text-light" style="font-weight: bold">後台登入</h2>
       <mat-form-field appearance="outline" class="col-10 ">
         <mat-label><mat-icon matSuffix>person</mat-icon>帳號</mat-label>
         <input matInput placeholder="請輸入帳號" formControlName="account">

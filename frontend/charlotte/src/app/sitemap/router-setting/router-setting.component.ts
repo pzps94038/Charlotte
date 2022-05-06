@@ -24,7 +24,7 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
   (
     private routerService: RouterService,
     private dialog: MatDialog,
-    private swalService: SwalService<null>,
+    private swalService: SwalService,
     private apiService: ApiService,
     private sharedService: SharedService
   )
@@ -167,13 +167,7 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
 
   /** 刪除路由 */
   delete(row :Router): void {
-    this.swalService.alert({
-      text: '確定要刪除這筆資料嗎?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '確認',
-      cancelButtonText: '取消'
-    }).pipe(
+    this.swalService.delete().pipe(
         filter(data=> data.isConfirmed),
         concatMap(()=> this.routerService.deleteRouter(row.routerId)),
         filter(res=> this.apiService.judgeSuccess(res, true)),
@@ -185,19 +179,9 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
 
   /** 批次刪除路由 */
   multipleDelete(rows: Router[]): void {
-    this.swalService.alert({
-      text: `確定要刪除這${rows.length}筆資料嗎?`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '確認',
-      cancelButtonText: '取消'
-    }).pipe(
-      filter(data=> data.isConfirmed),
-      map(()=>{
-        let deleteArr : number[] = []
-        for(let item of rows)deleteArr.push(item.routerId)
-        return deleteArr
-      }),
+    this.swalService.multipleDelete(rows).pipe
+    (
+      map(()=> rows.map(a=> a.routerId)),
       concatMap((deleteArr)=>this.routerService.batchDeleteRouter(deleteArr)),
       filter(res=> this.apiService.judgeSuccess(res, true)),
       takeUntil(this.destroy$)

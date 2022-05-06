@@ -31,4 +31,11 @@ export class FactoryService {
   deleteFactory(factoryId: number): Observable<ResultMessage>{
     return this.http.delete<ResultMessage>(`${ApiUrl.factory}\\${factoryId}`)
   }
+
+  /** 批次刪除廠商 */
+  batchDeleteFactory(req: number[]): Observable<ResultMessage>{
+    return this.http.delete<ResultMessage>(ApiUrl.factory,{
+      body: req
+    })
+  }
 }
