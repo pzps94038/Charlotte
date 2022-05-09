@@ -75,7 +75,7 @@ namespace Charlotte.Helper.ManagerLogin
         /// <returns>是否成功登入</returns>
         private bool CreateLoginLog(SqlConnection con, DbTransaction transaction, ManagerMain managerMain, string password)
         {
-            string shaPwd = SHA256Helper.SHA256Encrypt(password);
+            string shaPwd = EncryptHelper.SHA256Encrypt(password);
             bool flag = managerMain.Password == shaPwd;
             string sqlStr = @"INSERT INTO ManagerLoginLog
                             (ManagerUserId, LoginTime, Flag)

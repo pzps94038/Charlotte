@@ -3,14 +3,14 @@ using System.Reflection;
 
 namespace Charlotte.Services
 {
-    public static class EnumHelper
+    public class EnumHelper
     {
         /// <summary>
         /// 取列舉描述
         /// </summary>
         /// <param name="enumValue"></param>
         /// <returns></returns>
-        public static string GetDescription(this Enum enumValue)
+        public static string GetDescription(Enum enumValue)
         {
             return enumValue.GetType()
                        .GetMember(enumValue.ToString())

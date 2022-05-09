@@ -1,6 +1,7 @@
 ﻿using Charlotte.DataBase.DbContextModel;
 using Charlotte.DataBase.Model;
 using Charlotte.Model.Register;
+using Charlotte.Services;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +18,7 @@ namespace Charlotte.Helper.Register
                 if (userMain == null)
                 {
                     UserMain data = req.Adapt<UserMain>();
-                    data.Password = SHA256Helper.SHA256Encrypt(req.Password);
+                    data.Password = EncryptHelper.SHA256Encrypt(req.Password);
                     data.Flag = "Y";
                     data.CreatedDate = DateTime.Now;
                     await db.UserMain.AddAsync(data);

@@ -2,7 +2,7 @@
 
 namespace Charlotte.Services
 {
-    public static class GetAppSettingsHelper
+    public class GetAppSettingsHelper
     {
         /// <summary>
         /// 取AppSetting連線字串

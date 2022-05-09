@@ -3,7 +3,7 @@ using NLog;
 
 namespace Charlotte.Services
 {
-    public static class LoggerHelper
+    public class LoggerHelper
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 

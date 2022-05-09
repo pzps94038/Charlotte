@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Charlotte.Helper
 {
-    public static class JwtHelper
+    public class JwtHelper
     {
         /// <summary>
         /// 產生Token

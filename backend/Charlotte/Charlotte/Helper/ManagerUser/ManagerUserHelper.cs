@@ -26,7 +26,7 @@ namespace Charlotte.Helper.ManagerUser
                 user.Flag = req.flag ? "Y" : "N";
                 user.CreatedDate = DateTime.Now;
                 user.Birthday = req.birthday;
-                user.Password = SHA256Helper.SHA256Encrypt(req.password);
+                user.Password = EncryptHelper.SHA256Encrypt(req.password);
                 db.ManagerMain.Add(user);
                 await db.SaveChangesAsync();
             }
@@ -62,14 +62,22 @@ namespace Charlotte.Helper.ManagerUser
             using (var db = new CharlotteContext())
             {
                 var data = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == managerUserId);
-                if (req.userName != null) data.UserName = req.userName;
-                if (req.account != null) data.Account = req.account;
-                if (req.password != null) data.Password = SHA256Helper.SHA256Encrypt(req.password);
-                if (req.email != null) data.Email = req.email;
-                if (req.address != null) data.Address = req.address;
-                if (req.birthday != null) data.Birthday = (DateTime)req.birthday;
-                if (req.roleId != null) data.RoleId = (int)req.roleId;
-                if (req.flag != null) data.Flag = (bool)req.flag ? "Y" : "N";
+                if (req.userName != null) 
+                    data.UserName = req.userName;
+                if (req.account != null) 
+                    data.Account = req.account;
+                if (req.password != null) 
+                    data.Password = EncryptHelper.SHA256Encrypt(req.password);
+                if (req.email != null) 
+                    data.Email = req.email;
+                if (req.address != null) 
+                    data.Address = req.address;
+                if (req.birthday != null) 
+                    data.Birthday = (DateTime)req.birthday;
+                if (req.roleId != null) 
+                    data.RoleId = (int)req.roleId;
+                if (req.flag != null) 
+                    data.Flag = (bool)req.flag ? "Y" : "N";
                 data.ModifyDate = DateTime.Now;
                 await db.SaveChangesAsync();
             }
@@ -101,11 +109,11 @@ namespace Charlotte.Helper.ManagerUser
             using (var db = new CharlotteContext())
             {
                 var userData = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == managerUserId);
-                if (userData.Password != SHA256Helper.SHA256Encrypt(req.password))
+                if (userData.Password != EncryptHelper.SHA256Encrypt(req.password))
                     return result = "原密碼輸入錯誤";
                 else 
                 {
-                    userData.Password = SHA256Helper.SHA256Encrypt(req.newPassword);
+                    userData.Password = EncryptHelper.SHA256Encrypt(req.newPassword);
                     userData.ModifyDate = DateTime.Now;
                     await db.SaveChangesAsync();
                 }
