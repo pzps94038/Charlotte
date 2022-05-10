@@ -1,0 +1,992 @@
+ ====================================================================================================
+ Time：2022-05-09 13:06:30.3596
+ Message：A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - 無法連線，因為目標電腦拒絕連線。) 
+ StackTrace：   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.Login.LoginHelper.Login(LoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\Login\LoginHelper.cs:line 21
+   at Charlotte.Controllers.LoginController.Login(LoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\LoginController.cs:line 32
+ Detail Text：Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - 無法連線，因為目標電腦拒絕連線。)
+ ---> System.ComponentModel.Win32Exception (10061): 無法連線，因為目標電腦拒絕連線。
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.Login.LoginHelper.Login(LoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\Login\LoginHelper.cs:line 21
+   at Charlotte.Controllers.LoginController.Login(LoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\LoginController.cs:line 32
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:10061,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 13:06:30.3596
+ Message：A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - 無法連線，因為目標電腦拒絕連線。) 
+ StackTrace：   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.Login.LoginHelper.Login(LoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\Login\LoginHelper.cs:line 21
+   at Charlotte.Controllers.LoginController.Login(LoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\LoginController.cs:line 32
+ Detail Text：Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - 無法連線，因為目標電腦拒絕連線。)
+ ---> System.ComponentModel.Win32Exception (10061): 無法連線，因為目標電腦拒絕連線。
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Charlotte.Helper.Login.LoginHelper.Login(LoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\Login\LoginHelper.cs:line 21
+   at Charlotte.Controllers.LoginController.Login(LoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\LoginController.cs:line 32
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:10061,State:0,Class:20 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:27:24.3379
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:27:24.3379
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:30:01.2817
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:30:01.2817
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:31:34.1504
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:31:34.1504
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(String str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 35 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:34:37.8252
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:34:37.8252
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:35:29.5205
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:35:29.5205
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:36:28.3449
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:36:28.3449
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:37:12.0036
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:37:12.0036
+ Message：Specified key is not a valid size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified key is not a valid size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 71
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:46:29.4847
+ Message：Unexpected character encountered while parsing value: U. Path '', line 0, position 0. 
+ StackTrace：   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: U. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:46:29.4847
+ Message：Unexpected character encountered while parsing value: U. Path '', line 0, position 0. 
+ StackTrace：   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: U. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:47:47.9387
+ Message：Unexpected character encountered while parsing value: U. Path '', line 0, position 0. 
+ StackTrace：   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: U. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:47:47.9387
+ Message：Unexpected character encountered while parsing value: U. Path '', line 0, position 0. 
+ StackTrace：   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: U. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:54:10.5409
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:54:10.5409
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:55:43.8534
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:55:43.8534
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:56:15.8287
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:56:15.8287
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:58:11.7164
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 15:58:11.7164
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:05:06.9934
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:05:06.9934
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:05:51.5479
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:05:51.5479
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:06:01.1028
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:06:01.1028
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:06:41.5721
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:06:41.5721
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:10:15.6255
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 81
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 81
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:10:15.6255
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 81
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 81
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:10:26.2242
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 81
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 81
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:10:26.2242
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 81
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 81
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:14:50.3808
+ Message：Object reference not set to an instance of an object. 
+ StackTrace：   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40
+ Detail Text：System.NullReferenceException: Object reference not set to an instance of an object.
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:14:50.3808
+ Message：Object reference not set to an instance of an object. 
+ StackTrace：   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40
+ Detail Text：System.NullReferenceException: Object reference not set to an instance of an object.
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:17:50.3580
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:17:50.3580
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 80
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:19:14.3212
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:19:14.3212
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:23:07.7481
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:23:07.7481
+ Message：解密失敗 
+ StackTrace：   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Exception: 解密失敗
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 84
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:30:26.3692
+ Message：Stream does not support writing. 
+ StackTrace：   at System.Security.Cryptography.CryptoStream.CheckWriteArguments(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Security.Cryptography.CryptoStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 78
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.NotSupportedException: Stream does not support writing.
+   at System.Security.Cryptography.CryptoStream.CheckWriteArguments(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Security.Cryptography.CryptoStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 78
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:30:26.3692
+ Message：Stream does not support writing. 
+ StackTrace：   at System.Security.Cryptography.CryptoStream.CheckWriteArguments(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Security.Cryptography.CryptoStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 78
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.NotSupportedException: Stream does not support writing.
+   at System.Security.Cryptography.CryptoStream.CheckWriteArguments(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Security.Cryptography.CryptoStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 78
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:38:45.4400
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 86
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 86
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:38:45.4400
+ Message：The input data is not a complete block. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 86
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: The input data is not a complete block.
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 86
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:47:44.8565
+ Message：Object reference not set to an instance of an object. 
+ StackTrace：   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 44
+ Detail Text：System.NullReferenceException: Object reference not set to an instance of an object.
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 44 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:47:44.8565
+ Message：Object reference not set to an instance of an object. 
+ StackTrace：   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 44
+ Detail Text：System.NullReferenceException: Object reference not set to an instance of an object.
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 44 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:48:02.9117
+ Message：Object reference not set to an instance of an object. 
+ StackTrace：   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 44
+ Detail Text：System.NullReferenceException: Object reference not set to an instance of an object.
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 44 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:48:02.9117
+ Message：Object reference not set to an instance of an object. 
+ StackTrace：   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 44
+ Detail Text：System.NullReferenceException: Object reference not set to an instance of an object.
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 26
+   at Charlotte.Helper.ManagerLogin.ManagerLoginHelper.Login(ManagerLoginModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerLogin\ManagerLoginHelper.cs:line 49
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 44 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:59:51.5209
+ Message：Unexpected character encountered while parsing value: s. Path '', line 0, position 0. 
+ StackTrace：   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 82
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40
+ Detail Text：Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: s. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 82
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-09 16:59:51.5209
+ Message：Unexpected character encountered while parsing value: s. Path '', line 0, position 0. 
+ StackTrace：   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 82
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40
+ Detail Text：Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: s. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 82
+   at Charlotte.Controllers.ManagerLoginController.Login(temp str) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40 
+ ====================================================================================================

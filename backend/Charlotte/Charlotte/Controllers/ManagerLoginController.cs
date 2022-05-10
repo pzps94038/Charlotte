@@ -2,10 +2,12 @@
 using Charlotte.Helper.ManagerLogin;
 using Charlotte.Model;
 using Charlotte.Model.ManagerLogin;
+using Charlotte.Model.Shared;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerLogin;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Net;
 
 namespace Charlotte.Controllers
@@ -27,12 +29,16 @@ namespace Charlotte.Controllers
         /// <returns></returns>
         [HttpPost]
         
-        public async Task<ResultModel<ManagerLoginVModel>> Login(ManagerLoginModel req)
+        public async Task<ResultModel<ManagerLoginVModel>> Login(RequestModel req)
         {
+
             var result = new ResultModel<ManagerLoginVModel>();
             try
             {
-                (string message, ManagerLoginVModel data) = await _loginHelper.Login(req);
+                string key = GetAppSettingsHelper.GetAppSettingsValue("AES", "Key");
+                string iv = GetAppSettingsHelper.GetAppSettingsValue("AES", "IV");
+                var reqData = EncryptHelper.AESDecrypt<ManagerLoginModel>(req.cipherText, key, iv);
+                (string message, ManagerLoginVModel data) = await _loginHelper.Login(reqData);
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;

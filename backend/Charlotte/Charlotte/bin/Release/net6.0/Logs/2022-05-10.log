@@ -1,0 +1,122 @@
+ ====================================================================================================
+ Time：2022-05-10 10:30:30.1984
+ Message：Specified initialization vector (IV) does not match the block size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_IV(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 128
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified initialization vector (IV) does not match the block size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_IV(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 128
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-10 10:30:30.1984
+ Message：Specified initialization vector (IV) does not match the block size for this algorithm. 
+ StackTrace：   at System.Security.Cryptography.SymmetricAlgorithm.set_IV(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 128
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39
+ Detail Text：System.Security.Cryptography.CryptographicException: Specified initialization vector (IV) does not match the block size for this algorithm.
+   at System.Security.Cryptography.SymmetricAlgorithm.set_IV(Byte[] value)
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 128
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 39 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-10 10:41:42.9857
+ Message：Padding is invalid and cannot be removed. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.GetPaddingLength(ReadOnlySpan`1 block)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 137
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40
+ Detail Text：System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at Internal.Cryptography.UniversalCryptoDecryptor.GetPaddingLength(ReadOnlySpan`1 block)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 137
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-10 10:41:42.9857
+ Message：Padding is invalid and cannot be removed. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.GetPaddingLength(ReadOnlySpan`1 block)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 137
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40
+ Detail Text：System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at Internal.Cryptography.UniversalCryptoDecryptor.GetPaddingLength(ReadOnlySpan`1 block)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 137
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-10 10:42:00.2276
+ Message：Padding is invalid and cannot be removed. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.GetPaddingLength(ReadOnlySpan`1 block)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 137
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40
+ Detail Text：System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at Internal.Cryptography.UniversalCryptoDecryptor.GetPaddingLength(ReadOnlySpan`1 block)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 137
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-05-10 10:42:00.2276
+ Message：Padding is invalid and cannot be removed. 
+ StackTrace：   at Internal.Cryptography.UniversalCryptoDecryptor.GetPaddingLength(ReadOnlySpan`1 block)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 137
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40
+ Detail Text：System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at Internal.Cryptography.UniversalCryptoDecryptor.GetPaddingLength(ReadOnlySpan`1 block)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(ReadOnlySpan`1 inputBuffer, Span`1 outputBuffer)
+   at Internal.Cryptography.UniversalCryptoDecryptor.UncheckedTransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at Internal.Cryptography.UniversalCryptoTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.ReadAsyncCore(Memory`1 buffer, CancellationToken cancellationToken, Boolean useAsync)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at Charlotte.Services.EncryptHelper.AESDecrypt[T](String cipherText, String key, String iv) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte.Services\EncryptHelper.cs:line 137
+   at Charlotte.Controllers.ManagerLoginController.Login(RequestModel req) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerLoginController.cs:line 40 
+ ====================================================================================================

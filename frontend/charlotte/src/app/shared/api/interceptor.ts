@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { catchError, finalize, map, Observable, concatMap, throwError, tap } from 'rxjs';
+import { EncryptService } from '../service/encrypt/encrypt.service';
 import { LogoutService } from '../service/logout/logout.service';
 import { TokenService } from '../service/token/token.service';
 import { UserInfoService } from '../service/userInfo/userInfo.service';
@@ -23,7 +24,8 @@ export class Interceptor implements HttpInterceptor{
     private tokenApiService: TokenApiService,
     private userInfoService: UserInfoService,
     private snackBar: MatSnackBar,
-    private logoutService: LogoutService
+    private logoutService: LogoutService,
+    private encryptService: EncryptService
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -35,7 +37,11 @@ export class Interceptor implements HttpInterceptor{
       'Access-Control-Allow-Origin': ApiUrl.baseUrl,
       'Authorization': `Bearer ${accessToken}`
     })
-    const modifyReq = req.clone({ headers })
+    let modifyReq: any;
+    if(req.body)
+      modifyReq = req.clone({ headers, body: { cipherText: this.encryptService.AESEncrypt(JSON.stringify(req.body))} })
+    else
+      modifyReq = req.clone({ headers })
     return next.handle(modifyReq).pipe(
       catchError((err: HttpErrorResponse)=>{
         if(err.status === 401)
