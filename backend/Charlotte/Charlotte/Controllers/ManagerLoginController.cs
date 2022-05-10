@@ -28,17 +28,13 @@ namespace Charlotte.Controllers
         /// <param name="req"></param>
         /// <returns></returns>
         [HttpPost]
-        
-        public async Task<ResultModel<ManagerLoginVModel>> Login(RequestModel req)
+        public async Task<ResultModel<ManagerLoginVModel>> Login(ManagerLoginModel req)
         {
 
             var result = new ResultModel<ManagerLoginVModel>();
             try
             {
-                string key = GetAppSettingsHelper.GetAppSettingsValue("AES", "Key");
-                string iv = GetAppSettingsHelper.GetAppSettingsValue("AES", "IV");
-                var reqData = EncryptHelper.AESDecrypt<ManagerLoginModel>(req.cipherText, key, iv);
-                (string message, ManagerLoginVModel data) = await _loginHelper.Login(reqData);
+                (string message, ManagerLoginVModel data) = await _loginHelper.Login(req);
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;

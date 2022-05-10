@@ -27,19 +27,13 @@ builder.Services.AddCors(options => {
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-// service ª`¤J
-builder.Services.AddTransient<IFactoryHelper, FactoryHelper>();
-builder.Services.AddTransient<ILoginHelper, LoginHelper>();
-builder.Services.AddTransient<IManagerLoginHelper, ManagerLoginHelper>();
-builder.Services.AddTransient<IManagerMenuHelper, ManagerMenuHelper>();
-builder.Services.AddTransient<IManagerRefreshTokenHelper, ManagerRefreshTokenHelper>();
-builder.Services.AddTransient<IManagerRoleHelper, ManagerRoleHelper>();
-builder.Services.AddTransient<IManagerRoleAuthHelper, ManagerRoleAuthHelper>();
-builder.Services.AddTransient<IManagerRouterHelper, ManagerRouterHelper>();
-builder.Services.AddTransient<IManagerUserHelper, ManagerUserHelper>();
-builder.Services.AddTransient<IProductHelper, ProductHelper>();
-builder.Services.AddTransient<IRegisterHelper, RegisterHelper>();
+builder.Services.Scan(scan =>  scan
+        .FromAssemblyOf<Program>() 
+        .AddClasses(classes =>  
+            classes.Where(t => t.Name.EndsWith("Helper", StringComparison.OrdinalIgnoreCase)))
+        .AsImplementedInterfaces()
+        .WithScopedLifetime()
+);
 // ÅçÃÒJWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

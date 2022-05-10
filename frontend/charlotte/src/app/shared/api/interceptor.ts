@@ -37,11 +37,7 @@ export class Interceptor implements HttpInterceptor{
       'Access-Control-Allow-Origin': ApiUrl.baseUrl,
       'Authorization': `Bearer ${accessToken}`
     })
-    let modifyReq: any;
-    if(req.body)
-      modifyReq = req.clone({ headers, body: { cipherText: this.encryptService.AESEncrypt(JSON.stringify(req.body))} })
-    else
-      modifyReq = req.clone({ headers })
+    let modifyReq: HttpRequest<any> = req.clone({ headers })
     return next.handle(modifyReq).pipe(
       catchError((err: HttpErrorResponse)=>{
         if(err.status === 401)
