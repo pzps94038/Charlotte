@@ -1,4 +1,4 @@
-﻿using Charlotte.EnumMessage;
+﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerMenu;
 using Charlotte.Model;
 using Charlotte.Services;
@@ -30,14 +30,14 @@ namespace Charlotte.Controllers
             {
                 result.data = await _menuHelper.GetMenu(userId);
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.Success);
+                result.message = EnumUtils.GetDescription(EnumResult.Success);
 
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.Fail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }

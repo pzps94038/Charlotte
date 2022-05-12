@@ -1,4 +1,4 @@
-﻿using Charlotte.EnumMessage;
+﻿using Charlotte.Enum;
 using Charlotte.Helper.Product;
 using Charlotte.Model;
 using Charlotte.Services;
@@ -35,12 +35,12 @@ namespace Charlotte.Controllers
                 var data = await _productHelper.GetProruct(productId);
                 if (data == null)
                 {
-                    result.message = EnumHelper.GetDescription(EnumResult.NotFound);
+                    result.message = EnumUtils.GetDescription(EnumResult.NotFound);
                     result.code = HttpStatusCode.NotFound;
                 }
                 else 
                 {
-                    result.message = EnumHelper.GetDescription(EnumResult.Success);
+                    result.message = EnumUtils.GetDescription(EnumResult.Success);
                     result.code = HttpStatusCode.OK;
                     result.data = data;
                 }
@@ -49,8 +49,8 @@ namespace Charlotte.Controllers
             catch (Exception ex) 
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.Fail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }
@@ -67,14 +67,14 @@ namespace Charlotte.Controllers
             try
             {
                 result.data = await _productHelper.GetProducts(typeId);
-                result.message = EnumHelper.GetDescription(EnumResult.Success);
+                result.message = EnumUtils.GetDescription(EnumResult.Success);
                 result.code= HttpStatusCode.OK;
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.Fail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }

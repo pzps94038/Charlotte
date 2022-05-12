@@ -1,4 +1,4 @@
-﻿using Charlotte.EnumMessage;
+﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerRefreshToken;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRefreshToken;
@@ -27,14 +27,14 @@ namespace Charlotte.Controllers
             {
                 result.data = await _managerRefreshTokenHelper.RefreshToken(req);
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.CreateSuccess);
+                result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
 
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.CreateFail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.CreateFail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }

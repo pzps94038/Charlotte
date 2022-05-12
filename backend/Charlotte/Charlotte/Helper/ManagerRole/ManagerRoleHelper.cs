@@ -7,6 +7,7 @@ using Charlotte.VModel.ManagerRole;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
 using static Charlotte.CustomizeException.CustomizeException;
+using Charlotte.Enum;
 
 namespace Charlotte.Helper.ManagerRole
 {
@@ -35,7 +36,7 @@ namespace Charlotte.Helper.ManagerRole
         /// <returns></returns>
         public async Task<List<ManagerRoleVModel>> GetRoles()
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();

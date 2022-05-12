@@ -1,4 +1,5 @@
 ﻿using Charlotte.DataBase.DbContextModel;
+using Charlotte.Enum;
 using Charlotte.Model.ManagerRoleAuth;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerRoleRouter;
@@ -71,7 +72,7 @@ namespace Charlotte.Helper.ManagerRoleAuth
 
         public async Task<CheckManagerRoleAuthVModel<bool>> CheckRoleAuth(int userId, string routerPath)
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             CheckManagerRoleAuthVModel<bool> result = new CheckManagerRoleAuthVModel<bool>();
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {

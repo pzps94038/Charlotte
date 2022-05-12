@@ -34,6 +34,7 @@ builder.Services.Scan(scan =>  scan
         .AsImplementedInterfaces()
         .WithScopedLifetime()
 );
+builder.Services.AddScoped<GetAppSettingsUtils>();
 // ÅçÃÒJWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -41,11 +42,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(GetAppSettingsHelper.GetAppSettingsValue("JWT", "Key"))),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(GetAppSettingsUtils.GetAppSettingsValue("JWT", "Key"))),
                     ValidateIssuer = true,
-                    ValidIssuer = GetAppSettingsHelper.GetAppSettingsValue("JWT", "Issuer"),
+                    ValidIssuer = GetAppSettingsUtils.GetAppSettingsValue("JWT", "Issuer"),
                     ValidateAudience = true,
-                    ValidAudience = GetAppSettingsHelper.GetAppSettingsValue("JWT", "Audience"),
+                    ValidAudience = GetAppSettingsUtils.GetAppSettingsValue("JWT", "Audience"),
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero
                 };

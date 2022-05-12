@@ -18,7 +18,7 @@ namespace Charlotte.Helper.Register
                 if (userMain == null)
                 {
                     UserMain data = req.Adapt<UserMain>();
-                    data.Password = EncryptHelper.SHA256Encrypt(req.Password);
+                    data.Password = EncryptUtils.SHA256Encrypt(req.Password);
                     data.Flag = "Y";
                     data.CreatedDate = DateTime.Now;
                     await db.UserMain.AddAsync(data);

@@ -150,3 +150,7 @@ C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\Charlotte.pdb
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\Charlotte.genruntimeconfig.cache
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\obj\Release\net6.0\refint\Charlotte.dll
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Newtonsoft.Json.dll
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Scrutor.dll

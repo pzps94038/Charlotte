@@ -1,5 +1,6 @@
 ﻿using Charlotte.DataBase.DbContextModel;
 using Charlotte.DataBase.Model;
+using Charlotte.Enum;
 using Charlotte.Model.ManagerUser;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerUser;
@@ -26,14 +27,14 @@ namespace Charlotte.Helper.ManagerUser
                 user.Flag = req.flag ? "Y" : "N";
                 user.CreatedDate = DateTime.Now;
                 user.Birthday = req.birthday;
-                user.Password = EncryptHelper.SHA256Encrypt(req.password);
+                user.Password = EncryptUtils.SHA256Encrypt(req.password);
                 db.ManagerMain.Add(user);
                 await db.SaveChangesAsync();
             }
         }
         public async Task<ManagerUserVModel> GetManagerUser(int managerUserId) 
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             using (SqlConnection con = new SqlConnection(sqlConStr)) 
             {
                 await con.OpenAsync();
@@ -45,7 +46,7 @@ namespace Charlotte.Helper.ManagerUser
         }
         public async Task<List<ManagerUsersVModel>> GetManagerUsers()
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();
@@ -67,7 +68,7 @@ namespace Charlotte.Helper.ManagerUser
                 if (req.account != null) 
                     data.Account = req.account;
                 if (req.password != null) 
-                    data.Password = EncryptHelper.SHA256Encrypt(req.password);
+                    data.Password = EncryptUtils.SHA256Encrypt(req.password);
                 if (req.email != null) 
                     data.Email = req.email;
                 if (req.address != null) 
@@ -109,11 +110,11 @@ namespace Charlotte.Helper.ManagerUser
             using (var db = new CharlotteContext())
             {
                 var userData = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == managerUserId);
-                if (userData.Password != EncryptHelper.SHA256Encrypt(req.password))
+                if (userData.Password != EncryptUtils.SHA256Encrypt(req.password))
                     return result = "原密碼輸入錯誤";
                 else 
                 {
-                    userData.Password = EncryptHelper.SHA256Encrypt(req.newPassword);
+                    userData.Password = EncryptUtils.SHA256Encrypt(req.newPassword);
                     userData.ModifyDate = DateTime.Now;
                     await db.SaveChangesAsync();
                 }

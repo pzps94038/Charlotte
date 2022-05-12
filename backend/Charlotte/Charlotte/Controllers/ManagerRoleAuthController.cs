@@ -1,4 +1,4 @@
-﻿using Charlotte.EnumMessage;
+﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerRoleAuth;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRoleAuth;
@@ -29,14 +29,14 @@ namespace Charlotte.Controllers
             {
                 result.data = await _managerAuthRoleHelper.GetManagerRoleRouters(roleId);
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.Success);
+                result.message = EnumUtils.GetDescription(EnumResult.Success);
 
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.Fail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }
@@ -49,14 +49,14 @@ namespace Charlotte.Controllers
             {
                 await _managerAuthRoleHelper.CreateOrUpdateRoleAuth(roleId, req);
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.ModifySuccess);
+                result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
 
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.ModifyFail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.ModifyFail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }
@@ -70,14 +70,14 @@ namespace Charlotte.Controllers
             {
                 result.data = await _managerAuthRoleHelper.CheckRoleAuth(userId, routerPath);
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.Success);
+                result.message = EnumUtils.GetDescription(EnumResult.Success);
 
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.Fail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }

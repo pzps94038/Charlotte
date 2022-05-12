@@ -1,4 +1,5 @@
-﻿using Charlotte.Services;
+﻿using Charlotte.Enum;
+using Charlotte.Services;
 using Charlotte.VModel.ManagerMenu;
 using Dapper;
 using System.Data.SqlClient;
@@ -9,7 +10,7 @@ namespace Charlotte.Helper.ManagerMenu
     {
         public async Task<List<ManagerMenuVModel>> GetMenu(int userId) 
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();

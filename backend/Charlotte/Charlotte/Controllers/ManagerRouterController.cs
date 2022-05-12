@@ -1,5 +1,5 @@
 ﻿using Charlotte.Database.Model;
-using Charlotte.EnumMessage;
+using Charlotte.Enum;
 using Charlotte.Helper.ManagerRouter;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRouter;
@@ -35,13 +35,13 @@ namespace Charlotte.Controllers
             {
                 result.data = await _managerRouterHelper.GetRouters();
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.Success);
+                result.message = EnumUtils.GetDescription(EnumResult.Success);
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.Fail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }
@@ -58,13 +58,13 @@ namespace Charlotte.Controllers
             {
                 await _managerRouterHelper.CreateRouter(rq);
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.CreateSuccess);
+                result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.CreateFail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.CreateFail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }
@@ -83,13 +83,13 @@ namespace Charlotte.Controllers
             {
                 await _managerRouterHelper.ModifyRouter(routerId, rq);
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.ModifySuccess);
+                result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.ModifyFail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.ModifyFail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }
@@ -107,13 +107,13 @@ namespace Charlotte.Controllers
             {
                 await _managerRouterHelper.DeleteRouter(routerId);
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.DeleteSuccess);
+                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.DeleteFail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }
@@ -131,13 +131,13 @@ namespace Charlotte.Controllers
             {
                 await _managerRouterHelper.BatchDeleteRouter(rq);
                 result.code = HttpStatusCode.OK;
-                result.message = EnumHelper.GetDescription(EnumResult.DeleteSuccess);
+                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.DeleteFail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }

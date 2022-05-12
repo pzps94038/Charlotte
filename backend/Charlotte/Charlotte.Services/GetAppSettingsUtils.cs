@@ -2,8 +2,15 @@
 
 namespace Charlotte.Services
 {
-    public class GetAppSettingsHelper
+    public class GetAppSettingsUtils
     {
+        private readonly IConfiguration configruration;
+
+        public GetAppSettingsUtils(IConfiguration configruration)
+        {
+            this.configruration = configruration;
+        }
+
         /// <summary>
         /// 取AppSetting連線字串
         /// </summary>
@@ -30,6 +37,16 @@ namespace Charlotte.Services
                   .AddJsonFile("appsettings.json");
             var config = builder.Build();
             return config[$"{Key}:{childKey}"];
+        }
+
+        /// <summary>
+        /// DI注入取設定
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string GetAppSetting(string key) 
+        {
+            return configruration[key];
         }
     }
 }

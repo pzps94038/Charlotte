@@ -1,5 +1,6 @@
 ﻿using Charlotte.Database.Model;
 using Charlotte.DataBase.DbContextModel;
+using Charlotte.Enum;
 using Charlotte.Model.ManagerRouter;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerRouter;
@@ -18,7 +19,7 @@ namespace Charlotte.Helper.ManagerRouter
         /// <returns>所有路由表</returns>
         public async Task<List<ManagerRouterVModel>> GetRouters()
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();

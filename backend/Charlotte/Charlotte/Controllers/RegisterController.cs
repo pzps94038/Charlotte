@@ -1,4 +1,4 @@
-﻿using Charlotte.EnumMessage;
+﻿using Charlotte.Enum;
 using Charlotte.Helper;
 using Charlotte.Helper.Register;
 using Charlotte.Model;
@@ -35,7 +35,7 @@ namespace Charlotte.Controllers
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;
-                    result.message = EnumHelper.GetDescription(EnumResult.Success);
+                    result.message = EnumUtils.GetDescription(EnumResult.Success);
                 }
                 else 
                 {
@@ -47,8 +47,8 @@ namespace Charlotte.Controllers
             catch (Exception ex)
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.Fail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }

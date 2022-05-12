@@ -24,7 +24,7 @@ namespace Charlotte.DataBase.DbContextModel
         public DbSet<ManagerRefreshTokenLog> ManagerRefreshTokenLog { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder) 
         {
-            var connectionString = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            var connectionString = GetAppSettingsUtils.GetConnectionString("Charlotte");
             optionBuilder.UseSqlServer(connectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

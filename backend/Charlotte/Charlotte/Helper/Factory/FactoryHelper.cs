@@ -16,7 +16,7 @@ namespace Charlotte.Helper.Factory
         /// <returns></returns>
         public async Task<List<FactoryVModel>> GetFactorys() 
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();
@@ -36,7 +36,7 @@ namespace Charlotte.Helper.Factory
         /// <returns></returns>
         public async Task<FactoryVModel> GetFactory(int factoryId)
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();

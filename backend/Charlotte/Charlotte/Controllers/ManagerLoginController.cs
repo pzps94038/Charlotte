@@ -1,4 +1,4 @@
-﻿using Charlotte.EnumMessage;
+﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerLogin;
 using Charlotte.Model;
 using Charlotte.Model.ManagerLogin;
@@ -38,7 +38,7 @@ namespace Charlotte.Controllers
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;
-                    result.message = EnumHelper.GetDescription(EnumResult.Success);
+                    result.message = EnumUtils.GetDescription(EnumResult.Success);
                     result.data = data;
                 }
                 else
@@ -50,8 +50,8 @@ namespace Charlotte.Controllers
             catch (Exception ex) 
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.Fail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
             }
             return result;
         }

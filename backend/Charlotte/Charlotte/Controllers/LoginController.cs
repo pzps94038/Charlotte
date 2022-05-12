@@ -1,4 +1,4 @@
-﻿using Charlotte.EnumMessage;
+﻿using Charlotte.Enum;
 using Charlotte.Helper.Login;
 using Charlotte.Model;
 using Charlotte.Model.Login;
@@ -13,8 +13,10 @@ namespace Charlotte.Controllers
     public class LoginController : ControllerBase
     {
         private readonly ILoginHelper _loginHelper;
-        public LoginController(ILoginHelper helper)
+        private readonly GetAppSettingsUtils _u;
+        public LoginController(ILoginHelper helper, GetAppSettingsUtils uu)
         {
+            _u = uu;
             _loginHelper = helper;
         }
 
@@ -33,7 +35,7 @@ namespace Charlotte.Controllers
                 if (string.IsNullOrEmpty(message))
                 {
                     result.code = HttpStatusCode.OK;
-                    result.message = EnumHelper.GetDescription(EnumResult.Success);
+                    result.message = EnumUtils.GetDescription(EnumResult.Success);
                     result.data = token;
                 }
                 else 
@@ -45,10 +47,18 @@ namespace Charlotte.Controllers
             catch (Exception ex) 
             {
                 result.code = HttpStatusCode.BadRequest;
-                result.message = EnumHelper.GetDescription(EnumResult.Fail);
-                LoggerHelper.Error(ex);
+                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
             }
             return result;
+        }
+
+        [HttpGet]
+        public void test() 
+        {
+            var tx = _u.GetAppSetting("AES:Key");
+            var a = "1";
+            var b = "2";
         }
     }
 }

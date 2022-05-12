@@ -16,12 +16,12 @@ namespace Charlotte.Helper
         /// <returns></returns>
         public static string GenerateToken(List<Claim> claims)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(GetAppSettingsHelper.GetAppSettingsValue("JWT","Key")));
-            string accountTokenExp = GetAppSettingsHelper.GetAppSettingsValue("JWT", "AccountTokenExpirationTime");
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(GetAppSettingsUtils.GetAppSettingsValue("JWT","Key")));
+            string accountTokenExp = GetAppSettingsUtils.GetAppSettingsValue("JWT", "AccountTokenExpirationTime");
             var jwt = new JwtSecurityToken(
                     claims: claims,
-                    issuer: GetAppSettingsHelper.GetAppSettingsValue("JWT", "Issuer"),
-                    audience: GetAppSettingsHelper.GetAppSettingsValue("JWT", "Audience"),
+                    issuer: GetAppSettingsUtils.GetAppSettingsValue("JWT", "Issuer"),
+                    audience: GetAppSettingsUtils.GetAppSettingsValue("JWT", "Audience"),
                     expires: DateTime.Now.AddMinutes(double.Parse(accountTokenExp)),
                     signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256)
                 );

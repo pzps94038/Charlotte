@@ -13,7 +13,7 @@ namespace Charlotte.Helper.Login
         
         public async Task<(string , Token)> Login(LoginModel req) 
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
             string message = "";
             Token token = new Token();
             using (SqlConnection con = new SqlConnection(sqlConStr))
@@ -74,7 +74,7 @@ namespace Charlotte.Helper.Login
         /// <returns>是否成功登入</returns>
         private bool CreateLoginLog(SqlConnection con, DbTransaction transaction, UserMain userMain, string password) 
         {
-            string shaPwd = EncryptHelper.SHA256Encrypt(password);
+            string shaPwd = EncryptUtils.SHA256Encrypt(password);
             bool flag = userMain.Password == shaPwd;
             string sqlStr = @"INSERT INTO LoginLog
                             (UserId, LoginTime, Flag)
@@ -92,7 +92,7 @@ namespace Charlotte.Helper.Login
         /// <param name="refreshToken">refreshToken</param>
         private void CreateRefreshTokenLog(SqlConnection con, DbTransaction transaction, UserMain userMain, string refreshToken) 
         {
-            string refreshToenExp = GetAppSettingsHelper.GetAppSettingsValue("JWT", "RefreshToenExpirationDate");
+            string refreshToenExp = GetAppSettingsUtils.GetAppSettingsValue("JWT", "RefreshToenExpirationDate");
             string sqlStr = @"INSERT INTO RefreshTokenLog
                             (UserId, RefreshToken, CreateDate, ExpirationDate)
                             VALUES(@UserId ,@RefreshToken, @CreateDate, @ExpirationDate)";

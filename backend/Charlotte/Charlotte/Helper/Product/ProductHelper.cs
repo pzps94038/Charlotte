@@ -1,4 +1,5 @@
-﻿using Charlotte.Services;
+﻿using Charlotte.Enum;
+using Charlotte.Services;
 using Charlotte.VModel.Product;
 using Dapper;
 using System.Data.SqlClient;
@@ -14,7 +15,7 @@ namespace Charlotte.Helper.Product
         /// <returns>符合該產品ID的產品</returns>
         public async Task<ProductVModel> GetProruct(int productId) 
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             using (SqlConnection con = new SqlConnection(sqlConStr)) 
             {
                 await con.OpenAsync();
@@ -33,7 +34,7 @@ namespace Charlotte.Helper.Product
         /// <returns>該產品類型的所有產品</returns>
         public async Task<List<ProductVModel>> GetProducts(int? typeId) 
         {
-            string sqlConStr = GetAppSettingsHelper.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             using (SqlConnection con = new SqlConnection(sqlConStr)) 
             {
                 await con.OpenAsync();

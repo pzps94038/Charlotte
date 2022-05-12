@@ -9,7 +9,7 @@ using static Charlotte.Services.CustomizeException.CustomizeException;
 
 namespace Charlotte.Services
 {
-    public class EncryptHelper
+    public class EncryptUtils
     {
 
         /// <summary>

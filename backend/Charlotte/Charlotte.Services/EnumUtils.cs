@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Charlotte.Services
 {
-    public class EnumHelper
+    public class EnumUtils
     {
         /// <summary>
         /// 取列舉描述

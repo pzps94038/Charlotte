@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Charlotte.EnumMessage
+namespace Charlotte.Enum
 {
     public enum EnumResult
     {

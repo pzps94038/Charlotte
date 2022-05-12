@@ -39,7 +39,7 @@ namespace Charlotte.Helper.ManagerRefreshToken
         /// <param name="refreshToken">refreshToken</param>
         private void CreateRefreshTokenLog(CharlotteContext db, int userId, string refreshToken)
         {
-            string refreshToenExp = GetAppSettingsHelper.GetAppSettingsValue("JWT", "RefreshToenExpirationDate");
+            string refreshToenExp = GetAppSettingsUtils.GetAppSettingsValue("JWT", "RefreshToenExpirationDate");
             var data = new ManagerRefreshTokenLog();
             data.RefreshToken = refreshToken;
             data.CreateDate = DateTime.Now;
