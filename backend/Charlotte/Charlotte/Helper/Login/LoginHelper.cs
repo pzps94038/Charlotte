@@ -1,4 +1,5 @@
 ﻿using Charlotte.DataBase.Model;
+using Charlotte.Enum;
 using Charlotte.Model;
 using Charlotte.Model.Login;
 using Charlotte.Services;
@@ -13,7 +14,7 @@ namespace Charlotte.Helper.Login
         
         public async Task<(string , Token)> Login(LoginModel req) 
         {
-            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             string message = "";
             Token token = new Token();
             using (SqlConnection con = new SqlConnection(sqlConStr))
