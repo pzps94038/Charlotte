@@ -2,9 +2,9 @@
 {
     public class ManagerRoleVModel
     {
-        public int roleId { get; set; }
-        public string roleName { get; set; }
-        public string createDate { get; set; }
-        public string? modifyDate { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
+        public string CreateDate { get; set; }
+        public string? ModifyDate { get; set; }
     }
 }

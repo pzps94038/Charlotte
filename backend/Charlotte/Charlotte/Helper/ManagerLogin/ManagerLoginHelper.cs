@@ -1,7 +1,7 @@
 ﻿using Charlotte.DataBase.Model;
 using Charlotte.Enum;
-using Charlotte.Model;
-using Charlotte.Model.ManagerLogin;
+using Charlotte.Interface.Shared;
+using Charlotte.Model.Shared;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerLogin;
 using Dapper;
@@ -10,9 +10,9 @@ using System.Data.SqlClient;
 
 namespace Charlotte.Helper.ManagerLogin
 {
-    public class ManagerLoginHelper: IManagerLoginHelper
+    public class ManagerLoginHelper: ILoginHelper<ManagerLoginVModel>
     {
-        public async Task<(string, ManagerLoginVModel)> Login(ManagerLoginModel req) 
+        public async Task<(string, ManagerLoginVModel)> Login(LoginModel req) 
         {
             string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             string message = "";
@@ -35,9 +35,9 @@ namespace Charlotte.Helper.ManagerLogin
                                 string refreshToken = JwtHelper.CreateRefreshToken();
                                 var claims = JwtHelper.CreateClaims(managerMain.Email, managerMain.ManagerUserId.ToString());
                                 string accountToken = JwtHelper.GenerateToken(claims);
-                                result.token.accessToken = accountToken;
-                                result.token.refreshToken = refreshToken;
-                                result.managerUserId = managerMain.ManagerUserId;
+                                result.Token.accessToken = accountToken;
+                                result.Token.refreshToken = refreshToken;
+                                result.ManagerUserId = managerMain.ManagerUserId;
                                 CreateRefreshTokenLog(con, transaction, managerMain, refreshToken);
                             }
                             else message = "帳號或密碼錯誤";
@@ -63,7 +63,7 @@ namespace Charlotte.Helper.ManagerLogin
         private async Task<ManagerMain> GetManagerMain(SqlConnection con, DbTransaction transaction, string account)
         {
             string sqlStr = @"Select * From ManagerMain Where Account = @account ";
-            return await con.QueryFirstOrDefaultAsync<ManagerMain>(sqlStr, new { account = account }, transaction);
+            return await con.QueryFirstOrDefaultAsync<ManagerMain>(sqlStr, new { account }, transaction);
         }
 
         /// <summary>

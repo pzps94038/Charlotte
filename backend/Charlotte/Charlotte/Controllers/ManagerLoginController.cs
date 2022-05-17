@@ -1,7 +1,7 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerLogin;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
-using Charlotte.Model.ManagerLogin;
 using Charlotte.Model.Shared;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerLogin;
@@ -16,8 +16,8 @@ namespace Charlotte.Controllers
     [ApiController]
     public class ManagerLoginController : ControllerBase
     {
-        private readonly IManagerLoginHelper _loginHelper;
-        public ManagerLoginController(IManagerLoginHelper helper)
+        private readonly ILoginHelper<ManagerLoginVModel> _loginHelper;
+        public ManagerLoginController(ILoginHelper<ManagerLoginVModel> helper)
         {
             _loginHelper = helper;
         }
@@ -28,7 +28,7 @@ namespace Charlotte.Controllers
         /// <param name="req"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ResultModel<ManagerLoginVModel>> Login(ManagerLoginModel req)
+        public async Task<ResultModel<ManagerLoginVModel>> Login(LoginModel req)
         {
 
             var result = new ResultModel<ManagerLoginVModel>();

@@ -1,5 +1,6 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.Factory;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
 using Charlotte.Model.Factory;
 using Charlotte.Services;
@@ -16,10 +17,10 @@ namespace Charlotte.Controllers
     [Authorize]
     public class FactoryController : ControllerBase
     {
-        private readonly IFactoryHelper _factoryHelper;
-        public FactoryController(IFactoryHelper helper) 
+        private readonly ICRUDAsyncHelper<FactoryVModel, FactoryVModel, string, string> _crudHelper;
+        public FactoryController(ICRUDAsyncHelper<FactoryVModel, FactoryVModel, string, string> helper) 
         {
-            _factoryHelper = helper;
+            _crudHelper = helper;
         }
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<List<FactoryVModel>>();
             try
             {
-                result.data = await _factoryHelper.GetFactorys();
+                result.data = await _crudHelper.GetAllAsync();
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.Success);
 
@@ -57,7 +58,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<FactoryVModel>();
             try
             {
-                result.data = await _factoryHelper.GetFactory(factoryId);
+                result.data = await _crudHelper.GetAsync(factoryId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.Success);
 
@@ -82,7 +83,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _factoryHelper.CreateFactory(req.factoryName);
+                await _crudHelper.CreateAsync(req.factoryName);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
 
@@ -108,7 +109,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _factoryHelper.ModifyFactory(factoryId, req.factoryName);
+                await _crudHelper.ModifyAsync(factoryId, req.factoryName);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
 
@@ -133,7 +134,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _factoryHelper.DeleteFactory(factoryId);
+                await _crudHelper.DeleteAsync(factoryId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
 
@@ -158,7 +159,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _factoryHelper.BatchDeleteFactory(rq);
+                await _crudHelper.BatchDeleteAsync(rq);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
 

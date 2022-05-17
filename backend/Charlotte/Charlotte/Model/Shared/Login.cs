@@ -1,4 +1,4 @@
-﻿namespace Charlotte.Model.Login
+﻿namespace Charlotte.Model.Shared
 {
     public class LoginModel
     {

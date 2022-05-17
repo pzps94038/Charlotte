@@ -1,6 +1,6 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper;
-using Charlotte.Helper.Register;
+using Charlotte.Interface.Register;
 using Charlotte.Model;
 using Charlotte.Model.Register;
 using Charlotte.Services;

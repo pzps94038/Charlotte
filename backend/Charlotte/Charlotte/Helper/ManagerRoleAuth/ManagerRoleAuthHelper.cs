@@ -77,12 +77,12 @@ namespace Charlotte.Helper.ManagerRoleAuth
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();
-                string sqlStr = @"select router.RouterName as routerName
-                                  ,[ViewAuth] as viewAuth
-                                  ,[CreateAuth] as createAuth
-                                  ,[ModifyAuth] as modifyAuth
-                                  ,[DeleteAuth] as deleteAuth
-                                  ,[ExportAuth] as exportAuth
+                string sqlStr = @"select router.RouterName
+                                  ,[ViewAuth]
+                                  ,[CreateAuth]
+                                  ,[ModifyAuth]
+                                  ,[DeleteAuth]
+                                  ,[ExportAuth]
                                   from [Charlotte].[dbo].[ManagerRoleAuth] as auth
                                   left join Router as router on router.RouterId = auth.RouterId
                                   left join ManagerMain as main on main.RoleId = auth.RoleId
@@ -91,19 +91,19 @@ namespace Charlotte.Helper.ManagerRoleAuth
                 var data = await con.QueryFirstOrDefaultAsync<CheckManagerRoleAuthVModel<string>>(sqlStr, new { userId, routerPath });
                 if (data == null)
                 {
-                    result.viewAuth = false;
-                    result.createAuth = false;
-                    result.modifyAuth = false;
-                    result.deleteAuth = false;
-                    result.exportAuth = false;
+                    result.ViewAuth = false;
+                    result.CreateAuth = false;
+                    result.ModifyAuth = false;
+                    result.DeleteAuth = false;
+                    result.ExportAuth = false;
                 }
                 else 
                 {
-                    result.viewAuth = data.viewAuth == "Y" ? true : false;
-                    result.createAuth = data.createAuth == "Y" ? true : false;
-                    result.modifyAuth = data.modifyAuth == "Y" ? true : false;
-                    result.deleteAuth = data.deleteAuth == "Y" ? true : false;
-                    result.exportAuth = data.exportAuth == "Y" ? true : false;
+                    result.ViewAuth = data.ViewAuth == "Y" ? true : false;
+                    result.CreateAuth = data.CreateAuth == "Y" ? true : false;
+                    result.ModifyAuth = data.ModifyAuth == "Y" ? true : false;
+                    result.DeleteAuth = data.DeleteAuth == "Y" ? true : false;
+                    result.ExportAuth = data.ExportAuth == "Y" ? true : false;
                 }
 
                 return result;

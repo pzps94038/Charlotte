@@ -1,5 +1,5 @@
 ﻿using Charlotte.Enum;
-using Charlotte.Helper.ManagerRefreshToken;
+using Charlotte.Interface.RefreshToken;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRefreshToken;
 using Charlotte.Services;
@@ -13,8 +13,8 @@ namespace Charlotte.Controllers
     [ApiController]
     public class ManagerRefreshTokenController : ControllerBase
     {
-        private readonly IManagerRefreshTokenHelper _managerRefreshTokenHelper;
-        public ManagerRefreshTokenController(IManagerRefreshTokenHelper helper)
+        private readonly IRefreshTokenHelper _managerRefreshTokenHelper;
+        public ManagerRefreshTokenController(IRefreshTokenHelper helper)
         {
             _managerRefreshTokenHelper = helper;
         }

@@ -1,5 +1,6 @@
 ﻿using Charlotte.DataBase.DbContextModel;
 using Charlotte.DataBase.Model;
+using Charlotte.Interface.RefreshToken;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRefreshToken;
 using Charlotte.Services;
@@ -8,7 +9,7 @@ using static Charlotte.CustomizeException.CustomizeException;
 
 namespace Charlotte.Helper.ManagerRefreshToken
 {
-    public class ManagerRefreshTokenHelper: IManagerRefreshTokenHelper
+    public class ManagerRefreshTokenHelper: IRefreshTokenHelper
     {
         public async Task<Token> RefreshToken(RefreshToken req) 
         {

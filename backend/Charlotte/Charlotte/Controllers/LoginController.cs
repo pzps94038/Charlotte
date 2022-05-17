@@ -1,10 +1,14 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.Login;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
-using Charlotte.Model.Login;
+using Charlotte.Model.Shared;
 using Charlotte.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace Charlotte.Controllers
 {
@@ -12,11 +16,9 @@ namespace Charlotte.Controllers
     [Route("api/[controller]")]
     public class LoginController : ControllerBase
     {
-        private readonly ILoginHelper _loginHelper;
-        private readonly GetAppSettingsUtils _u;
-        public LoginController(ILoginHelper helper, GetAppSettingsUtils uu)
+        private readonly ILoginHelper<Token> _loginHelper;
+        public LoginController(ILoginHelper<Token> helper)
         {
-            _u = uu;
             _loginHelper = helper;
         }
 
@@ -51,14 +53,6 @@ namespace Charlotte.Controllers
                 LoggerUtils.Error(ex);
             }
             return result;
-        }
-
-        [HttpGet]
-        public void test() 
-        {
-            var tx = _u.GetAppSetting("AES:Key");
-            var a = "1";
-            var b = "2";
-        }
+        }     
     }
 }

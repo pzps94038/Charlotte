@@ -1,6 +1,6 @@
 ﻿using Charlotte.Model.Register;
 
-namespace Charlotte.Helper.Register
+namespace Charlotte.Interface.Register
 {
     public interface IRegisterHelper
     {

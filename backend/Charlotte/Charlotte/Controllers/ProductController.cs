@@ -32,7 +32,7 @@ namespace Charlotte.Controllers
             ResultModel<ProductVModel> result = new ResultModel<ProductVModel>();            
             try
             {
-                var data = await _productHelper.GetProruct(productId);
+                var data = await _productHelper.GetAsync(productId);
                 if (data == null)
                 {
                     result.message = EnumUtils.GetDescription(EnumResult.NotFound);

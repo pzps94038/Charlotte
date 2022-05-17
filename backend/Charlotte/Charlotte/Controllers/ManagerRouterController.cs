@@ -1,6 +1,7 @@
 ﻿using Charlotte.Database.Model;
 using Charlotte.Enum;
 using Charlotte.Helper.ManagerRouter;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRouter;
 using Charlotte.Services;
@@ -17,8 +18,8 @@ namespace Charlotte.Controllers
     [Authorize]
     public class ManagerRouterController : ControllerBase
     {
-        private readonly IManagerRouterHelper _managerRouterHelper;
-        public ManagerRouterController(IManagerRouterHelper helper)
+        private readonly ICRUDAsyncHelper<ManagerRouterVModel, ManagerRouterVModel, ManagerRouterModel, ManagerRouterModel> _managerRouterHelper;
+        public ManagerRouterController(ICRUDAsyncHelper<ManagerRouterVModel, ManagerRouterVModel, ManagerRouterModel, ManagerRouterModel> helper)
         {
             _managerRouterHelper = helper;
         }
@@ -33,7 +34,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<List<ManagerRouterVModel>>();
             try
             {
-                result.data = await _managerRouterHelper.GetRouters();
+                result.data = await _managerRouterHelper.GetAllAsync();
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.Success);
             }
@@ -56,7 +57,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRouterHelper.CreateRouter(rq);
+                await _managerRouterHelper.CreateAsync(rq);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
             }
@@ -81,7 +82,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRouterHelper.ModifyRouter(routerId, rq);
+                await _managerRouterHelper.ModifyAsync(routerId, rq);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
             }
@@ -105,7 +106,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRouterHelper.DeleteRouter(routerId);
+                await _managerRouterHelper.DeleteAsync(routerId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
@@ -129,7 +130,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRouterHelper.BatchDeleteRouter(rq);
+                await _managerRouterHelper.BatchDeleteAsync(rq);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }

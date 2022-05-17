@@ -1,4 +1,5 @@
 ﻿using Charlotte.DataBase.DbContextModel;
+using Charlotte.Interface.Shared;
 using Charlotte.Services;
 using Charlotte.VModel.Factory;
 using Dapper;
@@ -8,57 +9,12 @@ using static Charlotte.CustomizeException.CustomizeException;
 
 namespace Charlotte.Helper.Factory
 {
-    public class FactoryHelper: IFactoryHelper
+    public class FactoryHelper: ICRUDAsyncHelper<FactoryVModel, FactoryVModel, string, string>
     {
-        /// <summary>
-        /// 取得所有廠商資料
-        /// </summary>
-        /// <returns></returns>
-        public async Task<List<FactoryVModel>> GetFactorys() 
-        {
-            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
-            using (SqlConnection con = new SqlConnection(sqlConStr))
-            {
-                await con.OpenAsync();
-                string sqlStr = @"SELECT [FactoryId] as factoryId
-                                ,[FactoryName] as factoryName
-                                ,convert(varchar, CreateDate, 23) as createDate
-                                ,convert(varchar, ModifyDate, 23) as modifyDate
-                                  FROM [Charlotte].[dbo].[Factory]";
-                var result = await con.QueryAsync<FactoryVModel>(sqlStr);
-                return result.ToList();
-            }
-        }
 
-        /// <summary>
-        /// 取得單個廠商資料
-        /// </summary>
-        /// <returns></returns>
-        public async Task<FactoryVModel> GetFactory(int factoryId)
+        public async Task CreateAsync(string factoryName)
         {
-            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
-            using (SqlConnection con = new SqlConnection(sqlConStr))
-            {
-                await con.OpenAsync();
-                string sqlStr = @"SELECT [FactoryId] as factoryId
-                                ,[FactoryName] as factoryName
-                                ,convert(varchar, CreateDate, 23) as createDate
-                                ,convert(varchar, ModifyDate, 23) as modifyDate,
-                                FROM [Charlotte].[dbo].[Factory]
-                                Where factoryId = @factoryId";
-                var result = await con.QueryFirstOrDefaultAsync<FactoryVModel>(sqlStr, new { factoryId });
-                return result;
-            }
-        }
-
-        /// <summary>
-        /// 新增廠商
-        /// </summary>
-        /// <param name="factoryId"></param>
-        /// <returns></returns>
-        public async Task CreateFactory(string factoryName)
-        {
-            using (var db = new CharlotteContext()) 
+            using (var db = new CharlotteContext())
             {
                 var data = new Database.Model.Factory();
                 data.CreateDate = DateTime.Now;
@@ -68,50 +24,67 @@ namespace Charlotte.Helper.Factory
             }
         }
 
-        /// <summary>
-        /// 修改廠商
-        /// </summary>
-        /// <param name="factoryId"></param>
-        /// <returns></returns>
-        public async Task ModifyFactory(int factoryId, string factoryName)
+        public async Task ModifyAsync(int id, string request)
         {
             using (var db = new CharlotteContext())
             {
-                var data = await db.Factory.SingleAsync(a => a.FactoryId == factoryId);
-                data.FactoryName = factoryName;
+                var data = await db.Factory.SingleAsync(a => a.FactoryId == id);
+                data.FactoryName = request;
                 data.ModifyDate = DateTime.Now;
                 await db.SaveChangesAsync();
             }
         }
 
-        /// <summary>
-        /// 刪除廠商
-        /// </summary>
-        /// <param name="factoryId">廠商Id</param>
-        /// <returns></returns>
-
-        public async Task DeleteFactory(int factoryId) 
+        public async Task DeleteAsync(int id)
         {
             using (var db = new CharlotteContext())
             {
-                var data = await db.Factory.SingleAsync(a=> a.FactoryId == factoryId);
+                var data = await db.Factory.SingleAsync(a => a.FactoryId == id);
                 db.Factory.Remove(data);
                 await db.SaveChangesAsync();
             }
         }
 
-        /// <summary>
-        /// 批次刪除廠商
-        /// </summary>
-        /// <param name="factorysId">多個廠商Id</param>
-        /// <returns></returns>
-        public async Task BatchDeleteFactory(List<int> factorysId)
+        public async Task BatchDeleteAsync(List<int> idList)
         {
             using (var db = new CharlotteContext())
             {
-                var datas = await db.Factory.Where(a=> factorysId.Contains(a.FactoryId)).ToListAsync();
+                var datas = await db.Factory.Where(a => idList.Contains(a.FactoryId)).ToListAsync();
                 db.Factory.RemoveRange(datas);
                 await db.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<FactoryVModel>> GetAllAsync()
+        {
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
+            using (SqlConnection con = new SqlConnection(sqlConStr))
+            {
+                await con.OpenAsync();
+                string sqlStr = @"SELECT [FactoryId]
+                                ,[FactoryName]
+                                ,convert(varchar, CreateDate, 23) as CreateDate
+                                ,convert(varchar, ModifyDate, 23) as ModifyDate
+                                  FROM [Charlotte].[dbo].[Factory]";
+                var result = await con.QueryAsync<FactoryVModel>(sqlStr);
+                return result.ToList();
+            }
+        }
+
+        public async Task<FactoryVModel> GetAsync(int id)
+        {
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
+            using (SqlConnection con = new SqlConnection(sqlConStr))
+            {
+                await con.OpenAsync();
+                string sqlStr = @"SELECT [FactoryId]
+                                ,[FactoryName]
+                                ,convert(varchar, CreateDate, 23) as CreateDate
+                                ,convert(varchar, ModifyDate, 23) as ModifyDate
+                                FROM [Charlotte].[dbo].[Factory]
+                                Where FactoryId = @FactoryId";
+                var result = await con.QueryFirstOrDefaultAsync<FactoryVModel>(sqlStr, new { factoryId = id });
+                return result;
             }
         }
     }

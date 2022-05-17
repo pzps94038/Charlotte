@@ -1,5 +1,5 @@
 ﻿using Charlotte.Enum;
-using Charlotte.Helper.ManagerUser;
+using Charlotte.Interface.ManagerUser;
 using Charlotte.Model;
 using Charlotte.Model.ManagerUser;
 using Charlotte.Services;
@@ -28,7 +28,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<List<ManagerUsersVModel>>();
             try
             {
-                result.data = await _managerUserHelper.GetManagerUsers();
+                result.data = await _managerUserHelper.GetAllAsync();
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.Success);
             }
@@ -52,7 +52,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel<ManagerUserVModel>();
             try
             {
-                result.data = await _managerUserHelper.GetManagerUser(managerUserId);
+                result.data = await _managerUserHelper.GetAsync(managerUserId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.Success);
             }
@@ -75,7 +75,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerUserHelper.CreateManagerUser(req);
+                await _managerUserHelper.CreateAsync(req);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
             }
@@ -100,7 +100,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerUserHelper.ModifyManagerUser(managerUserId, req);
+                await _managerUserHelper.ModifyAsync(managerUserId, req);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
             }
@@ -152,7 +152,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerUserHelper.DeleteManagerUser(managerUserId);
+                await _managerUserHelper.DeleteAsync(managerUserId);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
@@ -171,7 +171,7 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerUserHelper.BatchDeleteManagerUser(req);
+                await _managerUserHelper.BatchDeleteAsync(req);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }

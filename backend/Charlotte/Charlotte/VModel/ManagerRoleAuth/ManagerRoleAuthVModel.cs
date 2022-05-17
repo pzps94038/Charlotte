@@ -4,56 +4,56 @@ namespace Charlotte.VModel.ManagerRoleRouter
 {
     public class ManagerRoleAuthVModel
     {
-        public int roleId { get; set; }
-        public int routerId { get; set; }
-        public string routerName { get; set; }
-        public bool viewAuth { get; set; }
-        public bool createAuth { get; set; }
-        public bool modifyAuth { get; set; }
-        public bool deleteAuth { get; set; }
-        public bool exportAuth { get; set; }
+        public int RoleId { get; set; }
+        public int RouterId { get; set; }
+        public string RouterName { get; set; }
+        public bool ViewAuth { get; set; }
+        public bool CreateAuth { get; set; }
+        public bool ModifyAuth { get; set; }
+        public bool DeleteAuth { get; set; }
+        public bool ExportAuth { get; set; }
         public ManagerRoleAuthVModel() { }
         public ManagerRoleAuthVModel(ManagerRoleAuth authData, string routerName)
         {
-            this.roleId = authData.RoleId;
-            this.routerId = authData.RouterId;
-            this.routerName = routerName;
-            this.viewAuth = authData.ViewAuth == "Y";
-            this.modifyAuth = authData.ModifyAuth == "Y";
-            this.createAuth = authData.CreateAuth == "Y";
-            this.deleteAuth = authData.DeleteAuth == "Y";
-            this.exportAuth = authData.ExportAuth == "Y";
+            this.RoleId = authData.RoleId;
+            this.RouterId = authData.RouterId;
+            this.RouterName = routerName;
+            this.ViewAuth = authData.ViewAuth == "Y";
+            this.ModifyAuth = authData.ModifyAuth == "Y";
+            this.CreateAuth = authData.CreateAuth == "Y";
+            this.DeleteAuth = authData.DeleteAuth == "Y";
+            this.ExportAuth = authData.ExportAuth == "Y";
         }
         public ManagerRoleAuthVModel(int roleId, int routerId, string routerName)
         {
-            this.roleId = roleId;
-            this.routerId = routerId;
-            this.routerName = routerName;
-            this.viewAuth = false;
-            this.createAuth = false;
-            this.modifyAuth = false;
-            this.deleteAuth = false;
-            this.exportAuth = false;
+            this.RoleId = roleId;
+            this.RouterId = routerId;
+            this.RouterName = routerName;
+            this.ViewAuth = false;
+            this.CreateAuth = false;
+            this.ModifyAuth = false;
+            this.DeleteAuth = false;
+            this.ExportAuth = false;
         }
         public ManagerRoleAuthVModel(int roleId, int routerId, string routerName, bool viewAuth, bool createAuth, bool modifyAuth, bool deleteAuth, bool exportAuth)
         {
-            this.roleId = roleId;
-            this.routerId = routerId;
-            this.routerName = routerName;
-            this.viewAuth = viewAuth;
-            this.createAuth = createAuth;
-            this.modifyAuth = modifyAuth;
-            this.deleteAuth = deleteAuth;
-            this.exportAuth = exportAuth;
+            this.RoleId = roleId;
+            this.RouterId = routerId;
+            this.RouterName = routerName;
+            this.ViewAuth = viewAuth;
+            this.CreateAuth = createAuth;
+            this.ModifyAuth = modifyAuth;
+            this.DeleteAuth = deleteAuth;
+            this.ExportAuth = exportAuth;
         }
     }
 
     public class CheckManagerRoleAuthVModel<T>
     {
-        public T viewAuth { get; set; }
-        public T createAuth { get; set; }
-        public T modifyAuth { get; set; }
-        public T deleteAuth { get; set; }
-        public T exportAuth { get; set; }
+        public T ViewAuth { get; set; }
+        public T CreateAuth { get; set; }
+        public T ModifyAuth { get; set; }
+        public T DeleteAuth { get; set; }
+        public T ExportAuth { get; set; }
     }
 }
