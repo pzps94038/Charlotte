@@ -1,7 +1,4 @@
-import { SharedService } from './../../shared/service/shared.service';
-import { ApiService } from './../../shared/api/api.service';
-import { SideNavService } from 'src/app/shared/service/sideNav/side-nav.service';
-import { map, observable, Observable, Subject, takeUntil, filter, concatMap, tap } from 'rxjs';
+import { map, Observable, Subject, takeUntil, filter, concatMap } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
 import { RoleService } from 'src/app/shared/api/role/role.service';
@@ -11,6 +8,8 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { Validators } from '@angular/forms';
 import { CheckBoxDialogComponent } from 'src/app/shared/dialog/check-box-dialog/check-box-dialog.component';
+import { ApiService } from 'src/app/shared/api/api.service';
+import { SharedService } from 'src/app/shared/service/shared.service';
 
 @Component({
   selector: 'app-role-setting',

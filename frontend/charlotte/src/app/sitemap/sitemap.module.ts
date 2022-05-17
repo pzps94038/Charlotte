@@ -2,20 +2,30 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { siteMapRouter } from './sitemap.router';
 import { SharedModule } from '../shared/shared-module';
-import { UserSettingComponent } from './user-setting/user-setting.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { RouterSettingComponent } from './router-setting/router-setting.component';
-import { RoleSettingComponent } from './role-setting/role-setting.component';
-import { ProductTypeSettingComponent } from './product-type-setting/product-type-setting.component';
-import { ProductInformationSettingComponent } from './product-information-setting/product-information-setting.component';
-import { OrderSettingComponent } from './order-setting/order-setting.component';
-import { FactorySettingComponent } from './factory-setting/factory-setting.component';
-import { BasicDataSettingComponent } from './basic-data-setting/basic-data-setting.component';
-import { ConsumerSettingComponent } from './consumer-setting/consumer-setting.component';
-import { ManagerUserSettingComponent } from './manager-user-setting/manager-user-setting.component';
+import { BasicDataSettingComponent } from './page/basic-data-setting/basic-data-setting.component';
+import { ConsumerSettingComponent } from './page/consumer-setting/consumer-setting.component';
+import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { FactorySettingComponent } from './page/factory-setting/factory-setting.component';
+import { ManagerUserSettingComponent } from './page/manager-user-setting/manager-user-setting.component';
+import { OrderSettingComponent } from './page/order-setting/order-setting.component';
+import { ProductInformationSettingComponent } from './page/product-information-setting/product-information-setting.component';
+import { ProductTypeSettingComponent } from './page/product-type-setting/product-type-setting.component';
+import { RoleSettingComponent } from './page/role-setting/role-setting.component';
+import { RouterSettingComponent } from './page/router-setting/router-setting.component';
+import { UserSettingComponent } from './page/user-setting/user-setting.component';
+import { SideNavModule } from './side-nav/side-nav.module';
+import { SitemapComponent } from './sitemap.component';
+import { HeaderModule } from './header/header.module';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
+    SitemapComponent,
     UserSettingComponent,
     DashboardComponent,
     RouterSettingComponent,
@@ -29,11 +39,14 @@ import { ManagerUserSettingComponent } from './manager-user-setting/manager-user
     ManagerUserSettingComponent,
   ],
   imports: [
+    CommonModule,
     RouterModule.forChild(siteMapRouter),
+    SideNavModule,
     SharedModule,
+    HeaderModule,
   ],
   exports: [
-    RouterModule
+    RouterModule,
   ]
 })
 export class SitemapModule { }

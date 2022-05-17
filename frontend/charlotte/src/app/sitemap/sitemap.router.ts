@@ -1,17 +1,16 @@
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { Routes } from "@angular/router";
-import { UserSettingComponent } from "./user-setting/user-setting.component";
-import { RouterSettingComponent } from './router-setting/router-setting.component';
-import { AuthGuard } from '../auth/auth.guard';
-import { RoleSettingComponent } from './role-setting/role-setting.component';
-import { ProductTypeSettingComponent } from './product-type-setting/product-type-setting.component';
-import { ProductInformationSettingComponent } from './product-information-setting/product-information-setting.component';
-import { OrderSettingComponent } from './order-setting/order-setting.component';
-import { FactorySettingComponent } from './factory-setting/factory-setting.component';
-import { BasicDataSettingComponent } from './basic-data-setting/basic-data-setting.component';
-import { ConsumerSettingComponent } from './consumer-setting/consumer-setting.component';
-import { ManagerUserSettingComponent } from './manager-user-setting/manager-user-setting.component';
-
+import { AuthGuard } from "../auth/auth.guard";
+import { BasicDataSettingComponent } from "./page/basic-data-setting/basic-data-setting.component";
+import { ConsumerSettingComponent } from "./page/consumer-setting/consumer-setting.component";
+import { DashboardComponent } from "./page/dashboard/dashboard.component";
+import { FactorySettingComponent } from "./page/factory-setting/factory-setting.component";
+import { ManagerUserSettingComponent } from "./page/manager-user-setting/manager-user-setting.component";
+import { OrderSettingComponent } from "./page/order-setting/order-setting.component";
+import { ProductInformationSettingComponent } from "./page/product-information-setting/product-information-setting.component";
+import { ProductTypeSettingComponent } from "./page/product-type-setting/product-type-setting.component";
+import { RoleSettingComponent } from "./page/role-setting/role-setting.component";
+import { RouterSettingComponent } from "./page/router-setting/router-setting.component";
+import { UserSettingComponent } from "./page/user-setting/user-setting.component";
 
 export const siteMapRouter : Routes = [
   {

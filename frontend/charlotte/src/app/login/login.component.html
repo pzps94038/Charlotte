@@ -7,14 +7,14 @@
       <mat-form-field appearance="outline" class="col-10 ">
         <mat-label><mat-icon matSuffix>person</mat-icon>帳號</mat-label>
         <input matInput placeholder="請輸入帳號" formControlName="account">
-        <mat-error *ngIf="form.controls['account'].hasError('required')">
+        <mat-error *ngIf="form.controls['account'].errors?.['required']">
           此欄位必填
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="col-10">
         <mat-label><mat-icon matSuffix>lock</mat-icon>密碼</mat-label>
         <input type="password" matInput placeholder="請輸入密碼" formControlName="password">
-        <mat-error *ngIf="form.controls['password'].hasError('required')">
+        <mat-error *ngIf="form.controls['password'].errors?.['required']">
           此欄位必填
         </mat-error>
       </mat-form-field>

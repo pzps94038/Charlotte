@@ -1,4 +1,3 @@
-import { SharedService } from './../../shared/service/shared.service';
 import { RoleService } from 'src/app/shared/api/role/role.service';
 import { UserService } from 'src/app/shared/api/user/user.service';
 import { map, Observable, filter, takeUntil, Subject, concatMap, tap } from 'rxjs';
@@ -10,6 +9,7 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/api/api.service';
+import { SharedService } from 'src/app/shared/service/shared.service';
 
 @Component({
   selector: 'app-manager-user-setting',

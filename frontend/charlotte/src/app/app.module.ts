@@ -13,15 +13,15 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { SideNavComponent } from './sitemap/side-nav/side-nav.component';
 import { ProgressBarComponent } from './shared/component/progress-bar/progress-bar.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { LoginModule } from './login/login.module';
+import { SideNavModule } from './sitemap/side-nav/side-nav.module';
+import { SitemapModule } from './sitemap/sitemap.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    SitemapComponent,
-    HeaderComponent,
-    SideNavComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +29,9 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
     HttpClientModule,
     AppRoutingModule,
     LayoutModule,
-    SharedModule,
+    LoginModule,
+    SitemapModule,
+    NgxSpinnerModule,
   ],
   providers: [
     Title,

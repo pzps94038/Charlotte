@@ -18,7 +18,6 @@ export class HeaderComponent implements OnDestroy{
   destroy$ = new Subject()
   constructor(
     private swalService: SwalService<null>,
-    private router: Router,
     private sideNavService: SideNavService,
     private userService: UserService,
     private userInfoService: UserInfoService,

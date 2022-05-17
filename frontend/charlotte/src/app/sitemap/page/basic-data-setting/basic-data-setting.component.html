@@ -5,10 +5,10 @@
       <mat-label>姓名</mat-label>
       <input matInput type="text" formControlName="UserName" placeholder="請輸入姓名">
       <mat-icon matSuffix>person</mat-icon>
-      <mat-error *ngIf="form.controls['UserName'].hasError('required')">
+      <mat-error *ngIf="form.controls['UserName']?.errors?.['required']">
         此欄位必填
       </mat-error>
-      <mat-error *ngIf="form.controls['UserName'].hasError('maxlength')">
+      <mat-error *ngIf="form.controls['UserName']?.errors?.['maxlength']">
         欄位長度必須小於20
       </mat-error>
     </mat-form-field>
@@ -16,10 +16,10 @@
       <mat-label>電子信箱</mat-label>
       <input matInput type="email" formControlName="Email" placeholder="請輸入地址">
       <mat-icon matSuffix>email</mat-icon>
-      <mat-error *ngIf="form.controls['Email'].hasError('required')">
+      <mat-error *ngIf="form.controls['Email']?.errors?.['required']">
         此欄位必填
       </mat-error>
-      <mat-error *ngIf="form.controls['Email'].hasError('email')">
+      <mat-error *ngIf="form.controls['Email']?.errors?.['email']">
         Email格式錯誤
       </mat-error>
     </mat-form-field>
@@ -33,7 +33,7 @@
       <input matInput [matDatepicker]="picker" formControlName="Birthday" placeholder="請輸入地址">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="form.controls['Birthday'].hasError('required')">
+      <mat-error *ngIf="form.controls['Birthday']?.errors?.['required']">
         此欄位必填
       </mat-error>
     </mat-form-field>

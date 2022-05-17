@@ -1,7 +1,8 @@
 ﻿using Charlotte.DataBase.Model;
 using Charlotte.Enum;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
-using Charlotte.Model.Login;
+using Charlotte.Model.Shared;
 using Charlotte.Services;
 using Dapper;
 using Microsoft.Data.SqlClient;
@@ -9,7 +10,7 @@ using System.Data.Common;
 
 namespace Charlotte.Helper.Login
 {
-    public class LoginHelper: ILoginHelper
+    public class LoginHelper: ILoginHelper<Token>
     {
         
         public async Task<(string , Token)> Login(LoginModel req) 
