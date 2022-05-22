@@ -71,8 +71,7 @@ namespace Charlotte.Helper.ManagerRouter
         {
             using (var db = new CharlotteContext())
             {
-
-                IQueryable<Router> filterResult = db.Router.Where(a => true);
+                IQueryable<Router> filterResult = db.Router;
                 if (filterStr != null) 
                 {
                     filterResult = filterResult.Where(a => a.RouterId.ToString().Contains(filterStr) ||

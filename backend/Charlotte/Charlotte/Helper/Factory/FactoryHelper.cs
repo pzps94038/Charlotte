@@ -78,7 +78,7 @@ namespace Charlotte.Helper.Factory
         {
             using (var db = new CharlotteContext())
             {
-                IQueryable<Database.Model.Factory> filterResult = db.Factory.Where(a => true);
+                IQueryable<Database.Model.Factory> filterResult = db.Factory;
                 if (filterStr != null)
                 {
                     filterResult = filterResult.Where(a => a.FactoryId.ToString().Contains(filterStr) ||

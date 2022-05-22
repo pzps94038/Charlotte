@@ -82,7 +82,7 @@ namespace Charlotte.Helper.ManagerRole
         {
             using (var db = new CharlotteContext())
             {
-                IQueryable<Database.Model.ManagerRole> filterResult = db.ManagerRole.Where(a => true);
+                IQueryable<Database.Model.ManagerRole> filterResult = db.ManagerRole;
                 if (filterStr != null)
                 {
                     filterResult = filterResult.Where(a => a.RoleId.ToString().Contains(filterStr) ||
