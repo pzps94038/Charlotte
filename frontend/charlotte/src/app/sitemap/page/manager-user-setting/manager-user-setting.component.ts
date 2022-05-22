@@ -1,9 +1,9 @@
 import { RoleService } from 'src/app/shared/api/role/role.service';
 import { UserService } from 'src/app/shared/api/user/user.service';
-import { map, Observable, filter, takeUntil, Subject, concatMap, tap } from 'rxjs';
+import { map, Observable, filter, takeUntil, Subject, concatMap, tap, BehaviorSubject, finalize } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
-import { GetUsersResult } from 'src/app/shared/api/user/user.interface';
+import { DataTableInfo, InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { GetUsersResult as Users } from 'src/app/shared/api/user/user.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
@@ -16,10 +16,12 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   templateUrl: './manager-user-setting.component.html',
   styleUrls: ['./manager-user-setting.component.scss']
 })
-export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTable, InitDataTableFunction<GetUsersResult> {
-  dataList$: Observable<GetUsersResult[]>
+export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTable<Users>, InitDataTableFunction<Users> {
   destroy$ = new Subject()
   columns: {key: string, value: string | number}[]= []
+  tableDataList: Users[] = [];
+  tableTotalCount: number = 0;
+  loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor
   (
     private userService: UserService,
@@ -31,8 +33,10 @@ export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTa
   )
   {
     this.columns = this.createColumns()
-    this.dataList$ = this.getUsers()
+    this.getUsers()
   }
+
+
 
   ngOnDestroy(): void {
     this.destroy$.next(null)
@@ -64,7 +68,7 @@ export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTa
   }
 
   refresh(): void {
-    this.dataList$ = this.getUsers()
+    this.getUsers()
   }
 
   create(): void {
@@ -140,7 +144,7 @@ export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTa
       })
   }
 
-  modify(row: GetUsersResult): void {
+  modify(row: Users): void {
     const options$ = this.createRoleOptions()
     options$.subscribe((options)=>{
       const dialog = this.dialog.open(FormDialogComponent,{
@@ -221,7 +225,7 @@ export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTa
     })
   }
 
-  delete(row: GetUsersResult): void {
+  delete(row: Users): void {
     this.swalService.delete().pipe(
       concatMap(()=> this.userService.deleteUser(row.managerUserId)),
       filter((res)=> this.apiService.judgeSuccess(res, true)),
@@ -231,7 +235,7 @@ export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTa
     })
   }
 
-  multipleDelete(rows: GetUsersResult[]): void {
+  multipleDelete(rows: Users[]): void {
     this.swalService.multipleDelete(rows).pipe(
       map(()=> rows.map(a=> a.managerUserId)),
       concatMap(deleteArr=> this.userService.batchDeleteUsers(deleteArr)),
@@ -242,17 +246,29 @@ export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTa
     })
   }
 
-  getUsers(): Observable<GetUsersResult[]>{
-    return this.userService.getUsers().pipe(map(
-      res=> res.data
-    ))
+  getUsers(info?: DataTableInfo){
+    this.loading$.next(true)
+    this.userService.getUsers(info).pipe(
+      map(
+        res=> res.data
+      ),
+      takeUntil(this.destroy$),
+      finalize(()=> this.loading$.next(false))
+    ).subscribe((res)=>{
+      this.tableDataList = res.tableDataList
+      this.tableTotalCount = res.tableTotalCount
+    })
   }
 
   createRoleOptions(): Observable<{ text: string; value: number; }[]>{
     return this.roleService.getRoles()
     .pipe(
-      map(res =>  res.data.map(a=> {return { text: a.roleName, value: a.roleId } })),
+      map(res =>  res.data.tableDataList.map(a=> {return { text: a.roleName, value: a.roleId } })),
       takeUntil(this.destroy$)
     )
+  }
+
+  filterTable(info: DataTableInfo): void {
+    this.getUsers(info)
   }
 }

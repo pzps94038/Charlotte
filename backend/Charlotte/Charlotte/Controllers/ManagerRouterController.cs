@@ -6,6 +6,7 @@ using Charlotte.Model;
 using Charlotte.Model.ManagerRouter;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerRouter;
+using Charlotte.VModel.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,8 +19,8 @@ namespace Charlotte.Controllers
     [Authorize]
     public class ManagerRouterController : ControllerBase
     {
-        private readonly ICRUDAsyncHelper<ManagerRouterVModel, ManagerRouterVModel, ManagerRouterModel, ManagerRouterModel> _managerRouterHelper;
-        public ManagerRouterController(ICRUDAsyncHelper<ManagerRouterVModel, ManagerRouterVModel, ManagerRouterModel, ManagerRouterModel> helper)
+        private readonly ICRUDAsyncHelper<TableVModel<ManagerRouterVModel>, ManagerRouterVModel, ManagerRouterModel, ManagerRouterModel> _managerRouterHelper;
+        public ManagerRouterController(ICRUDAsyncHelper<TableVModel<ManagerRouterVModel>, ManagerRouterVModel, ManagerRouterModel, ManagerRouterModel> helper)
         {
             _managerRouterHelper = helper;
         }
@@ -29,12 +30,12 @@ namespace Charlotte.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ResultModel<List<ManagerRouterVModel>>> GetRouters()
+        public async Task<ResultModel<TableVModel<ManagerRouterVModel>>> GetRouters(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
         {
-            var result = new ResultModel<List<ManagerRouterVModel>>();
+            var result = new ResultModel<TableVModel<ManagerRouterVModel>>();
             try
             {
-                result.data = await _managerRouterHelper.GetAllAsync();
+                result.data = await _managerRouterHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.Success);
             }

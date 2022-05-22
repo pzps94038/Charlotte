@@ -1,7 +1,7 @@
 ﻿using Charlotte.Model.ManagerRoleAuth;
 using Charlotte.VModel.ManagerRoleRouter;
 
-namespace Charlotte.Helper.ManagerRoleAuth
+namespace Charlotte.Interface.ManagerRoleAuth
 {
     public interface IManagerRoleAuthHelper
     {

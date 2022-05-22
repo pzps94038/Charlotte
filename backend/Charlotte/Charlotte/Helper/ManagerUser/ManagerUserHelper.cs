@@ -5,12 +5,13 @@ using Charlotte.Interface.ManagerUser;
 using Charlotte.Model.ManagerUser;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerUser;
+using Charlotte.VModel.Shared;
 using Dapper;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 using static Charlotte.CustomizeException.CustomizeException;
-
+using System.Linq.Dynamic.Core;
 namespace Charlotte.Helper.ManagerUser
 {
     public class ManagerUserHelper: IManagerUserHelper
@@ -125,6 +126,41 @@ namespace Charlotte.Helper.ManagerUser
                                   From ManagerMain
                                   Where ManagerUserId = @id";
                 return await con.QueryFirstAsync<ManagerUserVModel>(sqlStr, new { id });
+            }
+        }
+
+        public async Task<TableVModel<ManagerUsersVModel>> GetAllAsync(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
+        {
+            using (var db = new CharlotteContext())
+            {
+                var filterResult = db.ManagerMain.Join(db.ManagerRole, a => a.RoleId, b => b.RoleId, (a, b) => new
+                {
+                    ManagerUserId = a.ManagerUserId,
+                    UserName = a.UserName,
+                    Account = a.Account,
+                    PassWord = a.Password,
+                    Email = a.Email,
+                    Address = a.Address,
+                    Birthday = a.Birthday.ToString("yyyy-MM-dd"),
+                    Flag = a.Flag,
+                    RoleId = a.RoleId,
+                    RoleName = b.RoleName
+                });
+                if (filterStr != null)
+                {
+                    filterResult = filterResult.Where(a =>  a.UserName.Contains(filterStr) ||                    
+                                                            a.Email.Contains(filterStr) ||
+                                                            a.Flag.Contains(filterStr) ||
+                                                            a.RoleName.Contains(filterStr)
+                                                      );
+                };
+                var tableTotalCount = filterResult.Count();
+                if (orderBy != null && orderDescription != null)
+                    filterResult = orderDescription == "desc" ? filterResult.OrderBy($"{orderBy} desc") : filterResult.OrderBy($"{orderBy} asc");
+                if (limit != null && offset != null)
+                    filterResult = filterResult.Skip((int)offset).Take((int)limit);
+                var result = await filterResult.ToListAsync();
+                return new TableVModel<ManagerUsersVModel>(result.Adapt<List<ManagerUsersVModel>>(), tableTotalCount) ;
             }
         }
     }

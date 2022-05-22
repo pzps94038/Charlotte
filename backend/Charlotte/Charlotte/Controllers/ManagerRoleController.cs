@@ -5,6 +5,7 @@ using Charlotte.Model;
 using Charlotte.Model.ManagerRole;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerRole;
+using Charlotte.VModel.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,8 +18,8 @@ namespace Charlotte.Controllers
     [Authorize]
     public class ManagerRoleController : ControllerBase
     {
-        private readonly ICRUDAsyncHelper<ManagerRoleVModel, ManagerRoleVModel, ManagerRoleModel, ManagerRoleModel> _managerRoleHelper;
-        public ManagerRoleController(ICRUDAsyncHelper<ManagerRoleVModel, ManagerRoleVModel, ManagerRoleModel, ManagerRoleModel> helper)
+        private readonly ICRUDAsyncHelper<TableVModel<ManagerRoleVModel>, ManagerRoleVModel, ManagerRoleModel, ManagerRoleModel> _managerRoleHelper;
+        public ManagerRoleController(ICRUDAsyncHelper<TableVModel<ManagerRoleVModel>, ManagerRoleVModel, ManagerRoleModel, ManagerRoleModel> helper)
         {
             _managerRoleHelper = helper;
         }
@@ -27,12 +28,12 @@ namespace Charlotte.Controllers
         /// </summary>
         /// <returns>權限角色清單</returns>
         [HttpGet]
-        public async Task<ResultModel<List<ManagerRoleVModel>>> GetRoles() 
+        public async Task<ResultModel<TableVModel<ManagerRoleVModel>>> GetRoles(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr) 
         {
-            var result = new ResultModel<List<ManagerRoleVModel>> ();
+            var result = new ResultModel<TableVModel<ManagerRoleVModel>> ();
             try
             {
-                result.data = await _managerRoleHelper.GetAllAsync();
+                result.data = await _managerRoleHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.Success);
             }

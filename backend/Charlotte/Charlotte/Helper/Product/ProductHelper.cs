@@ -1,4 +1,5 @@
 ﻿using Charlotte.Enum;
+using Charlotte.Interface.Product;
 using Charlotte.Services;
 using Charlotte.VModel.Product;
 using Dapper;

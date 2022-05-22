@@ -5,6 +5,7 @@ using Charlotte.Model;
 using Charlotte.Model.Shared;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerLogin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

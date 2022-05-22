@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResultMessage, ResultModel } from '../api.interface';
+import { DataTableInfo } from '../../component/data-table/data.table.interface';
+import { SharedService } from '../../service/shared.service';
+import { DataTable, ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
 import { CreateRouterRequest, GetRouterResult, ModifyRouterRequest } from './router.interface';
 
@@ -11,14 +13,20 @@ import { CreateRouterRequest, GetRouterResult, ModifyRouterRequest } from './rou
 })
 export class RouterService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private sharedService: SharedService
+  ) { }
 
   /**
    * 取得路由清單
    * @returns 路由清單
    */
-  getRouters(): Observable<ResultModel<GetRouterResult[]>>{
-    return this.http.get<ResultModel<GetRouterResult[]>>(ApiUrl.router)
+  getRouters(info?: DataTableInfo): Observable<ResultModel<DataTable<GetRouterResult>>>{
+    let params = this.sharedService.createDataTableParams(info);
+    return this.http.get<ResultModel<DataTable<GetRouterResult>>>(ApiUrl.router, {
+      params
+    })
   }
 
   /**

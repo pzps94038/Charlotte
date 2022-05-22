@@ -4,6 +4,7 @@ using Charlotte.Model;
 using Charlotte.Model.ManagerUser;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerUser;
+using Charlotte.VModel.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+
     public class ManagerUserController : ControllerBase
     {
         private readonly IManagerUserHelper _managerUserHelper;
@@ -23,12 +24,12 @@ namespace Charlotte.Controllers
         }
 
         [HttpGet]
-        public async Task<ResultModel<List<ManagerUsersVModel>>> GetManagerUsers()
+        public async Task<ResultModel<TableVModel<ManagerUsersVModel>>> GetManagerUsers(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
         {
-            var result = new ResultModel<List<ManagerUsersVModel>>();
+            var result = new ResultModel<TableVModel<ManagerUsersVModel>>();
             try
             {
-                result.data = await _managerUserHelper.GetAllAsync();
+                result.data = await _managerUserHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.Success);
             }

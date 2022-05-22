@@ -1,5 +1,6 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerRoleAuth;
+using Charlotte.Interface.ManagerRoleAuth;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRoleAuth;
 using Charlotte.Services;

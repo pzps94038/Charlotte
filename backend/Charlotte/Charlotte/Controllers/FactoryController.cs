@@ -5,6 +5,7 @@ using Charlotte.Model;
 using Charlotte.Model.Factory;
 using Charlotte.Services;
 using Charlotte.VModel.Factory;
+using Charlotte.VModel.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,8 +18,8 @@ namespace Charlotte.Controllers
     [Authorize]
     public class FactoryController : ControllerBase
     {
-        private readonly ICRUDAsyncHelper<FactoryVModel, FactoryVModel, string, string> _crudHelper;
-        public FactoryController(ICRUDAsyncHelper<FactoryVModel, FactoryVModel, string, string> helper) 
+        private readonly ICRUDAsyncHelper<TableVModel<FactoryVModel>, FactoryVModel, string, string> _crudHelper;
+        public FactoryController(ICRUDAsyncHelper<TableVModel<FactoryVModel>, FactoryVModel, string, string> helper) 
         {
             _crudHelper = helper;
         }
@@ -28,12 +29,12 @@ namespace Charlotte.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ResultModel<List<FactoryVModel>>> GetFactorys()
+        public async Task<ResultModel<TableVModel<FactoryVModel>>> GetFactorys(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
         {
-            var result = new ResultModel<List<FactoryVModel>>();
+            var result = new ResultModel<TableVModel<FactoryVModel>>();
             try
             {
-                result.data = await _crudHelper.GetAllAsync();
+                result.data = await _crudHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
                 result.code = HttpStatusCode.OK;
                 result.message = EnumUtils.GetDescription(EnumResult.Success);
 

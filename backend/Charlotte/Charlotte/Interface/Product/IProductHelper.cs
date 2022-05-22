@@ -1,7 +1,7 @@
 ﻿using Charlotte.Interface.Shared;
 using Charlotte.VModel.Product;
 
-namespace Charlotte.Helper.Product
+namespace Charlotte.Interface.Product
 {
     public interface IProductHelper: IGetAsync<ProductVModel>
     {

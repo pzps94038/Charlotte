@@ -19,10 +19,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // 加入CORS服務
 builder.Services.AddCors(options => {
-    options.AddDefaultPolicy(builder => {
-        builder.WithOrigins("http://localhost:4200"); // 開放網域
-        builder.WithMethods("GET", "POST", "HEAD", "PUT", "PATCH","DELETE", "OPTIONS"); // 開放的請求格式
-    });
+    options.AddPolicy("CorsPolicy", builder => builder
+        .WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -64,7 +65,7 @@ if (app.Environment.IsDevelopment())
 // 啟用驗證
 app.UseAuthentication();
 // 啟用Cors
-app.UseCors();
+app.UseCors("CorsPolicy");
 // 套用驗證在路由
 app.UseAuthorization();
 app.MapControllers();

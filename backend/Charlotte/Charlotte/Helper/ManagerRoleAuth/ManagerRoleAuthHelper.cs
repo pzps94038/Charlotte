@@ -1,5 +1,6 @@
 ﻿using Charlotte.DataBase.DbContextModel;
 using Charlotte.Enum;
+using Charlotte.Interface.ManagerRoleAuth;
 using Charlotte.Model.ManagerRoleAuth;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerRoleRouter;

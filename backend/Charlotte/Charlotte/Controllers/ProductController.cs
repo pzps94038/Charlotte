@@ -1,5 +1,6 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.Product;
+using Charlotte.Interface.Product;
 using Charlotte.Model;
 using Charlotte.Services;
 using Charlotte.VModel.Product;

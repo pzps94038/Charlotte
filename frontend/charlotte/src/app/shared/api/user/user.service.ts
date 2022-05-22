@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResultMessage, ResultModel } from '../api.interface';
+import { DataTableInfo } from '../../component/data-table/data.table.interface';
+import { SharedService } from '../../service/shared.service';
+import { DataTable, ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
 import { CreateUserRequest, LoginRequest, LoginResult, ModifyUserRequest, GetUserResult, GetUsersResult, ModfiyUserPasswordRequest } from './user.interface';
 
@@ -9,7 +11,10 @@ import { CreateUserRequest, LoginRequest, LoginResult, ModifyUserRequest, GetUse
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private sharedService: SharedService
+  ) { }
 
   /* 登入 */
   login(data: LoginRequest): Observable<ResultModel<LoginResult>> {
@@ -25,8 +30,11 @@ export class UserService {
    * 取得多個使用者資訊
    * @returns 多個使用者資訊
    */
-  getUsers(): Observable<ResultModel<GetUsersResult[]>>{
-    return this.http.get<ResultModel<GetUsersResult[]>>(ApiUrl.user)
+  getUsers(info?: DataTableInfo): Observable<ResultModel<DataTable<GetUsersResult>>>{
+    const params = this.sharedService.createDataTableParams(info);
+    return this.http.get<ResultModel<DataTable<GetUsersResult>>>(ApiUrl.user, {
+      params
+    })
   }
 
   /**

@@ -1,8 +1,8 @@
-import { map, Observable, Subject, takeUntil, filter, concatMap } from 'rxjs';
+import { map, Observable, Subject, takeUntil, filter, concatMap, BehaviorSubject, finalize } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { DataTableInfo, InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
 import { RoleService } from 'src/app/shared/api/role/role.service';
-import { GetRoleResult } from 'src/app/shared/api/role/role.interface';
+import { GetRoleResult as Role } from 'src/app/shared/api/role/role.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
@@ -16,10 +16,12 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   templateUrl: './role-setting.component.html',
   styleUrls: ['./role-setting.component.scss']
 })
-export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, InitDataTableFunction<GetRoleResult> {
-  dataList$: Observable<GetRoleResult[]>
+export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable<Role>, InitDataTableFunction<Role> {
   destroy$ = new Subject()
   columns: { key: string; value: string | number; }[] = []
+  tableDataList: Role[] = [];
+  tableTotalCount: number = 0;
+  loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(
     private roleService: RoleService,
     private dialog: MatDialog,
@@ -28,18 +30,31 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, In
     private sharedService: SharedService
   )
   {
-    this.dataList$ = this.getRoles()
+    this.getRoles()
     this.columns = this.createColumns()
   }
 
+  filterTable(info: DataTableInfo): void {
+    this.getRoles(info)
+  }
+
   ngOnInit(): void {}
+
   ngOnDestroy(): void {
     this.destroy$.next(null);
     this.destroy$.complete();
   }
-  getRoles(): Observable<GetRoleResult[]>{
-    return this.roleService.getRoles().pipe(
-      map(res=> res.data))
+
+  getRoles(info?: DataTableInfo){
+    this.loading$.next(true)
+    this.roleService.getRoles(info).pipe(
+      map(res=> res.data),
+      takeUntil(this.destroy$),
+      finalize(()=> this.loading$.next(false))
+    ).subscribe((res)=>{
+      this.tableDataList = res.tableDataList
+      this.tableTotalCount = res.tableTotalCount
+    })
   }
   createColumns(): { key: string; value: string | number; }[] {
     const columns =
@@ -64,7 +79,7 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, In
     return columns;
   }
   refresh(): void {
-    this.dataList$ = this.getRoles()
+    this.getRoles()
   }
   create(): void {
     const dialog = this.dialog.open(FormDialogComponent,{
@@ -92,7 +107,7 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, In
     })
   }
 
-  modify(row: GetRoleResult): void {
+  modify(row: Role): void {
     const dialog = this.dialog.open(FormDialogComponent,{
       data: {
         title: '修改角色',
@@ -126,7 +141,7 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, In
     })
   }
 
-  delete(row: GetRoleResult): void {
+  delete(row: Role): void {
     this.swalService.delete().pipe(
       concatMap(()=> this.roleService.deleteRole(row.roleId)),
       filter(res=> this.apiService.judgeSuccess(res, true)),
@@ -136,7 +151,7 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, In
     })
   }
 
-  multipleDelete(rows: GetRoleResult[]): void {
+  multipleDelete(rows: Role[]): void {
     this.swalService.multipleDelete(rows).pipe(
       map(()=> rows.map(a=> a.roleId)),
       concatMap((deleteArr)=>this.roleService.batchDeleteRole(deleteArr)),
@@ -147,7 +162,7 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable, In
     })
   }
 
-  openAuthDialog(row: GetRoleResult){
+  openAuthDialog(row: Role){
     this.roleService.getRoleAuth(row.roleId).pipe(
       map(res=> res.data),
       concatMap(rowData=> {

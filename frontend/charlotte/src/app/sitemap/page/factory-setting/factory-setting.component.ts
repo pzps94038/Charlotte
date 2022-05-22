@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { concatMap, filter, map, Observable, Subject, takeUntil, tap } from 'rxjs';
+import { BehaviorSubject, concatMap, filter, map, Observable, Subject, takeUntil, tap, finalize } from 'rxjs';
 import { ApiService } from 'src/app/shared/api/api.service';
 import { GetFactorysResult as Factory } from 'src/app/shared/api/factory/factory.interface';
 import { FactoryService } from 'src/app/shared/api/factory/factory.service';
-import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { DataTableInfo, InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { SharedService } from 'src/app/shared/service/shared.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
@@ -15,11 +15,12 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
   templateUrl: './factory-setting.component.html',
   styleUrls: ['./factory-setting.component.scss']
 })
-export class FactorySettingComponent implements OnInit, OnDestroy, InitDataTable, InitDataTableFunction<Factory> {
+export class FactorySettingComponent implements OnInit, OnDestroy, InitDataTable<Factory>, InitDataTableFunction<Factory> {
   destroy$ = new Subject()
-  dataList$ : Observable<Factory[]>
   columns: { key: string; value: string | number; }[]
-
+  tableDataList: Factory[] = [];
+  tableTotalCount: number = 0;
+  loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor
   (
     private factoryService : FactoryService,
@@ -29,8 +30,13 @@ export class FactorySettingComponent implements OnInit, OnDestroy, InitDataTable
     private swalService: SwalService
   )
   {
-    this.dataList$ = this.getFactorys()
+    this.getFactorys()
     this.columns = this.createColumns()
+  }
+
+  filterTable(info: DataTableInfo): void {
+    console.log(info)
+    this.getFactorys(info)
   }
 
   ngOnInit(): void {
@@ -41,10 +47,18 @@ export class FactorySettingComponent implements OnInit, OnDestroy, InitDataTable
     this.destroy$.complete()
   }
 
-  getFactorys(): Observable<Factory[]>{
-    return this.factoryService.getFactorys().pipe(
-      map(res=> res.data)
-    )
+  getFactorys(info? : DataTableInfo){
+    this.loading$.next(true)
+    this.factoryService.getFactorys(info).pipe(
+      tap(console.log),
+      map(res=> res.data),
+      takeUntil(this.destroy$),
+      finalize(()=> this.loading$.next(false))
+    ).subscribe((res)=> {
+      console.log(res)
+      this.tableDataList = res.tableDataList
+      this.tableTotalCount = res.tableTotalCount
+    })
   }
 
   createColumns(): { key: string; value: string | number; }[] {
@@ -71,7 +85,7 @@ export class FactorySettingComponent implements OnInit, OnDestroy, InitDataTable
   }
 
   refresh(): void {
-    this.dataList$ = this.getFactorys()
+    this.getFactorys()
   }
   create(): void {
     const dialog = this.dialog.open(FormDialogComponent,{

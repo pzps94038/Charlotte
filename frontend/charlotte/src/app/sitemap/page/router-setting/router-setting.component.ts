@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { map, Observable, filter, concatMap, Subject, takeUntil } from 'rxjs';
+import { map, Observable, filter, concatMap, Subject, takeUntil, BehaviorSubject, delay, of } from 'rxjs';
 import { ApiService } from 'src/app/shared/api/api.service';
 import { GetRouterResult as Router } from 'src/app/shared/api/router/router.interface';
 
 import { RouterService } from 'src/app/shared/api/router/router.service';
-import { InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { DataTableInfo, InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { SharedService } from 'src/app/shared/service/shared.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
@@ -16,9 +16,11 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
   templateUrl: './router-setting.component.html',
   styleUrls: ['./router-setting.component.scss']
 })
-export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTableFunction<Router>, OnDestroy {
+export class RouterSettingComponent implements OnInit, InitDataTable<Router>, InitDataTableFunction<Router>, OnDestroy {
   columns : {key: string, value: string | number}[]= []
-  dataList$ : Observable<Router[]>
+  loading$ : BehaviorSubject<boolean>  = new BehaviorSubject<boolean>(false)
+  tableDataList: Router[] = []
+  tableTotalCount: number = 0;
   destroy$ = new Subject()
   constructor
   (
@@ -29,16 +31,19 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
     private sharedService: SharedService
   )
   {
-    this.dataList$ = this.getRouters()
+    this.getRouters()
     this.columns = this.createColumns()
   }
+
+
+  ngOnInit(): void{}
   ngOnDestroy(): void {
     this.destroy$.next(null)
     this.destroy$.complete()
   }
   /** 刷新路由 */
   refresh(): void {
-    this.dataList$ = this.getRouters()
+    this.getRouters()
   }
 
   /** 創建路由 */
@@ -196,12 +201,24 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
     const columns =
     [
       {
+        key: 'routerId',
+        value: '路由Id'
+      },
+      {
         key: 'routerName',
         value: '路由名稱'
       },
       {
         key: 'link',
         value: '連結'
+      },
+      {
+        key: 'icon',
+        value: 'Icon'
+      },
+      {
+        key: 'groupId',
+        value: 'GroupId'
       },
       {
         key: 'flag',
@@ -212,10 +229,21 @@ export class RouterSettingComponent implements OnInit, InitDataTable, InitDataTa
   }
 
   /** 取得路由表 */
-  getRouters(): Observable<Router[]>{
-    return this.routerService.getRouters().pipe(map(res=> res.data))
+  getRouters(info?: DataTableInfo): void{
+    this.loading$.next(true)
+    this.routerService.getRouters(info).pipe(
+      map(res=> res.data)
+    ).subscribe((res)=> {
+      this.loading$.next(false)
+      this.tableDataList = res.tableDataList
+      this.tableTotalCount = res.tableTotalCount
+    })
   }
 
-  ngOnInit(): void{}
+  filterTable(info: DataTableInfo): void {
+    console.log(info)
+    this.getRouters(info)
+  }
+
 }
 

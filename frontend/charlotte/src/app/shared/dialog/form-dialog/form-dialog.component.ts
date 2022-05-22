@@ -26,7 +26,7 @@ export class FormDialogComponent implements OnInit {
   createForm()
   {
     let formConfig: { [key: string]: AbstractControl } = {}
-    for(let data of this.formData.dataList)
+    for(const data of this.formData.dataList)
       formConfig[data.controlName] = this.parseControl(data)
     this.form = this.fb.group(formConfig)
   }

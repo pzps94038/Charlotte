@@ -22,15 +22,4 @@ namespace Charlotte.Model
         public string? message { get; set; }
         public T? data { get; set; }
     }
-
-    /// <summary>
-    /// 回傳多個資料跟訊息
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class ResultListModel<T> 
-    {
-        public HttpStatusCode code { get; set; }
-        public string? message { get; set; }
-        public List<T>? data { get; set; }
-    }
 }

@@ -1,12 +1,14 @@
-<ng-container *ngIf="dataList$ | async as dataList">
-    <app-data-table
-      [columns]="columns"
-      [dataList]="dataList"
-      (createAction)="create()"
-      (deleteAction)="delete($event)"
-      (modifyAction)="modify($event)"
-      (refreshAction)="refresh()"
-      (multipleDeleteAction)="multipleDelete($event)"
-    >
-    </app-data-table>
-  </ng-container>
+<app-data-table
+  [columns]="columns"
+  [tableDataList]="tableDataList"
+  [tableTotalCount]="tableTotalCount"
+  [loading$]="loading$"
+  (createAction)="create()"
+  (deleteAction)="delete($event)"
+  (modifyAction)="modify($event)"
+  (refreshAction)="refresh()"
+  (multipleDeleteAction)="multipleDelete($event)"
+  (filterAction)="filterTable($event)"
+>
+</app-data-table>
+

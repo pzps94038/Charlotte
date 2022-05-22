@@ -17,7 +17,7 @@
         /// 取得所有資料
         /// </summary>
         /// <returns>所有資料</returns>
-        Task<List<T>> GetAllAsync();
+        Task<T> GetAllAsync(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr);
     }
 
     public interface IGetAsync<T>

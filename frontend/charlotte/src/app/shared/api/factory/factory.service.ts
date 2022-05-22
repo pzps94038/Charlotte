@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResultMessage, ResultModel } from '../api.interface';
+import { DataTableInfo } from '../../component/data-table/data.table.interface';
+import { SharedService } from '../../service/shared.service';
+import { DataTable, ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
 import { CreateFactoryRequest, GetFactorysResult, ModifyFactoryRequest } from './factory.interface';
 
@@ -10,11 +12,17 @@ import { CreateFactoryRequest, GetFactorysResult, ModifyFactoryRequest } from '.
 })
 export class FactoryService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private sharedService: SharedService
+  ) { }
 
   /** 取得所有廠商資料 */
-  getFactorys(): Observable<ResultModel<GetFactorysResult[]>>{
-    return this.http.get<ResultModel<GetFactorysResult[]>>(ApiUrl.factory)
+  getFactorys(info? : DataTableInfo): Observable<ResultModel<DataTable<GetFactorysResult>>>{
+    const params = this.sharedService.createDataTableParams(info)
+    return this.http.get<ResultModel<DataTable<GetFactorysResult>>>(ApiUrl.factory, {
+      params
+    })
   }
 
   /** 創建廠商 */
