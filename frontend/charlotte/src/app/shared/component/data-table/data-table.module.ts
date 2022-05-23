@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatProgressSpinnerModule,
     FormsModule,
+    MatButtonModule
   ],
   exports: [
     DataTableComponent

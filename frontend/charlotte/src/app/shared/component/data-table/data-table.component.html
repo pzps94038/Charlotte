@@ -1,14 +1,17 @@
 
 
 <div class="mx-auto mt-2 function mb-0 d-flex justify-content-between align-items-center" *ngIf="functionShow">
-  <mat-form-field appearance="standard" class="search">
-    <mat-label>
-      <mat-icon>search</mat-icon>
-      <span>搜尋</span>
-    </mat-label>
-    <input matInput (keyup)="filterTable()" placeholder="搜尋你想找的東西" [(ngModel)]="filterStr">
-  </mat-form-field>
-  <div>
+  <div class="col-8">
+    <mat-form-field appearance="standard" class="search">
+      <mat-label>
+        <mat-icon>search</mat-icon>
+        <span>搜尋</span>
+      </mat-label>
+      <input matInput (keyup.enter)="filterTable()" placeholder="搜尋你想找的東西" [(ngModel)]="filterStr">
+    </mat-form-field>
+    <button type="button" color="primary" mat-raised-button class="mx-2" (click)="filterTable()">查詢</button>
+  </div>
+  <div class="col-4 d-flex justify-content-end ">
     <button mat-mini-fab color="primary" aria-label="create
       Button" *ngIf="userAuth.createAuth" (click)="createClick()">
       <mat-icon>add</mat-icon>
