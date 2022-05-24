@@ -5,6 +5,7 @@ export interface InitDataTable<T>{
   tableDataList: T[] // table資料來源
   tableTotalCount: number
   loading$ : BehaviorSubject<boolean> // loading spiiner us
+  columns:{ key: string; value: string | number }[]
   createColumns(): {key: string, value: string | number}[] // 資料表頭
 }
 export interface InitDataTableFunction<T> {

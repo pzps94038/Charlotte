@@ -17,7 +17,9 @@ import { LoginModule } from './login/login.module';
 import { SideNavModule } from './sitemap/side-nav/side-nav.module';
 import { SitemapModule } from './sitemap/sitemap.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+import * as more from 'highcharts/highcharts-more.src';
+import * as exporting from 'highcharts/modules/exporting.src';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   providers: [
     Title,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500} }
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500} },
+    { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting ] }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -18,9 +18,9 @@ export class SwalService<T = null> {
       title : options.title,
       text: options.text,
       icon: options.icon,
-      showCancelButton: options.showCancelButton,
-      confirmButtonText: options.confirmButtonText,
-      cancelButtonText: options.cancelButtonText,
+      showCancelButton: options.showCancelButton ?? false,
+      confirmButtonText: options.confirmButtonText ?? '確定',
+      cancelButtonText: options.cancelButtonText ?? '取消',
       heightAuto: false
     }
     return from(Swal.fire(config))

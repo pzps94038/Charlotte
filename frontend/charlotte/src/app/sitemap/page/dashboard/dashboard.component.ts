@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Chart } from 'angular-highcharts';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -6,24 +8,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  data:any
+
   constructor() {
-    this.data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-          {
-              label: 'First Dataset',
-              data: [65, 59, 80, 81, 56, 55, 40]
-          },
-          {
-              label: 'Second Dataset',
-              data: [28, 48, 40, 19, 86, 27, 90]
-          }
-      ]
-  }
    }
 
   ngOnInit(): void {
+  }
+
+  chart = new Chart({
+    chart: {
+      type: 'line'
+    },
+    title: {
+      text: 'Linechart'
+    },
+    credits: {
+      enabled: false
+    },
+    series: [
+      {
+        type: 'column',
+        name: 'Line 1',
+        data: [1, 2, 3]
+      }
+    ]
+  });
+
+  // add point to chart serie
+  add() {
+    this.chart.addPoint(Math.floor(Math.random() * 10));
   }
 
 }

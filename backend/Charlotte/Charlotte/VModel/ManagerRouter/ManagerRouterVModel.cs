@@ -8,5 +8,6 @@
         public string Icon { get; set; }
         public int GroupId { get; set; }
         public string Flag { get; set; }
+        public int Sort { get; set; }
     }
 }

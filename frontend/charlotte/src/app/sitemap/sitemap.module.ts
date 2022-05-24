@@ -17,12 +17,7 @@ import { SideNavModule } from './side-nav/side-nav.module';
 import { SitemapComponent } from './sitemap.component';
 import { HeaderModule } from './header/header.module';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { ChartModule } from 'angular-highcharts';
 @NgModule({
   declarations: [
     SitemapComponent,
@@ -44,6 +39,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     SideNavModule,
     SharedModule,
     HeaderModule,
+    ChartModule
   ],
   exports: [
     RouterModule,

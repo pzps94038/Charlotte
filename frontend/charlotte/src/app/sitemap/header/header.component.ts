@@ -1,12 +1,10 @@
 import { filter, from, map, Subject, takeUntil } from 'rxjs';
-import { Component, EventEmitter, OnInit, Output, OnDestroy, ɵɵsetComponentScope } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
 import { SideNavService } from 'src/app/shared/service/sideNav/side-nav.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import Swal from 'sweetalert2';
 import { UserService } from 'src/app/shared/api/user/user.service';
 import { UserInfoService } from 'src/app/shared/service/userInfo/userInfo.service';
-import { ApiService } from 'src/app/shared/api/api.service';
 import { LogoutService } from 'src/app/shared/service/logout/logout.service';
 
 @Component({
@@ -37,8 +35,6 @@ export class HeaderComponent implements OnDestroy{
       text: "確定要登出嗎?",
       showCancelButton: true,
       icon: 'question',
-      cancelButtonText: "取消",
-      confirmButtonText: "確定",
     }).pipe(
         filter(res=> res.isConfirmed),
         takeUntil(this.destroy$)
@@ -46,7 +42,6 @@ export class HeaderComponent implements OnDestroy{
         this.swalService.alert({
           text: '登出成功',
           icon: 'success',
-          confirmButtonText: "確定",
         }).pipe(
           takeUntil(this.destroy$)
         )
@@ -91,7 +86,6 @@ export class HeaderComponent implements OnDestroy{
                   this.swalService.alert({
                     icon: 'success',
                     text: res.message,
-                    confirmButtonText: '確認'
                   })
                   return true
               })

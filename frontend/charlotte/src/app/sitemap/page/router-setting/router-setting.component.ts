@@ -156,6 +156,13 @@ export class RouterSettingComponent implements OnInit, InitDataTable<Router>, In
             labelText: 'Flag',
             type: 'toggle',
             value: row.flag === "Y",
+          },
+          {
+            controlName: 'sort',
+            labelText: 'Sort',
+            type: 'number',
+            value: row.sort,
+            valids: [Validators.required]
           }
         ]
       }
@@ -223,6 +230,10 @@ export class RouterSettingComponent implements OnInit, InitDataTable<Router>, In
       {
         key: 'flag',
         value: 'Flag'
+      },
+      {
+        key: 'sort',
+        value: 'Sort'
       }
     ]
     return columns
