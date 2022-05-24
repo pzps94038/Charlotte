@@ -32,14 +32,14 @@ namespace Charlotte.Controllers
             ResultModel<TableVModel<ProductTypeVModel>> result = new ResultModel<TableVModel<ProductTypeVModel>>();
             try
             {
-                result.data = await _productTypeHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
-                result.code = HttpStatusCode.OK;
+                result.Data = await _productTypeHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Code = HttpStatusCode.OK;
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -52,13 +52,13 @@ namespace Charlotte.Controllers
             try
             {
                 await _productTypeHelper.CreateAsync(request);
-                result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
-                result.code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
+                result.Code = HttpStatusCode.OK;
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.CreateFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -77,13 +77,13 @@ namespace Charlotte.Controllers
             try
             {
                 await _productTypeHelper.ModifyAsync(productTypeId, request);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifyFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifyFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -101,13 +101,13 @@ namespace Charlotte.Controllers
             try
             {
                 await _productTypeHelper.DeleteAsync(productTypeId);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -125,13 +125,13 @@ namespace Charlotte.Controllers
             try
             {
                 await _productTypeHelper.BatchDeleteAsync(request);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;

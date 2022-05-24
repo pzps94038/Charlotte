@@ -2,10 +2,10 @@
 {
     public class ManagerRouterModel
     {
-        public string routerName { get; set; }
-        public string link { get; set; }
-        public string? icon { get; set; }
-        public int groupId { get; set; }
-        public bool flag { get; set; }
+        public string RouterName { get; set; }
+        public string Link { get; set; }
+        public string? Icon { get; set; }
+        public int GroupId { get; set; }
+        public bool Flag { get; set; }
     }
 }

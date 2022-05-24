@@ -2,6 +2,6 @@
 {
     public class ProductTypeModel
     {
-        public string type { get; set; }
+        public string Type { get; set; }
     }
 }

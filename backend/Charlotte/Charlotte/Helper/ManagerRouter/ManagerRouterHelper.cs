@@ -23,11 +23,11 @@ namespace Charlotte.Helper.ManagerRouter
             using (var db = new CharlotteContext())
             {
                 var data = new Router();
-                data.Flag = request.flag ? "Y" : "N";
-                data.Icon = request.icon == null ? null : request.icon;
-                data.Link = request.link;
-                data.RouterName = request.routerName;
-                data.GroupId = request.groupId;
+                data.Flag = request.Flag ? "Y" : "N";
+                data.Icon = request.Icon == null ? null : request.Icon;
+                data.Link = request.Link;
+                data.RouterName = request.RouterName;
+                data.GroupId = request.GroupId;
                 db.Router.Add(data);
                 await db.SaveChangesAsync();
             }
@@ -38,11 +38,11 @@ namespace Charlotte.Helper.ManagerRouter
             using (var db = new CharlotteContext())
             {
                 var data = await db.Router.SingleAsync(a => a.RouterId == id);
-                data.RouterName = request.routerName;
-                data.Flag = request.flag ? "Y" : "N";
-                data.Icon = request.icon == null ? null : request.icon;
-                data.Link = request.link;
-                data.GroupId = request.groupId;
+                data.RouterName = request.RouterName;
+                data.Flag = request.Flag ? "Y" : "N";
+                data.Icon = request.Icon == null ? null : request.Icon;
+                data.Link = request.Link;
+                data.GroupId = request.GroupId;
                 await db.SaveChangesAsync();
             }
         }

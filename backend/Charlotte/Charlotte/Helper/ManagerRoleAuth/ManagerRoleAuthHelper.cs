@@ -42,28 +42,28 @@ namespace Charlotte.Helper.ManagerRoleAuth
                 var existAuthData = await db.ManagerRoleAuth.Where(a => a.RoleId == roleId).ToListAsync();
                 foreach (var router in req) 
                 {
-                    var authData = existAuthData.FirstOrDefault(a => a.RouterId == router.routerId);
+                    var authData = existAuthData.FirstOrDefault(a => a.RouterId == router.RouterId);
                     if (authData == null)
                     {
                         db.ManagerRoleAuth.Add(new Database.Model.ManagerRoleAuth 
                         {
                             RoleId = roleId,
-                            RouterId = router.routerId,
-                            ViewAuth = router.viewAuth ? "Y" : "N",
-                            CreateAuth = router.createAuth ? "Y" : "N",
-                            ModifyAuth = router.modifyAuth ? "Y" : "N",
-                            DeleteAuth = router.deleteAuth ? "Y" : "N",
-                            ExportAuth = router.exportAuth ? "Y" : "N",
+                            RouterId = router.RouterId,
+                            ViewAuth = router.ViewAuth ? "Y" : "N",
+                            CreateAuth = router.CreateAuth ? "Y" : "N",
+                            ModifyAuth = router.ModifyAuth ? "Y" : "N",
+                            DeleteAuth = router.DeleteAuth ? "Y" : "N",
+                            ExportAuth = router.ExportAuth ? "Y" : "N",
                             CreateDate = DateTime.Now
                         });
                     }
                     else 
                     {
-                        authData.ViewAuth = router.viewAuth ? "Y" : "N";
-                        authData.CreateAuth = router.createAuth ? "Y" : "N";
-                        authData.ModifyAuth = router.modifyAuth ? "Y" : "N";
-                        authData.DeleteAuth = router.deleteAuth ? "Y" : "N";
-                        authData.ExportAuth = router.exportAuth ? "Y" : "N";
+                        authData.ViewAuth = router.ViewAuth ? "Y" : "N";
+                        authData.CreateAuth = router.CreateAuth ? "Y" : "N";
+                        authData.ModifyAuth = router.ModifyAuth ? "Y" : "N";
+                        authData.DeleteAuth = router.DeleteAuth ? "Y" : "N";
+                        authData.ExportAuth = router.ExportAuth ? "Y" : "N";
                         authData.ModifyDate = DateTime.Now;
                     }
                 }

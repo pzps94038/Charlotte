@@ -51,7 +51,7 @@ namespace Charlotte.Helper.ManagerRole
             {
                 var data = await db.ManagerRole.SingleAsync(a => a.RoleId == id);
                 data.ModifyDate = DateTime.Now;
-                data.RoleName = request.roleName;
+                data.RoleName = request.RoleName;
                 await db.SaveChangesAsync();
             }
         }
@@ -61,7 +61,7 @@ namespace Charlotte.Helper.ManagerRole
             using (var db = new CharlotteContext())
             {
                 var role = new Database.Model.ManagerRole();
-                role.RoleName = request.roleName;
+                role.RoleName = request.RoleName;
                 role.CreateDate = DateTime.Now;
                 db.ManagerRole.Add(role);
                 await db.SaveChangesAsync();

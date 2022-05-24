@@ -2,7 +2,7 @@
 {
     public class LoginModel
     {
-        public string account { get; set; } // 帳號
-        public string password { get; set; } // 密碼
+        public string Account { get; set; } // 帳號
+        public string Password { get; set; } // 密碼
     }
 }

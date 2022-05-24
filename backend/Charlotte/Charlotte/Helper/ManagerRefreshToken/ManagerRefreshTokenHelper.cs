@@ -11,20 +11,20 @@ namespace Charlotte.Helper.ManagerRefreshToken
 {
     public class ManagerRefreshTokenHelper: IRefreshTokenHelper
     {
-        public async Task<Token> RefreshToken(RefreshToken req) 
+        public async Task<Token> RefreshToken(RefreshTokenModel req) 
         {
             using (var db = new CharlotteContext())
             {
-                var log = await db.ManagerRefreshTokenLog.SingleAsync(a=> a.RefreshToken == req.refreshToken && a.ManagerUserId == req.userId);
+                var log = await db.ManagerRefreshTokenLog.SingleAsync(a=> a.RefreshToken == req.RefreshToken && a.ManagerUserId == req.UserId);
                 if (log.ExpirationDate < DateTime.Now)
                     throw new TokenExpiredException();
                 else 
                 {
-                    var userMain = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == req.userId);
+                    var userMain = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == req.UserId);
                     string refreshToken = JwtHelper.CreateRefreshToken();
                     var claims = JwtHelper.CreateClaims(userMain.Email, userMain.ManagerUserId.ToString());
                     string accountToken = JwtHelper.GenerateToken(claims);
-                    CreateRefreshTokenLog(db, req.userId, refreshToken);
+                    CreateRefreshTokenLog(db, req.UserId, refreshToken);
                     await db.SaveChangesAsync();
                     return new Token(accountToken, refreshToken);
                 }

@@ -4,6 +4,6 @@ namespace Charlotte.Interface.RefreshToken
 {
     public interface IRefreshTokenHelper
     {
-        Task<Token> RefreshToken(Model.ManagerRefreshToken.RefreshToken request);
+        Task<Token> RefreshToken(Model.ManagerRefreshToken.RefreshTokenModel request);
     }
 }

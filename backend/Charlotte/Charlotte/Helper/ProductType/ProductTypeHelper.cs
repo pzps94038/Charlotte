@@ -25,7 +25,7 @@ namespace Charlotte.Helper.ProductType
             using (var db = new CharlotteContext())
             {
                 var data = new DataBase.Model.ProductType();
-                data.Type = request.type;
+                data.Type = request.Type;
                 data.CreateDate = DateTime.Now;
                 db.ProductType.Add(data);
                 await db.SaveChangesAsync();
@@ -80,7 +80,7 @@ namespace Charlotte.Helper.ProductType
             using (var db = new CharlotteContext())
             {
                 var data = db.ProductType.Single(a => a.ProductTypeId == id);
-                data.Type = request.type;
+                data.Type = request.Type;
                 data.ModifyDate = DateTime.Now;
                 await db.SaveChangesAsync();
             }

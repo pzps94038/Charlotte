@@ -24,19 +24,19 @@ namespace Charlotte.Helper.ManagerLogin
                 {
                     try
                     {
-                        ManagerMain managerMain = await GetManagerMain(con, transaction, req.account);
+                        ManagerMain managerMain = await GetManagerMain(con, transaction, req.Account);
                         if (managerMain == null) message = "帳號或密碼錯誤";
                         else if(managerMain.Flag != "Y") message = "帳號已鎖住，請洽管理員";
                         else
                         {
-                            bool flag = CreateLoginLog(con, transaction, managerMain, req.password); // 寫入登入Log
+                            bool flag = CreateLoginLog(con, transaction, managerMain, req.Password); // 寫入登入Log
                             if (flag)
                             {
                                 string refreshToken = JwtHelper.CreateRefreshToken();
                                 var claims = JwtHelper.CreateClaims(managerMain.Email, managerMain.ManagerUserId.ToString());
                                 string accountToken = JwtHelper.GenerateToken(claims);
-                                result.Token.accessToken = accountToken;
-                                result.Token.refreshToken = refreshToken;
+                                result.Token.AccessToken = accountToken;
+                                result.Token.RefreshToken = refreshToken;
                                 result.ManagerUserId = managerMain.ManagerUserId;
                                 CreateRefreshTokenLog(con, transaction, managerMain, refreshToken);
                             }
@@ -62,7 +62,7 @@ namespace Charlotte.Helper.ManagerLogin
         /// <returns>使用者資訊</returns>
         private async Task<ManagerMain> GetManagerMain(SqlConnection con, DbTransaction transaction, string account)
         {
-            string sqlStr = @"Select * From ManagerMain Where Account = @account ";
+            string sqlStr = @"Select * From ManagerMain Where Account = @Account ";
             return await con.QueryFirstOrDefaultAsync<ManagerMain>(sqlStr, new { account }, transaction);
         }
 

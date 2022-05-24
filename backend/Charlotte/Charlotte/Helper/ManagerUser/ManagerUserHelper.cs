@@ -23,11 +23,11 @@ namespace Charlotte.Helper.ManagerUser
             using (var db = new CharlotteContext())
             {
                 var userData = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == managerUserId);
-                if (userData.Password != EncryptUtils.SHA256Encrypt(req.password))
+                if (userData.Password != EncryptUtils.SHA256Encrypt(req.Password))
                     return result = "原密碼輸入錯誤";
                 else 
                 {
-                    userData.Password = EncryptUtils.SHA256Encrypt(req.newPassword);
+                    userData.Password = EncryptUtils.SHA256Encrypt(req.NewPassword);
                     userData.ModifyDate = DateTime.Now;
                     await db.SaveChangesAsync();
                 }
@@ -40,16 +40,16 @@ namespace Charlotte.Helper.ManagerUser
             using (var db = new CharlotteContext())
             {
                 var user = new ManagerMain();
-                if (request.address != null) 
-                    user.Address = request.address;
-                user.UserName = request.userName;
-                user.Account = request.account;
-                user.Email = request.email;
-                user.RoleId = request.roleId;
-                user.Flag = request.flag ? "Y" : "N";
+                if (request.Address != null) 
+                    user.Address = request.Address;
+                user.UserName = request.UserName;
+                user.Account = request.Account;
+                user.Email = request.Email;
+                user.RoleId = request.RoleId;
+                user.Flag = request.Flag ? "Y" : "N";
                 user.CreatedDate = DateTime.Now;
-                user.Birthday = request.birthday;
-                user.Password = EncryptUtils.SHA256Encrypt(request.password);
+                user.Birthday = request.Birthday;
+                user.Password = EncryptUtils.SHA256Encrypt(request.Password);
                 db.ManagerMain.Add(user);
                 await db.SaveChangesAsync();
             }
@@ -60,22 +60,22 @@ namespace Charlotte.Helper.ManagerUser
             using (var db = new CharlotteContext())
             {
                 var data = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == id);
-                if (request.userName != null)
-                    data.UserName = request.userName;
-                if (request.account != null)
-                    data.Account = request.account;
+                if (request.UserName != null)
+                    data.UserName = request.UserName;
+                if (request.Account != null)
+                    data.Account = request.Account;
                 if (request.password != null)
                     data.Password = EncryptUtils.SHA256Encrypt(request.password);
-                if (request.email != null)
-                    data.Email = request.email;
-                if (request.address != null)
-                    data.Address = request.address;
-                if (request.birthday != null)
-                    data.Birthday = (DateTime)request.birthday;
-                if (request.roleId != null)
-                    data.RoleId = (int)request.roleId;
-                if (request.flag != null)
-                    data.Flag = (bool)request.flag ? "Y" : "N";
+                if (request.Email != null)
+                    data.Email = request.Email;
+                if (request.Address != null)
+                    data.Address = request.Address;
+                if (request.Birthday != null)
+                    data.Birthday = (DateTime)request.Birthday;
+                if (request.RoleId != null)
+                    data.RoleId = (int)request.RoleId;
+                if (request.Flag != null)
+                    data.Flag = (bool)request.Flag ? "Y" : "N";
                 data.ModifyDate = DateTime.Now;
                 await db.SaveChangesAsync();
             }

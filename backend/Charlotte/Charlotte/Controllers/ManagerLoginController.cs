@@ -38,20 +38,20 @@ namespace Charlotte.Controllers
                 (string message, ManagerLoginVModel data) = await _loginHelper.Login(req);
                 if (string.IsNullOrEmpty(message))
                 {
-                    result.code = HttpStatusCode.OK;
-                    result.message = EnumUtils.GetDescription(EnumResult.Success);
-                    result.data = data;
+                    result.Code = HttpStatusCode.OK;
+                    result.Message = EnumUtils.GetDescription(EnumResult.Success);
+                    result.Data = data;
                 }
                 else
                 {
-                    result.code = HttpStatusCode.BadRequest;
-                    result.message = message;
+                    result.Code = HttpStatusCode.BadRequest;
+                    result.Message = message;
                 }
             }
             catch (Exception ex) 
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
