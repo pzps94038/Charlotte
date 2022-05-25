@@ -1,11 +1,27 @@
-<h2 mat-dialog-title class="font-weight-bold">title</h2>
+<h2 mat-dialog-title class="font-weight-bold">新增商品</h2>
 <div class="dialog-container">
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="d-flex">
-      <img [src]="url" alt="預覽圖片" class="col-5 mx-auto" *ngIf="url != ''">
+    <div class="file-container col-12 position-relative">
+      <div class="position-absolute text-center mt-5" style="left:0; right:0;">
+        <mat-icon class="mx-auto file-icon ">file_upload</mat-icon>
+        <p>拖曳或點擊區塊上傳圖片</p>
+      </div>
+      <input type="file" (change)="preview($event)" class="file" #upload accept="image/*" formControlName="productImg" placeholder="請上傳圖片" />
     </div>
-    <input type="file" (change)="preview($event)" class="d-none" #upload accept="image/*" formControlName="productImg">
-    <button type="button" (click)="upload.click()" mat-stroked-button color="primary" class="d-block" >選取圖片</button>
-    <button type="submit" mat-raised-button class="d-block" color="primary">選取圖片</button>
+    <div class="d-flex flex-wrap">
+      <div class="col-lg-6 col-md-12 mt-2">
+        <img [src]="url" alt="預覽圖片" style="width: 300px; height: 300px" *ngIf="url != ''; else noImg" />
+        <ng-template #noImg>
+          <img src="../../../../assets/300x300.png" alt="佔位圖片" style="width: 300px; height: 300px;" />
+        </ng-template>
+        <mat-error *ngIf="!imgTypeValid" class="d-block">
+          請選取正確的圖片格式
+        </mat-error>
+      </div>
+      <div class="col-lg-6 col-md-12 d-flex justify-content-end mt-2 align-items-end">
+        <button type="button" mat-raised-button mat-dialog-close class="mx-2">取消</button>
+        <button type="submit" mat-raised-button color="primary">上傳</button>
+      </div>
+    </div>
   </form>
 </div>
