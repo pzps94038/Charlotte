@@ -1,5 +1,6 @@
 ﻿using Charlotte.DataBase.DbContextModel;
 using Charlotte.Enum;
+using Charlotte.Interface.ManagerRoleAuth;
 using Charlotte.Model.ManagerRoleAuth;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerRoleRouter;
@@ -41,28 +42,28 @@ namespace Charlotte.Helper.ManagerRoleAuth
                 var existAuthData = await db.ManagerRoleAuth.Where(a => a.RoleId == roleId).ToListAsync();
                 foreach (var router in req) 
                 {
-                    var authData = existAuthData.FirstOrDefault(a => a.RouterId == router.routerId);
+                    var authData = existAuthData.FirstOrDefault(a => a.RouterId == router.RouterId);
                     if (authData == null)
                     {
                         db.ManagerRoleAuth.Add(new Database.Model.ManagerRoleAuth 
                         {
                             RoleId = roleId,
-                            RouterId = router.routerId,
-                            ViewAuth = router.viewAuth ? "Y" : "N",
-                            CreateAuth = router.createAuth ? "Y" : "N",
-                            ModifyAuth = router.modifyAuth ? "Y" : "N",
-                            DeleteAuth = router.deleteAuth ? "Y" : "N",
-                            ExportAuth = router.exportAuth ? "Y" : "N",
+                            RouterId = router.RouterId,
+                            ViewAuth = router.ViewAuth ? "Y" : "N",
+                            CreateAuth = router.CreateAuth ? "Y" : "N",
+                            ModifyAuth = router.ModifyAuth ? "Y" : "N",
+                            DeleteAuth = router.DeleteAuth ? "Y" : "N",
+                            ExportAuth = router.ExportAuth ? "Y" : "N",
                             CreateDate = DateTime.Now
                         });
                     }
                     else 
                     {
-                        authData.ViewAuth = router.viewAuth ? "Y" : "N";
-                        authData.CreateAuth = router.createAuth ? "Y" : "N";
-                        authData.ModifyAuth = router.modifyAuth ? "Y" : "N";
-                        authData.DeleteAuth = router.deleteAuth ? "Y" : "N";
-                        authData.ExportAuth = router.exportAuth ? "Y" : "N";
+                        authData.ViewAuth = router.ViewAuth ? "Y" : "N";
+                        authData.CreateAuth = router.CreateAuth ? "Y" : "N";
+                        authData.ModifyAuth = router.ModifyAuth ? "Y" : "N";
+                        authData.DeleteAuth = router.DeleteAuth ? "Y" : "N";
+                        authData.ExportAuth = router.ExportAuth ? "Y" : "N";
                         authData.ModifyDate = DateTime.Now;
                     }
                 }
@@ -77,12 +78,12 @@ namespace Charlotte.Helper.ManagerRoleAuth
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();
-                string sqlStr = @"select router.RouterName as routerName
-                                  ,[ViewAuth] as viewAuth
-                                  ,[CreateAuth] as createAuth
-                                  ,[ModifyAuth] as modifyAuth
-                                  ,[DeleteAuth] as deleteAuth
-                                  ,[ExportAuth] as exportAuth
+                string sqlStr = @"select router.RouterName
+                                  ,[ViewAuth]
+                                  ,[CreateAuth]
+                                  ,[ModifyAuth]
+                                  ,[DeleteAuth]
+                                  ,[ExportAuth]
                                   from [Charlotte].[dbo].[ManagerRoleAuth] as auth
                                   left join Router as router on router.RouterId = auth.RouterId
                                   left join ManagerMain as main on main.RoleId = auth.RoleId
@@ -91,19 +92,19 @@ namespace Charlotte.Helper.ManagerRoleAuth
                 var data = await con.QueryFirstOrDefaultAsync<CheckManagerRoleAuthVModel<string>>(sqlStr, new { userId, routerPath });
                 if (data == null)
                 {
-                    result.viewAuth = false;
-                    result.createAuth = false;
-                    result.modifyAuth = false;
-                    result.deleteAuth = false;
-                    result.exportAuth = false;
+                    result.ViewAuth = false;
+                    result.CreateAuth = false;
+                    result.ModifyAuth = false;
+                    result.DeleteAuth = false;
+                    result.ExportAuth = false;
                 }
                 else 
                 {
-                    result.viewAuth = data.viewAuth == "Y" ? true : false;
-                    result.createAuth = data.createAuth == "Y" ? true : false;
-                    result.modifyAuth = data.modifyAuth == "Y" ? true : false;
-                    result.deleteAuth = data.deleteAuth == "Y" ? true : false;
-                    result.exportAuth = data.exportAuth == "Y" ? true : false;
+                    result.ViewAuth = data.ViewAuth == "Y" ? true : false;
+                    result.CreateAuth = data.CreateAuth == "Y" ? true : false;
+                    result.ModifyAuth = data.ModifyAuth == "Y" ? true : false;
+                    result.DeleteAuth = data.DeleteAuth == "Y" ? true : false;
+                    result.ExportAuth = data.ExportAuth == "Y" ? true : false;
                 }
 
                 return result;

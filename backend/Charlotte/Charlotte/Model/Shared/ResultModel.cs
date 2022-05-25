@@ -7,8 +7,8 @@ namespace Charlotte.Model
     /// </summary>
     public class ResultModel
     {
-        public HttpStatusCode code { get; set; }
-        public string? message { get; set; }
+        public HttpStatusCode Code { get; set; }
+        public string? Message { get; set; }
     }
 
     /// <summary>
@@ -18,19 +18,8 @@ namespace Charlotte.Model
     public class ResultModel
         <T>
     {
-        public HttpStatusCode code { get; set; }
-        public string? message { get; set; }
-        public T? data { get; set; }
-    }
-
-    /// <summary>
-    /// 回傳多個資料跟訊息
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class ResultListModel<T> 
-    {
-        public HttpStatusCode code { get; set; }
-        public string? message { get; set; }
-        public List<T>? data { get; set; }
+        public HttpStatusCode Code { get; set; }
+        public string? Message { get; set; }
+        public T? Data { get; set; }
     }
 }

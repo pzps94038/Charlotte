@@ -9,4 +9,5 @@ export class ApiUrl{
   static menu: string = this.apiUrl + 'ManagerMenu'
   static refreshToken: string = this.apiUrl + 'ManagerRefreshToken'
   static factory: string = this.apiUrl + 'Factory'
+  static productType: string = this.apiUrl + 'ProductType'
 }

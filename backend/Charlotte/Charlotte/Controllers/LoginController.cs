@@ -1,22 +1,25 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.Login;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
-using Charlotte.Model.Login;
+using Charlotte.Model.Shared;
 using Charlotte.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace Charlotte.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+
     public class LoginController : ControllerBase
     {
-        private readonly ILoginHelper _loginHelper;
-        private readonly GetAppSettingsUtils _u;
-        public LoginController(ILoginHelper helper, GetAppSettingsUtils uu)
+        private readonly ILoginHelper<Token> _loginHelper;
+        public LoginController(ILoginHelper<Token> helper)
         {
-            _u = uu;
             _loginHelper = helper;
         }
 
@@ -34,31 +37,23 @@ namespace Charlotte.Controllers
                 (string message , Token token) =  await _loginHelper.Login(req);
                 if (string.IsNullOrEmpty(message))
                 {
-                    result.code = HttpStatusCode.OK;
-                    result.message = EnumUtils.GetDescription(EnumResult.Success);
-                    result.data = token;
+                    result.Code = HttpStatusCode.OK;
+                    result.Message = EnumUtils.GetDescription(EnumResult.Success);
+                    result.Data = token;
                 }
                 else 
                 {
-                    result.code = HttpStatusCode.BadRequest;
-                    result.message = message;
+                    result.Code = HttpStatusCode.BadRequest;
+                    result.Message = message;
                 }
             }
             catch (Exception ex) 
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
-        }
-
-        [HttpGet]
-        public void test() 
-        {
-            var tx = _u.GetAppSetting("AES:Key");
-            var a = "1";
-            var b = "2";
-        }
+        }     
     }
 }

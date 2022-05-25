@@ -1,9 +1,11 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.Factory;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
 using Charlotte.Model.Factory;
 using Charlotte.Services;
 using Charlotte.VModel.Factory;
+using Charlotte.VModel.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +18,10 @@ namespace Charlotte.Controllers
     [Authorize]
     public class FactoryController : ControllerBase
     {
-        private readonly IFactoryHelper _factoryHelper;
-        public FactoryController(IFactoryHelper helper) 
+        private readonly ICRUDAsyncHelper<TableVModel<FactoryVModel>, FactoryVModel, string, string> _crudHelper;
+        public FactoryController(ICRUDAsyncHelper<TableVModel<FactoryVModel>, FactoryVModel, string, string> helper) 
         {
-            _factoryHelper = helper;
+            _crudHelper = helper;
         }
 
         /// <summary>
@@ -27,20 +29,20 @@ namespace Charlotte.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ResultModel<List<FactoryVModel>>> GetFactorys()
+        public async Task<ResultModel<TableVModel<FactoryVModel>>> GetFactorys(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
         {
-            var result = new ResultModel<List<FactoryVModel>>();
+            var result = new ResultModel<TableVModel<FactoryVModel>>();
             try
             {
-                result.data = await _factoryHelper.GetFactorys();
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Data = await _crudHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -57,15 +59,15 @@ namespace Charlotte.Controllers
             var result = new ResultModel<FactoryVModel>();
             try
             {
-                result.data = await _factoryHelper.GetFactory(factoryId);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Data = await _crudHelper.GetAsync(factoryId);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -82,15 +84,15 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _factoryHelper.CreateFactory(req.factoryName);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
+                await _crudHelper.CreateAsync(req.FactoryName);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.CreateFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -108,15 +110,15 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _factoryHelper.ModifyFactory(factoryId, req.factoryName);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
+                await _crudHelper.ModifyAsync(factoryId, req.FactoryName);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifyFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifyFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -133,15 +135,15 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _factoryHelper.DeleteFactory(factoryId);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                await _crudHelper.DeleteAsync(factoryId);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -158,15 +160,15 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _factoryHelper.BatchDeleteFactory(rq);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                await _crudHelper.BatchDeleteAsync(rq);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;

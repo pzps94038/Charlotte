@@ -2,29 +2,29 @@
 {
     public class CreateManagerUserModel
     {
-        public string userName { get; set; }
-        public string account { get; set; }
-        public string password { get; set; }
-        public string email { get; set; }
-        public string? address { get; set; }
-        public DateTime birthday { get; set; }
-        public int roleId { get; set; }
-        public bool flag { get; set; }
+        public string UserName { get; set; }
+        public string Account { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string? Address { get; set; }
+        public DateTime Birthday { get; set; }
+        public int RoleId { get; set; }
+        public bool Flag { get; set; }
     }
     public class ModifyManagerUserModel
     {
-        public string? userName { get; set; }
-        public string? account { get; set; }
+        public string? UserName { get; set; }
+        public string? Account { get; set; }
         public string? password { get; set; }
-        public string? email { get;  set; }
-        public string? address { get; set; }
-        public DateTime? birthday { get; set; }
-        public int? roleId { get; set; }
-        public bool? flag { get; set; }
+        public string? Email { get;  set; }
+        public string? Address { get; set; }
+        public DateTime? Birthday { get; set; }
+        public int? RoleId { get; set; }
+        public bool? Flag { get; set; }
     }
     public class ModifyManagerUserPassWordModel 
     {
-        public string password { get; set; }
-        public string newPassword { get; set; }
+        public string Password { get; set; }
+        public string NewPassword { get; set; }
     }
 }

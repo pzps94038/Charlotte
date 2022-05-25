@@ -2,11 +2,11 @@
 {
     public class ManagerRoleAuthModel
     {
-        public int routerId { get; set; }
-        public bool viewAuth { get; set; }
-        public bool createAuth { get; set; }
-        public bool modifyAuth { get; set; }
-        public bool deleteAuth { get; set; }
-        public bool exportAuth { get; set; }
+        public int RouterId { get; set; }
+        public bool ViewAuth { get; set; }
+        public bool CreateAuth { get; set; }
+        public bool ModifyAuth { get; set; }
+        public bool DeleteAuth { get; set; }
+        public bool ExportAuth { get; set; }
     }
 }

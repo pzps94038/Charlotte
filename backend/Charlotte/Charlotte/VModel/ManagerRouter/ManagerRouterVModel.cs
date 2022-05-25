@@ -2,11 +2,12 @@
 {
     public class ManagerRouterVModel
     {
-        public int routerId { get; set; }
-        public string routerName { get; set; }
-        public string link { get; set; }
-        public string icon { get; set; }
-        public int groupId { get; set; }
-        public string flag { get; set; }
+        public int RouterId { get; set; }
+        public string RouterName { get; set; }
+        public string Link { get; set; }
+        public string Icon { get; set; }
+        public int GroupId { get; set; }
+        public string Flag { get; set; }
+        public int Sort { get; set; }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Charlotte.Enum;
-using Charlotte.Helper.ManagerUser;
+using Charlotte.Interface.ManagerUser;
 using Charlotte.Model;
 using Charlotte.Model.ManagerUser;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerUser;
+using Charlotte.VModel.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+
     public class ManagerUserController : ControllerBase
     {
         private readonly IManagerUserHelper _managerUserHelper;
@@ -23,19 +24,19 @@ namespace Charlotte.Controllers
         }
 
         [HttpGet]
-        public async Task<ResultModel<List<ManagerUsersVModel>>> GetManagerUsers()
+        public async Task<ResultModel<TableVModel<ManagerUsersVModel>>> GetManagerUsers(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
         {
-            var result = new ResultModel<List<ManagerUsersVModel>>();
+            var result = new ResultModel<TableVModel<ManagerUsersVModel>>();
             try
             {
-                result.data = await _managerUserHelper.GetManagerUsers();
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Data = await _managerUserHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -52,14 +53,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel<ManagerUserVModel>();
             try
             {
-                result.data = await _managerUserHelper.GetManagerUser(managerUserId);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Data = await _managerUserHelper.GetAsync(managerUserId);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -75,14 +76,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerUserHelper.CreateManagerUser(req);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
+                await _managerUserHelper.CreateAsync(req);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.CreateFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -100,14 +101,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerUserHelper.ModifyManagerUser(managerUserId, req);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
+                await _managerUserHelper.ModifyAsync(managerUserId, req);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifyFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifyFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -128,19 +129,19 @@ namespace Charlotte.Controllers
                 string errMsg = await _managerUserHelper.ModifyManagerUserPassword(managerUserId, req);
                 if (string.IsNullOrEmpty(errMsg))
                 {
-                    result.code = HttpStatusCode.OK;
-                    result.message = "修改密碼成功";
+                    result.Code = HttpStatusCode.OK;
+                    result.Message = "修改密碼成功";
                 }
                 else 
                 {
-                    result.code = HttpStatusCode.BadRequest;
-                    result.message = errMsg;
+                    result.Code = HttpStatusCode.BadRequest;
+                    result.Message = errMsg;
                 }
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifyFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifyFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -152,14 +153,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerUserHelper.DeleteManagerUser(managerUserId);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                await _managerUserHelper.DeleteAsync(managerUserId);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -171,14 +172,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerUserHelper.BatchDeleteManagerUser(req);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                await _managerUserHelper.BatchDeleteAsync(req);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;

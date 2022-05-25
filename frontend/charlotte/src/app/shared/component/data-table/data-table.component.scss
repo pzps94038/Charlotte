@@ -1,4 +1,4 @@
-.function,.paginator,.data-table{
+.function, .data-table{
   width:80%;
 }
 .search{
@@ -7,4 +7,15 @@
 .table-title{
   font-size: 1rem;
   color: black;
+}
+.spinner-wrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(171, 157, 223, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

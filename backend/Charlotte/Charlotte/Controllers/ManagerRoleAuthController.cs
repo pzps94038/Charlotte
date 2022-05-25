@@ -1,5 +1,6 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerRoleAuth;
+using Charlotte.Interface.ManagerRoleAuth;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRoleAuth;
 using Charlotte.Services;
@@ -27,15 +28,15 @@ namespace Charlotte.Controllers
             var result = new ResultModel<List<ManagerRoleAuthVModel>>();
             try
             {
-                result.data = await _managerAuthRoleHelper.GetManagerRoleRouters(roleId);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Data = await _managerAuthRoleHelper.GetManagerRoleRouters(roleId);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -48,14 +49,14 @@ namespace Charlotte.Controllers
             try
             {
                 await _managerAuthRoleHelper.CreateOrUpdateRoleAuth(roleId, req);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifyFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifyFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -68,15 +69,15 @@ namespace Charlotte.Controllers
             var result = new ResultModel<CheckManagerRoleAuthVModel<bool>>();
             try
             {
-                result.data = await _managerAuthRoleHelper.CheckRoleAuth(userId, routerPath);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Data = await _managerAuthRoleHelper.CheckRoleAuth(userId, routerPath);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;

@@ -2,7 +2,7 @@
 {
     public class ManagerRoleModel 
     {
-        public string roleName { get; set; }
+        public string RoleName { get; set; }
     }
 
 }

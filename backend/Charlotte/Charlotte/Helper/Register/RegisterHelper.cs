@@ -1,5 +1,6 @@
 ﻿using Charlotte.DataBase.DbContextModel;
 using Charlotte.DataBase.Model;
+using Charlotte.Interface.Register;
 using Charlotte.Model.Register;
 using Charlotte.Services;
 using Mapster;

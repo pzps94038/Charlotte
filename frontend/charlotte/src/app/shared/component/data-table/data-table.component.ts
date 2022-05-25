@@ -3,10 +3,13 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
+import { offset } from '@popperjs/core';
 import { BehaviorSubject } from 'rxjs';
 import { SwalService } from '../../service/swal/swal.service';
 import { UserAuth } from '../../service/userInfo/userInfo.interface';
 import { UserInfoService } from '../../service/userInfo/userInfo.service';
+import { DataTableInfo } from './data.table.model';
 
 @Component({
   selector: 'app-data-table',
@@ -15,12 +18,14 @@ import { UserInfoService } from '../../service/userInfo/userInfo.service';
 })
 export class DataTableComponent implements OnInit {
   @Input() columns: {key:string, value: any}[] = [] // 表頭名稱
-  @Input() dataList: any[] = [] // 資料來源
+  @Input() tableDataList: any[] = [] // 資料來源
+  @Input() tableTotalCount: number = 0 // 資料來源長度
   @Input() functionShow: boolean = true // 要不要開起多選刪除跟搜尋功能
   @Input() deteailBtnShow: boolean = false // 明細按鈕
-  dataSource = new MatTableDataSource<any>() // Table的資料來源設定
+  @Input() loading$ : BehaviorSubject<boolean>  = new BehaviorSubject<boolean>(false)
   displayedColumns: string[] = []
   userAuth: UserAuth
+  filterStr: string = ''
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator // 分頁
   @ViewChild(MatSort) sort!: MatSort; // 排序
   @Output() createAction: EventEmitter<any> = new EventEmitter<any>()
@@ -30,6 +35,7 @@ export class DataTableComponent implements OnInit {
   @Output() checkBox: EventEmitter<any> = new EventEmitter<any>()
   @Output() multipleDeleteAction: EventEmitter<any> = new EventEmitter<any>()
   @Output() refreshAction: EventEmitter<any> = new EventEmitter<any>()
+  @Output() filterAction: EventEmitter<DataTableInfo> = new EventEmitter<DataTableInfo>()
   selection = new SelectionModel<any>(true, []);
 
   constructor(
@@ -41,26 +47,18 @@ export class DataTableComponent implements OnInit {
   ngOnInit(): void
   {
     this.displayedColumns = this.createDisplayedColumns()
-    this.bindingTable(this.dataList)
     this.initPaginatorLabel()
   }
 
   ngAfterViewInit()
   {
-    this.dataSource.sort = this.sort// set sort
-    this.dataSource.paginator = this.paginator// set pagination
+
   }
 
   /** 搜尋事件 */
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  /** 初始化設定Table */
-  bindingTable(dataList: any): void
-  {
-    this.dataSource = new MatTableDataSource<any>(dataList);
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   /**
@@ -135,5 +133,18 @@ export class DataTableComponent implements OnInit {
     this.paginator._intl.nextPageLabel = '下一頁'
     this.paginator._intl.previousPageLabel = '上一頁'
     this.paginator._intl.lastPageLabel = '最後一頁'
+  }
+  filterTable(){
+    this.filterAction.emit({
+      page: {
+        limit: this.paginator.pageSize,
+        offset: this.paginator.pageIndex * this.paginator.pageSize
+      },
+      sort: {
+        active: this.sort.active,
+        direction: this.sort.direction
+      },
+      filterStr: this.filterStr
+    })
   }
 }

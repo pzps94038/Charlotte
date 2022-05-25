@@ -1,14 +1,17 @@
 
 
 <div class="mx-auto mt-2 function mb-0 d-flex justify-content-between align-items-center" *ngIf="functionShow">
-  <mat-form-field appearance="standard" class="search">
-    <mat-label>
-      <mat-icon>search</mat-icon>
-      <span>搜尋</span>
-    </mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="搜尋你想找的東西" #input>
-  </mat-form-field>
-  <div>
+  <div class="col-8">
+    <mat-form-field appearance="standard" class="search">
+      <mat-label>
+        <mat-icon>search</mat-icon>
+        <span>搜尋</span>
+      </mat-label>
+      <input matInput (keyup.enter)="filterTable()" placeholder="搜尋你想找的東西" [(ngModel)]="filterStr">
+    </mat-form-field>
+    <button type="button" color="primary" mat-raised-button class="mx-2" (click)="filterTable()">查詢</button>
+  </div>
+  <div class="col-4 d-flex justify-content-end ">
     <button mat-mini-fab color="primary" aria-label="create
       Button" *ngIf="userAuth.createAuth" (click)="createClick()">
       <mat-icon>add</mat-icon>
@@ -23,49 +26,62 @@
     </button>
   </div>
 </div>
-<mat-table [dataSource]="dataSource" class="mx-auto data-table" matSort>
-  <table class="mx-auto data-table bg-white" *matNoDataRow>
-    <tr>
-      <td class="text-center" [attr.colspan]="displayedColumns.length">
-        <h1 class="text-danger py-5">沒有任何資料</h1>
-      </td>
-    </tr>
-  </table>
-  <!-- table dynamic columns -->
-  <ng-container *ngFor="let column of displayedColumns;index as idx" >
-    <ng-container [ngSwitch]="column">
-      <ng-container *ngSwitchCase="'Action'" [matColumnDef]="column" >
-        <mat-header-cell *matHeaderCellDef>
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <button color="primary" *ngIf="userAuth.modifyAuth" mat-icon-button aria-label="modify button" (click)="modifyClick(row)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button color="warn" *ngIf="userAuth.deleteAuth" mat-icon-button aria-label="delete button" (click)="deleteClick(row)">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button *ngIf="deteailBtnShow" mat-icon-button aria-label="detail button" (click)="detailClick(row)">
-            <mat-icon>reorder</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-      <ng-container *ngSwitchCase="'Checkbox'" [matColumnDef]="column" >
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <mat-checkbox color="primary" [checked]="selection.isSelected(row)" (change)="checkBoxChange(row)"></mat-checkbox>
-        </mat-cell>
-      </ng-container>
-      <ng-container *ngSwitchDefault [matColumnDef]="column">
-        <mat-header-cell *matHeaderCellDef mat-sort-header class="table-title">{{columns[idx].value}}</mat-header-cell >
-        <mat-cell *matCellDef="let row">
-          {{row[column]}}
-        </mat-cell>
+
+<div class="position-relative mx-auto data-table">
+  <mat-table [dataSource]="tableDataList" matSort (matSortChange)="filterTable()">
+    <table class="mx-auto data-table bg-white" *matNoDataRow>
+      <tr>
+        <td class="text-center" [attr.colspan]="displayedColumns.length">
+          <h1 class="text-danger py-5">沒有任何資料</h1>
+        </td>
+      </tr>
+    </table>
+    <!-- table dynamic columns -->
+
+    <ng-container *ngFor="let column of displayedColumns;index as idx" >
+      <ng-container [ngSwitch]="column">
+        <ng-container *ngSwitchCase="'Action'" [matColumnDef]="column" >
+          <mat-header-cell *matHeaderCellDef>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button color="primary" *ngIf="userAuth.modifyAuth" mat-icon-button aria-label="modify button" (click)="modifyClick(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button color="warn" *ngIf="userAuth.deleteAuth" mat-icon-button aria-label="delete button" (click)="deleteClick(row)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button *ngIf="deteailBtnShow" mat-icon-button aria-label="detail button" (click)="detailClick(row)">
+              <mat-icon>reorder</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Checkbox'" [matColumnDef]="column" >
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox color="primary" [checked]="selection.isSelected(row)" (change)="checkBoxChange(row)"></mat-checkbox>
+          </mat-cell>
+        </ng-container>
+        <ng-container *ngSwitchDefault [matColumnDef]="column">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="table-title">{{columns[idx].value}}</mat-header-cell >
+          <mat-cell *matCellDef="let row">
+            {{row[column]}}
+          </mat-cell>
+        </ng-container>
       </ng-container>
     </ng-container>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table>
-  <!-- table pagination -->
-<mat-paginator #paginator color="primary" [pageSizeOptions]="[10, 15, 20]"  class="mx-auto paginator" showFirstLastButtons></mat-paginator>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+    <!-- table pagination -->
+  <mat-paginator #paginator color="primary" [pageSizeOptions]="[10, 15, 20, 50]"  class="mx-auto paginator" showFirstLastButtons (page)="filterTable()" [length]="tableTotalCount"></mat-paginator>
+  <div class="spinner-wrapper" *ngIf="loading$ | async as loading">
+    <ng-container *ngIf="loading">
+      <mat-spinner color="warn"></mat-spinner>
+    </ng-container>
+  </div>
+</div>
+
+
+
+
 

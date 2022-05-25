@@ -1,10 +1,12 @@
 ﻿using Charlotte.Database.Model;
 using Charlotte.Enum;
 using Charlotte.Helper.ManagerRouter;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRouter;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerRouter;
+using Charlotte.VModel.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,8 +19,8 @@ namespace Charlotte.Controllers
     [Authorize]
     public class ManagerRouterController : ControllerBase
     {
-        private readonly IManagerRouterHelper _managerRouterHelper;
-        public ManagerRouterController(IManagerRouterHelper helper)
+        private readonly ICRUDAsyncHelper<TableVModel<ManagerRouterVModel>, ManagerRouterVModel, ManagerRouterModel, ManagerRouterModel> _managerRouterHelper;
+        public ManagerRouterController(ICRUDAsyncHelper<TableVModel<ManagerRouterVModel>, ManagerRouterVModel, ManagerRouterModel, ManagerRouterModel> helper)
         {
             _managerRouterHelper = helper;
         }
@@ -28,19 +30,19 @@ namespace Charlotte.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ResultModel<List<ManagerRouterVModel>>> GetRouters()
+        public async Task<ResultModel<TableVModel<ManagerRouterVModel>>> GetRouters(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
         {
-            var result = new ResultModel<List<ManagerRouterVModel>>();
+            var result = new ResultModel<TableVModel<ManagerRouterVModel>>();
             try
             {
-                result.data = await _managerRouterHelper.GetRouters();
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Data = await _managerRouterHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -56,14 +58,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRouterHelper.CreateRouter(rq);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
+                await _managerRouterHelper.CreateAsync(rq);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.CreateFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -81,14 +83,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRouterHelper.ModifyRouter(routerId, rq);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
+                await _managerRouterHelper.ModifyAsync(routerId, rq);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifyFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifyFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -105,14 +107,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRouterHelper.DeleteRouter(routerId);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                await _managerRouterHelper.DeleteAsync(routerId);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -129,14 +131,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRouterHelper.BatchDeleteRouter(rq);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                await _managerRouterHelper.BatchDeleteAsync(rq);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;

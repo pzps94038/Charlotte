@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseInput, FormDialog } from './form.dialog.interface';
 @Component({
@@ -26,7 +26,7 @@ export class FormDialogComponent implements OnInit {
   createForm()
   {
     let formConfig: { [key: string]: AbstractControl } = {}
-    for(let data of this.formData.dataList)
+    for(const data of this.formData.dataList)
       formConfig[data.controlName] = this.parseControl(data)
     this.form = this.fb.group(formConfig)
   }
@@ -38,8 +38,8 @@ export class FormDialogComponent implements OnInit {
   parseControl(data: BaseInput): FormControl
   {
     return new FormControl({
-      value: data.value !== '' ? data.value : '',
-      disabled: data.disabled
+        value: data.value === '' ? '' : data.value,
+        disabled: data.disabled
       },
       data.valids
     )

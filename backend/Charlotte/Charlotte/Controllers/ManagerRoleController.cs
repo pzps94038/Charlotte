@@ -1,9 +1,11 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerRole;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRole;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerRole;
+using Charlotte.VModel.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,8 +18,8 @@ namespace Charlotte.Controllers
     [Authorize]
     public class ManagerRoleController : ControllerBase
     {
-        private readonly IManagerRoleHelper _managerRoleHelper;
-        public ManagerRoleController(IManagerRoleHelper helper)
+        private readonly ICRUDAsyncHelper<TableVModel<ManagerRoleVModel>, ManagerRoleVModel, ManagerRoleModel, ManagerRoleModel> _managerRoleHelper;
+        public ManagerRoleController(ICRUDAsyncHelper<TableVModel<ManagerRoleVModel>, ManagerRoleVModel, ManagerRoleModel, ManagerRoleModel> helper)
         {
             _managerRoleHelper = helper;
         }
@@ -26,19 +28,19 @@ namespace Charlotte.Controllers
         /// </summary>
         /// <returns>權限角色清單</returns>
         [HttpGet]
-        public async Task<ResultModel<List<ManagerRoleVModel>>> GetRoles() 
+        public async Task<ResultModel<TableVModel<ManagerRoleVModel>>> GetRoles(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr) 
         {
-            var result = new ResultModel<List<ManagerRoleVModel>> ();
+            var result = new ResultModel<TableVModel<ManagerRoleVModel>> ();
             try
             {
-                result.data = await _managerRoleHelper.GetRoles();
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Data = await _managerRoleHelper.GetAllAsync(limit, offset, orderBy, orderDescription, filterStr);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -55,14 +57,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRoleHelper.CreateManagerRole(req);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
+                await _managerRoleHelper.CreateAsync(req);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
             }
             catch (Exception ex) 
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.CreateFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -80,14 +82,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRoleHelper.ModifyRole(roleId, req);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
+                await _managerRoleHelper.ModifyAsync(roleId, req);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifySuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.ModifyFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.ModifyFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -105,14 +107,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRoleHelper.DeleteRole(roleId);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                await _managerRoleHelper.DeleteAsync(roleId);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -129,14 +131,14 @@ namespace Charlotte.Controllers
             var result = new ResultModel();
             try
             {
-                await _managerRoleHelper.BatchDeleteManagerRole(req);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
+                await _managerRoleHelper.BatchDeleteAsync(req);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteSuccess);
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.DeleteFail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.DeleteFail);
                 LoggerUtils.Error(ex);
             }
             return result;

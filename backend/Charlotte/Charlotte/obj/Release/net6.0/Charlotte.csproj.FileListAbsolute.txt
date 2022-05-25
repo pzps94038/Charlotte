@@ -154,3 +154,8 @@ C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Newtonsoft.Json.dll
 C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Scrutor.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Newtonsoft.Json.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Scrutor.dll
+C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\System.Linq.Dynamic.Core.dll

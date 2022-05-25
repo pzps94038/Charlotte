@@ -1,6 +1,6 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper;
-using Charlotte.Helper.Register;
+using Charlotte.Interface.Register;
 using Charlotte.Model;
 using Charlotte.Model.Register;
 using Charlotte.Services;
@@ -34,20 +34,20 @@ namespace Charlotte.Controllers
                 string message =  await _registerHelper.Register(req);
                 if (string.IsNullOrEmpty(message))
                 {
-                    result.code = HttpStatusCode.OK;
-                    result.message = EnumUtils.GetDescription(EnumResult.Success);
+                    result.Code = HttpStatusCode.OK;
+                    result.Message = EnumUtils.GetDescription(EnumResult.Success);
                 }
                 else 
                 {
-                    result.code = HttpStatusCode.BadRequest;
-                    result.message = message;
+                    result.Code = HttpStatusCode.BadRequest;
+                    result.Message = message;
                 }
                 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;

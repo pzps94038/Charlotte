@@ -1,19 +1,27 @@
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ChceckRoleAuthResult, CreateRoleRequest, GetRoleAuthResult, GetRoleResult, ModifyRoleAuthRequest, ModifyRoleRequest } from './role.interface';
 import { ApiUrl } from '../api.url';
-import { ResultMessage, ResultModel } from '../api.interface';
+import { DataTable, ResultMessage, ResultModel } from '../api.interface';
+import { DataTableInfo } from '../../component/data-table/data.table.model';
+import { SharedService } from '../../service/shared.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoleService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private sharedService: SharedService
+  ) { }
 
-  getRoles(): Observable<ResultModel<GetRoleResult[]>>{
-    return this.http.get<ResultModel<GetRoleResult[]>>(ApiUrl.role)
+  getRoles(info? : DataTableInfo): Observable<ResultModel<DataTable<GetRoleResult>>>{
+    let params = this.sharedService.createDataTableParams(info)
+    return this.http.get<ResultModel<DataTable<GetRoleResult>>>(ApiUrl.role,{
+      params
+    })
   }
 
   createRole(req: CreateRoleRequest): Observable<ResultMessage>{

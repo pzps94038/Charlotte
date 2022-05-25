@@ -1,7 +1,8 @@
 ﻿using Charlotte.DataBase.Model;
 using Charlotte.Enum;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
-using Charlotte.Model.Login;
+using Charlotte.Model.Shared;
 using Charlotte.Services;
 using Dapper;
 using Microsoft.Data.SqlClient;
@@ -9,7 +10,7 @@ using System.Data.Common;
 
 namespace Charlotte.Helper.Login
 {
-    public class LoginHelper: ILoginHelper
+    public class LoginHelper: ILoginHelper<Token>
     {
         
         public async Task<(string , Token)> Login(LoginModel req) 
@@ -24,18 +25,18 @@ namespace Charlotte.Helper.Login
                 {
                     try
                     {
-                        UserMain userMain = await GetUserMain(con, transaction, req.account);
+                        UserMain userMain = await GetUserMain(con, transaction, req.Account);
                         if (userMain == null) message = "帳號或密碼錯誤";
                         else
                         {
-                            bool flag = CreateLoginLog(con, transaction, userMain, req.password); // 寫入登入Log
+                            bool flag = CreateLoginLog(con, transaction, userMain, req.Password); // 寫入登入Log
                             if (flag)
                             {
                                 string refreshToken = JwtHelper.CreateRefreshToken();
                                 var claims = JwtHelper.CreateClaims(userMain.Email, userMain.UserId.ToString());
                                 string accountToken = JwtHelper.GenerateToken(claims);
-                                token.accessToken = accountToken;
-                                token.refreshToken = refreshToken;
+                                token.AccessToken = accountToken;
+                                token.RefreshToken = refreshToken;
                                 CreateRefreshTokenLog(con, transaction, userMain, refreshToken);
                             }
                             else message = "帳號或密碼錯誤";
@@ -61,7 +62,7 @@ namespace Charlotte.Helper.Login
         /// <returns>使用者資訊</returns>
         private async Task<UserMain> GetUserMain(SqlConnection con, DbTransaction transaction, string account) 
         {
-            string sqlStr = @"Select * From UserMain Where Account = @account ";
+            string sqlStr = @"Select * From UserMain Where Account = @Account ";
             return await con.QueryFirstOrDefaultAsync<UserMain>(sqlStr, new { account = account}, transaction);
         }
 

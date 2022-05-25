@@ -9,3 +9,7 @@ export interface ResultModel<T> {
   message: string, // 回傳訊息
   data: T // 回傳資料
 }
+export interface DataTable<T>{
+  tableDataList: T[]
+  tableTotalCount: number
+}

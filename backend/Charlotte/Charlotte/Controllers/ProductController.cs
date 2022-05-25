@@ -1,5 +1,6 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.Product;
+using Charlotte.Interface.Product;
 using Charlotte.Model;
 using Charlotte.Services;
 using Charlotte.VModel.Product;
@@ -32,24 +33,24 @@ namespace Charlotte.Controllers
             ResultModel<ProductVModel> result = new ResultModel<ProductVModel>();            
             try
             {
-                var data = await _productHelper.GetProruct(productId);
+                var data = await _productHelper.GetAsync(productId);
                 if (data == null)
                 {
-                    result.message = EnumUtils.GetDescription(EnumResult.NotFound);
-                    result.code = HttpStatusCode.NotFound;
+                    result.Message = EnumUtils.GetDescription(EnumResult.NotFound);
+                    result.Code = HttpStatusCode.NotFound;
                 }
                 else 
                 {
-                    result.message = EnumUtils.GetDescription(EnumResult.Success);
-                    result.code = HttpStatusCode.OK;
-                    result.data = data;
+                    result.Message = EnumUtils.GetDescription(EnumResult.Success);
+                    result.Code = HttpStatusCode.OK;
+                    result.Data = data;
                 }
                 
             }
             catch (Exception ex) 
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;
@@ -66,14 +67,14 @@ namespace Charlotte.Controllers
             ResultModel<List<ProductVModel>> result = new ResultModel<List<ProductVModel>>();
             try
             {
-                result.data = await _productHelper.GetProducts(typeId);
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
-                result.code= HttpStatusCode.OK;
+                result.Data = await _productHelper.GetProducts(typeId);
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Code= HttpStatusCode.OK;
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;

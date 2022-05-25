@@ -1,6 +1,6 @@
 
-<h2 mat-dialog-title style="font-weight: bold">{{formData.title}}</h2>
-<div style="min-width: 50vw">
+<h2 mat-dialog-title class="font-weight-bold">{{formData.title}}</h2>
+<div class="dialog-container">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <ng-container *ngFor="let data of formData.dataList">
       <ng-container [ngSwitch]="data.type">
@@ -16,7 +16,7 @@
                   {{option.text}}
                 </mat-option>
             </mat-select>
-            <mat-error *ngIf="form.controls[data.controlName].hasError('required')">
+            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['required']">
               此欄位必填
             </mat-error>
           </mat-form-field>
@@ -27,7 +27,7 @@
             <input matInput [matDatepicker]="picker" [formControlName]="data.controlName" [placeholder]="data.placeholder">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="form.controls[data.controlName].hasError('required')">
+            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['required']">
               此欄位必填
             </mat-error>
           </mat-form-field>
@@ -42,23 +42,21 @@
               {{data.labelText}}
             </mat-label>
             <input [type]="data.type" matInput [placeholder]="data.placeholder" [formControlName]="data.controlName">
-            <mat-error *ngIf="form.controls[data.controlName].hasError('required')">
+            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['required']">
               此欄位必填
             </mat-error>
-            <mat-error *ngIf="form.controls[data.controlName].hasError('minlength')">
+            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['minlength']">
               長度至少為{{data.minLength}}
             </mat-error>
-            <mat-error *ngIf="form.controls[data.controlName].hasError('maxlength')">
+            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['maxlength']">
               長度最長為{{data.maxLength}}
             </mat-error>
-            <mat-error *ngIf="form.controls[data.controlName].hasError('email')">
+            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['email']">
               Email格式錯誤
             </mat-error>
           </mat-form-field>
         </ng-container>
       </ng-container>
-
-
     </ng-container>
     <div mat-dialog-actions class="d-flex justify-content-end">
       <button type="button" mat-raised-button mat-dialog-close>取消</button>

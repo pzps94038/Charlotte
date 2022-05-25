@@ -2,6 +2,6 @@
 {
     public class Factory
     {
-        public string factoryName { get; set; }
+        public string FactoryName { get; set; }
     }
 }

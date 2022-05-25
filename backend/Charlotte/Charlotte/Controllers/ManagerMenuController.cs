@@ -1,5 +1,6 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerMenu;
+using Charlotte.Interface.Shared;
 using Charlotte.Model;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerMenu;
@@ -16,8 +17,8 @@ namespace Charlotte.Controllers
     public class ManagerMenuController : ControllerBase
     {
 
-        private readonly IManagerMenuHelper _menuHelper;
-        public ManagerMenuController(IManagerMenuHelper helper)
+        private readonly IGetAsync<List<ManagerMenuVModel>> _menuHelper;
+        public ManagerMenuController(IGetAsync<List<ManagerMenuVModel>> helper)
         {
             _menuHelper = helper;
         }
@@ -28,15 +29,15 @@ namespace Charlotte.Controllers
             ResultModel<List<ManagerMenuVModel>> result = new ResultModel<List<ManagerMenuVModel>>();
             try
             {
-                result.data = await _menuHelper.GetMenu(userId);
-                result.code = HttpStatusCode.OK;
-                result.message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Data = await _menuHelper.GetAsync(userId);
+                result.Code = HttpStatusCode.OK;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
 
             }
             catch (Exception ex)
             {
-                result.code = HttpStatusCode.BadRequest;
-                result.message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
                 LoggerUtils.Error(ex);
             }
             return result;

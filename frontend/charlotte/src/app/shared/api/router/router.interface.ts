@@ -5,6 +5,7 @@ export interface GetRouterResult{
   icon: string
   groupId: number
   flag: string
+  sort: number
 }
 export interface CreateRouterRequest{
   link: string
@@ -12,6 +13,7 @@ export interface CreateRouterRequest{
   icon: string
   groupId: string
   flag: string
+  sort: number
 }
 export interface ModifyRouterRequest{
   routerId: number
@@ -20,5 +22,6 @@ export interface ModifyRouterRequest{
   icon: string
   groupId: string
   flag: string
+  sort: number
 }
 
