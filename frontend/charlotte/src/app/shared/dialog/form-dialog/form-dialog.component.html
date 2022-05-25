@@ -1,6 +1,6 @@
 
-<h2 mat-dialog-title style="font-weight: bold">{{formData.title}}</h2>
-<div style="min-width: 50vw">
+<h2 mat-dialog-title class="font-weight-bold">{{formData.title}}</h2>
+<div class="dialog-container">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <ng-container *ngFor="let data of formData.dataList">
       <ng-container [ngSwitch]="data.type">

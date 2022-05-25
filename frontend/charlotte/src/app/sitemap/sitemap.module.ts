@@ -39,7 +39,7 @@ import { ChartModule } from 'angular-highcharts';
     SideNavModule,
     SharedModule,
     HeaderModule,
-    ChartModule
+    ChartModule,
   ],
   exports: [
     RouterModule,
