@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { DataTableInfo } from '../component/data-table/data.table.interface';
+import { DataTableInfo } from '../component/data-table/data.table.model';
 
 @Injectable({
   providedIn: 'root'

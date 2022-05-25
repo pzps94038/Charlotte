@@ -5,7 +5,7 @@ import { BehaviorSubject, concatMap, filter, map, Subject, takeUntil, finalize }
 import { ApiService } from 'src/app/shared/api/api.service';
 import { GetProductTypesResult as ProductType } from 'src/app/shared/api/productType/product-type.interface';
 import { ProductTypeService } from 'src/app/shared/api/productType/product-type.service';
-import { DataTableInfo, InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { BaseDataTable, DataTableInfo, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.model';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { SharedService } from 'src/app/shared/service/shared.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
@@ -15,7 +15,7 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
   templateUrl: './product-type-setting.component.html',
   styleUrls: ['./product-type-setting.component.scss']
 })
-export class ProductTypeSettingComponent implements OnInit, InitDataTable<ProductType>, InitDataTableFunction<ProductType>, OnDestroy {
+export class ProductTypeSettingComponent extends BaseDataTable<ProductType> implements OnInit,  InitDataTableFunction<ProductType>, OnDestroy {
 
   constructor(
     private productTypeService: ProductTypeService,
@@ -23,11 +23,9 @@ export class ProductTypeSettingComponent implements OnInit, InitDataTable<Produc
     private apiService: ApiService,
     private dialog: MatDialog,
     private swalService: SwalService
-  ) { }
-  tableDataList: ProductType[] = [];
-  columns:{ key: string; value: string | number; }[] = []
-  tableTotalCount: number = 0;
-  loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  ) {
+    super();
+  }
   destroy$: Subject<any> = new Subject<any>();
   ngOnInit(): void
   {

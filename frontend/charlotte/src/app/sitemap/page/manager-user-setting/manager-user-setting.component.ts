@@ -2,7 +2,7 @@ import { RoleService } from 'src/app/shared/api/role/role.service';
 import { UserService } from 'src/app/shared/api/user/user.service';
 import { map, Observable, filter, takeUntil, Subject, concatMap, tap, BehaviorSubject, finalize } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataTableInfo, InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { BaseDataTable, DataTableInfo, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.model';
 import { GetUsersResult as Users } from 'src/app/shared/api/user/user.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
@@ -16,12 +16,8 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   templateUrl: './manager-user-setting.component.html',
   styleUrls: ['./manager-user-setting.component.scss']
 })
-export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTable<Users>, InitDataTableFunction<Users> {
+export class ManagerUserSettingComponent extends BaseDataTable<Users> implements OnInit, OnDestroy, InitDataTableFunction<Users> {
   destroy$ = new Subject()
-  columns: {key: string, value: string | number}[]= []
-  tableDataList: Users[] = [];
-  tableTotalCount: number = 0;
-  loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor
   (
     private userService: UserService,
@@ -32,6 +28,7 @@ export class ManagerUserSettingComponent implements OnInit, OnDestroy,InitDataTa
     private sharedService: SharedService
   )
   {
+    super();
     this.columns = this.createColumns()
     this.getUsers()
   }

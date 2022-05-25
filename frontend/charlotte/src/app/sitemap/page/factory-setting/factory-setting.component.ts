@@ -5,7 +5,7 @@ import { BehaviorSubject, concatMap, filter, map, Observable, Subject, takeUntil
 import { ApiService } from 'src/app/shared/api/api.service';
 import { GetFactorysResult as Factory } from 'src/app/shared/api/factory/factory.interface';
 import { FactoryService } from 'src/app/shared/api/factory/factory.service';
-import { DataTableInfo, InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { BaseDataTable, DataTableInfo, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.model';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { SharedService } from 'src/app/shared/service/shared.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
@@ -15,12 +15,8 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
   templateUrl: './factory-setting.component.html',
   styleUrls: ['./factory-setting.component.scss']
 })
-export class FactorySettingComponent implements OnInit, OnDestroy, InitDataTable<Factory>, InitDataTableFunction<Factory> {
+export class FactorySettingComponent extends BaseDataTable<Factory> implements OnInit, OnDestroy, InitDataTableFunction<Factory> {
   destroy$ = new Subject()
-  columns: { key: string; value: string | number; }[]
-  tableDataList: Factory[] = [];
-  tableTotalCount: number = 0;
-  loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor
   (
     private factoryService : FactoryService,
@@ -30,6 +26,7 @@ export class FactorySettingComponent implements OnInit, OnDestroy, InitDataTable
     private swalService: SwalService
   )
   {
+    super();
     this.getFactorys()
     this.columns = this.createColumns()
   }

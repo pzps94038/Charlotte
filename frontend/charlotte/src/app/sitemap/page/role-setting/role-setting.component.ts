@@ -1,6 +1,6 @@
 import { map, Observable, Subject, takeUntil, filter, concatMap, BehaviorSubject, finalize } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataTableInfo, InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { BaseDataTable, DataTableInfo, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.model';
 import { RoleService } from 'src/app/shared/api/role/role.service';
 import { GetRoleResult as Role } from 'src/app/shared/api/role/role.interface';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,12 +16,8 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   templateUrl: './role-setting.component.html',
   styleUrls: ['./role-setting.component.scss']
 })
-export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable<Role>, InitDataTableFunction<Role> {
+export class RoleSettingComponent extends BaseDataTable<Role> implements OnInit, OnDestroy, InitDataTableFunction<Role> {
   destroy$ = new Subject()
-  columns: { key: string; value: string | number; }[] = []
-  tableDataList: Role[] = [];
-  tableTotalCount: number = 0;
-  loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(
     private roleService: RoleService,
     private dialog: MatDialog,
@@ -30,6 +26,7 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable<Rol
     private sharedService: SharedService
   )
   {
+    super();
     this.getRoles()
     this.columns = this.createColumns()
   }
@@ -78,9 +75,11 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable<Rol
     ]
     return columns;
   }
+
   refresh(): void {
     this.getRoles()
   }
+
   create(): void {
     const dialog = this.dialog.open(FormDialogComponent,{
       data: {
@@ -211,7 +210,7 @@ export class RoleSettingComponent implements OnInit, OnDestroy,InitDataTable<Rol
       filter(res=> this.apiService.judgeSuccess(res, true)),
       takeUntil(this.destroy$)
     ).subscribe(()=>{
-      window.location.reload();
+      this.refresh()
     })
   }
 }

@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 import { SwalService } from '../../service/swal/swal.service';
 import { UserAuth } from '../../service/userInfo/userInfo.interface';
 import { UserInfoService } from '../../service/userInfo/userInfo.service';
-import { DataTableInfo } from './data.table.interface';
+import { DataTableInfo } from './data.table.model';
 
 @Component({
   selector: 'app-data-table',

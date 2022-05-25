@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/shared/api/api.service';
 import { GetRouterResult as Router } from 'src/app/shared/api/router/router.interface';
 
 import { RouterService } from 'src/app/shared/api/router/router.service';
-import { DataTableInfo, InitDataTable, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.interface';
+import { BaseDataTable, DataTableInfo, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.model';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
 import { SharedService } from 'src/app/shared/service/shared.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
@@ -16,11 +16,7 @@ import { SwalService } from 'src/app/shared/service/swal/swal.service';
   templateUrl: './router-setting.component.html',
   styleUrls: ['./router-setting.component.scss']
 })
-export class RouterSettingComponent implements OnInit, InitDataTable<Router>, InitDataTableFunction<Router>, OnDestroy {
-  columns : {key: string, value: string | number}[]= []
-  loading$ : BehaviorSubject<boolean>  = new BehaviorSubject<boolean>(false)
-  tableDataList: Router[] = []
-  tableTotalCount: number = 0;
+export class RouterSettingComponent extends BaseDataTable<Router> implements OnInit, InitDataTableFunction<Router>, OnDestroy {
   destroy$ = new Subject()
   constructor
   (
@@ -31,6 +27,7 @@ export class RouterSettingComponent implements OnInit, InitDataTable<Router>, In
     private sharedService: SharedService
   )
   {
+    super();
     this.getRouters()
     this.columns = this.createColumns()
   }
@@ -252,7 +249,6 @@ export class RouterSettingComponent implements OnInit, InitDataTable<Router>, In
   }
 
   filterTable(info: DataTableInfo): void {
-    console.log(info)
     this.getRouters(info)
   }
 

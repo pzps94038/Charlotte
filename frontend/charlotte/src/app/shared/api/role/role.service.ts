@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { ChceckRoleAuthResult, CreateRoleRequest, GetRoleAuthResult, GetRoleResult, ModifyRoleAuthRequest, ModifyRoleRequest } from './role.interface';
 import { ApiUrl } from '../api.url';
 import { DataTable, ResultMessage, ResultModel } from '../api.interface';
-import { DataTableInfo } from '../../component/data-table/data.table.interface';
+import { DataTableInfo } from '../../component/data-table/data.table.model';
 import { SharedService } from '../../service/shared.service';
 
 @Injectable({
