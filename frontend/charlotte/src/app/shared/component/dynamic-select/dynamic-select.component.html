@@ -1,0 +1,15 @@
+<mat-form-field appearance="outline" class="col-12">
+  <mat-label>
+    <mat-icon matSuffix>{{icon}}</mat-icon>
+    {{labelText}}
+  </mat-label>
+  <mat-select [formControl]="formControl">
+      <mat-option disabled="disabled" value="">請選擇</mat-option>
+      <mat-option *ngFor="let option of options" [value]="option.value">
+        {{option.text}}
+      </mat-option>
+  </mat-select>
+  <mat-error *ngIf="formControl?.errors?.['required']">
+    此欄位必填
+  </mat-error>
+</mat-form-field>

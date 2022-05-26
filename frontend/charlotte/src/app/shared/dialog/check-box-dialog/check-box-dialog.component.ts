@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { GetRoleAuthResult } from '../../api/role/role.interface';
+import { GetRoleAuthResult as RoleAuth } from '../../api/role/role.interface';
 import { FormDialog } from '../form-dialog/form.dialog.interface';
 import { CheckBoxColumn, CheckBoxDialog } from './check-box-dialog.interface';
 
@@ -12,15 +12,22 @@ import { CheckBoxColumn, CheckBoxDialog } from './check-box-dialog.interface';
   styleUrls: ['./check-box-dialog.component.scss']
 })
 export class CheckBoxDialogComponent implements OnInit {
-  get array() {
-    return this.form.controls["array"] as FormArray;
-  }
   form: FormGroup = new FormGroup({
     array: new FormArray([])
   })
-  columns: CheckBoxColumn[] = []
-  displayedColumns: string[] = [];
-  dataSource: GetRoleAuthResult[] = [];
+  allComplete: {[key: string]: boolean} = {
+    viewAuth: false,
+    createAuth: false,
+    modifyAuth: false,
+    deleteAuth: false,
+    exportAuth: false
+  }
+  columns: CheckBoxColumn[] = [] // column資料
+  displayedColumns: string[] = [] // 顯示column文字
+  dataSource: RoleAuth[] = [] //資料來源
+  get array() {
+    return this.form.controls["array"] as FormArray;
+  }
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialogRef<CheckBoxDialogComponent>,
@@ -29,14 +36,13 @@ export class CheckBoxDialogComponent implements OnInit {
     this.columns = [...this.formData.columns]
     this.dataSource = this.formData.rowData
     this.createForm(this.dataSource)
-    this.displayedColumns = this.createDisplayedColumns(this.columns)
+    this.displayedColumns = this.columns.map(a=> a.key)
+    this.setAllComplete()
   }
 
-  ngOnInit(): void
-  {
+  ngOnInit(): void{}
 
-  }
-  createForm(rowData: GetRoleAuthResult[]){
+  createForm(rowData: RoleAuth[]){
     for(let data of rowData){
       this.array.push(this.fb.group({
         routerId: data.routerId,
@@ -48,12 +54,7 @@ export class CheckBoxDialogComponent implements OnInit {
       }))
     }
   }
-  createDisplayedColumns(columns: CheckBoxColumn[]): string[]{
-    let displayColumns: string[] = []
-    for(let item of columns)
-      displayColumns.push(item.key)
-    return displayColumns
-  }
+
   submit(){
     const valid = this.form.valid
     if(valid)
@@ -61,10 +62,18 @@ export class CheckBoxDialogComponent implements OnInit {
   }
 
   selectAll(columns: CheckBoxColumn, event: MatCheckboxChange){
-    this.array.controls.map(controls => controls.get(columns.key)?.setValue(event.checked))
+    for(const control of this.array.controls){
+      control.get(columns.key)?.setValue(event.checked)
+    }
   }
 
-  checkAll(columns: CheckBoxColumn) : boolean{
-    return this.array.controls.every(controls=> controls.get(columns.key)?.value === true)
+  setAllComplete(){
+    for(let key of Object.keys(this.allComplete)){
+      this.allComplete[key] = this.array.controls.every(controls=> controls.get(key)?.value === true)
+    }
+  }
+
+  updateAllComplete(e: MatCheckboxChange){
+    this.setAllComplete()
   }
 }

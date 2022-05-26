@@ -1,6 +1,6 @@
 import { RoleService } from 'src/app/shared/api/role/role.service';
 import { UserService } from 'src/app/shared/api/user/user.service';
-import { map, Observable, filter, takeUntil, Subject, concatMap, tap, BehaviorSubject, finalize } from 'rxjs';
+import { map, Observable, filter, takeUntil, Subject, concatMap, tap, BehaviorSubject, finalize, switchMap } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BaseDataTable, DataTableInfo, InitDataTableFunction } from 'src/app/shared/component/data-table/data.table.model';
 import { GetUsersResult as Users } from 'src/app/shared/api/user/user.interface';
@@ -69,157 +69,157 @@ export class ManagerUserSettingComponent extends BaseDataTable<Users> implements
   }
 
   create(): void {
-    const options = this.createRoleOptions()
-    const dialog = this.dialog.open(FormDialogComponent,{
-      data: {
-        title: '新建使用者',
-        dataList:[
-          {
-            controlName: 'userName',
-            labelText: '使用者姓名',
-            type: 'text',
-            maxLength: 20,
-            valids: [Validators.required, Validators.maxLength(20)]
-          },
-          {
-            controlName: 'account',
-            labelText: '使用者帳號',
-            type: 'text',
-            maxLength: 20,
-            valids: [Validators.required, Validators.maxLength(20)]
-          },
-          {
-            controlName: 'password',
-            labelText: '使用者密碼',
-            type: 'password',
-            maxLength: 200,
-            valids: [Validators.maxLength(200), Validators.required]
-          },
-          {
-            controlName: 'email',
-            labelText: '電子郵件',
-            type: 'eamil',
-            valids: [Validators.required, Validators.email]
-          },
-          {
-            controlName: 'address',
-            labelText: '地址',
-            type: 'text',
-            maxLength: 250,
-            valids: [Validators.maxLength(250)]
-          },
-          {
-            controlName: 'birthday',
-            labelText: '生日',
-            type: 'date',
-            valids: [Validators.required]
-          },
-          {
-            controlName: 'roleId',
-            labelText: '角色',
-            type: 'select',
-            options: options,
-            value: '',
-            valids: [Validators.required]
-          },
-          {
-            controlName: 'flag',
-            labelText: 'Flag',
-            type: 'toggle',
-            value: true,
+    const options$ = this.createRoleOptions()
+    options$.pipe(
+      concatMap((options) =>{
+        const dialog = this.dialog.open(FormDialogComponent,{
+          data: {
+            title: '新建使用者',
+            dataList:[
+              {
+                controlName: 'userName',
+                labelText: '使用者姓名',
+                type: 'text',
+                maxLength: 20,
+                valids: [Validators.required, Validators.maxLength(20)]
+              },
+              {
+                controlName: 'account',
+                labelText: '使用者帳號',
+                type: 'text',
+                maxLength: 20,
+                valids: [Validators.required, Validators.maxLength(20)]
+              },
+              {
+                controlName: 'password',
+                labelText: '使用者密碼',
+                type: 'password',
+                maxLength: 200,
+                valids: [Validators.maxLength(200), Validators.required]
+              },
+              {
+                controlName: 'email',
+                labelText: '電子郵件',
+                type: 'eamil',
+                valids: [Validators.required, Validators.email]
+              },
+              {
+                controlName: 'address',
+                labelText: '地址',
+                type: 'text',
+                maxLength: 250,
+                valids: [Validators.maxLength(250)]
+              },
+              {
+                controlName: 'birthday',
+                labelText: '生日',
+                type: 'date',
+                valids: [Validators.required]
+              },
+              {
+                controlName: 'roleId',
+                labelText: '角色',
+                type: 'select',
+                options: options,
+                value: '',
+                valids: [Validators.required]
+              },
+              {
+                controlName: 'flag',
+                labelText: 'Flag',
+                type: 'toggle',
+                value: true,
+              }
+            ]
           }
-        ]
-      }
-    })
-    dialog.afterClosed().pipe(
+        })
+        return dialog.afterClosed()
+      }),
       filter(data=> !this.sharedService.isNullorEmpty(data)),
       concatMap(data=> this.userService.createUser(data)),
       filter(res=> this.apiService.judgeSuccess(res, true)),
       takeUntil(this.destroy$)
-    ).subscribe(()=>{
-        this.refresh()
-      })
+    ).subscribe(()=> this.refresh())
   }
 
   modify(row: Users): void {
     const options$ = this.createRoleOptions()
-    options$.subscribe((options)=>{
-      const dialog = this.dialog.open(FormDialogComponent,{
-        data: {
-          title: '修改使用者',
-          dataList:[
-            {
-              controlName: 'userName',
-              labelText: '使用者姓名',
-              type: 'text',
-              maxLength: 20,
-              value: row.userName,
-              valids: [Validators.required, Validators.maxLength(20)]
-            },
-            {
-              controlName: 'account',
-              labelText: '使用者帳號',
-              type: 'text',
-              maxLength: 20,
-              value: row.account,
-              valids: [Validators.required, Validators.maxLength(20)]
-            },
-            {
-              controlName: 'password',
-              labelText: '使用者密碼',
-              type: 'password',
-              maxLength: 200,
-              value: row.password,
-              valids: [Validators.maxLength(200), Validators.required]
-            },
-            {
-              controlName: 'email',
-              labelText: '電子郵件',
-              type: 'eamil',
-              value: row.email,
-              valids: [Validators.required, Validators.email]
-            },
-            {
-              controlName: 'address',
-              labelText: '地址',
-              type: 'text',
-              maxLength: 250,
-              value: row.address,
-              valids: [Validators.maxLength(250)]
-            },
-            {
-              controlName: 'birthday',
-              labelText: '生日',
-              type: 'date',
-              value: row.birthday,
-              valids: [Validators.required]
-            },
-            {
-              controlName: 'roleId',
-              labelText: '角色',
-              type: 'select',
-              options: options,
-              value: row.roleId,
-              valids: [Validators.required]
-            },
-            {
-              controlName: 'flag',
-              labelText: 'Flag',
-              type: 'toggle',
-              value: row.flag === "Y" ? true: false,
-            }
-          ]
-        }
-      })
-      dialog.afterClosed().pipe(
-          filter(data=> !this.sharedService.isNullorEmpty(data)),
-          concatMap(data=> this.userService.modifyUser(row.managerUserId, data)),
-          filter(res=> this.apiService.judgeSuccess(res)),
-          takeUntil(this.destroy$)
-        ).subscribe(()=>{
-          this.refresh()
-      })
-    })
+    options$.pipe(
+      concatMap((options)=>{
+        const dialog = this.dialog.open(FormDialogComponent,{
+          data: {
+            title: '修改使用者',
+            dataList:[
+              {
+                controlName: 'userName',
+                labelText: '使用者姓名',
+                type: 'text',
+                maxLength: 20,
+                value: row.userName,
+                valids: [Validators.required, Validators.maxLength(20)]
+              },
+              {
+                controlName: 'account',
+                labelText: '使用者帳號',
+                type: 'text',
+                maxLength: 20,
+                value: row.account,
+                valids: [Validators.required, Validators.maxLength(20)]
+              },
+              {
+                controlName: 'password',
+                labelText: '使用者密碼',
+                type: 'password',
+                maxLength: 200,
+                value: row.password,
+                valids: [Validators.maxLength(200), Validators.required]
+              },
+              {
+                controlName: 'email',
+                labelText: '電子郵件',
+                type: 'eamil',
+                value: row.email,
+                valids: [Validators.required, Validators.email]
+              },
+              {
+                controlName: 'address',
+                labelText: '地址',
+                type: 'text',
+                maxLength: 250,
+                value: row.address,
+                valids: [Validators.maxLength(250)]
+              },
+              {
+                controlName: 'birthday',
+                labelText: '生日',
+                type: 'date',
+                value: row.birthday,
+                valids: [Validators.required]
+              },
+              {
+                controlName: 'roleId',
+                labelText: '角色',
+                type: 'select',
+                options: options,
+                value: row.roleId,
+                valids: [Validators.required]
+              },
+              {
+                controlName: 'flag',
+                labelText: 'Flag',
+                type: 'toggle',
+                value: row.flag === "Y" ? true: false,
+              }
+            ]
+          }
+        })
+        return dialog.afterClosed()
+      }),
+      filter(data=> !this.sharedService.isNullorEmpty(data)),
+      concatMap(data=> this.userService.modifyUser(row.managerUserId, data)),
+      filter(res=> this.apiService.judgeSuccess(res)),
+      takeUntil(this.destroy$)
+    ).subscribe(()=> this.refresh())
   }
 
   delete(row: Users): void {

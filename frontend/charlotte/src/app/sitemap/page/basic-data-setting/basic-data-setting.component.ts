@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { map, filter } from 'rxjs';
+import { map, filter, Subject, takeUntil } from 'rxjs';
 import { ApiService } from 'src/app/shared/api/api.service';
 import { UserService } from 'src/app/shared/api/user/user.service';
-import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { UserInfoService } from 'src/app/shared/service/userInfo/userInfo.service';
 
 @Component({
@@ -11,23 +10,28 @@ import { UserInfoService } from 'src/app/shared/service/userInfo/userInfo.servic
   templateUrl: './basic-data-setting.component.html',
   styleUrls: ['./basic-data-setting.component.scss']
 })
-export class BasicDataSettingComponent implements OnInit {
+export class BasicDataSettingComponent implements OnInit, OnDestroy {
   form: FormGroup = this.fb.group({
-    UserName: ['', [Validators.required, Validators.maxLength(20)]],
-    Email: ['', [Validators.required, Validators.email]],
-    Address: [''],
-    Birthday: ['',Validators.required],
+    userName: ['', [Validators.required, Validators.maxLength(20)]],
+    email: ['', [Validators.required, Validators.email]],
+    address: [''],
+    birthday: ['',Validators.required],
   })
+  destroy$ : Subject<any> = new Subject<any>();
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private userInfoService: UserInfoService,
-    private swalService: SwalService<null>,
     private apiService: ApiService
     ) {  }
 
+
   ngOnInit(): void { this.init() }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(null)
+    this.destroy$.complete()
+  }
   /* 初始化 */
   init(){
     const userId =  this.userInfoService.getUserInfo().managerUserId
@@ -46,10 +50,10 @@ export class BasicDataSettingComponent implements OnInit {
    * @param birthday{使用者生日}
    */
   setFormValue(userName: string, email: string, address: string | null, birthday: Date){
-    this.form.controls['UserName'].setValue(userName)
-    this.form.controls['Email'].setValue(email)
-    this.form.controls['Address'].setValue(address)
-    this.form.controls['Birthday'].setValue(birthday)
+    this.form.controls['userName'].setValue(userName)
+    this.form.controls['email'].setValue(email)
+    this.form.controls['address'].setValue(address)
+    this.form.controls['birthday'].setValue(birthday)
   }
 
    /* 保存使用者資訊 */
@@ -59,10 +63,9 @@ export class BasicDataSettingComponent implements OnInit {
       const userId =  this.userInfoService.getUserInfo().managerUserId
       this.userService.modifyUser(userId, this.form.value)
       .pipe(
-        filter(res=> this.apiService.judgeSuccess(res, true)
-      )).subscribe(()=>{
-        this.init()
-      })
+        filter(res=> this.apiService.judgeSuccess(res, true),
+        takeUntil(this.destroy$)
+      )).subscribe(()=> this.init())
     }
   }
 
