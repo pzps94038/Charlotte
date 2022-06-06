@@ -6,8 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
-
+import { DynamicCheckboxModule } from '../../component/dynamic-checkbox/dynamic-checkbox.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +19,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatDialogModule,
     MatTableModule,
     MatCheckboxModule,
+    DynamicCheckboxModule
   ]
 })
 export class CheckBoxDialogModule { }

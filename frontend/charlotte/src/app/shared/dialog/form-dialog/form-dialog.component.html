@@ -5,56 +5,16 @@
     <ng-container *ngFor="let data of formData.dataList">
       <ng-container [ngSwitch]="data.type">
         <ng-container *ngSwitchCase="'select'">
-          <mat-form-field appearance="outline" class="col-12">
-            <mat-label>
-              <mat-icon matSuffix>{{data.icon}}</mat-icon>
-              {{data.labelText}}
-            </mat-label>
-            <mat-select [formControlName]="data.controlName">
-                <mat-option disabled="disabled" value="">請選擇</mat-option>
-                <mat-option *ngFor="let option of data.options" [value]="option.value">
-                  {{option.text}}
-                </mat-option>
-            </mat-select>
-            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['required']">
-              此欄位必填
-            </mat-error>
-          </mat-form-field>
+          <app-dynamic-select [icon]="data.icon" [labelText]="data.labelText" [formControlName]="data.controlName" [options]="data.options" [valids]="data.valids"></app-dynamic-select>
         </ng-container>
         <ng-container *ngSwitchCase="'date'">
-          <mat-form-field appearance="outline" class="col-12">
-            <mat-label>生日</mat-label>
-            <input matInput [matDatepicker]="picker" [formControlName]="data.controlName" [placeholder]="data.placeholder">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['required']">
-              此欄位必填
-            </mat-error>
-          </mat-form-field>
+          <app-dynamic-datepicker [icon]="data.icon" [labelText]="data.labelText" [formControlName]="data.controlName" [valids]="data.valids"></app-dynamic-datepicker>
         </ng-container>
         <ng-container *ngSwitchCase="'toggle'">
-          <mat-slide-toggle [formControlName]="data.controlName">{{data.labelText}}</mat-slide-toggle>
+          <app-dynamic-silde-toggle [formControlName]="data.controlName" [labelText]="data.labelText" [valids]="data.valids"></app-dynamic-silde-toggle>
         </ng-container>
         <ng-container *ngSwitchDefault>
-          <mat-form-field appearance="outline" class="col-12">
-            <mat-label>
-              <mat-icon matSuffix>{{data.icon}}</mat-icon>
-              {{data.labelText}}
-            </mat-label>
-            <input [type]="data.type" matInput [placeholder]="data.placeholder" [formControlName]="data.controlName">
-            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['required']">
-              此欄位必填
-            </mat-error>
-            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['minlength']">
-              長度至少為{{data.minLength}}
-            </mat-error>
-            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['maxlength']">
-              長度最長為{{data.maxLength}}
-            </mat-error>
-            <mat-error *ngIf="form.controls[data.controlName]?.errors?.['email']">
-              Email格式錯誤
-            </mat-error>
-          </mat-form-field>
+          <app-dynamic-input [icon]="data.icon" [labelText]="data.labelText" [type]="data.type" [placeholder]="data.placeholder" [formControlName]="data.controlName" [minLength]="data.minLength" [maxLength]="data.maxLength" [valids]="data.valids"></app-dynamic-input>
         </ng-container>
       </ng-container>
     </ng-container>

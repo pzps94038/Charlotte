@@ -3,7 +3,7 @@
     <h2 class="col-8 border-bottom" style="font-weight: bold">使用者資料設定</h2>
     <mat-form-field appearance="outline" class="col-8">
       <mat-label>姓名</mat-label>
-      <input matInput type="text" formControlName="UserName" placeholder="請輸入姓名">
+      <input matInput type="text" formControlName="userName" placeholder="請輸入姓名">
       <mat-icon matSuffix>person</mat-icon>
       <mat-error *ngIf="form.controls['UserName']?.errors?.['required']">
         此欄位必填
@@ -14,7 +14,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline" class="col-8">
       <mat-label>電子信箱</mat-label>
-      <input matInput type="email" formControlName="Email" placeholder="請輸入地址">
+      <input matInput type="email" formControlName="email" placeholder="請輸入電子信箱">
       <mat-icon matSuffix>email</mat-icon>
       <mat-error *ngIf="form.controls['Email']?.errors?.['required']">
         此欄位必填
@@ -25,12 +25,12 @@
     </mat-form-field>
     <mat-form-field appearance="outline" class="col-8">
       <mat-label>地址</mat-label>
-      <input matInput type="text" placeholder="請輸入地址" formControlName="Address">
+      <input matInput type="text" placeholder="請輸入地址" formControlName="address">
       <mat-icon matSuffix>home</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline" class="col-8">
       <mat-label>生日</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="Birthday" placeholder="請輸入地址">
+      <input matInput [matDatepicker]="picker" formControlName="birthday" placeholder="請輸入生日">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="form.controls['Birthday']?.errors?.['required']">

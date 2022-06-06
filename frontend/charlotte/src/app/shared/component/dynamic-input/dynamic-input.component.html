@@ -1,0 +1,19 @@
+<mat-form-field appearance="outline" class="col-12">
+  <mat-label>
+    <mat-icon matSuffix>{{icon}}</mat-icon>
+    {{labelText}}
+  </mat-label>
+  <input [type]="type!" matInput [placeholder]="placeholder" [formControl]="formControl">
+  <mat-error *ngIf="formControl?.errors?.['required']">
+    此欄位必填
+  </mat-error>
+  <mat-error *ngIf="formControl?.errors?.['minlength']">
+    長度至少為{{minLength}}
+  </mat-error>
+  <mat-error *ngIf="formControl?.errors?.['maxlength']">
+    長度最長為{{maxLength}}
+  </mat-error>
+  <mat-error *ngIf="formControl?.errors?.['email']">
+    Email格式錯誤
+  </mat-error>
+</mat-form-field>
