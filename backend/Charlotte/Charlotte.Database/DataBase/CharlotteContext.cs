@@ -15,7 +15,6 @@ namespace Charlotte.DataBase.DbContextModel
         public DbSet<ProductType> ProductType { get; set; }
         public DbSet<ProductInformation> ProductInformation { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
-        public DbSet<ProductImg> ProductImg { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Factory> Factory { get; set; }
         public DbSet<ManagerMain> ManagerMain { get; set; }

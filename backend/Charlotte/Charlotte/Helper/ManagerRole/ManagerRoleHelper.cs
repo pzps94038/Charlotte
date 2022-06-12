@@ -82,18 +82,19 @@ namespace Charlotte.Helper.ManagerRole
         {
             using (var db = new CharlotteContext())
             {
-                IQueryable<Database.Model.ManagerRole> filterResult = db.ManagerRole;
+                var query = db.ManagerRole.AsQueryable();
                 if (filterStr != null)
                 {
-                    filterResult = filterResult.Where(a => a.RoleId.ToString().Contains(filterStr) ||
-                                                      a.RoleName.Contains(filterStr));
+                    query = query.Where(a => a.RoleId.ToString().Contains(filterStr) ||
+                                                      a.RoleName.Contains(filterStr)
+                                        );
                 }
-                var tableTotalCount = filterResult.Count();
+                var tableTotalCount = query.Count();
                 if (orderBy != null && orderDescription != null)
-                    filterResult = orderDescription == "desc" ? filterResult.OrderBy($"{orderBy} desc") : filterResult.OrderBy($"{orderBy} asc");
+                    query = orderDescription == "desc" ? query.OrderBy($"{orderBy} desc") : query.OrderBy($"{orderBy} asc");
                 if (limit != null && offset != null)
-                    filterResult = filterResult.Skip((int)offset).Take((int)limit);
-                var result = await filterResult.Select(a=> new 
+                    query = query.Skip((int)offset).Take((int)limit);
+                var result = await query.Select(a=> new 
                     {
                         RoleId = a.RoleId,
                         RoleName = a.RoleName,

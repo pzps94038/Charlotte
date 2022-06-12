@@ -1,14 +1,14 @@
 ﻿using Charlotte.DataBase.DbContextModel;
 using Charlotte.Interface.Shared;
 using Charlotte.Model.ProductType;
-using Charlotte.VModel.Product;
+using Charlotte.VModel.ManagerProductType;
 using Charlotte.VModel.Shared;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Dynamic.Core;
 namespace Charlotte.Helper.ProductType
 {
-    public class ProductTypeHelper : ICRUDAsyncHelper<TableVModel<ProductTypeVModel>, ProductTypeVModel, ProductTypeModel, ProductTypeModel>
+    public class ProductTypeHelper : ICRUDAsyncHelper<TableVModel<MnaagerProductTypeVModel>, MnaagerProductTypeVModel, ManagerProductTypeModel, ManagerProductTypeModel>
     {
         public async Task BatchDeleteAsync(List<int> idList)
         {
@@ -20,7 +20,7 @@ namespace Charlotte.Helper.ProductType
             }
         }
 
-        public async Task CreateAsync(ProductTypeModel request)
+        public async Task CreateAsync(ManagerProductTypeModel request)
         {
             using (var db = new CharlotteContext())
             {
@@ -42,7 +42,7 @@ namespace Charlotte.Helper.ProductType
             }
         }
 
-        public async Task<TableVModel<ProductTypeVModel>> GetAllAsync(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
+        public async Task<TableVModel<MnaagerProductTypeVModel>> GetAllAsync(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
         {
             using (var db = new CharlotteContext())
             {
@@ -66,16 +66,16 @@ namespace Charlotte.Helper.ProductType
                         ModifyDate = a.ModifyDate.HasValue ? a.ModifyDate.Value.ToString("yyyy-MM-dd") : ""
                     }
                 ).ToListAsync();
-                return new TableVModel<ProductTypeVModel>(result.Adapt<List<ProductTypeVModel>>(), tableTotalCount);
+                return new TableVModel<MnaagerProductTypeVModel>(result.Adapt<List<MnaagerProductTypeVModel>>(), tableTotalCount);
             }
         }
 
-        public Task<ProductTypeVModel> GetAsync(int id)
+        public Task<MnaagerProductTypeVModel> GetAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task ModifyAsync(int id, ProductTypeModel request)
+        public async Task ModifyAsync(int id, ManagerProductTypeModel request)
         {
             using (var db = new CharlotteContext())
             {

@@ -30,14 +30,13 @@ export class SharedService {
     if(info){
       if(info.page)
         params = params.set('limit', info.page.limit).set('offset', info.page.offset)
-      if(info.sort.active && info.sort.direction)
+      if(info.sort?.active && info.sort?.direction)
         params = params.set('orderBy', info.sort.active).set('orderDescription', info.sort.direction)
       if(info.filterStr)
         params = params.set('filterStr', info.filterStr)
     }
-    else{
+    else
       params = params.set('limit', 10).set('offset', 0)
-    }
     return params
   }
 }

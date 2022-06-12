@@ -9,9 +9,7 @@ import { ProductDialogComponent } from '../shared/dialog/product-dialog/product-
 })
 export class SitemapComponent implements OnInit {
 
-  constructor(private dialog: MatDialog){}
+  constructor(){}
 
-  ngOnInit(): void {
-    this.dialog.open(ProductDialogComponent)
-  }
+  ngOnInit(): void {}
 }

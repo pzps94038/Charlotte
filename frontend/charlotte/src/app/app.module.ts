@@ -16,7 +16,7 @@ import * as exporting from 'highcharts/modules/exporting.src';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

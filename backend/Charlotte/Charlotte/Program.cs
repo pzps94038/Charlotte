@@ -12,6 +12,7 @@ using Charlotte.Helper.Product;
 using Charlotte.Helper.Register;
 using Charlotte.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -69,4 +70,10 @@ app.UseCors("CorsPolicy");
 // 套用驗證在路由
 app.UseAuthorization();
 app.MapControllers();
+// 讀取伺服器靜態檔案設定
+app.UseStaticFiles(new StaticFileOptions() 
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"FileUpload")),
+    RequestPath = new PathString("/FileUpload")
+});
 app.Run();
