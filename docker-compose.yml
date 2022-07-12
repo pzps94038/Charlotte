@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  mssql-db:
+    container_name: mssql-db
+    image: mcr.microsoft.com/mssql/server
+    ports:
+      - "1435:1433"
+    environment:
+      - ACCEPT_EULA:Y
+      - SA_PASSWORD:Everyhappy2
+    networks:
+      bridge-001:
+    volumes:
+      - C:\DockerDb:/var/opt/mssql/data
+  charlotte-backend:
+    container_name: charlotte-backend
+    image: pzps94038/charlotte-backend
+    ports:
+      - "8080:80"
+      - "8081:443"
+    networks:
+      bridge-001:
+networks:
+  bridge-001:

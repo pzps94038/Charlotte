@@ -1,0 +1,166 @@
+ ====================================================================================================
+ Time：2022-06-09 15:13:17.2947
+ Message：The LINQ expression 'DbSet<Order>()
+    .Join(
+        inner: DbSet<UserMain>(), 
+        outerKeySelector: o => o.UserId, 
+        innerKeySelector: u => u.UserId, 
+        resultSelector: (o, u) => new TransparentIdentifier<Order, UserMain>(
+            Outer = o, 
+            Inner = u
+        ))
+    .Join(
+        inner: DbSet<OrderDetail>(), 
+        outerKeySelector: ti => ti.Outer.OrderId, 
+        innerKeySelector: o0 => o0.OrderId, 
+        resultSelector: (ti, o0) => new TransparentIdentifier<TransparentIdentifier<Order, UserMain>, OrderDetail>(
+            Outer = ti, 
+            Inner = o0
+        ))
+    .GroupBy(ti0 => new { 
+        OrderId = ti0.Outer.Outer.OrderId, 
+        UserId = ti0.Outer.Outer.UserId, 
+        CreateDate = ti0.Outer.Outer.CreatedDate.ToString("yyyy-MM-dd"), 
+        ModifyDate = ti0.Outer.Outer.ModifyDate.HasValue ? ti0.Outer.Outer.ModifyDate.Value.ToString("yyyy-MM-dd") : ""
+     })' could not be translated. Additional information: Translation of method 'System.DateTime.ToString' failed. If this method can be mapped to your custom function, see https://go.microsoft.com/fwlink/?linkid=2132413 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.<VisitMethodCall>g__CheckTranslated|15_0(ShapedQueryExpression translated, <>c__DisplayClass15_0& )
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerOrder.ManagerOrderHelper.GetAllAsync(Nullable`1 limit, Nullable`1 offset, String orderBy, String orderDescription, String filterStr) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerOrder\ManagerOrderHelper.cs:line 16
+   at Charlotte.Controllers.ManagerOrderController.Test() in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerOrderController.cs:line 27
+ Detail Text：System.InvalidOperationException: The LINQ expression 'DbSet<Order>()
+    .Join(
+        inner: DbSet<UserMain>(), 
+        outerKeySelector: o => o.UserId, 
+        innerKeySelector: u => u.UserId, 
+        resultSelector: (o, u) => new TransparentIdentifier<Order, UserMain>(
+            Outer = o, 
+            Inner = u
+        ))
+    .Join(
+        inner: DbSet<OrderDetail>(), 
+        outerKeySelector: ti => ti.Outer.OrderId, 
+        innerKeySelector: o0 => o0.OrderId, 
+        resultSelector: (ti, o0) => new TransparentIdentifier<TransparentIdentifier<Order, UserMain>, OrderDetail>(
+            Outer = ti, 
+            Inner = o0
+        ))
+    .GroupBy(ti0 => new { 
+        OrderId = ti0.Outer.Outer.OrderId, 
+        UserId = ti0.Outer.Outer.UserId, 
+        CreateDate = ti0.Outer.Outer.CreatedDate.ToString("yyyy-MM-dd"), 
+        ModifyDate = ti0.Outer.Outer.ModifyDate.HasValue ? ti0.Outer.Outer.ModifyDate.Value.ToString("yyyy-MM-dd") : ""
+     })' could not be translated. Additional information: Translation of method 'System.DateTime.ToString' failed. If this method can be mapped to your custom function, see https://go.microsoft.com/fwlink/?linkid=2132413 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.<VisitMethodCall>g__CheckTranslated|15_0(ShapedQueryExpression translated, <>c__DisplayClass15_0& )
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerOrder.ManagerOrderHelper.GetAllAsync(Nullable`1 limit, Nullable`1 offset, String orderBy, String orderDescription, String filterStr) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerOrder\ManagerOrderHelper.cs:line 16
+   at Charlotte.Controllers.ManagerOrderController.Test() in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerOrderController.cs:line 27 
+ ====================================================================================================
+ ====================================================================================================
+ Time：2022-06-09 15:13:17.2947
+ Message：The LINQ expression 'DbSet<Order>()
+    .Join(
+        inner: DbSet<UserMain>(), 
+        outerKeySelector: o => o.UserId, 
+        innerKeySelector: u => u.UserId, 
+        resultSelector: (o, u) => new TransparentIdentifier<Order, UserMain>(
+            Outer = o, 
+            Inner = u
+        ))
+    .Join(
+        inner: DbSet<OrderDetail>(), 
+        outerKeySelector: ti => ti.Outer.OrderId, 
+        innerKeySelector: o0 => o0.OrderId, 
+        resultSelector: (ti, o0) => new TransparentIdentifier<TransparentIdentifier<Order, UserMain>, OrderDetail>(
+            Outer = ti, 
+            Inner = o0
+        ))
+    .GroupBy(ti0 => new { 
+        OrderId = ti0.Outer.Outer.OrderId, 
+        UserId = ti0.Outer.Outer.UserId, 
+        CreateDate = ti0.Outer.Outer.CreatedDate.ToString("yyyy-MM-dd"), 
+        ModifyDate = ti0.Outer.Outer.ModifyDate.HasValue ? ti0.Outer.Outer.ModifyDate.Value.ToString("yyyy-MM-dd") : ""
+     })' could not be translated. Additional information: Translation of method 'System.DateTime.ToString' failed. If this method can be mapped to your custom function, see https://go.microsoft.com/fwlink/?linkid=2132413 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information. 
+ StackTrace：   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.<VisitMethodCall>g__CheckTranslated|15_0(ShapedQueryExpression translated, <>c__DisplayClass15_0& )
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerOrder.ManagerOrderHelper.GetAllAsync(Nullable`1 limit, Nullable`1 offset, String orderBy, String orderDescription, String filterStr) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerOrder\ManagerOrderHelper.cs:line 16
+   at Charlotte.Controllers.ManagerOrderController.Test() in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerOrderController.cs:line 27
+ Detail Text：System.InvalidOperationException: The LINQ expression 'DbSet<Order>()
+    .Join(
+        inner: DbSet<UserMain>(), 
+        outerKeySelector: o => o.UserId, 
+        innerKeySelector: u => u.UserId, 
+        resultSelector: (o, u) => new TransparentIdentifier<Order, UserMain>(
+            Outer = o, 
+            Inner = u
+        ))
+    .Join(
+        inner: DbSet<OrderDetail>(), 
+        outerKeySelector: ti => ti.Outer.OrderId, 
+        innerKeySelector: o0 => o0.OrderId, 
+        resultSelector: (ti, o0) => new TransparentIdentifier<TransparentIdentifier<Order, UserMain>, OrderDetail>(
+            Outer = ti, 
+            Inner = o0
+        ))
+    .GroupBy(ti0 => new { 
+        OrderId = ti0.Outer.Outer.OrderId, 
+        UserId = ti0.Outer.Outer.UserId, 
+        CreateDate = ti0.Outer.Outer.CreatedDate.ToString("yyyy-MM-dd"), 
+        ModifyDate = ti0.Outer.Outer.ModifyDate.HasValue ? ti0.Outer.Outer.ModifyDate.Value.ToString("yyyy-MM-dd") : ""
+     })' could not be translated. Additional information: Translation of method 'System.DateTime.ToString' failed. If this method can be mapped to your custom function, see https://go.microsoft.com/fwlink/?linkid=2132413 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.<VisitMethodCall>g__CheckTranslated|15_0(ShapedQueryExpression translated, <>c__DisplayClass15_0& )
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at System.Linq.Expressions.ExpressionVisitor.Visit(Expression node)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Charlotte.Helper.ManagerOrder.ManagerOrderHelper.GetAllAsync(Nullable`1 limit, Nullable`1 offset, String orderBy, String orderDescription, String filterStr) in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Helper\ManagerOrder\ManagerOrderHelper.cs:line 16
+   at Charlotte.Controllers.ManagerOrderController.Test() in C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\Controllers\ManagerOrderController.cs:line 27 
+ ====================================================================================================

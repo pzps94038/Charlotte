@@ -159,3 +159,6 @@ C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Newtonsoft.Json.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\Scrutor.dll
 C:\Users\pzps9\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\System.Linq.Dynamic.Core.dll
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\System.Linq.Dynamic.Core.dll
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\NLog.Extensions.Logging.dll
+C:\Users\asus\Desktop\git\Charlotte\backend\Charlotte\Charlotte\bin\Release\net6.0\NLog.Web.AspNetCore.dll
