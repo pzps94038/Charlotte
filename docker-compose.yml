@@ -3,10 +3,8 @@ services:
   mssql-db:
     container_name: mssql-db
     image: mcr.microsoft.com/mssql/server
-    expose:
-      - "1433"
     ports:
-      - "1433:1433"
+      - "1435:1433"
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Everyhappy2
