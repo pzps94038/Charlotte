@@ -1,0 +1,32 @@
+.dialog-container {
+  width: 70vw;
+}
+
+.file-container {
+  border: 4px dotted #440157;
+}
+
+.file-container .file {
+  opacity: 0;
+  padding: 5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.file-container .file-icon {
+  font-size: 2.5rem;
+}
+
+.file-container :hover {
+  cursor: pointer;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.preview-img {
+  width: 300px;
+  height: 300px;
+}
+/*# sourceMappingURL=product-dialog.component.css.map */

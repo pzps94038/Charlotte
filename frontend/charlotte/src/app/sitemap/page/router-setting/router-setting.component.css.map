@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,KAAK,EAAE,GAAG;CACX",
+    "sources": [
+        "router-setting.component.scss"
+    ],
+    "names": [],
+    "file": "router-setting.component.css"
+}

@@ -8,6 +8,8 @@ export class ApiUrl{
   static router: string = this.apiUrl + 'ManagerRouter'
   static menu: string = this.apiUrl + 'ManagerMenu'
   static refreshToken: string = this.apiUrl + 'ManagerRefreshToken'
-  static factory: string = this.apiUrl + 'Factory'
-  static productType: string = this.apiUrl + 'ProductType'
+  static factory: string = this.apiUrl + 'ManagerFactory'
+  static productType: string = this.apiUrl + 'ManagerProductType'
+  static product: string = this.apiUrl + 'ManagerProduct'
+  static productFileUpload: string = this.apiUrl + 'ManagerProduct\\FileUpload'
 }

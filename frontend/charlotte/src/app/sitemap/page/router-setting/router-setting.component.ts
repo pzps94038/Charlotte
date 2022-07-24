@@ -217,14 +217,6 @@ export class RouterSettingComponent extends BaseDataTable<Router> implements OnI
         value: '連結'
       },
       {
-        key: 'icon',
-        value: 'Icon'
-      },
-      {
-        key: 'groupId',
-        value: 'GroupId'
-      },
-      {
         key: 'flag',
         value: 'Flag'
       },

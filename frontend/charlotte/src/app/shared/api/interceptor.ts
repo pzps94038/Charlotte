@@ -32,11 +32,14 @@ export class Interceptor implements HttpInterceptor{
     if(this.taskCount == 0) this.spinner.show()
     this.taskCount++;
     const accessToken = this.tokenService.getToken().accessToken
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
+    let headers = new HttpHeaders({
       'Access-Control-Allow-Origin': ApiUrl.baseUrl,
       'Authorization': `Bearer ${accessToken}`
     })
+
+    if((req.body instanceof FormData) === false)
+      headers = headers.append('Content-Type', 'application/json')  
+      
     let modifyReq: HttpRequest<any> = req.clone({ headers })
     return next.handle(modifyReq).pipe(
       catchError((err: HttpErrorResponse)=>{

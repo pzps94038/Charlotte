@@ -133,7 +133,7 @@ namespace Charlotte.Helper.ManagerUser
         {
             using (var db = new CharlotteContext())
             {
-                var filterResult = db.ManagerMain.Join(db.ManagerRole, a => a.RoleId, b => b.RoleId, (a, b) => new
+                var query = db.ManagerMain.Join(db.ManagerRole, a => a.RoleId, b => b.RoleId, (a, b) => new
                 {
                     ManagerUserId = a.ManagerUserId,
                     UserName = a.UserName,
@@ -148,18 +148,18 @@ namespace Charlotte.Helper.ManagerUser
                 });
                 if (filterStr != null)
                 {
-                    filterResult = filterResult.Where(a =>  a.UserName.Contains(filterStr) ||                    
+                    query = query.Where(a =>  a.UserName.Contains(filterStr) ||                    
                                                             a.Email.Contains(filterStr) ||
                                                             a.Flag.Contains(filterStr) ||
                                                             a.RoleName.Contains(filterStr)
                                                       );
                 };
-                var tableTotalCount = filterResult.Count();
+                var tableTotalCount = query.Count();
                 if (orderBy != null && orderDescription != null)
-                    filterResult = orderDescription == "desc" ? filterResult.OrderBy($"{orderBy} desc") : filterResult.OrderBy($"{orderBy} asc");
+                    query = orderDescription == "desc" ? query.OrderBy($"{orderBy} desc") : query.OrderBy($"{orderBy} asc");
                 if (limit != null && offset != null)
-                    filterResult = filterResult.Skip((int)offset).Take((int)limit);
-                var result = await filterResult.ToListAsync();
+                    query = query.Skip((int)offset).Take((int)limit);
+                var result = await query.ToListAsync();
                 return new TableVModel<ManagerUsersVModel>(result.Adapt<List<ManagerUsersVModel>>(), tableTotalCount) ;
             }
         }

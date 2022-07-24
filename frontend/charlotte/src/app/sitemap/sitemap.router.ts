@@ -6,8 +6,8 @@ import { DashboardComponent } from "./page/dashboard/dashboard.component";
 import { FactorySettingComponent } from "./page/factory-setting/factory-setting.component";
 import { ManagerUserSettingComponent } from "./page/manager-user-setting/manager-user-setting.component";
 import { OrderSettingComponent } from "./page/order-setting/order-setting.component";
-import { ProductInformationSettingComponent } from "./page/product-information-setting/product-information-setting.component";
 import { ProductTypeSettingComponent } from "./page/product-type-setting/product-type-setting.component";
+import { ProductComponent } from "./page/product/product.component";
 import { RoleSettingComponent } from "./page/role-setting/role-setting.component";
 import { RouterSettingComponent } from "./page/router-setting/router-setting.component";
 import { UserSettingComponent } from "./page/user-setting/user-setting.component";
@@ -49,10 +49,10 @@ export const siteMapRouter : Routes = [
     data:{ title: '產品類別維護', animation: 'productTypeSetting' }
   },
   {
-    path: 'productInformationSetting',
-    component: ProductInformationSettingComponent,
+    path: 'productSetting',
+    component: ProductComponent,
     canActivate:[AuthGuard],
-    data:{ title: '產品資訊維護', animation: 'productInformationSetting' }
+    data:{ title: '產品資訊維護', animation: 'productSetting' }
   },
   {
     path: 'orderSetting',

@@ -8,7 +8,6 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { FactorySettingComponent } from './page/factory-setting/factory-setting.component';
 import { ManagerUserSettingComponent } from './page/manager-user-setting/manager-user-setting.component';
 import { OrderSettingComponent } from './page/order-setting/order-setting.component';
-import { ProductInformationSettingComponent } from './page/product-information-setting/product-information-setting.component';
 import { ProductTypeSettingComponent } from './page/product-type-setting/product-type-setting.component';
 import { RoleSettingComponent } from './page/role-setting/role-setting.component';
 import { RouterSettingComponent } from './page/router-setting/router-setting.component';
@@ -18,6 +17,7 @@ import { SitemapComponent } from './sitemap.component';
 import { HeaderModule } from './header/header.module';
 import { CommonModule } from '@angular/common';
 import { ChartModule } from 'angular-highcharts';
+import { ProductComponent } from './page/product/product.component';
 @NgModule({
   declarations: [
     SitemapComponent,
@@ -26,7 +26,7 @@ import { ChartModule } from 'angular-highcharts';
     RouterSettingComponent,
     RoleSettingComponent,
     ProductTypeSettingComponent,
-    ProductInformationSettingComponent,
+    ProductComponent,
     OrderSettingComponent,
     FactorySettingComponent,
     BasicDataSettingComponent,

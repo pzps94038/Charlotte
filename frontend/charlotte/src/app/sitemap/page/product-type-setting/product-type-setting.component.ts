@@ -35,7 +35,7 @@ export class ProductTypeSettingComponent extends BaseDataTable<ProductType> impl
 
   ngOnDestroy(): void {
     this.destroy$.next(null)
-    this.destroy$.complete();
+    this.destroy$.complete()
   }
 
   createColumns(): { key: string; value: string | number; }[] {

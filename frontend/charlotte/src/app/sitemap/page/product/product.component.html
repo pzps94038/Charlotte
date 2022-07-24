@@ -1,0 +1,13 @@
+<app-data-table
+  [columns]="columns"
+  [tableDataList]="tableDataList"
+  [tableTotalCount]="tableTotalCount"
+  (createAction)="create()"
+  [loading$]="loading$"
+  (deleteAction)="delete($event)"
+  (modifyAction)="modify($event)"
+  (refreshAction)="refresh()"
+  (multipleDeleteAction)="multipleDelete($event)"
+  (filterAction)="filterTable($event)"
+>
+</app-data-table>

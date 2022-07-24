@@ -26,8 +26,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-    <PackageReference Include="NLog" Version="4.7.14" />
-    <PackageReference Include="NLog.Config" Version="4.7.14" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.0.0" />
     <PackageReference Include="Scrutor" Version="4.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
@@ -47,6 +46,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Charlotte.Database\Charlotte.Database.csproj" />
     <ProjectReference Include="..\Charlotte.Services\Charlotte.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

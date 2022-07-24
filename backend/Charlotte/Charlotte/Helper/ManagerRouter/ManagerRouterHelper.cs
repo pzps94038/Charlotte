@@ -71,22 +71,22 @@ namespace Charlotte.Helper.ManagerRouter
         {
             using (var db = new CharlotteContext())
             {
-                IQueryable<Router> filterResult = db.Router;
+                var query = db.Router.AsQueryable();
                 if (filterStr != null) 
                 {
-                    filterResult = filterResult.Where(a => a.RouterId.ToString().Contains(filterStr) ||
+                    query = query.Where(a => a.RouterId.ToString().Contains(filterStr) ||
                                                     a.RouterName.Contains(filterStr) ||
                                                     a.Link.Contains(filterStr) ||
                                                     (a.Icon != null && a.Icon.Contains(filterStr)) ||
                                                     a.GroupId.ToString().Contains(filterStr) ||
                                                     a.Flag.Contains(filterStr)) ; ;
                 }
-                var tableTotalCount = filterResult.Count();
+                var tableTotalCount = query.Count();
                 if (orderBy != null && orderDescription != null)
-                    filterResult = orderDescription == "desc" ? filterResult.OrderBy($"{orderBy} desc") : filterResult.OrderBy($"{orderBy} asc");
+                    query = orderDescription == "desc" ? query.OrderBy($"{orderBy} desc") : query.OrderBy($"{orderBy} asc");
                 if (limit != null && offset != null)
-                    filterResult = filterResult.Skip((int)offset).Take((int)limit);
-                var result = await filterResult.ToListAsync();
+                    query = query.Skip((int)offset).Take((int)limit);
+                var result = await query.ToListAsync();
                 return new TableVModel<ManagerRouterVModel>(result.Adapt<List<ManagerRouterVModel>>(), tableTotalCount);
             }
         }

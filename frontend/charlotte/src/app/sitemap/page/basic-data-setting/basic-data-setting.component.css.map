@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC,SAAS,CAAC,cAAc,CAAC,6BAA6B,CAAC;EAC3D,gBAAgB,EAAE,kBAAkB;CACrC;;AAED,AAAA,KAAK,CAAC,SAAS,CAAC,cAAc,CAAC,2BAA2B,CAAC;EACzD,gBAAgB,EAAE,kBAAkB;CACrC;;AAED,AAAA,KAAK,CAAC,SAAS,CAAC,cAAc,CAAC,2BAA2B,CAAC;EACzD,gBAAgB,EAAE,kBAAkB;CACrC",
+    "sources": [
+        "basic-data-setting.component.scss"
+    ],
+    "names": [],
+    "file": "basic-data-setting.component.css"
+}

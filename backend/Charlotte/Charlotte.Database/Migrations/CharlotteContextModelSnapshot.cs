@@ -297,34 +297,6 @@ namespace Charlotte.Database.Migrations
                     b.ToTable("OrderDetail");
                 });
 
-            modelBuilder.Entity("Charlotte.Database.Model.ProductImg", b =>
-                {
-                    b.Property<int>("ProductImgId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductImgId"), 1L, 1);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductImgPath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProductImgId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductImg");
-                });
-
             modelBuilder.Entity("Charlotte.DataBase.Model.ProductInformation", b =>
                 {
                     b.Property<int>("ProductId")
@@ -470,11 +442,6 @@ namespace Charlotte.Database.Migrations
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("Date");
 
-                    b.Property<string>("Cable")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nchar(1)");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -495,11 +462,6 @@ namespace Charlotte.Database.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Privacy")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nchar(1)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -588,17 +550,6 @@ namespace Charlotte.Database.Migrations
                 });
 
             modelBuilder.Entity("Charlotte.DataBase.Model.OrderDetail", b =>
-                {
-                    b.HasOne("Charlotte.DataBase.Model.ProductInformation", "ProductInformation")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ProductInformation");
-                });
-
-            modelBuilder.Entity("Charlotte.Database.Model.ProductImg", b =>
                 {
                     b.HasOne("Charlotte.DataBase.Model.ProductInformation", "ProductInformation")
                         .WithMany()

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAA;EACV,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,KAAK;CACb",
+    "sources": [
+        "check-box-dialog.component.scss"
+    ],
+    "names": [],
+    "file": "check-box-dialog.component.css"
+}

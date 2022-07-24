@@ -1,0 +1,31 @@
+.function, .data-table {
+  width: 80%;
+}
+
+.search {
+  width: 50%;
+}
+
+.table-title {
+  font-size: 1rem;
+  color: black;
+}
+
+.spinner-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(171, 157, 223, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=data-table.component.css.map */

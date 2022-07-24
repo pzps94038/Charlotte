@@ -23,6 +23,6 @@ export interface DataTableInfo{
     limit: number
     offset: number
   }
-  sort: Sort
+  sort?: Sort
   filterStr?: string
 }

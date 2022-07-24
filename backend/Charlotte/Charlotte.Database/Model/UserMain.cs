@@ -32,15 +32,15 @@ namespace Charlotte.DataBase.Model
         [Required]
         [Column(TypeName = "nchar(1)")]
         public string Flag { get; set; }
-        [StringLength(1)]
-        [Required]
-        [Column(TypeName = "nchar(1)")]
-        public string Cable { get; set; }
+        //[StringLength(1)]
+        //[Required]
+        //[Column(TypeName = "nchar(1)")]
+        //public string Cable { get; set; }
 
-        [StringLength(1)]
-        [Required]
-        [Column(TypeName = "nchar(1)")]
-        public string Privacy { get; set; }
+        //[StringLength(1)]
+        //[Required]
+        //[Column(TypeName = "nchar(1)")]
+        //public string Privacy { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; }
 
