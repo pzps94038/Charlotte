@@ -1,0 +1,12 @@
+:host ::ng-deep mat-form-field .mat-form-field-outline-start {
+  background-color: #ffffef !important;
+}
+
+:host ::ng-deep mat-form-field .mat-form-field-outline-gap {
+  background-color: #ffffef !important;
+}
+
+:host ::ng-deep mat-form-field .mat-form-field-outline-end {
+  background-color: #ffffef !important;
+}
+/*# sourceMappingURL=login.component.css.map */

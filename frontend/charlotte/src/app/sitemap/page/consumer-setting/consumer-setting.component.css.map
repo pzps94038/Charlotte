@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "consumer-setting.component.scss"
+    ],
+    "names": [],
+    "file": "consumer-setting.component.css"
+}

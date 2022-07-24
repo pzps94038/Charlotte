@@ -3,31 +3,39 @@ import {Animated, StyleSheet, TouchableOpacity} from 'react-native';
 import {BottomTabButton} from './tabs';
 import React, {useEffect, useRef} from 'react';
 const TabButton = (props: BottomTabButton) => {
-  const focus = props?.accessibilityState?.selected ?? false;
-  let fadeAnim = useRef(new Animated.Value(0)).current;
+  const focus = props.accessibilityState?.selected ?? false;
+  // 設定切換值
+  let focusState = useRef(new Animated.Value(focus ? 0 : 1)).current;
+  // 設定切換狀態
+  const rotateInterpolate = focusState.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
+  const scaleInterpolate = focusState.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 1.5],
+  });
   useEffect(() => {
-    // console.log('執行');
+    // 調整值設定動畫時間
     if (focus) {
-      Animated.timing(fadeAnim, {
+      Animated.timing(focusState, {
         toValue: 1,
         useNativeDriver: true,
         duration: 500,
       }).start();
-      console.log('haha是我啦');
     } else {
-      Animated.timing(fadeAnim, {
+      Animated.timing(focusState, {
         toValue: 0,
         useNativeDriver: true,
         duration: 500,
       }).start();
-      console.log('goodbye');
     }
-  }, [focus, fadeAnim]);
+  }, [focus, focusState]);
   return (
     <TouchableOpacity onPress={props.onPress} style={styles.container}>
       <Animated.View
         style={{
-          opacity: fadeAnim,
+          transform: [{rotate: rotateInterpolate}, {scale: scaleInterpolate}],
         }}>
         <Icon name={props.name} color={focus ? '#4B0091' : '#8E8E8F'} />
       </Animated.View>

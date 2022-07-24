@@ -12,6 +12,9 @@ const Home = () => {
         lightTheme={true}
         placeholder="請輸入你想找的商品"
         value={search}
+        onSubmitEditing={() => {
+          console.warn('我要找' + search);
+        }}
       />
     </SafeAreaView>
   );
