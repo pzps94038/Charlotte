@@ -12,40 +12,44 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Tabs from './src/shared/router/tabs/tabs';
+import {Provider} from 'react-redux';
+import {store} from './src/shared/store/store';
 const App = () => {
   const Tab = createBottomTabNavigator();
   return (
-    <NavigationContainer>
-      {/* 安全邊界 */}
-      <Tab.Navigator
-        screenOptions={{
-          tabBarActiveTintColor: '#4B0091',
-          headerShown: false,
-          tabBarStyle: {
-            height: 60,
-            position: 'absolute',
-            bottom: 16,
-            left: 16,
-            right: 16,
-            zIndex: 100,
-            borderBottomLeftRadius: 25,
-            borderTopLeftRadius: 25,
-            borderBottomRightRadius: 25,
-            borderTopRightRadius: 25,
-          },
-        }}>
-        {Tabs.map(a => {
-          return (
-            <Tab.Screen
-              key={a.name}
-              name={a.name}
-              component={a.component}
-              options={a.options}
-            />
-          );
-        })}
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        {/* 安全邊界 */}
+        <Tab.Navigator
+          screenOptions={{
+            tabBarActiveTintColor: '#4B0091',
+            headerShown: false,
+            tabBarStyle: {
+              height: 60,
+              position: 'absolute',
+              bottom: 16,
+              left: 16,
+              right: 16,
+              zIndex: 100,
+              borderBottomLeftRadius: 25,
+              borderTopLeftRadius: 25,
+              borderBottomRightRadius: 25,
+              borderTopRightRadius: 25,
+            },
+          }}>
+          {Tabs.map(a => {
+            return (
+              <Tab.Screen
+                key={a.name}
+                name={a.name}
+                component={a.component}
+                options={a.options}
+              />
+            );
+          })}
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
