@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "product-type-setting.component.scss"
-    ],
-    "names": [],
-    "file": "product-type-setting.component.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"product-type-setting.component.css"}

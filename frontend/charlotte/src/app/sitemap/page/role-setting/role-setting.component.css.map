@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "role-setting.component.scss"
-    ],
-    "names": [],
-    "file": "role-setting.component.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"role-setting.component.css"}

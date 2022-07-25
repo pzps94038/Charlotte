@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,WAAW,CAAA;EACT,WAAW,EAAE,MAAM;CACpB",
-    "sources": [
-        "dashboard.component.scss"
-    ],
-    "names": [],
-    "file": "dashboard.component.css"
-}
+{"version":3,"sources":["dashboard.component.scss","dashboard.component.css"],"names":[],"mappings":"AAAA;EACE,mBAAA;ACCF","file":"dashboard.component.css"}

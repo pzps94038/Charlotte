@@ -17,6 +17,7 @@ import { ChartModule } from 'angular-highcharts';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { ProductDialogModule } from './dialog/product-dialog/product-dialog.module';
+import { OrderDialogModule } from './dialog/order-dialog/order-dialog.module';
 @NgModule({
   exports: [
     MatDialogModule,
@@ -26,6 +27,7 @@ import { ProductDialogModule } from './dialog/product-dialog/product-dialog.modu
     DataTableModule,
     ProgressBarModule,
     FormDialogModule,
+    OrderDialogModule,
     ProductDialogModule,
     CheckBoxDialogModule,
     MatButtonModule,

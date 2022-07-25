@@ -1,1 +1,12 @@
-<p>order-setting works!</p>
+<app-data-table
+  [columns]="columns"
+  [tableDataList]="tableDataList"
+  [tableTotalCount]="tableTotalCount"
+  [loading$]="loading$"
+  (createAction)="create()"
+  (deleteAction)="delete($event)"
+  (modifyAction)="modify($event)"
+  (refreshAction)="refresh()"
+  (filterAction)="filterTable($event)"
+>
+</app-data-table>

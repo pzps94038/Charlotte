@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "dynamic-datepicker.component.scss"
-    ],
-    "names": [],
-    "file": "dynamic-datepicker.component.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"dynamic-datepicker.component.css"}

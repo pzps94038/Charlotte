@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,iBAAiB,CAAA;EACf,KAAK,EAAE,IAAI;CACZ;;AACD,AAAA,eAAe,CAAA;EACb,MAAM,EAAE,GAAG,CAAC,MAAM,CAAC,OAAc;CAalC;;AAdD,AAEE,eAFa,CAEb,KAAK,CAAA;EACH,OAAO,EAAE,CAAC;EACV,OAAO,EAAE,IAAI;EACb,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CACb;;AAPH,AAQE,eARa,CAQb,UAAU,CAAA;EACR,SAAS,EAAE,MACb;CAAC;;AAVH,AAWE,eAXa,CAWb,MAAM,CAAA;EACJ,MAAM,EAAE,OAAO;CAChB;;AAEH,AAAA,iBAAiB,CAAA;EACf,WAAW,EAAE,IAAI;CAClB;;AACD,AAAA,YAAY,CAAA;EACV,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;CACd",
-    "sources": [
-        "product-dialog.component.scss"
-    ],
-    "names": [],
-    "file": "product-dialog.component.css"
-}
+{"version":3,"sources":["product-dialog.component.scss","product-dialog.component.css"],"names":[],"mappings":"AAAA;EACE,WAAA;ACCF;;ADCA;EACE,iCAAA;ACEF;ADDE;EACE,UAAA;EACA,aAAA;EACA,WAAA;EACA,YAAA;ACGJ;ADDE;EACE,iBAAA;ACGJ;ADDE;EACE,eAAA;ACGJ;;ADAA;EACE,iBAAA;ACGF;;ADDA;EACE,YAAA;EACA,aAAA;ACIF","file":"product-dialog.component.css"}

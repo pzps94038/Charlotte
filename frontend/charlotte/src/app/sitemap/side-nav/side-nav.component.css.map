@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AACA,AAAA,aAAa,CAAA;EACX,SAAS,EAFU,MAAM;EAGzB,KAAK,EAAE,KAAK;CACb;;AACD,AAAA,QAAQ,CAAA;EACN,KAAK,EAAE,KAAK;CACb;;AACD,AAAA,iBAAiB,CAAA;EACf,MAAM,EAAE,IAAI;CACb;;AACD,AAAA,oBAAoB,AAAA,IAAK,EAAA,AAAA,KAAC,EAAO,iBAAiB,AAAxB,GAA2B;EACnD,UAAU,EAAE,IAAI;CACjB;;AACD,AAAA,KAAK,CAAA;EACH,WAAW,EAAE,MAAM;CACpB;;AACD,AAAA,QAAQ,CAAC;EACP,cAAc,EAAC,WAAW;CAC3B",
-    "sources": [
-        "side-nav.component.scss"
-    ],
-    "names": [],
-    "file": "side-nav.component.css"
-}
+{"version":3,"sources":["side-nav.component.scss","side-nav.component.css"],"names":[],"mappings":"AACA;EACE,iBAFmB;EAGnB,YAAA;ACAF;;ADEA;EACE,YAAA;ACCF;;ADCA;EACE,YAAA;ACEF;;ADAA;EACE,gBAAA;ACGF;;ADDA;EACE,mBAAA;ACIF;;ADFA;EACE,2BAAA;ACKF","file":"side-nav.component.css"}

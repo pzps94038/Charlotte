@@ -1,0 +1,49 @@
+<h2 mat-dialog-title class="font-weight-bold">{{ formData.title }}</h2>
+<div class="dialog-container">
+  <button
+    type="button"
+    mat-raised-button
+    cdkFocusInitial
+    color="primary"
+    (click)="addProduct()"
+  >
+    新增
+  </button>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <app-dynamic-select
+      labelText="用戶"
+      formControlName="managerUserId"
+      [options]="userOptions"
+      [valids]="[required]"
+    ></app-dynamic-select>
+    <div formArrayName="orderDetail">
+      <ng-container *ngFor="let item of array.controls; index as idx">
+        <div [formGroupName]="idx" class="d-flex flex-wrap">
+          <div class="col-6">
+            <app-dynamic-select
+              labelText="產品名稱"
+              formControlName="productId"
+              [options]="productOptions"
+              [valids]="[required]"
+            ></app-dynamic-select>
+          </div>
+          <div class="col-6">
+            <app-dynamic-input
+              labelText="數量"
+              type="number"
+              placeholder="請輸入數量"
+              formControlName="inventory"
+              [valids]="[required]"
+            ></app-dynamic-input>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div mat-dialog-actions class="d-flex justify-content-end">
+      <button type="button" mat-raised-button mat-dialog-close>取消</button>
+      <button type="submit" mat-raised-button cdkFocusInitial color="primary">
+        保存
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "factory-setting.component.scss"
-    ],
-    "names": [],
-    "file": "factory-setting.component.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"factory-setting.component.css"}

@@ -8,11 +8,8 @@ import { UserInfoService } from 'src/app/shared/service/userInfo/userInfo.servic
 @Component({
   selector: 'app-user-setting',
   templateUrl: './user-setting.component.html',
-  styleUrls: ['./user-setting.component.scss']
+  styleUrls: ['./user-setting.component.scss'],
 })
 export class UserSettingComponent implements OnInit {
-  ngOnInit(): void {
-
-  }
-
+  ngOnInit(): void {}
 }

@@ -15,9 +15,7 @@ import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -31,10 +29,10 @@ import * as exporting from 'highcharts/modules/exporting.src';
   providers: [
     Title,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500} },
-    { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting ] }
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+    { provide: HIGHCHARTS_MODULES, useFactory: () => [more, exporting] },
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

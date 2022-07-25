@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,KAAK,CAAC,SAAS,CAAC,cAAc,CAAC,6BAA6B,CAAC;EAC3D,gBAAgB,EAAE,kBAAkB;CACrC;;AAED,AAAA,KAAK,CAAC,SAAS,CAAC,cAAc,CAAC,2BAA2B,CAAC;EACzD,gBAAgB,EAAE,kBAAkB;CACrC;;AAED,AAAA,KAAK,CAAC,SAAS,CAAC,cAAc,CAAC,2BAA2B,CAAC;EACzD,gBAAgB,EAAE,kBAAkB;CACrC",
-    "sources": [
-        "login.component.scss"
-    ],
-    "names": [],
-    "file": "login.component.css"
-}
+{"version":3,"sources":["login.component.scss","login.component.css"],"names":[],"mappings":"AAAA;EACE,oCAAA;ACCF;;ADEA;EACE,oCAAA;ACCF;;ADEA;EACE,oCAAA;ACCF","file":"login.component.css"}

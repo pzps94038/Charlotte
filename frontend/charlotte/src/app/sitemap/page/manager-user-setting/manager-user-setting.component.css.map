@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "manager-user-setting.component.scss"
-    ],
-    "names": [],
-    "file": "manager-user-setting.component.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"manager-user-setting.component.css"}

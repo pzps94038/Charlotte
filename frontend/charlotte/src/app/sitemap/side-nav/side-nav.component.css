@@ -11,9 +11,8 @@
   height: 92vh;
 }
 
-.mat-expansion-panel:not([class*='mat-elevation-z']) {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
 }
 
 .icon {
@@ -22,5 +21,4 @@
 
 mat-icon {
   vertical-align: text-bottom;
-}
-/*# sourceMappingURL=side-nav.component.css.map */
+}/*# sourceMappingURL=side-nav.component.css.map */

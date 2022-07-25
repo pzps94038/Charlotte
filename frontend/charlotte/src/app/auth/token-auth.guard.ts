@@ -15,24 +15,22 @@ export class TokenAuthGuard implements CanActivate, CanActivateChild {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const haveToken = this.tokenService.checkToken()
-    // if(haveToken)return true
-    // else{
-    //   this.router.navigate(['/login'])
-    //   return false
-    // }
-    return true
+    const isToken = this.tokenService.checkToken();
+    if(isToken){
+      return true;
+    }else{
+      return this.router.createUrlTree(['/login']);
+    }
   }
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      // const haveToken = this.tokenService.checkToken()
-      // if(haveToken)return true
-      // else{
-      //   this.router.navigate(['/login'])
-      //   return false
-      // }
-      return true
+      const isToken = this.tokenService.checkToken();
+      if(isToken){
+        return true;
+      }else{
+        return this.router.createUrlTree(['/login']);
+      }
   }
 
 }

@@ -10,7 +10,7 @@ ng-boostarp
 docker指令
 後端打包
 cd 專案路徑\Charlotte\backend\Charlotte
-docker build -t pzps94038/charlotte-backend .
+docker build -t pzps94038/charlotte-backend --no-cache  .
 
 docker-compose
 cd 專案路徑

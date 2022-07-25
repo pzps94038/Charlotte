@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "dynamic-input.component.scss"
-    ],
-    "names": [],
-    "file": "dynamic-input.component.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"dynamic-input.component.css"}
