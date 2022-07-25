@@ -6,6 +6,7 @@
     cdkFocusInitial
     color="primary"
     (click)="addProduct()"
+    class="mb-3"
   >
     新增
   </button>
@@ -18,8 +19,20 @@
     ></app-dynamic-select>
     <div formArrayName="orderDetail">
       <ng-container *ngFor="let item of array.controls; index as idx">
-        <div [formGroupName]="idx" class="d-flex flex-wrap">
-          <div class="col-6">
+        <div
+          [formGroupName]="idx"
+          class="d-flex flex-wrap justify-content-between"
+        >
+          <button
+            mat-raised-button
+            color="warn"
+            class="mb-4 col-1"
+            aria-label="delete multipleButton"
+            (click)="deleteProduct(idx)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div class="col-5">
             <app-dynamic-select
               labelText="產品名稱"
               formControlName="productId"
@@ -27,17 +40,30 @@
               [valids]="[required]"
             ></app-dynamic-select>
           </div>
-          <div class="col-6">
+          <div class="col-5">
             <app-dynamic-input
               labelText="數量"
               type="number"
               placeholder="請輸入數量"
               formControlName="inventory"
-              [valids]="[required]"
+              [valids]="[required, min]"
+              [min]="1"
             ></app-dynamic-input>
+          </div>
+          <div
+            class="col-12"
+            *ngIf="array.at(idx)?.errors?.['inventory'] && array.at(idx).touched"
+          >
+            <mat-error class="text-right">輸入數量大於庫存量</mat-error>
           </div>
         </div>
       </ng-container>
+      <mat-error
+        class="text-right"
+        *ngIf="array?.errors?.['productDistinct'] && array.touched"
+      >
+        產品重複
+      </mat-error>
     </div>
     <div mat-dialog-actions class="d-flex justify-content-end">
       <button type="button" mat-raised-button mat-dialog-close>取消</button>

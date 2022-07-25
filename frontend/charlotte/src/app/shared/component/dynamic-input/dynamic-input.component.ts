@@ -14,8 +14,13 @@ import { BaseInputComponent } from '../base-input/base-input.component';
     },
   ],
 })
-export class DynamicInputComponent extends BaseInputComponent implements OnInit {
-  @Input() type! :string
-  @Input() minLength?: number = 0
-  @Input() maxLength?: number = 0
+export class DynamicInputComponent
+  extends BaseInputComponent
+  implements OnInit
+{
+  @Input() type!: string;
+  @Input() minLength?: number = 0;
+  @Input() maxLength?: number = 0;
+  @Input() min?: number = 0;
+  @Input() max?: number = 0;
 }

@@ -1,9 +1,9 @@
-import {SearchBar} from '@rneui/themed';
+import { SearchBar } from '@rneui/themed';
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {changeSearch, clearSearch} from '../shared/store/search/searchReducer';
-import {RootState} from '../shared/store/store';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeSearch, clearSearch } from '../shared/store/search/searchReducer';
+import { RootState } from '../shared/store/store';
 
 const Home = () => {
   const search = useSelector((state: RootState) => state.search);
