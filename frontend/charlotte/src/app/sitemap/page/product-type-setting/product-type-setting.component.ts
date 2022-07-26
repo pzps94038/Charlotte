@@ -62,6 +62,10 @@ export class ProductTypeSettingComponent
         value: '類型',
       },
       {
+        key: 'icon',
+        value: 'Icon',
+      },
+      {
         key: 'createDate',
         value: '創建日期',
       },
@@ -103,6 +107,11 @@ export class ProductTypeSettingComponent
             icon: 'inventory_2',
             valids: [Validators.required],
           },
+          {
+            controlName: 'Icon',
+            labelText: 'Icon',
+            type: 'text',
+          },
         ],
       },
     });
@@ -131,6 +140,12 @@ export class ProductTypeSettingComponent
             icon: 'inventory_2',
             value: row.type,
             valids: [Validators.required],
+          },
+          {
+            controlName: 'Icon',
+            labelText: 'Icon',
+            type: 'text',
+            value: row.icon,
           },
         ],
       },

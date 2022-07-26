@@ -14,6 +14,8 @@ namespace Charlotte.DataBase.Model
 
         [Required]
         public DateTime CreateDate { get; set; }
+        [StringLength(250)]
+        public string? Icon { get; set; }
 
         public DateTime? ModifyDate { get; set; }
     }

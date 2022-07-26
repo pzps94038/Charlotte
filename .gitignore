@@ -5,3 +5,5 @@
 /backend/Charlotte/Charlotte.Database/obj
 /backend/Charlotte/Charlotte.Services/bin
 /backend/Charlotte/Charlotte.Services/obj
+*.css
+*.map

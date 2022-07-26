@@ -354,6 +354,10 @@ namespace Charlotte.Database.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Icon")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<DateTime?>("ModifyDate")
                         .HasColumnType("datetime2");
 

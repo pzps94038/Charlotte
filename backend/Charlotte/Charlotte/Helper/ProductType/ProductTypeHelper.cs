@@ -26,6 +26,7 @@ namespace Charlotte.Helper.ProductType
             {
                 var data = new DataBase.Model.ProductType();
                 data.Type = request.Type;
+                data.Icon = request.Icon;
                 data.CreateDate = DateTime.Now;
                 db.ProductType.Add(data);
                 await db.SaveChangesAsync();
@@ -50,7 +51,8 @@ namespace Charlotte.Helper.ProductType
                 if (filterStr != null)
                 {
                     query = query.Where(a => a.ProductTypeId.ToString().Contains(filterStr) ||
-                                             a.Type.Contains(filterStr)
+                                             a.Type.Contains(filterStr) ||
+                                             (a.Icon != null && a.Icon.Contains(filterStr))
                                         );
                 }
                 var tableTotalCount = query.Count();
@@ -61,7 +63,8 @@ namespace Charlotte.Helper.ProductType
                 var result = await query.Select(a=> new 
                     { 
                         ProductTypeId = a.ProductTypeId, 
-                        Type = a.Type, 
+                        Type = a.Type,
+                        Icon = a.Icon,
                         CreateDate = a.CreateDate.ToString("yyyy-MM-dd"), 
                         ModifyDate = a.ModifyDate.HasValue ? a.ModifyDate.Value.ToString("yyyy-MM-dd") : ""
                     }
@@ -81,6 +84,7 @@ namespace Charlotte.Helper.ProductType
             {
                 var data = db.ProductType.Single(a => a.ProductTypeId == id);
                 data.Type = request.Type;
+                data.Icon = request.Icon;
                 data.ModifyDate = DateTime.Now;
                 await db.SaveChangesAsync();
             }
