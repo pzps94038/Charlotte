@@ -21,5 +21,6 @@ services:
       bridge-001:
     volumes:
       - C:\Charlotte-backend/Logs:/var/Charlotte-backend/Logs
+      - C:\Charlotte-backend/FileUpload:/app/FileUpload
 networks:
   bridge-001:

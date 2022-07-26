@@ -1,6 +1,12 @@
 import { Subject, takeUntil } from 'rxjs';
 import { SwalService } from './../../service/swal/swal.service';
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Inject,
+  OnInit,
+  OnDestroy,
+  ɵɵsetComponentScope,
+} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -93,7 +99,6 @@ export class OrderDialogComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private fb: FormBuilder,
     private dialog: MatDialogRef<OrderDialogComponent>,
     private SwalService: SwalService,
     @Inject(MAT_DIALOG_DATA) public formData: OrderDialog
@@ -122,7 +127,10 @@ export class OrderDialogComponent implements OnInit, OnDestroy {
    */
   submit() {
     this.form.markAllAsTouched();
-    console.log(this.form.value);
+    const valid = this.form.valid;
+    if (valid) {
+      this.dialog.close(this.form.value);
+    }
   }
   /**
    * 加商品

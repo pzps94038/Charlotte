@@ -67,7 +67,6 @@ export class FactorySettingComponent
         finalize(() => this.loading$.next(false))
       )
       .subscribe((res) => {
-        console.log(res);
         this.tableDataList = res.tableDataList;
         this.tableTotalCount = res.tableTotalCount;
       });
@@ -170,12 +169,15 @@ export class FactorySettingComponent
   }
 
   multipleDelete(rows: Factory[]): void {
-    this.swalService.multipleDelete(rows).pipe(
-      map(() => rows.map((a) => a.factoryId)),
-      concatMap((factoryIds) =>
-        this.factoryService.batchDeleteFactory(factoryIds)
-      ),
-      filter((res) => this.apiService.judgeSuccess(res, true))
-    );
+    this.swalService
+      .multipleDelete(rows)
+      .pipe(
+        map(() => rows.map((a) => a.factoryId)),
+        concatMap((factoryIds) =>
+          this.factoryService.batchDeleteFactory(factoryIds)
+        ),
+        filter((res) => this.apiService.judgeSuccess(res, true))
+      )
+      .subscribe(() => this.refresh());
   }
 }

@@ -1,27 +1,53 @@
-
-<h2 mat-dialog-title class="font-weight-bold">{{formData.title}}</h2>
+<h2 mat-dialog-title class="font-weight-bold">{{ formData.title }}</h2>
 <div class="dialog-container">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <ng-container *ngFor="let data of formData.dataList">
       <ng-container [ngSwitch]="data.type">
         <ng-container *ngSwitchCase="'select'">
-          <app-dynamic-select [icon]="data.icon" [labelText]="data.labelText" [formControlName]="data.controlName" [options]="data.options" [valids]="data.valids"></app-dynamic-select>
+          <app-dynamic-select
+            [icon]="data.icon"
+            [labelText]="data.labelText"
+            [formControlName]="data.controlName"
+            [options]="data.options"
+            [valids]="data.valids"
+          ></app-dynamic-select>
         </ng-container>
         <ng-container *ngSwitchCase="'date'">
-          <app-dynamic-datepicker [icon]="data.icon" [labelText]="data.labelText" [formControlName]="data.controlName" [valids]="data.valids"></app-dynamic-datepicker>
+          <app-dynamic-datepicker
+            [icon]="data.icon"
+            [labelText]="data.labelText"
+            [formControlName]="data.controlName"
+            [valids]="data.valids"
+          ></app-dynamic-datepicker>
         </ng-container>
         <ng-container *ngSwitchCase="'toggle'">
-          <app-dynamic-silde-toggle [formControlName]="data.controlName" [labelText]="data.labelText" [valids]="data.valids"></app-dynamic-silde-toggle>
+          <app-dynamic-silde-toggle
+            [formControlName]="data.controlName"
+            [labelText]="data.labelText"
+            [valids]="data.valids"
+          ></app-dynamic-silde-toggle>
         </ng-container>
         <ng-container *ngSwitchDefault>
-          <app-dynamic-input [icon]="data.icon" [labelText]="data.labelText" [type]="data.type" [placeholder]="data.placeholder" [formControlName]="data.controlName" [minLength]="data.minLength" [maxLength]="data.maxLength" [valids]="data.valids"></app-dynamic-input>
+          <app-dynamic-input
+            [icon]="data.icon"
+            [labelText]="data.labelText"
+            [type]="data.type"
+            [placeholder]="data.placeholder"
+            [formControlName]="data.controlName"
+            [minLength]="data.minLength"
+            [maxLength]="data.maxLength"
+            [valids]="data.valids"
+            [min]="data.min"
+            [max]="data.max"
+          ></app-dynamic-input>
         </ng-container>
       </ng-container>
     </ng-container>
     <div mat-dialog-actions class="d-flex justify-content-end">
       <button type="button" mat-raised-button mat-dialog-close>取消</button>
-      <button type="submit" mat-raised-button cdkFocusInitial color="primary">保存</button>
+      <button type="submit" mat-raised-button cdkFocusInitial color="primary">
+        保存
+      </button>
     </div>
   </form>
 </div>
-

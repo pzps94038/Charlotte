@@ -44,6 +44,9 @@ export class OrderSettingComponent
     this.columns = this.createColumns();
     this.getOrders();
   }
+
+  ngOnInit(): void {}
+
   createColumns(): { key: string; value: string | number }[] {
     const columns = [
       {
@@ -73,12 +76,16 @@ export class OrderSettingComponent
     ];
     return columns;
   }
+
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.destroy$.next(null);
+    this.destroy$.complete();
   }
+
   refresh(): void {
     this.getOrders();
   }
+
   getOrders(info?: DataTableInfo) {
     this.loading$.next(true);
     this.orderService
@@ -93,6 +100,7 @@ export class OrderSettingComponent
         this.tableTotalCount = res.tableTotalCount;
       });
   }
+
   create(): void {
     const users$ = this.userService
       .getUsers()
@@ -114,9 +122,11 @@ export class OrderSettingComponent
         console.log(res);
       });
   }
+
   modify(row: Orders): void {
     throw new Error('Method not implemented.');
   }
+
   delete(row: Orders): void {
     this.swalService
       .delete()
@@ -127,6 +137,7 @@ export class OrderSettingComponent
       )
       .subscribe(() => this.refresh());
   }
+
   multipleDelete(rows: Orders[]): void {
     this.swalService
       .multipleDelete(rows)
@@ -140,9 +151,8 @@ export class OrderSettingComponent
       )
       .subscribe(() => this.refresh());
   }
+
   filterTable(info: DataTableInfo): void {
     this.getOrders(info);
   }
-
-  ngOnInit(): void {}
 }
