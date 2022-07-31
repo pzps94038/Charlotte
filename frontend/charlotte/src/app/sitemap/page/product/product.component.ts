@@ -96,12 +96,12 @@ export class ProductComponent
   }
 
   getProducts(info?: DataTableInfo) {
-    this.loading$.next(true);
+    this.setLoading(true);
     this.productService
       .getProducts(info)
       .pipe(
         takeUntil(this.destroy$),
-        finalize(() => this.loading$.next(false))
+        finalize(() => this.setLoading(false))
       )
       .subscribe((res) => {
         this.tableDataList = res.data.tableDataList;

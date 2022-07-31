@@ -5,28 +5,33 @@ import { DataTableInfo } from '../../component/data-table/data.table.model';
 import { SharedService } from '../../service/shared.service';
 import { DataTable, ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
-import { CreateProductTypeRequest, GetProductTypesResult, ModifyProductTypeRequest } from './product-type.interface';
+import {
+  CreateProductTypeRequest,
+  GetProductTypesResult,
+  ModifyProductTypeRequest,
+} from './product-type.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductTypeService {
-
-  constructor(
-    private http: HttpClient,
-    private sharedService: SharedService
-  ) { }
+  constructor(private http: HttpClient, private sharedService: SharedService) {}
 
   /**
    * 取得產品類型
    * @param info 表格資訊
    * @returns
    */
-  getProductTypes(info? : DataTableInfo): Observable<ResultModel<DataTable<GetProductTypesResult>>>{
-    const params = this.sharedService.createDataTableParams(info)
-    return this.http.get<ResultModel<DataTable<GetProductTypesResult>>>(ApiUrl.productType, {
-      params
-    })
+  getProductTypes(
+    info?: DataTableInfo
+  ): Observable<ResultModel<DataTable<GetProductTypesResult>>> {
+    const params = this.sharedService.createDataTableParams(info);
+    return this.http.get<ResultModel<DataTable<GetProductTypesResult>>>(
+      ApiUrl.productType,
+      {
+        params,
+      }
+    );
   }
 
   /**
@@ -34,8 +39,8 @@ export class ProductTypeService {
    * @param req 產品類型資料
    * @returns 成功與否
    */
-  createProductType(req: CreateProductTypeRequest): Observable<ResultMessage>{
-    return this.http.post<ResultMessage>(ApiUrl.productType, req)
+  createProductType(req: CreateProductTypeRequest): Observable<ResultMessage> {
+    return this.http.post<ResultMessage>(ApiUrl.productType, req);
   }
 
   /**
@@ -44,8 +49,11 @@ export class ProductTypeService {
    * @param req 產品類型資訊
    * @returns 成功與否
    */
-  modifyProductType(productTypeId: number, req: ModifyProductTypeRequest){
-    return this.http.patch<ResultMessage>(`${ApiUrl.productType}\\${productTypeId}`, req)
+  modifyProductType(productTypeId: number, req: ModifyProductTypeRequest) {
+    return this.http.patch<ResultMessage>(
+      `${ApiUrl.productType}\\${productTypeId}`,
+      req
+    );
   }
 
   /**
@@ -53,8 +61,10 @@ export class ProductTypeService {
    * @param productTypeId 產品類型ID
    * @returns 成功與否
    */
-  deleteProductType(productTypeId: number): Observable<ResultMessage>{
-    return this.http.delete<ResultMessage>(`${ApiUrl.productType}\\${productTypeId}`)
+  deleteProductType(productTypeId: number): Observable<ResultMessage> {
+    return this.http.delete<ResultMessage>(
+      `${ApiUrl.productType}\\${productTypeId}`
+    );
   }
 
   /**
@@ -62,9 +72,9 @@ export class ProductTypeService {
    * @param req 多個產品類型ID
    * @returns 成功與否
    */
-  batchDeleteProductType(req: number[]){
+  batchDeleteProductType(req: number[]) {
     return this.http.delete<ResultMessage>(ApiUrl.productType, {
-      body: req
+      body: req,
     });
   }
 }

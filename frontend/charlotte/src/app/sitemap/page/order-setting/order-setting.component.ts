@@ -1,4 +1,4 @@
-import { UserService } from 'src/app/shared/api/user/user.service';
+import { OrderDetailService } from './../../../shared/api/orderDetail/order-detail.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { OrderService } from './../../../shared/api/order/order.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -21,6 +21,8 @@ import { ApiService } from 'src/app/shared/api/api.service';
 import { ProductService } from 'src/app/shared/api/product/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDialogComponent } from 'src/app/shared/dialog/order-dialog/order-dialog.component';
+import { UserService } from 'src/app/shared/api/user/user.service';
+import { SharedService } from 'src/app/shared/service/shared.service';
 
 @Component({
   selector: 'app-order-setting',
@@ -38,7 +40,9 @@ export class OrderSettingComponent
     private apiService: ApiService,
     private userService: UserService,
     private productService: ProductService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private sharedService: SharedService,
+    private orderDetailService: OrderDetailService
   ) {
     super();
     this.columns = this.createColumns();
@@ -87,13 +91,13 @@ export class OrderSettingComponent
   }
 
   getOrders(info?: DataTableInfo) {
-    this.loading$.next(true);
+    this.setLoading(true);
     this.orderService
       .getOrders(info)
       .pipe(
         map((res) => res.data),
         takeUntil(this.destroy$),
-        finalize(() => this.loading$.next(false))
+        finalize(() => this.setLoading(false))
       )
       .subscribe((res) => {
         this.tableDataList = res.tableDataList;
@@ -116,15 +120,49 @@ export class OrderSettingComponent
           });
           return dialog.afterClosed();
         }),
+        filter((data) => !this.sharedService.isNullorEmpty(data)),
+        concatMap((data) => this.orderService.createOrder(data)),
+        filter((res) => this.apiService.judgeSuccess(res, true)),
         takeUntil(this.destroy$)
       )
-      .subscribe((res) => {
-        console.log(res);
-      });
+      .subscribe(() => this.refresh());
   }
 
   modify(row: Orders): void {
-    throw new Error('Method not implemented.');
+    const users$ = this.userService.getUsers().pipe(
+      filter((res) => this.apiService.judgeSuccess(res)),
+      map((res) => res.data.tableDataList)
+    );
+    const products$ = this.productService.getProducts().pipe(
+      filter((res) => this.apiService.judgeSuccess(res)),
+      map((res) => res.data.tableDataList)
+    );
+    const orderDetail$ = this.orderDetailService
+      .getOrderDetail(row.orderId)
+      .pipe(
+        filter((res) => this.apiService.judgeSuccess(res)),
+        map((res) => res.data)
+      );
+    forkJoin([users$, products$, orderDetail$])
+      .pipe(
+        concatMap(([users, products, orderDetail]) => {
+          const dialog = this.dialog.open(OrderDialogComponent, {
+            data: {
+              users: users,
+              products,
+              orderDetail,
+              userId: row.userId,
+              title: '修改訂單',
+            },
+          });
+          return dialog.afterClosed();
+        }),
+        filter((data) => !this.sharedService.isNullorEmpty(data)),
+        concatMap((res) => this.orderService.modifyOrder(row.orderId, res)),
+        filter((res) => this.apiService.judgeSuccess(res, true)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => this.refresh());
   }
 
   delete(row: Orders): void {

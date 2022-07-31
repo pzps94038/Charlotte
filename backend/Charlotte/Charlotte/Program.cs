@@ -1,3 +1,4 @@
+using Charlotte.Controllers;
 using Charlotte.Helper;
 using Charlotte.Helper.Factory;
 using Charlotte.Helper.Login;
@@ -53,6 +54,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     ClockSkew = TimeSpan.Zero
                 };
             });
+builder.Services.AddSignalR();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -76,4 +78,5 @@ app.UseStaticFiles(new StaticFileOptions()
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"FileUpload")),
     RequestPath = new PathString("/FileUpload")
 });
+app.MapHub<DashbordHub>("/dashbordHub");
 app.Run();

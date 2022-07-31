@@ -5,7 +5,7 @@ import { DataTableInfo } from '../../component/data-table/data.table.model';
 import { SharedService } from '../../service/shared.service';
 import { DataTable, ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
-import { GetOrdersResult } from './order.interface';
+import { CreateOrderRequest, GetOrdersResult } from './order.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -29,9 +29,10 @@ export class OrderService {
       }
     );
   }
+
   /**
    * 刪除訂單
-   * @param productId 訂單ID
+   * @param orderId 訂單ID
    * @returns 成功與否
    */
   deleteOrder(orderId: number): Observable<ResultMessage> {
@@ -47,5 +48,30 @@ export class OrderService {
     return this.http.delete<ResultMessage>(ApiUrl.product, {
       body: request,
     });
+  }
+
+  /**
+   * 建立訂單
+   * @param request 訂單資料
+   * @returns 成功與否
+   */
+  createOrder(request: CreateOrderRequest): Observable<ResultMessage> {
+    return this.http.post<ResultMessage>(ApiUrl.order, request);
+  }
+
+  /**
+   * 修改訂單
+   * @param orderId 訂單ID
+   * @param request 訂單資料
+   * @returns 成功與否
+   */
+  modifyOrder(
+    orderId: number,
+    request: CreateOrderRequest
+  ): Observable<ResultMessage> {
+    return this.http.patch<ResultMessage>(
+      `${ApiUrl.order}\\${orderId}`,
+      request
+    );
   }
 }

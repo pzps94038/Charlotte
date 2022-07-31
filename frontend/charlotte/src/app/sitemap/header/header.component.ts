@@ -3,7 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { SideNavService } from 'src/app/shared/service/sideNav/side-nav.service';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import Swal from 'sweetalert2';
-import { UserService } from 'src/app/shared/api/user/user.service';
+import { ManagerUserService } from 'src/app/shared/api/managerUser/managerUser.service';
 import { UserInfoService } from 'src/app/shared/service/userInfo/userInfo.service';
 import { LogoutService } from 'src/app/shared/service/logout/logout.service';
 
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnDestroy {
   constructor(
     private swalService: SwalService<null>,
     private sideNavService: SideNavService,
-    private userService: UserService,
+    private userService: ManagerUserService,
     private userInfoService: UserInfoService,
     private logoutService: LogoutService
   ) {}

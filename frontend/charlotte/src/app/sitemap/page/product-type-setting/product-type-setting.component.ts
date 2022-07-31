@@ -78,12 +78,12 @@ export class ProductTypeSettingComponent
   }
 
   getProductTypes(info?: DataTableInfo) {
-    this.loading$.next(true);
+    this.setLoading(true);
     this.productTypeService
       .getProductTypes(info)
       .pipe(
         takeUntil(this.destroy$),
-        finalize(() => this.loading$.next(false))
+        finalize(() => this.setLoading(false))
       )
       .subscribe((res) => {
         this.tableDataList = res.data.tableDataList;

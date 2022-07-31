@@ -6,20 +6,22 @@ import { ApiUrl } from '../api.url';
 import { RefreshTokenRequest, RefreshTokenResponse } from './token.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenService {
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private http: HttpClient
-  ) { }
-
- /**
-  * 刷新Token
-  * @param req userId and refreshToen
-  * @returns new Token
-  */
-  refreshToken(req: RefreshTokenRequest): Observable<ResultModel<RefreshTokenResponse>> {
-    return this.http.post<ResultModel<RefreshTokenResponse>>(ApiUrl.refreshToken, req)
+  /**
+   * 刷新Token
+   * @param req userId and refreshToen
+   * @returns new Token
+   */
+  refreshToken(
+    req: RefreshTokenRequest
+  ): Observable<ResultModel<RefreshTokenResponse>> {
+    return this.http.post<ResultModel<RefreshTokenResponse>>(
+      ApiUrl.refreshToken,
+      req
+    );
   }
 }

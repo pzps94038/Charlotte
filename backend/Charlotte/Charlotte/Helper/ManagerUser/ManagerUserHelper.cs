@@ -48,7 +48,7 @@ namespace Charlotte.Helper.ManagerUser
                 user.RoleId = request.RoleId;
                 user.Flag = request.Flag ? "Y" : "N";
                 user.CreatedDate = DateTime.Now;
-                user.Birthday = request.Birthday;
+                user.Birthday = Convert.ToDateTime(request.Birthday);
                 user.Password = EncryptUtils.SHA256Encrypt(request.Password);
                 db.ManagerMain.Add(user);
                 await db.SaveChangesAsync();
@@ -64,7 +64,7 @@ namespace Charlotte.Helper.ManagerUser
                     data.UserName = request.UserName;
                 if (request.Account != null)
                     data.Account = request.Account;
-                if (request.password != null)
+                if (request.password != null && data.Password != request.password)
                     data.Password = EncryptUtils.SHA256Encrypt(request.password);
                 if (request.Email != null)
                     data.Email = request.Email;
@@ -101,21 +101,6 @@ namespace Charlotte.Helper.ManagerUser
             }
         }
 
-        public async Task<List<ManagerUsersVModel>> GetAllAsync()
-        {
-            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
-            using (SqlConnection con = new SqlConnection(sqlConStr))
-            {
-                await con.OpenAsync();
-                string sqlStr = @"SELECT main.ManagerUserId, main.UserName, main.Account, main.Password,
-                                main.Email, main.Address, main.Birthday, main.Flag, main.RoleId,role.RoleName
-                                FROM [Charlotte].[dbo].[ManagerMain] as main
-                                left join ManagerRole as role on role.RoleId = main.RoleId";
-                var data = await con.QueryAsync<ManagerUsersVModel>(sqlStr);
-                return data.ToList();
-            }
-        }
-
         public async Task<ManagerUserVModel> GetAsync(int id)
         {
             string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
@@ -138,7 +123,7 @@ namespace Charlotte.Helper.ManagerUser
                     ManagerUserId = a.ManagerUserId,
                     UserName = a.UserName,
                     Account = a.Account,
-                    PassWord = a.Password,
+                    Password = a.Password,
                     Email = a.Email,
                     Address = a.Address,
                     Birthday = a.Birthday.ToString("yyyy-MM-dd"),

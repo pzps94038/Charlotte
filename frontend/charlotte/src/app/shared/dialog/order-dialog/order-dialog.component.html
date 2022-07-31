@@ -13,7 +13,7 @@
   <form [formGroup]="form" (ngSubmit)="submit()">
     <app-dynamic-select
       labelText="用戶"
-      formControlName="managerUserId"
+      formControlName="userId"
       [options]="userOptions"
       [valids]="[required]"
     ></app-dynamic-select>
@@ -38,21 +38,32 @@
               formControlName="productId"
               [options]="productOptions"
               [valids]="[required]"
+              (changeEmitter)="changeProduct(idx)"
             ></app-dynamic-select>
           </div>
-          <div class="col-5">
+          <div class="col-2">
             <app-dynamic-input
               labelText="數量"
               type="number"
               placeholder="請輸入數量"
-              formControlName="inventory"
+              formControlName="productAmount"
+              [valids]="[required, min]"
+              [min]="1"
+            ></app-dynamic-input>
+          </div>
+          <div class="col-2">
+            <app-dynamic-input
+              labelText="產品單價"
+              type="number"
+              placeholder="請輸入產品單價"
+              formControlName="productPrice"
               [valids]="[required, min]"
               [min]="1"
             ></app-dynamic-input>
           </div>
           <div
             class="col-12"
-            *ngIf="array.at(idx)?.errors?.['inventory'] && array.at(idx).touched"
+            *ngIf="array.at(idx)?.errors?.['productAmount'] && array.at(idx).touched"
           >
             <mat-error class="text-right">輸入數量大於庫存量</mat-error>
           </div>

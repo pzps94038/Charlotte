@@ -256,12 +256,12 @@ export class RouterSettingComponent
 
   /** 取得路由表 */
   getRouters(info?: DataTableInfo): void {
-    this.loading$.next(true);
+    this.setLoading(true);
     this.routerService
       .getRouters(info)
       .pipe(map((res) => res.data))
       .subscribe((res) => {
-        this.loading$.next(false);
+        this.setLoading(false);
         this.tableDataList = res.tableDataList;
         this.tableTotalCount = res.tableTotalCount;
       });

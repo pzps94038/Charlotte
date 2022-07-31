@@ -1,10 +1,11 @@
 ﻿using Charlotte.Interface.Shared;
+using Charlotte.Model.ManagerOrder;
 using Charlotte.VModel.ManagerOrder;
 using Charlotte.VModel.Shared;
 
 namespace Charlotte.Interface.ManagerOrder
 {
-    public interface IManagerOrderHelper: IGetAllAsync<TableVModel<ManagerOrderVModel>>, IDeleteAsync, IBatchDeleteAsync
+    public interface IManagerOrderHelper: IGetAllAsync<TableVModel<ManagerOrderVModel>>, IDeleteAsync, IBatchDeleteAsync, ICreateAsync<ManagerOrderModel>, IModifyAsync<ManagerOrderModel>
     {
     }
 }

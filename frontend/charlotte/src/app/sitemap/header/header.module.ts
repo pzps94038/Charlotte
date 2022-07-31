@@ -8,19 +8,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    HeaderComponent
-  ],
+  declarations: [HeaderComponent],
   imports: [
     CommonModule,
     MatMenuModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
   ],
-  exports: [
-    HeaderComponent
-  ]
+  exports: [HeaderComponent],
 })
-export class HeaderModule { }
+export class HeaderModule {}

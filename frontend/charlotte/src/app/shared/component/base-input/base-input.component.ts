@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { ControlValueAccessor, FormControl, ValidatorFn } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -14,13 +21,15 @@ export abstract class BaseInputComponent
   @Input() labelText: string = '';
   @Input() valids?: ValidatorFn[] = [];
   @Input() placeholder: string = '';
+  @Output() changeEmitter: EventEmitter<any> = new EventEmitter();
   private onChange?: (val: any) => void;
   private onTouched?: (val: any) => void;
   private destory$ = new Subject<any>();
   formControl: FormControl = new FormControl();
   constructor() {
-    this.formControl.valueChanges.subscribe(val=>{
-      if(this.onChange && this.onTouched){
+    this.formControl.valueChanges.subscribe((val) => {
+      if (this.onChange && this.onTouched) {
+        this.changeEmitter.emit(val);
         this.onChange(val);
         this.onTouched(true);
       }

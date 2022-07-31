@@ -11,7 +11,7 @@ import {
   filter,
   map,
 } from 'rxjs';
-import { UserService } from '../shared/api/user/user.service';
+import { ManagerUserService } from '../shared/api/managerUser/managerUser.service';
 import { SwalService } from '../shared/service/swal/swal.service';
 import { TokenService } from '../shared/service/token/token.service';
 import { UserInfoService } from '../shared/service/userInfo/userInfo.service';
@@ -28,12 +28,17 @@ export class LoginComponent implements OnInit {
   });
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private userService: ManagerUserService,
     private tokenService: TokenService,
     private userInfoService: UserInfoService,
     private router: Router,
     private apiService: ApiService
-  ) {}
+  ) {
+    const isToken = this.tokenService.checkToken();
+    if (isToken) {
+      this.router.navigate(['/siteMap/home']);
+    }
+  }
 
   ngOnInit(): void {}
   login(): void {

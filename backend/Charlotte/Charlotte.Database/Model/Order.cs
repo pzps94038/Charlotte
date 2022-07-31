@@ -19,7 +19,7 @@ namespace Charlotte.Database.Model
         [ForeignKey("UserId")]
         public virtual UserMain UserMain { get; set; }
         [Required]
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreateDate { get; set; }
         public DateTime? ModifyDate { get; set; }
     }
 }

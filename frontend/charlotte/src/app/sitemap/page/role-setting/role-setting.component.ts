@@ -58,13 +58,13 @@ export class RoleSettingComponent
   }
 
   getRoles(info?: DataTableInfo) {
-    this.loading$.next(true);
+    this.setLoading(true);
     this.roleService
       .getRoles(info)
       .pipe(
         map((res) => res.data),
         takeUntil(this.destroy$),
-        finalize(() => this.loading$.next(false))
+        finalize(() => this.setLoading(false))
       )
       .subscribe((res) => {
         this.tableDataList = res.tableDataList;

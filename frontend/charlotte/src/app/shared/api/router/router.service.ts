@@ -5,28 +5,32 @@ import { DataTableInfo } from '../../component/data-table/data.table.model';
 import { SharedService } from '../../service/shared.service';
 import { DataTable, ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
-import { CreateRouterRequest, GetRouterResult, ModifyRouterRequest } from './router.interface';
-
+import {
+  CreateRouterRequest,
+  GetRouterResult,
+  ModifyRouterRequest,
+} from './router.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RouterService {
-
-  constructor(
-    private http: HttpClient,
-    private sharedService: SharedService
-  ) { }
+  constructor(private http: HttpClient, private sharedService: SharedService) {}
 
   /**
    * 取得路由清單
    * @returns 路由清單
    */
-  getRouters(info?: DataTableInfo): Observable<ResultModel<DataTable<GetRouterResult>>>{
+  getRouters(
+    info?: DataTableInfo
+  ): Observable<ResultModel<DataTable<GetRouterResult>>> {
     let params = this.sharedService.createDataTableParams(info);
-    return this.http.get<ResultModel<DataTable<GetRouterResult>>>(ApiUrl.router, {
-      params
-    })
+    return this.http.get<ResultModel<DataTable<GetRouterResult>>>(
+      ApiUrl.router,
+      {
+        params,
+      }
+    );
   }
 
   /**
@@ -34,8 +38,8 @@ export class RouterService {
    * @param req 路由資料
    * @returns 成功失敗訊息
    */
-  createRouter(req: CreateRouterRequest): Observable<ResultMessage>{
-    return this.http.post<ResultMessage>(ApiUrl.router, req)
+  createRouter(req: CreateRouterRequest): Observable<ResultMessage> {
+    return this.http.post<ResultMessage>(ApiUrl.router, req);
   }
   /**
    * 修改路由
@@ -43,8 +47,11 @@ export class RouterService {
    * @param req 路由資料
    * @returns 成功失敗訊息
    */
-  modifyRouter(routerId: number, req: ModifyRouterRequest): Observable<ResultMessage>{
-    return this.http.patch<ResultMessage>(`${ApiUrl.router}\\${routerId}`, req)
+  modifyRouter(
+    routerId: number,
+    req: ModifyRouterRequest
+  ): Observable<ResultMessage> {
+    return this.http.patch<ResultMessage>(`${ApiUrl.router}\\${routerId}`, req);
   }
 
   /**
@@ -52,8 +59,8 @@ export class RouterService {
    * @param routerId 路由ID
    * @returns 成功失敗訊息
    */
-  deleteRouter(routerId: number): Observable<ResultMessage>{
-    return this.http.delete<ResultMessage>(`${ApiUrl.router}\\${routerId}`)
+  deleteRouter(routerId: number): Observable<ResultMessage> {
+    return this.http.delete<ResultMessage>(`${ApiUrl.router}\\${routerId}`);
   }
 
   /**
@@ -61,9 +68,9 @@ export class RouterService {
    * @param req 路由ID的集合
    * @returns 成功失敗訊息
    */
-  batchDeleteRouter(req:　number[]){
+  batchDeleteRouter(req: number[]) {
     return this.http.delete<ResultMessage>(ApiUrl.router, {
-      body: req
+      body: req,
     });
   }
 }

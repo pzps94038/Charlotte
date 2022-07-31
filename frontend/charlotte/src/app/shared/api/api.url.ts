@@ -1,10 +1,11 @@
 export class ApiUrl {
-  static baseUrl: string = 'http://172.25.96.1:8080';
+  static baseUrl: string = 'http://localhost:5166';
   static apiUrl: string = this.baseUrl + '/api/';
   static login: string = this.apiUrl + 'ManagerLogin';
   static role: string = this.apiUrl + 'ManagerRole';
   static roleAuth: string = this.apiUrl + 'ManagerRoleAuth';
-  static user: string = this.apiUrl + 'ManagerUser';
+  static managerUser: string = this.apiUrl + 'ManagerUser';
+  static user: string = this.apiUrl + 'user';
   static router: string = this.apiUrl + 'ManagerRouter';
   static menu: string = this.apiUrl + 'ManagerMenu';
   static refreshToken: string = this.apiUrl + 'ManagerRefreshToken';
@@ -13,4 +14,10 @@ export class ApiUrl {
   static product: string = this.apiUrl + 'ManagerProduct';
   static productFileUpload: string = this.apiUrl + 'ManagerProduct\\FileUpload';
   static order: string = this.apiUrl + 'ManagerOrder';
+  static orderDetail: string = this.apiUrl + 'ManagerOrderDetail';
+  static dashbordRegisteredMember: string =
+    this.apiUrl + 'Dashbord' + '/RegisteredMember';
+  static dashbordWeekSale: string = this.apiUrl + 'Dashbord' + '/WeekSale';
+  static dashbordMonthSale: string = this.apiUrl + 'Dashbord' + '/MonthSale';
+  static dashbordHub: string = this.baseUrl + '/' + 'dashbordHub';
 }

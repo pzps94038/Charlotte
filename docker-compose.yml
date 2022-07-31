@@ -2,7 +2,8 @@ version: "3.8"
 services:
   mssql-db:
     container_name: mssql-db
-    image: mcr.microsoft.com/mssql/server
+    user: root
+    image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - "1435:1433"
     environment:

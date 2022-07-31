@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, filter, Subject, takeUntil } from 'rxjs';
 import { ApiService } from 'src/app/shared/api/api.service';
-import { UserService } from 'src/app/shared/api/user/user.service';
+import { ManagerUserService } from 'src/app/shared/api/managerUser/managerUser.service';
 import { UserInfoService } from 'src/app/shared/service/userInfo/userInfo.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class BasicDataSettingComponent implements OnInit, OnDestroy {
   destroy$: Subject<any> = new Subject<any>();
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private userService: ManagerUserService,
     private userInfoService: UserInfoService,
     private apiService: ApiService
   ) {}
@@ -60,7 +60,7 @@ export class BasicDataSettingComponent implements OnInit, OnDestroy {
     userName: string,
     email: string,
     address: string | null,
-    birthday: Date
+    birthday: string
   ) {
     this.form.controls['userName'].setValue(userName);
     this.form.controls['email'].setValue(email);

@@ -1,5 +1,5 @@
 import { RoleService } from 'src/app/shared/api/role/role.service';
-import { UserService } from 'src/app/shared/api/user/user.service';
+import { ManagerUserService } from 'src/app/shared/api/managerUser/managerUser.service';
 import {
   map,
   Observable,
@@ -18,7 +18,7 @@ import {
   DataTableInfo,
   InitDataTableFunction,
 } from 'src/app/shared/component/data-table/data.table.model';
-import { GetUsersResult as Users } from 'src/app/shared/api/user/user.interface';
+import { GetManagerUsersResult as Users } from 'src/app/shared/api/managerUser/managerUser.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { SwalService } from 'src/app/shared/service/swal/swal.service';
 import { FormDialogComponent } from 'src/app/shared/dialog/form-dialog/form-dialog.component';
@@ -36,7 +36,7 @@ export class ManagerUserSettingComponent
   implements OnInit, OnDestroy, InitDataTableFunction<Users>
 {
   constructor(
-    private userService: UserService,
+    private userService: ManagerUserService,
     private roleService: RoleService,
     private dialog: MatDialog,
     private swalService: SwalService<null>,
@@ -236,7 +236,7 @@ export class ManagerUserSettingComponent
         concatMap((data) =>
           this.userService.modifyUser(row.managerUserId, data)
         ),
-        filter((res) => this.apiService.judgeSuccess(res)),
+        filter((res) => this.apiService.judgeSuccess(res, true)),
         takeUntil(this.destroy$)
       )
       .subscribe(() => this.refresh());
@@ -270,13 +270,13 @@ export class ManagerUserSettingComponent
   }
 
   getUsers(info?: DataTableInfo) {
-    this.loading$.next(true);
+    this.setLoading(true);
     this.userService
       .getUsers(info)
       .pipe(
         map((res) => res.data),
         takeUntil(this.destroy$),
-        finalize(() => this.loading$.next(false))
+        finalize(() => this.setLoading(false))
       )
       .subscribe((res) => {
         this.tableDataList = res.tableDataList;

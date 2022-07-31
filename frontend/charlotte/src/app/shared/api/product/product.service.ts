@@ -5,28 +5,33 @@ import { DataTableInfo } from '../../component/data-table/data.table.model';
 import { SharedService } from '../../service/shared.service';
 import { DataTable, ResultMessage, ResultModel } from '../api.interface';
 import { ApiUrl } from '../api.url';
-import { CreateProductRequest, GetProductResult, ModifyProductRequest } from './product.interface';
+import {
+  CreateProductRequest,
+  GetProductResult,
+  ModifyProductRequest,
+} from './product.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
-  constructor(
-    private sharedService: SharedService,
-    private http: HttpClient
-  ) { }
+  constructor(private sharedService: SharedService, private http: HttpClient) {}
 
   /**
    * 取得產品
    * @param info 表格資訊
    * @returns
    */
-   getProducts(info? :DataTableInfo): Observable<ResultModel<DataTable<GetProductResult>>>{
-    const params = this.sharedService.createDataTableParams(info)
-    return this.http.get<ResultModel<DataTable<GetProductResult>>>(ApiUrl.product, {
-      params
-    })
+  getProducts(
+    info?: DataTableInfo
+  ): Observable<ResultModel<DataTable<GetProductResult>>> {
+    const params = this.sharedService.createDataTableParams(info);
+    return this.http.get<ResultModel<DataTable<GetProductResult>>>(
+      ApiUrl.product,
+      {
+        params,
+      }
+    );
   }
 
   /**
@@ -34,8 +39,8 @@ export class ProductService {
    * @param request 產品資訊
    * @returns 成功與否
    */
-  createProduct(request: CreateProductRequest): Observable<ResultMessage>{
-    return this.http.post<ResultMessage>(ApiUrl.product, request)
+  createProduct(request: CreateProductRequest): Observable<ResultMessage> {
+    return this.http.post<ResultMessage>(ApiUrl.product, request);
   }
 
   /**
@@ -43,9 +48,9 @@ export class ProductService {
    * @param formData 產品圖片
    * @returns 成功與否
    */
-  fileUpload(files: FormData): Observable<ResultModel<string>>{
-    files.forEach(file=> console.log(file))
-    return this.http.post<ResultModel<string>>(ApiUrl.productFileUpload, files)
+  fileUpload(files: FormData): Observable<ResultModel<string>> {
+    files.forEach((file) => console.log(file));
+    return this.http.post<ResultModel<string>>(ApiUrl.productFileUpload, files);
   }
 
   /**
@@ -54,8 +59,14 @@ export class ProductService {
    * @param request 產品資訊
    * @returns 成功與否
    */
-  modifyProduct(productId: number, request :ModifyProductRequest): Observable<ResultMessage>{
-    return this.http.patch<ResultMessage>(`${ApiUrl.product}\\${productId}`, request);
+  modifyProduct(
+    productId: number,
+    request: ModifyProductRequest
+  ): Observable<ResultMessage> {
+    return this.http.patch<ResultMessage>(
+      `${ApiUrl.product}\\${productId}`,
+      request
+    );
   }
 
   /**
@@ -63,8 +74,8 @@ export class ProductService {
    * @param productId 產品ID
    * @returns 成功與否
    */
-  deleteProduct(productId :number): Observable<ResultMessage>{
-    return this.http.delete<ResultMessage>(`${ApiUrl.product}\\${productId}`)
+  deleteProduct(productId: number): Observable<ResultMessage> {
+    return this.http.delete<ResultMessage>(`${ApiUrl.product}\\${productId}`);
   }
 
   /**
@@ -72,9 +83,9 @@ export class ProductService {
    * @param request 多個產品ID
    * @returns 成功與否
    */
-  batchDeleteProduct(request: number[]){
+  batchDeleteProduct(request: number[]) {
     return this.http.delete<ResultMessage>(ApiUrl.product, {
-      body: request
+      body: request,
     });
   }
 }

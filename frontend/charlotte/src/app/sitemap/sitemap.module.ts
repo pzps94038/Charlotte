@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { siteMapRouter } from './sitemap.router';
 import { SharedModule } from '../shared/shared-module';
 import { BasicDataSettingComponent } from './page/basic-data-setting/basic-data-setting.component';
-import { ConsumerSettingComponent } from './page/consumer-setting/consumer-setting.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { FactorySettingComponent } from './page/factory-setting/factory-setting.component';
 import { ManagerUserSettingComponent } from './page/manager-user-setting/manager-user-setting.component';
@@ -30,7 +29,6 @@ import { ProductComponent } from './page/product/product.component';
     OrderSettingComponent,
     FactorySettingComponent,
     BasicDataSettingComponent,
-    ConsumerSettingComponent,
     ManagerUserSettingComponent,
   ],
   imports: [
@@ -41,8 +39,6 @@ import { ProductComponent } from './page/product/product.component';
     HeaderModule,
     ChartModule,
   ],
-  exports: [
-    RouterModule,
-  ]
+  exports: [RouterModule],
 })
-export class SitemapModule { }
+export class SitemapModule {}

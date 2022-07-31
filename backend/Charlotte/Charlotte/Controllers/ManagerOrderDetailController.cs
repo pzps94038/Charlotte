@@ -26,8 +26,8 @@ namespace Charlotte.Controllers
             try
             {
                 result.Data = await _orderDetailHelper.GetAsync(orderId);
-                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
-                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Code = HttpStatusCode.OK;
             }
             catch (Exception ex) 
             {
