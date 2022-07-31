@@ -23,5 +23,12 @@ services:
     volumes:
       - C:\Charlotte-backend/Logs:/var/Charlotte-backend/Logs
       - C:\Charlotte-backend/FileUpload:/app/FileUpload
+  charlotte-frontend:
+    container_name: charlotte-frontend
+    image: pzps94038/charlotte-frontend
+    ports:
+      - "80:80"
+    networks:
+      bridge-001:
 networks:
   bridge-001:
