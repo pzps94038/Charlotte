@@ -39,6 +39,7 @@ react-redux
 @react-navigation/native-stack
 @rneui/base
 @rneui/themed
+npm i react-native-swiper --save
 
 # docker
 

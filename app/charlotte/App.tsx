@@ -9,11 +9,11 @@
  */
 
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Tabs from './src/shared/router/tabs/tabs';
-import {Provider} from 'react-redux';
-import {store} from './src/shared/store/store';
+import { Provider } from 'react-redux';
+import { store } from './src/shared/store/store';
 const App = () => {
   const Tab = createBottomTabNavigator();
   return (
