@@ -15,7 +15,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "ManagerUser")]
     public class ManagerFactoryController : ControllerBase
     {
         private readonly ICRUDAsyncHelper<TableVModel<ManagerFactoryVModel>, ManagerFactoryVModel, string, string> _factoryHelper;

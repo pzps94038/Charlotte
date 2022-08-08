@@ -5,6 +5,7 @@ using Charlotte.Model.ProductType;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerProductType;
 using Charlotte.VModel.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -13,6 +14,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "ManagerUser")]
     public class ManagerProductTypeController : ControllerBase
     {
         private readonly ICRUDAsyncHelper<TableVModel<MnaagerProductTypeVModel>, MnaagerProductTypeVModel, ManagerProductTypeModel, ManagerProductTypeModel> _productTypeHelper;

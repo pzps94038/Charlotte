@@ -34,13 +34,15 @@ namespace Charlotte.Helper
         /// </summary>
         /// <param name="email"></param>
         /// <param name="userId"></param>
+        /// <param name="role"></param>
         /// <returns></returns>
-        public static List<Claim> CreateClaims(string email, string userId)
+        public static List<Claim> CreateClaims(string email, string userId, string role)
         {
             var claims = new List<Claim> 
             {
                 new Claim(JwtRegisteredClaimNames.Email, email),
-                new Claim(JwtRegisteredClaimNames.NameId, userId)
+                new Claim(JwtRegisteredClaimNames.NameId, userId),
+                new Claim(ClaimTypes.Role, role)
             };
             return claims;
         }

@@ -1,5 +1,5 @@
 export class ApiUrl {
-  static baseUrl: string = 'http://localhost:5166';
+  static baseUrl: string = 'http://192.168.0.148:5166';
   static apiUrl: string = this.baseUrl + '/api/';
   static login: string = this.apiUrl + 'ManagerLogin';
   static role: string = this.apiUrl + 'ManagerRole';

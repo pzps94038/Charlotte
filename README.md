@@ -26,20 +26,23 @@ IdentityModel.Tokens.Jwt
 Linq.Dynamic.Core
 Security.Cryptography.Algorithms
 
-# app(React-Native) 商城
+# app(React-Native-expo) 商城
 
 react-native-safe-area-context
 react-native-screens
-react-native-vector-icons
 react-redux
 @reduxjs/toolkit
 @react-navigation/bottom-tabs
 @react-native-async-storage/async-storage
 @react-navigation/native
 @react-navigation/native-stack
-@rneui/base
 @rneui/themed
 npm i react-native-swiper --save
+npm i axios
+npm i react-native-toast-message
+npm i tailwindcss-react-native
+npm install @heroicons/react
+npm install react-hook-form
 
 # docker
 

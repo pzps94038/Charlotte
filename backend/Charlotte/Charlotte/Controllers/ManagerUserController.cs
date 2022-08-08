@@ -14,7 +14,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
+    [Authorize(Roles = "ManagerUser")]
     public class ManagerUserController : ControllerBase
     {
         private readonly IManagerUserHelper _managerUserHelper;

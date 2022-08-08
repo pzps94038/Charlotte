@@ -33,7 +33,7 @@ namespace Charlotte.Helper.Login
                             if (flag)
                             {
                                 string refreshToken = JwtHelper.CreateRefreshToken();
-                                var claims = JwtHelper.CreateClaims(userMain.Email, userMain.UserId.ToString());
+                                var claims = JwtHelper.CreateClaims(userMain.Email, userMain.UserId.ToString(), EnumUtils.GetDescription(EnumRole.User));
                                 string accountToken = JwtHelper.GenerateToken(claims);
                                 token.AccessToken = accountToken;
                                 token.RefreshToken = refreshToken;

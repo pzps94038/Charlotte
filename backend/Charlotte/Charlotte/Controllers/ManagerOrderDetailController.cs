@@ -4,6 +4,7 @@ using Charlotte.Model;
 using Charlotte.Model.ManagerOrderDetail;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerOrderDetail;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -12,6 +13,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "ManagerUser")]
     public class ManagerOrderDetailController : ControllerBase
     {
         private readonly IManagerOrderDetailHelper _orderDetailHelper;

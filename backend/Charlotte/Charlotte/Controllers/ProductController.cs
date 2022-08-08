@@ -13,7 +13,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "ManagerUser")]
     public class ProductController : ControllerBase
     {
         private readonly IProductHelper _productHelper;

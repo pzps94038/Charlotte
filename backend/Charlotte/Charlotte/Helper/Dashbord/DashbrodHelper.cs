@@ -6,7 +6,6 @@ using System.Linq;
 namespace Charlotte.Helper.Dashbord
 {
     public class DashbrodHelper : IDashbordHelper
-
     {
         public async Task<object> MonthSale()
         {

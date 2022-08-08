@@ -5,6 +5,7 @@ using Charlotte.Model.ManagerProduct;
 using Charlotte.Services;
 using Charlotte.VModel.ManagerProduct;
 using Charlotte.VModel.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -13,6 +14,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "ManagerUser")]
     public class ManagerProductController : ControllerBase
     {
         private readonly IManagerProductHelper _productHelper;

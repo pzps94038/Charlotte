@@ -3,14 +3,34 @@ import { Icon } from '@rneui/themed/dist/Icon';
 import React, { useEffect, useState } from 'react';
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Swiper from 'react-native-swiper';
+import Toast from 'react-native-toast-message';
 import { useDispatch, useSelector } from 'react-redux';
+import { ResultModel } from '../shared/api/api.interface';
+import http, { baseURL } from '../shared/api/Instance';
+import { Top10 } from '../shared/api/top10/top10.interface';
+import { getTop10 } from '../shared/api/top10/top10Service';
+import { shopCartService } from '../shared/services/shopcart-service';
 import { changeSearch, clearSearch } from '../shared/store/search/searchReducer';
 import { RootState } from '../shared/store/store';
 
 const Home = () => {
   const search = useSelector((state: RootState) => state.search);
+  const [top10, setTop10] = useState<Top10[]>([]);
   const dispatch = useDispatch();
-  useEffect(() => { }, [])
+
+  const addCart = async (product: Top10) => {
+    await shopCartService.addProduct({ productId: product.productId, amount: 1 });
+    Toast.show({
+      type: 'success',
+      text1: `${product.productName}已加入購物車`,
+    });
+  }
+  useEffect(() => {
+    (async () => {
+      const result = await getTop10();
+      setTop10(result.data);
+    })()
+  }, [])
   return (
     <SafeAreaView style={style.container}>
       <SearchBar
@@ -30,44 +50,60 @@ const Home = () => {
       />
       <ScrollView>
         <Swiper style={style.wrapper} autoplay={true} autoplayTimeout={5}>
-          <View style={style.slide1}>
-            <Text style={style.text}>Hello Swiper</Text>
+          <View style={style.slide}>
+            <Image
+              style={{ width: "100%" }}
+              resizeMode="cover"
+              source={require('../assets/image/banner1.jpg')}
+            />
           </View>
-          <View style={style.slide2}>
-            <Text style={style.text}>Beautiful</Text>
+          <View style={style.slide}>
+            <Image
+              style={{ width: "100%" }}
+              resizeMode="cover"
+              source={require('../assets/image/banner2.jpg')}
+            />
           </View>
-          <View style={style.slide3}>
-            <Text style={style.text}>And simple</Text>
+          <View style={style.slide}>
+            <Image
+              style={{ width: "100%" }}
+              resizeMode="cover"
+              source={require('../assets/image/banner3.jpg')}
+            />
           </View>
         </Swiper>
         <View style={style.Top10}>
           <Icon name="whatshot" color='red'></Icon><Text style={style.hotTitle}>十大熱賣商品</Text>
         </View>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => {
+        {top10.map((a) => {
           return (
-            <Card>
-              <Card.Title></Card.Title>
+            <Card key={a.productId}>
+              <Card.Title style={{ textAlign: 'left', marginLeft: 5, fontSize: 18 }}>{a.productName}</Card.Title>
               <Card.Divider />
               <Image
                 style={{ width: "100%", height: 150 }}
                 resizeMode="contain"
-                source={{ uri: "https://avatars0.githubusercontent.com/u/32242596?s=460&u=1ea285743fc4b083f95d6ee0be2e7bb8dcfc676e&v=4" }}
+                source={{ uri: baseURL + a.productImgPath }}
               />
-              <Text style={{ textAlign: 'right', fontSize: 20, marginBottom: 10 }}>$50</Text>
-              <Button
-                title={'加入購物車'}
-                // disabled={true}
-                icon={{
-                  name: 'shoppingcart',
-                  type: 'antdesign',
-                  size: 20,
-                  color: 'white',
-                }}
-                containerStyle={{
-                  marginLeft: 'auto',
-                  width: 120,
-                }}
-              />
+              <Text style={{ textAlign: 'right', fontSize: 20, marginBottom: 10 }}>${a.sellPrice}</Text>
+              {
+                a.inventory > 0 ?
+                  <Button title={'加入購物車'} icon={{ name: 'shoppingcart', type: 'antdesign', size: 20, color: 'white', }}
+                    containerStyle={{
+                      marginLeft: 'auto',
+                      width: 120,
+                    }}
+                    onPress={() => addCart(a)}
+                  />
+                  :
+                  <Button title={'已售完'}
+                    disabled={true}
+                    containerStyle={{
+                      marginLeft: 'auto',
+                      width: 120,
+                    }}
+                  />
+              }
             </Card>
           )
         })}
@@ -92,23 +128,10 @@ const style = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20
   },
-  slide1: {
+  slide: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB'
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5'
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9'
+    alignItems: 'flex-start',
   },
   text: {
     color: '#fff',

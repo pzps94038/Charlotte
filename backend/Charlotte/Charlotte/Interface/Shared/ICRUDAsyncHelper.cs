@@ -23,7 +23,7 @@
     public interface IGetAsync<T>
     {
         /// <summary>
-        /// 取得單筆資料
+        /// 取得資料
         /// </summary>
         /// <param name="id">id</param>
         /// <returns></returns>

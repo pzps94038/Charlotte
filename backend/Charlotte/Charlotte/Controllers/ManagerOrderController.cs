@@ -7,6 +7,7 @@ using Charlotte.Services;
 using Charlotte.VModel.ManagerMenu;
 using Charlotte.VModel.ManagerOrder;
 using Charlotte.VModel.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -16,6 +17,7 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "ManagerUser")]
     public class ManagerOrderController : ControllerBase
     {
         private readonly IManagerOrderHelper _orderHelper;

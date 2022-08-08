@@ -14,6 +14,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Tabs from './src/shared/router/tabs/tabs';
 import { Provider } from 'react-redux';
 import { store } from './src/shared/store/store';
+import Toast from 'react-native-toast-message';
 const App = () => {
   const Tab = createBottomTabNavigator();
   return (
@@ -49,6 +50,7 @@ const App = () => {
           })}
         </Tab.Navigator>
       </NavigationContainer>
+      <Toast />
     </Provider>
   );
 };

@@ -1,5 +1,6 @@
 ﻿using Charlotte.DataBase.DbContextModel;
 using Charlotte.DataBase.Model;
+using Charlotte.Enum;
 using Charlotte.Interface.RefreshToken;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRefreshToken;
@@ -22,7 +23,7 @@ namespace Charlotte.Helper.ManagerRefreshToken
                 {
                     var userMain = await db.ManagerMain.SingleAsync(a => a.ManagerUserId == req.UserId);
                     string refreshToken = JwtHelper.CreateRefreshToken();
-                    var claims = JwtHelper.CreateClaims(userMain.Email, userMain.ManagerUserId.ToString());
+                    var claims = JwtHelper.CreateClaims(userMain.Email, userMain.ManagerUserId.ToString(), EnumUtils.GetDescription(EnumRole.ManagerUser));
                     string accountToken = JwtHelper.GenerateToken(claims);
                     CreateRefreshTokenLog(db, req.UserId, refreshToken);
                     await db.SaveChangesAsync();

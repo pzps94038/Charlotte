@@ -18,7 +18,6 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
     public class UserController : ControllerBase
     {
         private readonly IUserHelper _userHelper;
