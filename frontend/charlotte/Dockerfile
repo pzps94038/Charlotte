@@ -9,4 +9,5 @@ FROM nginx:alpine
 # 複製打包檔案，angular.json的outputPath
 COPY --from=node /app/dist/charlotte /usr/share/nginx/html
 # 覆蓋image裡的設定檔
-# COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+EXPOSE 80

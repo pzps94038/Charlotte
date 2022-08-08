@@ -11,6 +11,7 @@ import { getTop10 } from "../shared/api/top10/top10Service";
 import { shopCartService } from "../shared/services/shopcart-service";
 import { changeSearch, clearSearch } from "../shared/store/search/searchReducer";
 import { RootState } from "../shared/store/store";
+import { useFocusEffect } from "@react-navigation/native";
 
 const Home = () => {
   const search = useSelector((state: RootState) => state.search);
@@ -30,12 +31,13 @@ const Home = () => {
       text1: `${product.productName}已加入購物車`,
     });
   }
-  useEffect(() => {
+  useFocusEffect(React.useCallback(() => {
     (async () => {
       const result = await getTop10();
       setTop10(result.data);
     })()
-  }, [])
+  }, []))
+
   return (
     <SafeAreaView style={style.container}>
       <SearchBar
