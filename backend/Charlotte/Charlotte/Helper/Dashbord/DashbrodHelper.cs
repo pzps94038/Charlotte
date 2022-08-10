@@ -137,21 +137,19 @@ namespace Charlotte.Helper.Dashbord
         private DateTime GetMondayDate() 
         {
             var now = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " 00:00:00");
-            int dayOfWeek = (int)now.DayOfWeek - (int)DayOfWeek.Monday;
-            if (dayOfWeek == -1)
-                dayOfWeek = 6;
-            TimeSpan ts = new TimeSpan(dayOfWeek, 0, 0, 0);
-            return now.Subtract(ts);
+            int dayOfWeek = (int)now.DayOfWeek;
+            if (dayOfWeek == 0)
+                dayOfWeek = 7;
+            return now.AddDays(1- dayOfWeek);
         }
 
         private DateTime GetSunDayDate() 
         {
             var now = Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd") + " 23:59:59");
-            int dayOfWeek = (int)now.DayOfWeek - (int)DayOfWeek.Sunday;
-            if (dayOfWeek != 0)
-                dayOfWeek = 7 - dayOfWeek;
-            TimeSpan ts = new TimeSpan(dayOfWeek, 0, 0, 0);
-            return now.Subtract(ts);
+            int dayOfWeek = (int)now.DayOfWeek;
+            if (dayOfWeek == 0)
+                dayOfWeek = 7;
+            return now.AddDays(7 - dayOfWeek);
         }
     }
 }
