@@ -1,7 +1,7 @@
 import axios from "axios";
 import { tokenService } from "../services/userInfo-service";
 import { ResultModel } from "./api.interface";
-export const baseURL = "http://192.168.0.148:8080/";
+export const baseURL = "http://172.20.10.12:8080/";
 const instance = axios.create({
   baseURL,
   headers: { "Content-Type": "application/json" },

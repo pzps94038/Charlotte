@@ -17,4 +17,21 @@ export const shopCartService = {
     }
     await AsyncStorage.setItem("shopCart", JSON.stringify(shopCart));
   },
+  removeProduct: async (productId: number) => {
+    const oldShopCart = await shopCartService.getShopCart();
+    const shopCart = oldShopCart.filter((a) => a.productId !== productId);
+    await AsyncStorage.setItem("shopCart", JSON.stringify(shopCart));
+  },
+  fixProduct: async (fixProduct: ShopCart) => {
+    const shopCart = await shopCartService.getShopCart();
+    let product = shopCart.find((a) => a.productId === fixProduct.productId);
+    if (product) {
+      product.amount = fixProduct.amount;
+      product.inventory = fixProduct.inventory;
+      product.price = fixProduct.price;
+      product.productName = fixProduct.productName;
+      product.productImgPath = fixProduct.productImgPath;
+    }
+    await AsyncStorage.setItem("shopCart", JSON.stringify(shopCart));
+  },
 };

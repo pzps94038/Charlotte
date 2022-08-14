@@ -1,7 +1,7 @@
 import { Button, Card, Icon, SearchBar } from "@rneui/themed";
 import { useState, useEffect } from "react";
 import * as React from 'react';
-import { SafeAreaView, ScrollView, View, Image, Text, StyleSheet } from "react-native";
+import { ScrollView, View, Image, Text, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
 import Toast from "react-native-toast-message";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,6 +12,7 @@ import { shopCartService } from "../shared/services/shopcart-service";
 import { changeSearch, clearSearch } from "../shared/store/search/searchReducer";
 import { RootState } from "../shared/store/store";
 import { useFocusEffect } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Home = () => {
   const search = useSelector((state: RootState) => state.search);
@@ -24,7 +25,8 @@ const Home = () => {
       amount: 1,
       productImgPath: product.productImgPath,
       productName: product.productName,
-      price: product.sellPrice
+      price: product.sellPrice,
+      inventory: product.inventory
     });
     Toast.show({
       type: 'success',

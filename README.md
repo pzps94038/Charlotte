@@ -41,7 +41,6 @@ npm i react-native-swiper --save
 npm i axios
 npm i react-native-toast-message
 npm i tailwindcss-react-native
-npm install @heroicons/react
 npm install react-hook-form
 
 # docker

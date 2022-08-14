@@ -4,4 +4,5 @@ export interface ShopCart {
   productImgPath: string;
   amount: number;
   price: number;
+  inventory: number;
 }
