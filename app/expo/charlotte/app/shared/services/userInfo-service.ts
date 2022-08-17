@@ -1,8 +1,8 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Token} from './userInfo.model';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Token } from "./userInfo.model";
 export const tokenService = {
   getToken: async () => {
-    const token = await AsyncStorage.getItem('token');
+    const token = await AsyncStorage.getItem("token");
     if (token === null) {
       return null;
     } else {
@@ -10,6 +10,6 @@ export const tokenService = {
     }
   },
   setToken: async (token: Token) => {
-    await AsyncStorage.setItem('token', JSON.stringify(token));
+    await AsyncStorage.setItem("token", JSON.stringify(token));
   },
 };

@@ -1,3 +1,8 @@
 export type Nav = {
-  navigate: (value: string) => void;
+  navigate: (
+    value: string,
+    option?: {
+      screen: string;
+    }
+  ) => void;
 };

@@ -1,4 +1,4 @@
-import { ScrollView, Text, View, TextInput, StyleSheet } from 'react-native';
+import { ScrollView, Text, View, TextInput, StyleSheet, Image } from 'react-native';
 import * as React from 'react';
 import { shopCartService } from '../shared/services/shopcart-service';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -50,7 +50,8 @@ const ShopCart = () => {
   });
 
   const { control, handleSubmit, setValue, getValues, formState: { errors, touchedFields } } = useForm({
-    resolver: yupResolver(validationSchema)
+    resolver: yupResolver(validationSchema),
+    reValidateMode: 'onBlur'
   });
 
   const { fields, append } = useFieldArray({
@@ -111,9 +112,6 @@ const ShopCart = () => {
                       <Card containerStyle={{
                         position: 'relative',
                       }}>
-                        <Card.Title style={{ fontSize: 18 }}>
-                          {a.productName}
-                        </Card.Title>
                         <Icon
                           size={24}
                           name='close'
@@ -125,45 +123,56 @@ const ShopCart = () => {
                           }}
                           onPress={() => { removeProduct(a.productId) }}
                         />
-                        <Card.Divider />
-                        <Card.Image
-                          style={{ width: "100%", height: 150 }}
-                          resizeMode="contain"
-                          source={{
-                            uri: baseURL + a.productImgPath
-                          }}
-                        />
-                        <View style={style.cardFooter}>
-                          <Button type="solid" containerStyle={{
-                            borderRadius: 10,
-                          }}
-                            onPress={() => productMinus(a, field.value, idx)}>
-                            <Icon name='minus'
-                              type='antdesign' color="white" />
-                          </Button>
-                          <TextInput
-                            {...field}
-                            onChangeText={field.onChange}
-                            keyboardType='numeric'
-                            style={
-                              {
-                                ...style.textInput,
-                                borderColor: error ? 'red' : '#d3d3d3'
-                              }
-                            }
+                        <Card.Title style={{ fontSize: 18, textAlign: 'left' }}>
+                          {a.productName}
+                        </Card.Title>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <Image
+                            style={{ width: "30%", height: 80 }}
+                            resizeMode="contain"
+                            source={{
+                              uri: baseURL + a.productImgPath
+                            }}
                           />
-                          <Button type="solid" containerStyle={{
-                            borderRadius: 10,
-                          }} onPress={() => productPlus(a, field.value, idx)}>
-                            <Icon name='plus'
-                              type='antdesign' color="white" />
-                          </Button>
+                          <View style={{ width: "60%", flexDirection: 'row', flexWrap: 'wrap', position: 'relative' }}>
+                            <Button type="solid" containerStyle={{
+                              borderRadius: 10,
+                            }}
+                              onPress={() => productMinus(a, field.value, idx)}>
+                              <Icon name='minus'
+                                type='antdesign' color="white" />
+                            </Button>
+                            <TextInput
+                              {...field}
+                              onChangeText={field.onChange}
+                              keyboardType='numeric'
+                              style={
+                                {
+                                  ...style.textInput,
+                                  borderColor: error ? 'red' : '#d3d3d3'
+                                }
+                              }
+                            />
+                            <Button type="solid" containerStyle={{
+                              borderRadius: 10,
+                            }} onPress={() => productPlus(a, field.value, idx)}>
+                              <Icon name='plus'
+                                type='antdesign' color="white" />
+                            </Button>
+                            <Text style={{ position: 'absolute', right: 0, bottom: -20, color: '#cd6700' }}>${a.price}</Text>
+                          </View>
                         </View>
                         {
                           <Text style={style.error}>
                             {errors?.['shopCart']?.[idx]?.['amount']?.['message']}
                           </Text>
                         }
+                        <Text style={{
+                          textAlign: 'right',
+                          color: '#888888'
+                        }}>
+                          剩下{a.inventory}個商品
+                        </Text>
                       </Card>
 
                     </View>
@@ -185,21 +194,13 @@ const style = StyleSheet.create({
     fontSize: 18
   },
   textInput: {
-    height: 50,
-    width: 80,
+    height: 40,
+    width: 60,
     marginHorizontal: 5,
     textAlign: 'center',
     borderWidth: 1,
     borderRadius: 10,
     backgroundColor: '#d3d3d3'
-  },
-  cardFooter: {
-    marginTop: 10,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
   },
   container: {
     flex: 1,

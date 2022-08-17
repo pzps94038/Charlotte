@@ -5,6 +5,8 @@ import { changeSearch, clearSearch } from '../shared/store/search/searchReducer'
 import { RootState } from '../shared/store/store';
 import { SearchBar } from '@rneui/themed';
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 const Shop = () => {
   const search = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
