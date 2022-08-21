@@ -1,4 +1,5 @@
 ﻿using Charlotte.Enum;
+using Charlotte.Interface.ProductType;
 using Charlotte.Interface.Shared;
 using Charlotte.Model;
 using Charlotte.Model.ProductType;
@@ -17,8 +18,8 @@ namespace Charlotte.Controllers
     [Authorize(Roles = "ManagerUser")]
     public class ManagerProductTypeController : ControllerBase
     {
-        private readonly ICRUDAsyncHelper<TableVModel<MnaagerProductTypeVModel>, MnaagerProductTypeVModel, ManagerProductTypeModel, ManagerProductTypeModel> _productTypeHelper;
-        public ManagerProductTypeController(ICRUDAsyncHelper<TableVModel<MnaagerProductTypeVModel>, MnaagerProductTypeVModel, ManagerProductTypeModel, ManagerProductTypeModel> helper)
+        private readonly IProductTypeHelper _productTypeHelper;
+        public ManagerProductTypeController(IProductTypeHelper helper)
         {
             _productTypeHelper = helper;
         }

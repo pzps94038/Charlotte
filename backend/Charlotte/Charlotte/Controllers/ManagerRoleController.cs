@@ -1,5 +1,6 @@
 ﻿using Charlotte.Enum;
 using Charlotte.Helper.ManagerRole;
+using Charlotte.Interface.ManagerRole;
 using Charlotte.Interface.Shared;
 using Charlotte.Model;
 using Charlotte.Model.ManagerRole;
@@ -18,8 +19,8 @@ namespace Charlotte.Controllers
     [Authorize(Roles = "ManagerUser")]
     public class ManagerRoleController : ControllerBase
     {
-        private readonly ICRUDAsyncHelper<TableVModel<ManagerRoleVModel>, ManagerRoleVModel, ManagerRoleModel, ManagerRoleModel> _managerRoleHelper;
-        public ManagerRoleController(ICRUDAsyncHelper<TableVModel<ManagerRoleVModel>, ManagerRoleVModel, ManagerRoleModel, ManagerRoleModel> helper)
+        private readonly IManagerRoleHelper _managerRoleHelper;
+        public ManagerRoleController(IManagerRoleHelper helper)
         {
             _managerRoleHelper = helper;
         }

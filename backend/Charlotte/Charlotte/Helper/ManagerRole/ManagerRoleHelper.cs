@@ -12,9 +12,11 @@ using Charlotte.Interface.Shared;
 using Charlotte.VModel.Shared;
 using Mapster;
 using System.Linq.Dynamic.Core;
+using Charlotte.Interface.ManagerRole;
+
 namespace Charlotte.Helper.ManagerRole
 {
-    public class ManagerRoleHelper: ICRUDAsyncHelper<TableVModel<ManagerRoleVModel>, ManagerRoleVModel, ManagerRoleModel, ManagerRoleModel>
+    public class ManagerRoleHelper: IManagerRoleHelper
     {
 
         public async Task<List<ManagerRoleVModel>> GetAllAsync()
@@ -28,11 +30,6 @@ namespace Charlotte.Helper.ManagerRole
                 var result = await con.QueryAsync<ManagerRoleVModel>(sqlStr);
                 return result.ToList();
             }
-        }
-
-        public Task<ManagerRoleVModel> GetAsync(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task DeleteAsync(int id)
