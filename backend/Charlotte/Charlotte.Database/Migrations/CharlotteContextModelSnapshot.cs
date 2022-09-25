@@ -320,6 +320,10 @@ namespace Charlotte.Database.Migrations
                     b.Property<DateTime?>("ModifyDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ProductDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProductImgPath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -354,7 +358,13 @@ namespace Charlotte.Database.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Icon")
+                    b.Property<string>("IconName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("IconType")
+                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -399,6 +409,9 @@ namespace Charlotte.Database.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RouterId"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Flag")
                         .IsRequired()
                         .HasMaxLength(1)
@@ -416,10 +429,16 @@ namespace Charlotte.Database.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<DateTime?>("ModifyDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("RouterName")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("Sort")
+                        .HasColumnType("int");
 
                     b.HasKey("RouterId");
 

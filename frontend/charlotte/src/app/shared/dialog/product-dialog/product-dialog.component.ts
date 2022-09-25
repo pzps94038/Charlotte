@@ -43,8 +43,17 @@ export class ProductDialogComponent implements OnInit {
    */
   createForm() {
     let formConfig: { [key: string]: AbstractControl } = {};
-    for (const data of this.formData.dataList)
+    for (const data of this.formData.dataList) {
       formConfig[data.controlName] = this.parseControl(data);
+    }
+    const editor = this.formData.editor!;
+    formConfig[editor.controlName] = new FormControl(
+      {
+        value: editor.value === '' ? '' : editor.value,
+        disabled: editor.disabled,
+      },
+      editor.valids
+    );
     this.form = this.fb.group(formConfig);
   }
   /**

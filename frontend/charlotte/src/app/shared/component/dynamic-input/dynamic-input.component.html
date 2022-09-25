@@ -9,14 +9,22 @@
     [placeholder]="placeholder"
     [formControl]="formControl"
   />
-  <mat-error *ngIf="formControl?.errors?.['required']"> 此欄位必填 </mat-error>
-  <mat-error *ngIf="formControl?.errors?.['minlength']">
+  <mat-error *ngIf="formControl?.errors?.['required'] && touched">
+    此欄位必填
+  </mat-error>
+  <mat-error *ngIf="formControl?.errors?.['minlength'] && touched">
     長度至少為{{ minLength }}
   </mat-error>
-  <mat-error *ngIf="formControl?.errors?.['maxlength']">
+  <mat-error *ngIf="formControl?.errors?.['maxlength'] && touched">
     長度最長為{{ maxLength }}
   </mat-error>
-  <mat-error *ngIf="formControl?.errors?.['min']"> 至少為{{ min }} </mat-error>
-  <mat-error *ngIf="formControl?.errors?.['max']"> 最多為{{ max }} </mat-error>
-  <mat-error *ngIf="formControl?.errors?.['email']"> Email格式錯誤 </mat-error>
+  <mat-error *ngIf="formControl?.errors?.['min'] && touched">
+    至少為{{ min }}
+  </mat-error>
+  <mat-error *ngIf="formControl?.errors?.['max'] && touched">
+    最多為{{ max }}
+  </mat-error>
+  <mat-error *ngIf="formControl?.errors?.['email'] && touched">
+    Email格式錯誤
+  </mat-error>
 </mat-form-field>

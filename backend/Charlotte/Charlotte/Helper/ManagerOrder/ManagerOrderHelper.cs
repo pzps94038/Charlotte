@@ -18,57 +18,60 @@ namespace Charlotte.Helper.ManagerOrder
         public async Task<TableVModel<ManagerOrderVModel>> GetAllAsync(int? limit, int? offset, string? orderBy, string? orderDescription, string? filterStr)
         {
             string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
-            using (SqlConnection con = new SqlConnection(sqlConStr))
+            using (var db = new CharlotteContext())
             {
-                await con.OpenAsync();
-                string sqlStr = @"SELECT o.OrderId, u.UserId, u.UserName, convert(varchar, o.CreateDate, 23) as CreateDate, convert(varchar, o.ModifyDate, 23) as ModifyDate, SUM(d.ProductAmount * d.ProductPrice) as OrderAmount
-                                FROM [Charlotte].[dbo].[Order] as o
-                                left join [dbo].[UserMain] as u on u.UserId = o.UserId
-                                left join [dbo].[OrderDetail] as d on d.OrderId = o.OrderId
-                                group by o.OrderId, u.UserId, u.UserName, o.CreateDate, o.ModifyDate ";
-                string countStr = @"Select COUNT(*)
-                                    FROM [Charlotte].[dbo].[Order] as o
-                                    left join [dbo].[UserMain] as u on u.UserId = o.UserId
-                                    left join [dbo].[OrderDetail] as d on d.OrderId = o.OrderId
-                                    group by o.OrderId, u.UserId, u.UserName, o.CreateDate, o.ModifyDate ";
-                var sqlParams = new DynamicParameters();
-                if (filterStr != null)
-                {
-                    string condition = @"HAVING o.OrderId like @filterStr or u.UserId like @filterStr or u.UserName like @filterStr or SUM(d.ProductAmount * d.ProductPrice) like @filterStr ";
-                    sqlStr += condition;
-                    countStr += condition;
-                    sqlParams.Add("filterStr", "%" + filterStr + "%");
+                var group = db.Order.Join(db.UserMain, a => a.UserId, b => b.UserId, (a, b) => new {
+                    a.OrderId,
+                    b.UserId,
+                    b.UserName,
+                    a.CreateDate,
+                    a.ModifyDate
+                }).Join(db.OrderDetail, a => a.OrderId, b => b.OrderId, (a, b) => new {
+                    a.OrderId,
+                    a.UserId,
+                    a.UserName,
+                    a.CreateDate,
+                    a.ModifyDate,
+                    b.ProductAmount,
+                    b.ProductPrice
+                }).GroupBy(a => new { a.UserId, a.UserName, a.OrderId, a.CreateDate, a.ModifyDate })
+                .AsQueryable();
+                // 處理搜尋條件
+                if (filterStr != null) {
+                    group = group.Where(a => a.Key.UserId.ToString().Contains(filterStr) ||
+                                            a.Key.UserName.Contains(filterStr) ||
+                                            (a.Sum(b=> b.ProductPrice * b.ProductAmount)).ToString().Contains(filterStr));
                 }
-                var tableTotalCount = await con.QueryAsync<int>(countStr, sqlParams);
+
+                // 改成對應的回傳的對應參數，來做動態order
+                var query = group.Select(a => new {
+                    UserId = a.Key.UserId,
+                    UserName = a.Key.UserName,
+                    OrderId = a.Key.OrderId,
+                    CreateDate = a.Key.CreateDate,
+                    ModifyDate = a.Key.ModifyDate,
+                    OrderAmount = a.Sum(b => b.ProductAmount * b.ProductPrice)
+                });
+
                 if (orderBy != null && orderDescription != null)
-                {
-                    sqlStr += @"order by 
-                                CASE WHEN @orderBy = 'orderId asc' THEN o.OrderId END ASC,
-                                CASE WHEN @orderBy = 'orderId desc' THEN o.OrderId END DESC,
-                                CASE WHEN @orderBy = 'userId asc' THEN u.UserId END ASC,
-                                CASE WHEN @orderBy = 'userId desc' THEN u.UserId END DESC,
-                                CASE WHEN @orderBy = 'userName asc' THEN u.UserName END ASC,
-                                CASE WHEN @orderBy = 'userName desc' THEN u.UserName END DESC,
-                                CASE WHEN @orderBy = 'createDate asc' THEN o.CreateDate END ASC,
-                                CASE WHEN @orderBy = 'createDate desc' THEN o.CreateDate END DESC,
-                                CASE WHEN @orderBy = 'modifyDate asc' THEN o.ModifyDate END ASC,
-                                CASE WHEN @orderBy = 'modifyDate desc' THEN o.ModifyDate END DESC,
-                                CASE WHEN @orderBy = 'orderAmount asc' THEN SUM(d.ProductPrice * d.ProductAmount) END ASC,
-                                CASE WHEN @orderBy = 'orderAmount desc' THEN SUM(d.ProductPrice * d.ProductAmount) END DESC ";
-                    sqlParams.Add("orderBy", orderDescription == "desc" ? $"{orderBy} desc" : $"{orderBy} asc");
-                }
-                else 
-                    sqlStr += @"order by o.OrderId ";
-                if (limit != null && offset != null) 
-                {
-                    sqlStr += @"OFFSET @offset ROWS
-                                FETCH NEXT @limit ROWS ONLY";
-                    sqlParams.Add("@offset", (int)offset);
-                    sqlParams.Add("@limit", (int)limit);
-                }
-                var query = await con.QueryAsync<ManagerOrderVModel>(sqlStr, sqlParams);
-                var result = query.ToList();
-                return new TableVModel<ManagerOrderVModel>(result, tableTotalCount.Count());
+                    query = orderDescription == "desc" ? query.OrderBy($"{orderBy} desc") : query.OrderBy($"{orderBy} asc");
+
+                // 符合資料總數
+                var count = query.Count();
+
+                if (limit != null && offset != null)
+                    query = query.Skip((int)offset).Take((int)limit);
+
+                var result = await query.Select(a => new ManagerOrderVModel {
+                                        UserId = a.UserId,
+                                        UserName = a.UserName,
+                                        OrderId = a.OrderId,
+                                        CreateDate = a.CreateDate.ToString("yyyy-MM-dd"),
+                                        ModifyDate = a.ModifyDate.HasValue ? a.ModifyDate.Value.ToString("yyyy-MM-dd") : "",
+                                        OrderAmount = a.OrderAmount
+                                  })
+                                  .ToListAsync();
+                return new TableVModel<ManagerOrderVModel>(result, query.Count());
             }
         }
 

@@ -17,6 +17,8 @@ namespace Charlotte.DataBase.Model
         public int ProductTypeId { get; set; }
         [ForeignKey("ProductTypeId")]
         public virtual ProductType ProductType { get; set; }
+        [Required]
+        public string ProductDescription { get; set; }
 
         [Required]
         public int Inventory { get; set; }

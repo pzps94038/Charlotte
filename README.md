@@ -42,16 +42,17 @@ npm i axios
 npm i react-native-toast-message
 npm i tailwindcss-react-native
 npm install react-hook-form
+npm i react-native-date-picker
 
 # docker
 
 docker 指令
 後端打包
 cd 專案路徑\Charlotte\backend\Charlotte
-docker build -t pzps94038/charlotte-backend --no-cache .
+docker build -t pzps94038/charlotte-backend --no-cache . --platform=linux/amd64
 前端打包
 cd 專案路徑\Charlotte\frontend\charlotte
-docker build -t pzps94038/charlotte-frontend --no-cache .
+docker build -t pzps94038/charlotte-frontend --no-cache . --platform=linux/amd64
 
 docker-compose
 cd 專案路徑

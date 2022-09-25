@@ -2,6 +2,13 @@ import { ValidationErrors, ValidatorFn } from '@angular/forms';
 export interface FormDialog {
   title: string;
   dataList: BaseInput[];
+  editor?: {
+    controlName: string;
+    valids: ValidatorFn[];
+    placeholder: string;
+    value: any;
+    disabled?: boolean;
+  };
 }
 export type InputType =
   | 'text'

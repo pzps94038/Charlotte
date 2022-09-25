@@ -14,7 +14,6 @@ namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "ManagerUser")]
     public class ManagerProductController : ControllerBase
     {
         private readonly IManagerProductHelper _productHelper;
@@ -88,6 +87,26 @@ namespace Charlotte.Controllers
             try
             {
                 result.Data = await _productHelper.FileUpload(files);
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
+                result.Code = HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.CreateFail);
+                LoggerUtils.Error(ex);
+            }
+            return result;
+        }
+
+        [HttpPost, DisableRequestSizeLimit]
+        [Route("EditorFileUpload")]
+        public async Task<ResultModel<string>> EditorFileUpload(List<IFormFile> files)
+        {
+            var result = new ResultModel<string>();
+            try
+            {
+                result.Data = await _productHelper.EditorFileUpload(files);
                 result.Message = EnumUtils.GetDescription(EnumResult.CreateSuccess);
                 result.Code = HttpStatusCode.OK;
             }

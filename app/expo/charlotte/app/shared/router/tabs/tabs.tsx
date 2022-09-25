@@ -3,11 +3,11 @@ import {
   BottomTabNavigationOptions,
 } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
-import Account from '../../../account/account';
+import AccountRouter from '../../../account/account-router';
 import Home from '../../../home/home';
-import Shop from '../../../shop/shop';
-import ShopCart from '../../../shopCart/shopCart';
-import TabButton from './tsbButton';
+import ShopCartRouter from '../../../shop-cart/shop-router';
+import ShopRouter from '../../../shop/shop-router';
+import TabButton from './tab-button';
 
 export interface Tab {
   name: string;
@@ -34,7 +34,7 @@ const Tabs: Tab[] = [
   // 商城
   {
     name: 'Shop',
-    component: Shop,
+    component: ShopRouter,
     options: {
       tabBarShowLabel: false,
       headerShown: false,
@@ -47,7 +47,7 @@ const Tabs: Tab[] = [
   //購物車
   {
     name: 'ShopCart',
-    component: ShopCart,
+    component: ShopCartRouter,
     options: {
       tabBarShowLabel: false,
       headerShown: false,
@@ -57,10 +57,10 @@ const Tabs: Tab[] = [
       },
     },
   },
-  //購物車
+  //帳戶資訊
   {
     name: 'Account',
-    component: Account,
+    component: AccountRouter,
     options: {
       tabBarShowLabel: false,
       headerShown: false,

@@ -9,5 +9,6 @@
         public int SellPrice { get; set; }
         public int FactoryId { get; set; }
         public string ProductImgPath { get; set; }
+        public string ProductDescription { get; set; }
     }
 }

@@ -1,0 +1,8 @@
+<angular-editor
+  [placeholder]="placeholder"
+  [formControl]="formControl"
+  [config]="config"
+></angular-editor>
+<mat-error *ngIf="formControl.errors?.['required'] && touched"
+  >此欄位必填</mat-error
+>

@@ -7,13 +7,13 @@ using Charlotte.VModel.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Net;
 
 namespace Charlotte.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "ManagerUser")]
     public class ProductController : ControllerBase
     {
         private readonly IProductHelper _productHelper;
@@ -79,6 +79,25 @@ namespace Charlotte.Controllers
             }
             return result;
         }
-        
+
+        [HttpPost]
+        public async Task<ResultModel<List<SearchVModel>>> Search(string search)
+        {
+            ResultModel<List<SearchVModel>> result = new ResultModel<List<SearchVModel>>();
+            try
+            {
+                result.Data = await _productHelper.Search(search);
+                result.Message = EnumUtils.GetDescription(EnumResult.Success);
+                result.Code = HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                result.Code = HttpStatusCode.BadRequest;
+                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
+                LoggerUtils.Error(ex);
+            }
+            return result;
+        }
+
     }
 }

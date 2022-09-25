@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using static Charlotte.CustomizeException.CustomizeException;
 using System.Linq.Dynamic.Core;
 using Mapster;
+using Charlotte.Enum;
 
 namespace Charlotte.Helper.Factory
 {
@@ -59,7 +60,7 @@ namespace Charlotte.Helper.Factory
         }
         public async Task<ManagerFactoryVModel> GetAsync(int id)
         {
-            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();

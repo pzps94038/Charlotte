@@ -38,7 +38,7 @@ namespace Charlotte.Controllers
                 if (string.IsNullOrEmpty(message))
                 {
                     result.Code = HttpStatusCode.OK;
-                    result.Message = EnumUtils.GetDescription(EnumResult.Success);
+                    result.Message = EnumUtils.GetDescription(EnumResult.LoginSuccess);
                     result.Data = token;
                 }
                 else 
@@ -50,7 +50,7 @@ namespace Charlotte.Controllers
             catch (Exception ex) 
             {
                 result.Code = HttpStatusCode.BadRequest;
-                result.Message = EnumUtils.GetDescription(EnumResult.Fail);
+                result.Message = EnumUtils.GetDescription(EnumResult.LoginFail);
                 LoggerUtils.Error(ex);
             }
             return result;

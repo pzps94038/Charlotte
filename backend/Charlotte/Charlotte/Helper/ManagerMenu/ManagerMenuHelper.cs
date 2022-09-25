@@ -20,7 +20,8 @@ namespace Charlotte.Helper.ManagerMenu
                                 left join ManagerRole as role on role.RoleId = main.RoleId
                                 left join ManagerRoleAuth as auth on auth.RoleId = role.RoleId
                                 left join Router as router on auth.RouterId = router.RouterId
-                                where main.ManagerUserId = @id and router.Flag = 'Y' and auth.ViewAuth = 'Y'";
+                                where main.ManagerUserId = @id and router.Flag = 'Y' and auth.ViewAuth = 'Y'
+                                order by router.Sort";
                 var result = await con.QueryAsync<ManagerMenuVModel>(sqlStr, new { id });
                 return result.ToList();
             }

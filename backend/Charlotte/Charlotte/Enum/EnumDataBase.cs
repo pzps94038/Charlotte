@@ -6,5 +6,7 @@ namespace Charlotte.Enum
     {
         [Description("Charlotte")]
         Charlotte,
+        [Description("CharlotteRedis")]
+        CharlotteRedis
     }
 }

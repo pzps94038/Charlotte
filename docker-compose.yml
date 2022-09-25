@@ -2,30 +2,41 @@ version: "3.8"
 services:
   mssql-db:
     container_name: mssql-db
-    user: root
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/azure-sql-edge:latest
     ports:
       - "1435:1433"
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Everyhappy2
+      - MSSQL_SA_PASSWORD=Everyhappy2
     networks:
       bridge-001:
     volumes:
-      - C:\DockerDb:/var/opt/mssql/data
+      - /home/charlotte/dockerDb:/var/opt/mssql/data
+  redis-db:
+    restart: always
+    container_name: redis-db
+    image: redis:latest
+    ports:  
+      - 6380:6379
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass Everyhappy2
+    networks:
+      bridge-001:
+    volumes:
+      - /home/charlotte/redisDb:/data
+      - /home/charlotte/redisDb/redis.conf:/usr/local/etc/redis/redis.conf
   charlotte-backend:
     container_name: charlotte-backend
-    image: pzps94038/charlotte-backend
+    image: pzps94038/charlotte-backend:latest
     ports:
       - "8080:80"
     networks:
       bridge-001:
     volumes:
-      - C:\Charlotte-backend/Logs:/var/Charlotte-backend/Logs
-      - C:\Charlotte-backend/FileUpload:/app/FileUpload
+      - /home/charlotte/backend/Logs:/var/Charlotte-backend/Logs
+      - /home/charlotte/backend/FileUpload:/app/FileUpload
   charlotte-frontend:
     container_name: charlotte-frontend
-    image: pzps94038/charlotte-frontend
+    image: pzps94038/charlotte-frontend:latest
     ports:
       - "80:80"
     networks:

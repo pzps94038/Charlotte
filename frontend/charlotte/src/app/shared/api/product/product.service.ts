@@ -49,7 +49,6 @@ export class ProductService {
    * @returns 成功與否
    */
   fileUpload(files: FormData): Observable<ResultModel<string>> {
-    files.forEach((file) => console.log(file));
     return this.http.post<ResultModel<string>>(ApiUrl.productFileUpload, files);
   }
 

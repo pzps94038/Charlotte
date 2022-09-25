@@ -21,6 +21,8 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "@fortawesome/fontawesome-free": "^6.2.0",
+    "@kolkov/angular-editor": "^3.0.0-beta.0",
     "@microsoft/signalr": "^6.0.7",
     "@ng-bootstrap/ng-bootstrap": "^12.0.0",
     "@popperjs/core": "^2.10.2",

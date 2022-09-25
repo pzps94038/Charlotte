@@ -1,4 +1,5 @@
 ﻿using Charlotte.DataBase.DbContextModel;
+using Charlotte.Enum;
 using Charlotte.Interface.ManagerOrderDetail;
 using Charlotte.Model.ManagerOrderDetail;
 using Charlotte.Services;
@@ -25,7 +26,7 @@ namespace Charlotte.Helper.ManagerOrderDetail
 
         public async Task<List<ManagerOrderDetailVModel>> GetAsync(int id)
         {
-            string sqlConStr = GetAppSettingsUtils.GetConnectionString("Charlotte");
+            string sqlConStr = GetAppSettingsUtils.GetConnectionString(EnumUtils.GetDescription(EnumDataBase.Charlotte));
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();

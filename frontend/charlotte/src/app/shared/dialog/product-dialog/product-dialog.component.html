@@ -2,45 +2,106 @@
 <div mat-dialog-content class="dialog-container">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="file-container col-12 position-relative">
-      <div class="position-absolute text-center mt-5" style="left:0; right:0;">
-        <mat-icon class="mx-auto file-icon ">file_upload</mat-icon>
+      <div class="position-absolute text-center mt-5" style="left: 0; right: 0">
+        <mat-icon class="mx-auto file-icon">file_upload</mat-icon>
         <p>拖曳或點擊區塊上傳圖片</p>
       </div>
-      <input type="file" (change)="preview($event)" class="file" #upload accept="image/*" formControlName="productImgPath" placeholder="請上傳圖片" />
+      <input
+        type="file"
+        (change)="preview($event)"
+        class="file"
+        #upload
+        accept="image/*"
+        formControlName="productImgPath"
+        placeholder="請上傳圖片"
+      />
     </div>
     <div class="d-flex flex-wrap justify-content-center">
-      <div class="col-lg-6 col-md-12 mt-2 d-flex flex-column justify-content-center align-items-center">
-        <img [src]="url" alt="預覽圖片" *ngIf="url != ''; else noImg" class="preview-img" />
+      <div
+        class="col-lg-6 col-md-12 mt-2 d-flex flex-column justify-content-center align-items-center"
+      >
+        <img
+          [src]="url"
+          alt="預覽圖片"
+          *ngIf="url != ''; else noImg"
+          class="preview-img"
+        />
         <ng-template #noImg>
-          <img src="../../../../assets/300x300.png" alt="佔位圖片" class="preview-img"/>
+          <img
+            src="../../../../assets/300x300.png"
+            alt="佔位圖片"
+            class="preview-img"
+          />
         </ng-template>
         <mat-error *ngIf="!imgTypeValid" class="d-block">
           請選取正確的圖片格式
         </mat-error>
-        <mat-error *ngIf="productImgPath?.errors?.['required'] && productImgPath.touched && url === ''" class="d-block">
+        <mat-error
+          *ngIf="productImgPath?.errors?.['required'] && productImgPath.touched && url === ''"
+          class="d-block"
+        >
           請上傳圖片
         </mat-error>
       </div>
       <div class="col-lg-6 col-md-12 mt-2">
         <ng-container *ngFor="let data of formData.dataList">
-          <ng-container [ngSwitch]="data.type" *ngIf="data.controlName !== 'productImgPath'">
+          <ng-container
+            [ngSwitch]="data.type"
+            *ngIf="
+              data.controlName !== 'productImgPath' && data.type !== 'editor'
+            "
+          >
             <ng-container *ngSwitchCase="'select'">
-              <app-dynamic-select [icon]="data.icon" [labelText]="data.labelText" [formControlName]="data.controlName" [options]="data.options" [valids]="data.valids"></app-dynamic-select>
+              <app-dynamic-select
+                [icon]="data.icon"
+                [labelText]="data.labelText"
+                [formControlName]="data.controlName"
+                [options]="data.options"
+                [valids]="data.valids"
+              ></app-dynamic-select>
             </ng-container>
             <ng-container *ngSwitchCase="'date'">
-              <app-dynamic-datepicker [icon]="data.icon" [labelText]="data.labelText" [formControlName]="data.controlName" [valids]="data.valids"></app-dynamic-datepicker>
+              <app-dynamic-datepicker
+                [icon]="data.icon"
+                [labelText]="data.labelText"
+                [formControlName]="data.controlName"
+                [valids]="data.valids"
+              ></app-dynamic-datepicker>
             </ng-container>
             <ng-container *ngSwitchCase="'toggle'">
-              <app-dynamic-silde-toggle [formControlName]="data.controlName" [labelText]="data.labelText" [valids]="data.valids"></app-dynamic-silde-toggle>
+              <app-dynamic-silde-toggle
+                [formControlName]="data.controlName"
+                [labelText]="data.labelText"
+                [valids]="data.valids"
+              ></app-dynamic-silde-toggle>
             </ng-container>
             <ng-container *ngSwitchDefault>
-              <app-dynamic-input [icon]="data.icon" [labelText]="data.labelText" [type]="data.type" [placeholder]="data.placeholder" [formControlName]="data.controlName" [minLength]="data.minLength" [maxLength]="data.maxLength" [valids]="data.valids"></app-dynamic-input>
+              <app-dynamic-input
+                [icon]="data.icon"
+                [labelText]="data.labelText"
+                [type]="data.type"
+                [placeholder]="data.placeholder"
+                [formControlName]="data.controlName"
+                [minLength]="data.minLength"
+                [maxLength]="data.maxLength"
+                [valids]="data.valids"
+              ></app-dynamic-input>
             </ng-container>
           </ng-container>
         </ng-container>
       </div>
-      <div class="d-flex justify-content-end mt-2 align-items-end" style="margin-left: auto;">
-        <button type="button" mat-raised-button mat-dialog-close class="mx-2">取消</button>
+      <app-dynamic-editor
+        [valids]="formData.editor?.valids"
+        [formControlName]="formData.editor?.controlName!"
+        [placeholder]="formData.editor?.placeholder!"
+      ></app-dynamic-editor>
+      <div
+        class="d-flex justify-content-end mt-2 align-items-end"
+        style="margin-left: auto"
+      >
+        <button type="button" mat-raised-button mat-dialog-close class="mx-2">
+          取消
+        </button>
         <button type="submit" mat-raised-button color="primary">上傳</button>
       </div>
     </div>

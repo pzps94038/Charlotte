@@ -8,6 +8,10 @@ namespace Charlotte.Enum
         Success,
         [Description("取得資料失敗")]
         Fail,
+        [Description("登入成功")]
+        LoginSuccess,
+        [Description("登入失敗")]
+        LoginFail,
         [Description("找不到資料")]
         NotFound,
         [Description("新增資料成功")]

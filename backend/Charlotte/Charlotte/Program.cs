@@ -19,10 +19,10 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
-// ¥[¤JCORSªA°È
+// ï¿½[ï¿½JCORSï¿½Aï¿½ï¿½
 builder.Services.AddCors(options => {
     options.AddPolicy("CorsPolicy", builder => builder
-        .WithOrigins("http://localhost:4200")
+        .WithOrigins("http://charlottecoffe.ga")
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials());
@@ -38,7 +38,7 @@ builder.Services.Scan(scan =>  scan
         .WithScopedLifetime()
 );
 builder.Services.AddScoped<GetAppSettingsUtils>();
-// ÅçÃÒJWT
+// ï¿½ï¿½ï¿½ï¿½JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -63,16 +63,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 } 
-// ·|¦Û°ÊÂà¦¨https½Ð¨D¡A¨SÃö³¬ªº¸Ühttpªº½Ð¨D³£·|³Q¾×¦í
+// ï¿½|ï¿½Û°ï¿½ï¿½à¦¨httpsï¿½Ð¨Dï¿½Aï¿½Sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½httpï¿½ï¿½ï¿½Ð¨Dï¿½ï¿½ï¿½|ï¿½Qï¿½×¦ï¿½
 // app.UseHttpsRedirection();
-// ±Ò¥ÎÅçÃÒ
+// ï¿½Ò¥ï¿½ï¿½ï¿½ï¿½ï¿½
 app.UseAuthentication();
-// ±Ò¥ÎCors
+// ï¿½Ò¥ï¿½Cors
 app.UseCors("CorsPolicy");
-// ®M¥ÎÅçÃÒ¦b¸ô¥Ñ
+// ï¿½Mï¿½ï¿½ï¿½ï¿½ï¿½Ò¦bï¿½ï¿½ï¿½ï¿½
 app.UseAuthorization();
 app.MapControllers();
-// Åª¨ú¦øªA¾¹ÀRºAÀÉ®×³]©w
+// Åªï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Rï¿½Aï¿½É®×³]ï¿½w
 app.UseStaticFiles(new StaticFileOptions() 
 {
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"FileUpload")),

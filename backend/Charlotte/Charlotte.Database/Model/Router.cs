@@ -31,5 +31,12 @@ namespace Charlotte.Database.Model
         [StringLength(1)]
         [Column(TypeName = "nchar(1)")]
         public string Flag { get; set; }
+
+        [Required]
+        public int Sort { get; set; }
+        [Required]
+        public DateTime CreateDate { get; set; }
+
+        public DateTime? ModifyDate { get; set; }
     }
 }

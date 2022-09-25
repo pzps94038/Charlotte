@@ -1,4 +1,4 @@
-﻿using Charlotte.DataBase.Model;
+﻿    using Charlotte.DataBase.Model;
 using Charlotte.Enum;
 using Charlotte.Interface.Shared;
 using Charlotte.Model;
@@ -63,7 +63,7 @@ namespace Charlotte.Helper.Login
         private async Task<UserMain> GetUserMain(SqlConnection con, DbTransaction transaction, string account) 
         {
             string sqlStr = @"Select * From UserMain Where Account = @Account ";
-            return await con.QueryFirstOrDefaultAsync<UserMain>(sqlStr, new { account = account}, transaction);
+            return await con.QueryFirstOrDefaultAsync<UserMain>(sqlStr, new { account = account }, transaction);
         }
 
         /// <summary>

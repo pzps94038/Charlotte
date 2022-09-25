@@ -1,11 +1,11 @@
-﻿using Charlotte.Interface.Shared;
-using Charlotte.Model.ProductType;
-using Charlotte.VModel.ManagerProductType;
-using Charlotte.VModel.Shared;
+﻿using System;
+using Charlotte.VModel.ProductType;
 
 namespace Charlotte.Interface.ProductType
 {
-    public interface IProductTypeHelper: IGetAllAsync<TableVModel<MnaagerProductTypeVModel>>, IDeleteAsync, IBatchDeleteAsync, IModifyAsync<ManagerProductTypeModel>, ICreateAsync<ManagerProductTypeModel>
+    public interface IProductTypeHelper
     {
+        Task<List<ProductTypeVModel>> GetAllAsync();
     }
 }
+

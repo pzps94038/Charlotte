@@ -62,8 +62,12 @@ export class ProductTypeSettingComponent
         value: '類型',
       },
       {
-        key: 'icon',
-        value: 'Icon',
+        key: 'iconType',
+        value: 'IconType',
+      },
+      {
+        key: 'iconName',
+        value: 'IconName',
       },
       {
         key: 'createDate',
@@ -108,9 +112,16 @@ export class ProductTypeSettingComponent
             valids: [Validators.required],
           },
           {
-            controlName: 'Icon',
-            labelText: 'Icon',
+            controlName: 'IconType',
+            labelText: 'IconType',
             type: 'text',
+            valids: [Validators.required],
+          },
+          {
+            controlName: 'IconName',
+            labelText: 'IconName',
+            type: 'text',
+            valids: [Validators.required],
           },
         ],
       },
@@ -142,10 +153,16 @@ export class ProductTypeSettingComponent
             valids: [Validators.required],
           },
           {
-            controlName: 'Icon',
-            labelText: 'Icon',
+            controlName: 'IconType',
+            labelText: 'IconType',
             type: 'text',
-            value: row.icon,
+            value: row.iconType,
+          },
+          {
+            controlName: 'IconName',
+            labelText: 'IconName',
+            type: 'text',
+            value: row.iconName,
           },
         ],
       },

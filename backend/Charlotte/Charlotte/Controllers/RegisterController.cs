@@ -6,6 +6,7 @@ using Charlotte.Model.Register;
 using Charlotte.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System.Net;
 
 namespace Charlotte.Controllers
@@ -15,9 +16,11 @@ namespace Charlotte.Controllers
     public class RegisterController : ControllerBase
     {
         private readonly IRegisterHelper _registerHelper;
-        public RegisterController(IRegisterHelper helper)
+        private readonly IHubContext<DashbordHub> _hubContext;
+        public RegisterController(IRegisterHelper helper, IHubContext<DashbordHub> hubContext)
         {
             _registerHelper = helper;
+            _hubContext = hubContext;
         }
 
         /// <summary>
@@ -34,6 +37,7 @@ namespace Charlotte.Controllers
                 string message =  await _registerHelper.Register(req);
                 if (string.IsNullOrEmpty(message))
                 {
+                    await _hubContext.Clients.All.SendAsync("RegisteredMemberRefresh");
                     result.Code = HttpStatusCode.OK;
                     result.Message = EnumUtils.GetDescription(EnumResult.Success);
                 }

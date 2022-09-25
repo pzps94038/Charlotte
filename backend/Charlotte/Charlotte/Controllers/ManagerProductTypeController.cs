@@ -18,8 +18,8 @@ namespace Charlotte.Controllers
     [Authorize(Roles = "ManagerUser")]
     public class ManagerProductTypeController : ControllerBase
     {
-        private readonly IProductTypeHelper _productTypeHelper;
-        public ManagerProductTypeController(IProductTypeHelper helper)
+        private readonly IManagerProductTypeHelper _productTypeHelper;
+        public ManagerProductTypeController(IManagerProductTypeHelper helper)
         {
             _productTypeHelper = helper;
         }

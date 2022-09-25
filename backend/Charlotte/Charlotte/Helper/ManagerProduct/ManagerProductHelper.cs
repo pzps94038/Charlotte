@@ -43,6 +43,18 @@ namespace Charlotte.Helper.ManagerProduct
             }
         }
 
+        public async Task<string> EditorFileUpload(List<IFormFile> files)
+        {
+            IFormFile file = files.First();
+            string dicPath = "./FileUpload/Editor";
+            if (!Directory.Exists(dicPath))
+                Directory.CreateDirectory(dicPath);
+            string filePath = dicPath + "/" + DateTime.Now.ToString("yyyy-MM-dd-mm-ss") + "_" + file.FileName;
+            using (var stream = File.Create(filePath))
+                await file.CopyToAsync(stream);
+            return filePath;
+        }
+
         public async Task<string> FileUpload(List<IFormFile> files)
         {
             IFormFile file = files.First();
@@ -69,7 +81,8 @@ namespace Charlotte.Helper.ManagerProduct
                         a.CostPrice,
                         a.SellPrice,
                         a.FactoryId,
-                        a.ProductImgPath
+                        a.ProductImgPath,
+                        a.ProductDescription
                     } 
                 ).Join(db.Factory, a=> a.FactoryId, b=> b.FactoryId, (a, b) => new ManagerProductVModel
                     // 廠商
@@ -81,7 +94,8 @@ namespace Charlotte.Helper.ManagerProduct
                         CostPrice = a.CostPrice,
                         SellPrice = a.SellPrice,
                         FactoryName = b.FactoryName,
-                        ProductImgPath = a.ProductImgPath
+                        ProductImgPath = a.ProductImgPath,
+                        ProductDescription = a.ProductDescription
                 }
                 ).AsQueryable();
                 if (filterStr != null)
@@ -117,6 +131,7 @@ namespace Charlotte.Helper.ManagerProduct
                 data.SellPrice = request.SellPrice;
                 data.FactoryId = request.FactoryId;
                 data.ProductImgPath = request.ProductImgPath;
+                data.ProductDescription = request.ProductDescription;
                 data.ModifyDate = DateTime.Now;
                 await db.SaveChangesAsync();
             }

@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import {
+  delay,
   filter,
   finalize,
   forkJoin,
@@ -46,7 +47,8 @@ export class ProductComponent
     private dialog: MatDialog,
     private swalService: SwalService,
     private productTypeService: ProductTypeService,
-    private factoryService: FactoryService
+    private factoryService: FactoryService,
+    private cdr: ChangeDetectorRef
   ) {
     super();
   }
@@ -172,6 +174,13 @@ export class ProductComponent
                   valids: [Validators.required],
                 },
               ],
+              editor: {
+                controlName: 'productDescription',
+                labelText: '產品說明',
+                placeholder: '請輸入產品說明...',
+                type: 'editor',
+                valids: [Validators.required],
+              },
             },
           });
           return dialog.afterClosed();
@@ -195,11 +204,14 @@ export class ProductComponent
             sellPrice: data.sellPrice,
             factoryId: data.factoryId,
             productImgPath: pathData.data,
+            productDescription: data.productDescription,
           });
         }),
         filter((data) => this.apiService.judgeSuccess(data))
       )
-      .subscribe(() => this.refresh());
+      .subscribe(() => {
+        this.refresh();
+      });
   }
 
   createProductTypeOptions(): Observable<{ text: string; value: number }[]> {
@@ -284,7 +296,22 @@ export class ProductComponent
                   labelText: '圖片路徑',
                   value: row.productImgPath,
                 },
+                {
+                  controlName: 'productDescription',
+                  labelText: '產品說明',
+                  type: 'editor',
+                  valids: [Validators.required],
+                  value: row.productDescription,
+                },
               ],
+              editor: {
+                controlName: 'productDescription',
+                labelText: '產品說明',
+                placeholder: '請輸入產品說明...',
+                type: 'editor',
+                valids: [Validators.required],
+                value: row.productDescription,
+              },
             },
           });
           return dialog.afterClosed();
@@ -316,6 +343,7 @@ export class ProductComponent
             sellPrice: data.sellPrice,
             factoryId: data.factoryId,
             productImgPath: pathData?.data ?? data.url,
+            productDescription: data.productDescription,
           });
         }),
         filter((data) => this.apiService.judgeSuccess(data, true))

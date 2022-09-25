@@ -1,8 +1,10 @@
-﻿using Charlotte.Enum;
+﻿using Charlotte.DataBase.DbContextModel;
+using Charlotte.Enum;
 using Charlotte.Interface.Product;
 using Charlotte.Services;
 using Charlotte.VModel.Product;
 using Dapper;
+using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 
 namespace Charlotte.Helper.Product
@@ -21,8 +23,8 @@ namespace Charlotte.Helper.Product
             using (SqlConnection con = new SqlConnection(sqlConStr)) 
             {
                 await con.OpenAsync();
-                string sqlStr = @"select product.ProductId, product.ProductName, type.Type, product.Inventory, product.SellPrice
-                                from ProductDetails as product 
+                string sqlStr = @"select product.ProductId, product.ProductName, type.Type, product.Inventory, product.SellPrice, product.ProductImgPath, product.ProductDescription
+                                from ProductInformation as product 
                                 left join ProductType as type on product.ProductTypeId = type.ProductTypeId
                                 where 1 = 1";
                 DynamicParameters parameters = new DynamicParameters();
@@ -42,11 +44,25 @@ namespace Charlotte.Helper.Product
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();
-                string sqlStr = @"select product.ProductId, product.ProductName, type.Type, product.Inventory, product.SellPrice
-                                from ProductDetails as product 
+                string sqlStr = @"select product.ProductId, product.ProductName, type.Type, product.Inventory, product.SellPrice, product.ProductImgPath, product.ProductDescription
+                                from ProductInformation as product 
                                 left join ProductType as type on product.ProductTypeId = type.ProductTypeId
                                 Where ProductId = @id";
                 return await con.QueryFirstOrDefaultAsync<ProductVModel>(sqlStr, new { id });
+            }
+        }
+
+        public async Task<List<SearchVModel>> Search(string search)
+        {
+            using (var db = new CharlotteContext())
+            {
+                var result = await db.ProductInformation.Where(a => a.ProductName.Contains(search)).Select(a => new SearchVModel
+                {
+                    ProductId = a.ProductId,
+                    ProductName = a.ProductName,
+                    ProductImgPath = a.ProductImgPath
+                }).ToListAsync();
+                return result;
             }
         }
     }

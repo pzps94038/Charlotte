@@ -22,6 +22,7 @@ namespace Charlotte.Helper.Register
                     data.Password = EncryptUtils.SHA256Encrypt(req.Password);
                     data.Flag = "Y";
                     data.CreatedDate = DateTime.Now;
+                    data.Birthday = Convert.ToDateTime(req.birthday);
                     await db.UserMain.AddAsync(data);
                     await db.SaveChangesAsync();
                 }

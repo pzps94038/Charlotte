@@ -5,6 +5,7 @@ using Charlotte.Model;
 using Charlotte.Model.Shared;
 using Charlotte.Services;
 using Microsoft.AspNetCore.Mvc;
+using StackExchange.Redis;
 using System.Net;
 using System.Text.Encodings.Web;
 using System.Text.Json;

@@ -12,12 +12,10 @@ import { DynamicDatepickerModule } from '../../component/dynamic-datepicker/dyna
 import { DynamicInputModule } from '../../component/dynamic-input/dynamic-input.module';
 import { DynamicSelectModule } from '../../component/dynamic-select/dynamic-select.module';
 import { DynamicSildeToggleModule } from '../../component/dynamic-silde-toggle/dynamic-silde-toggle.module';
-
+import { DynamicEditorModule } from '../../component/dynamic-editor/dynamic-editor.module';
 
 @NgModule({
-  declarations: [
-    ProductDialogComponent
-  ],
+  declarations: [ProductDialogComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -30,7 +28,8 @@ import { DynamicSildeToggleModule } from '../../component/dynamic-silde-toggle/d
     DynamicInputModule,
     DynamicDatepickerModule,
     DynamicSildeToggleModule,
-    DynamicSelectModule
-  ]
+    DynamicSelectModule,
+    DynamicEditorModule,
+  ],
 })
-export class ProductDialogModule { }
+export class ProductDialogModule {}

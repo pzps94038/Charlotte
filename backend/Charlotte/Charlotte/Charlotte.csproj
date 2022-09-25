@@ -13,6 +13,10 @@
   <ItemGroup>
     <None Remove="C:\Users\pzps9\.nuget\packages\nlog.config\4.7.13\contentFiles\any\any\NLog.config" />
     <None Remove="C:\Users\pzps9\.nuget\packages\nlog.config\4.7.14\contentFiles\any\any\NLog.config" />
+    <None Remove="Interface\ProductType\" />
+    <None Remove="VModel\ProductType\" />
+    <None Remove="Helper\ProductType\" />
+    <None Remove="StackExchange.Redis" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,10 +38,14 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.0" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.18" />
     <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.48" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="FileUpload\" />
+    <Folder Include="Interface\ProductType\" />
+    <Folder Include="VModel\ProductType\" />
+    <Folder Include="Helper\ProductType\" />
   </ItemGroup>
 
   <ItemGroup>

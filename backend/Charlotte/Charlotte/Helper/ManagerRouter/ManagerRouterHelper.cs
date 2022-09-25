@@ -28,6 +28,8 @@ namespace Charlotte.Helper.ManagerRouter
                 data.Link = request.Link;
                 data.RouterName = request.RouterName;
                 data.GroupId = request.GroupId;
+                data.Sort = request.Sort;
+                data.CreateDate = DateTime.Now;
                 db.Router.Add(data);
                 await db.SaveChangesAsync();
             }
@@ -43,6 +45,8 @@ namespace Charlotte.Helper.ManagerRouter
                 data.Icon = request.Icon == null ? null : request.Icon;
                 data.Link = request.Link;
                 data.GroupId = request.GroupId;
+                data.Sort = request.Sort;
+                data.ModifyDate = DateTime.Now;
                 await db.SaveChangesAsync();
             }
         }
@@ -79,6 +83,7 @@ namespace Charlotte.Helper.ManagerRouter
                                                     a.Link.Contains(filterStr) ||
                                                     (a.Icon != null && a.Icon.Contains(filterStr)) ||
                                                     a.GroupId.ToString().Contains(filterStr) ||
+                                                    a.Sort.ToString().Contains(filterStr) ||
                                                     a.Flag.Contains(filterStr)) ; ;
                 }
                 var tableTotalCount = query.Count();
@@ -97,7 +102,7 @@ namespace Charlotte.Helper.ManagerRouter
             using (SqlConnection con = new SqlConnection(sqlConStr))
             {
                 await con.OpenAsync();
-                string sqlStr = @"select RouterId, Link, Icon, GroupId, Flag, RouterName
+                string sqlStr = @"select RouterId, Link, Icon, GroupId, Flag, RouterName, Sort
                                 from Router as router
                                 where RouterId = @id";
                 var result = await con.QueryFirstAsync<ManagerRouterVModel>(sqlStr, new{ id });
